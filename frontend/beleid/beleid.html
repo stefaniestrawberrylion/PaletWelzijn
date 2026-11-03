@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palet Welzijn - Beleid & Onboarding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/frontend/beleid/beleid.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- Header / Navbar -->
+        <header class="navbar">
+            <a href="/index.html" class="logo">
+                <img src="/logo paletwelzijn.png" alt="Palet Welzijn Logo">
+            </a>
+            <button class="menu-toggle" aria-label="Menu openen">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="nav-links">
+                <a href="/index.html">Home</a>
+                <a href="#">Over ons</a>
+                <a href="#">Vacatures</a>
+                <a href="/frontend/beleid/beleid.html" class="active">Onboarding</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="profile-icon"></div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <img src="/palet-welzijn-c395f88f.png" alt="Vrijwilligers aan het werk">
+            <div class="hero-content">
+                <h1>Jouw eerste stappen als vrijwilliger.</h1>
+            </div>
+        </section>
+
+        <!-- Onboarding / Beleid tweeluik -->
+        <section class="pw-onboarding">
+            <header class="pw-ob-header">
+                <div>
+                    <p class="pw-ob-eyebrow">Onboarding</p>
+                    <h2 class="pw-ob-title">Jouw route als vrijwilliger</h2>
+                    <p class="pw-ob-intro">Kies links een stap, lees rechts de info en vink af wat je hebt gedaan.</p>
+                </div>
+                <div class="pw-ob-status">
+                    <p class="pw-ob-badge" id="pw-ob-badge">Je bent bij stap 1!</p>
+                    <p class="pw-ob-progress-label" id="pw-ob-progress-label">0 van 5 stappen afgerond</p>
+                    <div class="pw-ob-bar" id="pw-ob-bar" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0">
+                        <div class="pw-ob-bar-fill" id="pw-ob-bar-fill"></div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="pw-ob-split">
+
+                <nav class="pw-ob-rail" aria-label="Onboarding stappen">
+                    <ol class="pw-ob-rail-list" id="pw-ob-rail-list"></ol>
+                </nav>
+
+                <section class="pw-ob-panel" id="pw-ob-panel" tabindex="-1" aria-live="polite"></section>
+
+            </div>
+
+            <aside class="pw-ob-help">
+                <span class="pw-ob-help-icon" aria-hidden="true">
+                    <i class="fa-solid fa-circle-question" style="font-size:32px;"></i>
+                </span>
+                <div class="pw-ob-help-text">
+                    <p class="pw-ob-help-title">Hulp nodig?</p>
+                    <p>Mail naar <a href="mailto:vrijwilligers@paletwelzijn.nl">vrijwilligers@paletwelzijn.nl</a> of bel <a href="tel:0881440200">088 - 144 02 00</a>.</p>
+                </div>
+            </aside>
+
+            <div class="pw-ob-reset-wrap">
+                <button type="button" class="pw-ob-reset" id="pw-ob-reset">Voortgang wissen</button>
+            </div>
+            <noscript><p class="pw-ob-noscript">Zet JavaScript aan om je voortgang bij te houden.</p></noscript>
+        </section>
+    </div>
+
+    <script src="/frontend/beleid/beleid.js"></script>
+</body>
+</html>

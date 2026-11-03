@@ -1,0 +1,313 @@
+/* ---------- Variabelen ---------- */
+:root {
+    --pw-donkerblauw: #120a5c;
+    --pw-blauw: #0055ff;
+    --pw-groen: #008241;
+    --pw-groen-licht: #4d88ff;
+    --bg-body: #f8f9fa;
+    --bg-card: #ffffff;
+    --text-donker: #1a1a1a;
+    --text-licht: #666666;
+    --border-kleur: #e2e2e2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-body);
+    color: var(--text-donker);
+}
+
+.app-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    z-index: 100;
+    flex-shrink: 0;
+}
+.logo img { height: 45px; object-fit: contain; }
+.menu-toggle { display: none; background: none; border: none; font-size: 24px; color: var(--pw-donkerblauw); cursor: pointer; }
+.nav-links { display: flex; gap: 35px; }
+.nav-links a { text-decoration: none; color: var(--text-donker); font-weight: 600; font-size: 15px; transition: color 0.3s ease; position: relative; padding-bottom: 5px; }
+.nav-links a:hover { color: var(--pw-blauw); }
+.nav-links a.active { color: var(--pw-blauw); }
+.nav-links a.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--pw-blauw); }
+.profile-icon { width: 40px; height: 40px; background-color: var(--pw-donkerblauw); border-radius: 50%; }
+
+/* --- Hero Sectie (Kleiner zodat er meer ruimte is voor de cards) --- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 25vh; /* Vaste kleinere hoogte */
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.hero img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; z-index: 1; }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18, 10, 92, 0.6); z-index: 2; }
+.hero-content { position: relative; z-index: 3; text-align: center; padding: 0 20px; }
+.hero-content h1 { color: white; font-size: clamp(24px, 3vw, 36px); font-weight: 700; line-height: 1.2; }
+
+/* =========================================================
+   Onboarding Kaarten
+   ========================================================= */
+.pw-onboarding {
+    --pw-navy: var(--pw-donkerblauw);
+    --pw-green: var(--pw-groen);
+    --pw-green-light: var(--pw-groen-licht);
+    --pw-bg: #ffffff; /* Wit, zodat het mooi afsteekt */
+    --pw-text: var(--text-donker);
+    --pw-muted: var(--text-licht);
+    --pw-line: var(--border-kleur);
+    --pw-track: #C9D3CB;
+    --pw-radius: 12px;
+    --pw-font-head: "Montserrat", Arial, sans-serif;
+    --pw-font-body: "Open Sans", Calibri, Arial, sans-serif;
+    --pw-font-hand: "Permanent Marker", "Comic Sans MS", cursive;
+
+    box-sizing: border-box;
+    width: 95%;
+    max-width: 1400px;
+    margin: -20px auto 0; /* Iets over de hero heen */
+    padding: 24px 32px 32px;
+    background: #ffffff;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+    color: var(--pw-text);
+    font-family: var(--pw-font-body);
+    font-size: 16px;
+    line-height: 1.45;
+    flex: 1; /* Neemt de rest van de ruimte in beslag */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 10;
+    position: relative;
+}
+
+.pw-onboarding *,
+.pw-onboarding *::before,
+.pw-onboarding *::after { box-sizing: border-box; }
+
+.pw-onboarding a { color: var(--pw-navy); font-weight: 700; }
+.pw-onboarding a:hover { color: var(--pw-green); }
+.pw-onboarding :focus-visible { outline: 3px solid var(--pw-green-light); outline-offset: 3px; }
+
+/* ---------- Kop ---------- */
+.pw-ob-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px 32px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--pw-line);
+    flex-shrink: 0;
+}
+.pw-ob-eyebrow { margin: 0 0 4px; font-family: var(--pw-font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pw-green); }
+.pw-ob-title { margin: 0; font-family: var(--pw-font-head); font-weight: 800; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.15; color: var(--pw-navy); }
+.pw-ob-intro { margin: 6px 0 0; font-size: 16px; color: var(--pw-muted); }
+
+.pw-ob-status { width: min(320px, 100%); }
+.pw-ob-badge { margin: 0 0 8px; font-family: var(--pw-font-hand); font-size: 22px; color: var(--pw-navy); transform: rotate(-3deg); transform-origin: left center; }
+.pw-ob-progress-label { margin: 0 0 6px; font-weight: 700; font-size: 14px; color: var(--pw-navy); }
+.pw-ob-bar { height: 12px; border-radius: 6px; background: #E6F3EC; overflow: hidden; }
+.pw-ob-bar-fill { height: 100%; width: 0; border-radius: 6px; background: var(--pw-green); transition: width 0.4s ease; }
+
+/* ---------- Route ---------- */
+.pw-ob-route { position: relative; flex-shrink: 0; }
+
+.pw-ob-track { position: absolute; border-radius: 4px; background: repeating-linear-gradient(90deg, var(--pw-track) 0 16px, transparent 16px 26px); pointer-events: none; }
+.pw-ob-track-fill { position: absolute; left: 0; top: 0; border-radius: 4px; background: var(--pw-green); transition: width 0.4s ease, height 0.4s ease; }
+.pw-ob-route.is-vertical .pw-ob-track { background: repeating-linear-gradient(180deg, var(--pw-track) 0 16px, transparent 16px 26px); }
+
+.pw-ob-steps {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start; /* Zorgt dat de kaarten bovenaan beginnen */
+}
+
+.pw-ob-step {
+    --step-color: var(--pw-navy);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    height: 100%; /* Zorgt dat alle kaarten even hoog zijn */
+}
+
+/* Halte op de route */
+.pw-ob-stop {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    background: #ffffff;
+    color: var(--step-color);
+    box-shadow: 0 0 0 3px var(--step-color);
+    font-family: var(--pw-font-head);
+    font-weight: 800;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pw-ob-stop i { font-size: 22px; }
+.pw-ob-step.is-done .pw-ob-stop { background: var(--pw-green); color: #ffffff; box-shadow: 0 0 0 3px var(--pw-green); }
+.pw-ob-step.is-current .pw-ob-stop { background: var(--pw-navy); color: #ffffff; box-shadow: 0 0 0 4px var(--pw-green-light); }
+.pw-ob-step.is-locked .pw-ob-stop { background: #ffffff; color: #9a9a9a; box-shadow: 0 0 0 3px #c9c9c9; }
+.pw-ob-step.is-locked .pw-ob-stop i { font-size: 20px; }
+.pw-ob-stop svg { width: 26px; height: 26px; }
+
+/* Kaart (Groter en overzichtelijker) */
+.pw-ob-card {
+    align-self: stretch;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #ffffff;
+    border: 2px solid var(--pw-line);
+    border-radius: var(--pw-radius);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.pw-ob-step.is-current .pw-ob-card { border: 3px solid var(--pw-green); box-shadow: 0 8px 24px rgba(0, 130, 65, 0.15); }
+.pw-ob-step.is-locked .pw-ob-card { background: #fafafa; }
+.pw-ob-card:hover { border-color: #b0b0b0; }
+
+/* >>> AFBEELDING IN DE KAART (Groot en netjes) <<< */
+.pw-ob-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background-color: #f0f0f0; /* Fallback als de afbeelding niet laadt */
+}
+
+.pw-ob-label { margin: 0 0 8px 0; font-family: var(--pw-font-head); font-weight: 700; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--pw-muted); }
+.pw-ob-step.is-done .pw-ob-label { color: var(--pw-green); }
+.pw-ob-step.is-current .pw-ob-label { color: var(--pw-navy); }
+
+.pw-ob-card h3 { margin: 0 0 8px 0; font-family: var(--pw-font-head); font-weight: 800; font-size: 17px; line-height: 1.25; color: var(--pw-navy); }
+.pw-ob-card p.pw-ob-text { margin: 0; font-size: 14px; color: var(--pw-muted); line-height: 1.4; }
+
+.pw-ob-action { margin-top: auto; padding-top: 20px; }
+
+/* Knoppen */
+.pw-ob-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--pw-navy);
+    color: #ffffff;
+    font-family: var(--pw-font-body);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+.pw-ob-btn:hover { background: #1F1A55; }
+.pw-ob-btn:disabled { background: #C9C7D9; color: #4A466B; cursor: not-allowed; }
+.pw-ob-btn svg { width: 18px; height: 18px; }
+
+.pw-ob-linkbtn { padding: 8px 0; min-height: 44px; border: 0; background: none; color: var(--pw-navy); font-family: var(--pw-font-body); font-size: 14px; font-weight: 700; text-decoration: underline; cursor: pointer; }
+.pw-ob-linkbtn:hover { color: var(--pw-green); }
+
+.pw-ob-locked { display: flex; align-items: center; gap: 6px; margin: 0; min-height: 44px; font-size: 13px; font-weight: 700; color: var(--pw-muted); }
+.pw-ob-locked svg { width: 16px; height: 16px; }
+
+/* ---------- Detailpaneel ---------- */
+.pw-ob-detail { --step-color: var(--pw-navy); margin-top: 24px; padding: 22px 26px; background: #ffffff; border: 3px solid var(--step-color); border-radius: 16px; transition: border-color 0.2s ease; flex-shrink: 0; }
+.pw-ob-detail:focus { outline: none; }
+.pw-ob-detail-head { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+.pw-ob-detail-num { flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%; background: var(--step-color); color: #ffffff; font-family: var(--pw-font-head); font-weight: 800; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+.pw-ob-detail-title { margin: 0; flex: 1 1 auto; font-family: var(--pw-font-head); font-weight: 800; font-size: 20px; color: var(--pw-navy); }
+.pw-ob-close { flex: 0 0 auto; width: 44px; height: 44px; border: 0; border-radius: 50%; background: #F3F4F7; color: var(--pw-navy); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.pw-ob-close svg { width: 20px; height: 20px; }
+.pw-ob-detail-hint { margin: 0 0 12px; font-size: 15px; color: var(--pw-muted); }
+.pw-ob-tasks { list-style: none; margin: 0 0 18px; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.pw-ob-task label { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 14px; border-radius: 12px; background: #F3F4F7; font-size: 15px; font-weight: 600; cursor: pointer; color: var(--pw-text); }
+.pw-ob-task input { flex: 0 0 auto; width: 24px; height: 24px; margin: 0; accent-color: var(--pw-green); cursor: pointer; }
+.pw-ob-task input:checked + span { color: var(--pw-green); }
+.pw-ob-task:has(input:checked) label { background: #E6F3EC; }
+.pw-ob-detail-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.pw-ob-detail-foot .pw-ob-btn { width: auto; min-width: 220px; min-height: 48px; font-size: 16px; }
+.pw-ob-detail-foot .pw-ob-btn--ghost { background: transparent; color: var(--pw-navy); border: 2px solid var(--pw-line); }
+.pw-ob-detail-foot .pw-ob-btn--ghost:hover { border-color: var(--pw-green); color: var(--pw-green); background: #F3FBF5; }
+
+/* ---------- Hulpblok ---------- */
+.pw-ob-help { display: flex; align-items: center; gap: 18px; margin-top: 24px; padding: 18px 24px; border-radius: 12px; background: var(--pw-navy); color: #ffffff; flex-shrink: 0; }
+.pw-ob-help-icon { flex: 0 0 auto; color: var(--pw-green-light); }
+.pw-ob-help-text p { margin: 0; font-size: 15px; }
+.pw-ob-help-title { font-family: var(--pw-font-head); font-weight: 800; font-size: 18px !important; margin-bottom: 2px !important; }
+.pw-ob-help a { color: #ffffff; }
+.pw-ob-help a:hover { color: #DCF1D2; }
+
+.pw-ob-reset-wrap { margin: 12px 0 0; text-align: right; flex-shrink: 0; }
+.pw-ob-reset { border: 0; background: none; color: var(--pw-muted); font-family: var(--pw-font-body); font-size: 13px; text-decoration: underline; cursor: pointer; min-height: 44px; }
+.pw-ob-noscript { font-size: 16px; color: var(--pw-muted); }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px) {
+    .pw-onboarding { padding: 20px; width: 100%; margin-top: 0; border-radius: 0; }
+    .pw-ob-steps { grid-template-columns: 1fr; gap: 16px; }
+    .pw-ob-step { flex-direction: row; align-items: stretch; gap: 16px; }
+    .pw-ob-stop { width: 48px; height: 48px; font-size: 20px; align-self: flex-start; }
+    .pw-ob-card { flex-direction: row; align-items: center; gap: 16px; padding: 16px; }
+    .pw-ob-card img { width: 120px; height: 90px; margin-bottom: 0; flex-shrink: 0; }
+    .pw-ob-card-content { display: flex; flex-direction: column; flex: 1; }
+    .pw-ob-detail { padding: 18px; }
+}
+
+/* ---------- Telefoon ---------- */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+    .hero { height: 20vh; min-height: 140px; }
+    .pw-onboarding { padding: 15px; }
+    .pw-ob-card { flex-direction: column; align-items: stretch; }
+    .pw-ob-card img { width: 100%; height: 120px; }
+    .pw-ob-card p.pw-ob-text { display: none; } /* Tekst verbergen op mobiel voor overzicht */
+    .pw-ob-stop { width: 40px; height: 40px; font-size: 16px; border-width: 3px; }
+    .pw-ob-help { flex-direction: column; align-items: flex-start; }
+    .pw-ob-reset-wrap { text-align: left; }
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Mijn website</title>
+    <link rel="stylesheet" href="/homepage.css">
+</head>
+
+<body>
+
+<div class="page">
+
+<header>
+<a class="brand" href="#home" aria-label="Palet Welzijn home">
+    <img src="/logo paletwelzijn.png" alt="Palet Welzijn logo" class="brand-logo">
+</a>
+
+    <button
+        class="menu-toggle"
+        aria-label="Menu openen"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav id="nav">
+        <a class="active" href="index.html">Home</a>
+        <a href="#over-ons">Over ons</a>
+        <a href="#vacatures">Vacatures</a>
+        <a href="/frontend/onboarding/onboarding.html">Onboarding</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="profile" aria-label="Profiel" id="profileBtn">
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round">
+
+            <circle cx="12" cy="7" r="4"/>
+
+            <path d="M4.5 21v-2a7.5 7.5 0 0 1 15 0v2"/>
+
+        </svg>
+
+    </button>
+
+</header>
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <img
+            src="/palet-welzijn-c395f88f.png"
+            alt="Oudere buurtbewoners samen in de buurtbus">
+
+        <h1>
+            Samen sterk in de<br>
+            wijk.
+        </h1>
+
+    </section>
+
+    <!-- STATISTIEKEN -->
+
+    <section class="stats" id="over-ons">
+
+        <article class="stat">
+
+            <strong>1.200+</strong>
+
+            <p>
+                ritten met de buurtbus per maand
+            </p>
+
+        </article>
+
+        <article class="what">
+
+            <h2>Wat we doen</h2>
+
+            <p>
+                Wij helpen inwoners mee te blijven doen:
+                met vervoer, ontmoetingsplekken,
+                mantelzorgondersteuning en een warm
+                netwerk van vrijwilligers.
+            </p>
+
+        </article>
+
+    </section>
+
+    <!-- VRIJWILLIGERS -->
+
+    <section class="features" id="vacatures">
+
+        <article class="volunteer">
+
+            <h2>Word vrijwilliger</h2>
+
+            <p>
+                Een paar uur per week maakt al een groot
+                verschil. Rijd mee, schenk koffie of help
+                bij activiteiten.
+            </p>
+
+            <a class="btn" href="#contact">
+                Bekijk vacatures
+            </a>
+
+        </article>
+
+        <article class="bus">
+
+            <h2>Buurtbus</h2>
+
+            <p>
+                Van deur tot deur, voor boodschappen
+                of bezoek.
+            </p>
+
+        </article>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <aside class="phone">
+
+            <div class="eyebrow">
+                HULP NODIG?
+            </div>
+
+            <h2>Bel ons</h2>
+
+            <p>
+                012 345 67 89
+            </p>
+
+        </aside>
+
+        <div class="contact-copy">
+
+            <h2>
+                Wij denken met je mee
+            </h2>
+
+            <p>
+                Of je nu vragen hebt over eenzaamheid,
+                mantelzorg of vervoer — onze consulenten
+                staan voor je klaar. Neem gerust
+                contact op.
+            </p>
+
+            <a
+                class="btn"
+                href="mailto:info@paletwelzijn.nl">
+
+                Contact opnemen
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 Palet Welzijn
+</footer>
+
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+    <script src="/homepage.js"></script>
+
+</body>
+
+</html>
