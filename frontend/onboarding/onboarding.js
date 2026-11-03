@@ -1,6 +1,6 @@
 /* =========================================================
    Palet Welzijn – Onboarding "Jouw route als vrijwilliger"
-   Kaarten linken door naar beleid.html#<stap-id>
+   Kaarten linken door naar /frontend/beleid/beleid.html#<stap-id>
    ========================================================= */
 (function () {
   "use strict";
@@ -82,7 +82,9 @@
   ];
 
   var STORAGE_KEY = "pw-onboarding-v1";
-  var BELEID_URL = "beleid.html"; // <-- doorklik-bestemming
+
+  /* === FIX: volledig pad naar beleid.html === */
+  var BELEID_URL = "/frontend/beleid/beleid.html";
 
   /* ---------- Elementen ---------- */
   var root = document.querySelector(".pw-onboarding");
@@ -216,13 +218,13 @@
 
       var action = el("div", "pw-ob-action");
       if (status === "current") {
-        // Ga verder -> beleid.html#<stap-id>
+        // Ga verder -> /frontend/beleid/beleid.html#<stap-id>
         var btn = el("a", "pw-ob-btn", "Ga verder");
         btn.href = BELEID_URL + "#" + step.id;
         btn.appendChild(svg(ICON_ARROW));
         action.appendChild(btn);
       } else if (status === "done") {
-        // Opnieuw bekijken -> ook beleid.html#<stap-id>
+        // Opnieuw bekijken -> /frontend/beleid/beleid.html#<stap-id>
         var again = el("a", "pw-ob-linkbtn", "Opnieuw bekijken");
         again.href = BELEID_URL + "#" + step.id;
         action.appendChild(again);

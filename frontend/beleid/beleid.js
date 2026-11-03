@@ -1,5 +1,6 @@
 /* =========================================================
    Palet Welzijn - Beleid & Onboarding (tweeluik)
+   Per stap: info-blok + taken + controle-vraag (meerkeuze)
    Leest optioneel #stap-id uit de URL (bijv. #start)
    ========================================================= */
 (function () {
@@ -12,14 +13,20 @@
       img: "/assets/welkom.png", alt: "Welkom",
       icon: "fa-regular fa-hand", color: "#120a5c",
       link: "stap1.html",
+      body: [
+        { type: "p", text: "Palet Welzijn is een organisatie die mensen in hun eigen omgeving ondersteunt met allerlei activiteiten: van samen koffiedrinken tot wandelen, koken of meegaan naar een afspraak. Vrijwilligers zijn daarbij onmisbaar." },
+        { type: "p", text: "Als vrijwilliger maak je écht het verschil. Je biedt gezelschap, een luisterend oor en praktische hulp. Daarbij werk je altijd samen met een vaste contactpersoon binnen Palet Welzijn." },
+        { type: "p", text: "Met ruim 1300 vrijwilligers vormen we samen een grote, betrokken club. Jij bent daar vanaf vandaag onderdeel van — welkom!" }
+      ],
       tasks: ["Ik weet wie Palet Welzijn is", "Ik weet dat ik één van de ruim 1300 vrijwilligers ben"],
       quiz: {
-        question: "Heb je stap 1 doorlopen en begrijp je wat Palet Welzijn doet?",
+        question: "Wat is de belangrijkste rol van een vrijwilliger bij Palet Welzijn?",
         options: [
-          { label: "Ja, ik weet het", ok: true },
-          { label: "Nog niet helemaal", ok: false }
+          { label: "Gezelschap en praktische ondersteuning bieden", ok: true },
+          { label: "Medische handelingen overnemen van de huisarts", ok: false },
+          { label: "Het bestuur van Palet Welzijn adviseren", ok: false }
         ],
-        hint: "Lees de info opnieuw of stel je vraag via de hulpbalk onderaan."
+        hint: "Kijk nog eens naar de eerste alinea: het gaat om gezelschap, een luisterend oor en praktische hulp."
       }
     },
     {
@@ -28,14 +35,20 @@
       img: "/assets/start.png", alt: "Start",
       icon: "fa-regular fa-file-lines", color: "#0055ff",
       link: "stap2.html",
+      body: [
+        { type: "p", text: "Voordat je echt aan de slag gaat, regel je een paar praktische zaken. Je krijgt een vaste contactpersoon binnen Palet Welzijn. Bij die persoon kun je terecht met al je vragen over je vrijwilligerswerk." },
+        { type: "p", text: "Daarnaast vraag je een Verklaring Omtrent het Gedrag (VOG) aan. Dit is gratis voor vrijwilligers en laat zien dat je betrouwbaar bent in de omgang met kwetsbare mensen." },
+        { type: "p", text: "Tot slot onderteken je een vrijwilligersovereenkomst. Daarin staan wederzijdse afspraken: wat jij doet, wat Palet Welzijn voor jou regelt (zoals verzekering) en hoe lang je betrokken blijft." }
+      ],
       tasks: ["Kennisgemaakt met mijn contactpersoon", "Gratis VOG aangevraagd en laten zien", "Vrijwilligersovereenkomst getekend"],
       quiz: {
-        question: "Heb je je VOG en overeenkomst geregeld?",
+        question: "Wat regel je allemaal voordat je begint?",
         options: [
-          { label: "Ja, alles is geregeld", ok: true },
-          { label: "Nog niet alles", ok: false }
+          { label: "Contactpersoon, VOG en vrijwilligersovereenkomst", ok: true },
+          { label: "Alleen een VOG", ok: false },
+          { label: "Niets, je kunt direct beginnen", ok: false }
         ],
-        hint: "Neem contact op met je contactpersoon als je hulp nodig hebt."
+        hint: "Er zijn drie dingen: een contactpersoon, een VOG en een overeenkomst."
       }
     },
     {
@@ -44,14 +57,20 @@
       img: "/assets/afspraken.png", alt: "Afspraken",
       icon: "fa-solid fa-graduation-cap", color: "#008241",
       link: "stap3.html",
+      body: [
+        { type: "p", text: "Palet Welzijn heeft een gedragscode. Daarin staat hoe we met elkaar en met cliënten omgaan: respectvol, betrouwbaar en met aandacht voor ieders grenzen." },
+        { type: "p", text: "Wat je tijdens je vrijwilligerswerk over cliënten hoort of ziet, blijft geheim. Je deelt geen namen, situaties of foto's — ook niet op social media." },
+        { type: "p", text: "Belangrijk: je doet géén medische of verpleegkundige handelingen. Dat mag alleen door bevoegde zorgverleners. Twijfel je? Overleg altijd met je contactpersoon." }
+      ],
       tasks: ["Ik ken de gedragscode", "Wat ik over cliënten hoor, blijft geheim", "Ik doe geen medische of verpleegkundige handelingen"],
       quiz: {
-        question: "Snap je de gedragscode en het belang van geheimhouding?",
+        question: "Wat doe je als een cliënt je vraagt om een verband te verschonen?",
         options: [
-          { label: "Ja, duidelijk", ok: true },
-          { label: "Ik heb nog vragen", ok: false }
+          { label: "Dat doe ik zelf, het is maar klein", ok: false },
+          { label: "Ik zeg dat dit niet bij mijn taak hoort en overleg met mijn contactpersoon", ok: true },
+          { label: "Ik vraag een andere vrijwilliger het te doen", ok: false }
         ],
-        hint: "Bespreek je vragen met je contactpersoon voordat je verdergaat."
+        hint: "Medische en verpleegkundige handelingen zijn voorbehouden aan bevoegde zorgverleners."
       }
     },
     {
@@ -60,12 +79,18 @@
       img: "/assets/veiligheid.png", alt: "Veiligheid",
       icon: "fa-solid fa-shield-halved", color: "#92278F",
       link: "stap4.html",
+      body: [
+        { type: "p", text: "Als er iets gebeurt — een val, een verwarde situatie of een onveilig gevoel — dan is er altijd iemand bij wie je terechtkunt. Je contactpersoon is je eerste aanspreekpunt." },
+        { type: "p", text: "Daarnaast is er een vertrouwenslijn: 088 - 144 02 00. Je kunt daar terecht als je iets wilt melden wat je liever niet met je contactpersoon bespreekt." },
+        { type: "p", text: "Als vrijwilliger ben je via Palet Welzijn verzekerd tijdens je werkzaamheden. Dit staat ook in je vrijwilligersovereenkomst." }
+      ],
       tasks: ["Ik weet bij wie ik terechtkan als er iets gebeurt", "Ik ken de vertrouwenslijn: 088 - 144 02 00", "Ik weet dat ik verzekerd ben"],
       quiz: {
-        question: "Weet je wat je moet doen als er iets gebeurt?",
+        question: "Bij wie kun je terecht als je iets wilt melden wat je niet met je contactpersoon wilt bespreken?",
         options: [
-          { label: "Ja, ik weet het", ok: true },
-          { label: "Nee, nog niet", ok: false }
+          { label: "De politie bellen meteen", ok: false },
+          { label: "De vertrouwenslijn: 088 - 144 02 00", ok: true },
+          { label: "Een andere vrijwilliger", ok: false }
         ],
         hint: "De vertrouwenslijn staat in de hulpbalk onderaan deze pagina."
       }
@@ -76,14 +101,20 @@
       img: "/assets/voor-jou.png", alt: "Voor jou",
       icon: "fa-solid fa-flag-checkered", color: "#C2410C",
       link: "stap5.html",
+      body: [
+        { type: "p", text: "Palet Welzijn waardeert haar vrijwilligers. Dat uit zich in attenties, een jaarlijks uitje en aandacht voor jouw welzijn." },
+        { type: "p", text: "Daarnaast organiseert Palet Welzijn workshops en trainingen. Denk aan een cursus omgaan met dementie, grenzen aangeven of EHBO. Je kunt je hiervoor aanmelden via je contactpersoon." },
+        { type: "p", text: "Past een taak niet meer bij je? Samen met je contactpersoon kijk je wat wél bij je past. Jouw plezier en welzijn staan voorop." }
+      ],
       tasks: ["Ik weet wat ik van Palet Welzijn krijg", "Ik weet dat ik altijd kan praten over wat bij mij past"],
       quiz: {
-        question: "Weet je wat je van Palet Welzijn kunt verwachten?",
+        question: "Wat kun je doen als een taak niet meer bij je past?",
         options: [
-          { label: "Ja, helemaal", ok: true },
-          { label: "Nog niet", ok: false }
+          { label: "Stoppen zonder iets te zeggen", ok: false },
+          { label: "In gesprek gaan met mijn contactpersoon om iets anders te zoeken", ok: true },
+          { label: "Gewoon doorgaan, het is maar tijdelijk", ok: false }
         ],
-        hint: "Bekijk de info nog eens of vraag het je contactpersoon."
+        hint: "Samen met je contactpersoon kijk je wat wél bij je past."
       }
     }
   ];
@@ -216,6 +247,7 @@
     panelEl.textContent = "";
     panelEl.style.setProperty("--step-color", step.color);
 
+    /* --- Kop --- */
     var head = el("div", "pw-ob-panel-head");
     head.appendChild(el("span", "pw-ob-panel-num", String(index + 1)));
     head.appendChild(el("h3", "pw-ob-panel-title", step.title));
@@ -226,13 +258,32 @@
     head.appendChild(badge);
     panelEl.appendChild(head);
 
+    /* --- Afbeelding --- */
     var img = el("img", "pw-ob-panel-img");
     img.src = step.img; img.alt = step.alt; img.loading = "lazy";
     img.onerror = function () { this.style.display = "none"; };
     panelEl.appendChild(img);
 
+    /* --- Intro --- */
     panelEl.appendChild(el("p", "pw-ob-panel-intro", step.text));
 
+    /* --- Uitlegblok (paragrafen) --- */
+    if (Array.isArray(step.body) && step.body.length) {
+      var info = el("div", "pw-ob-info");
+      step.body.forEach(function (block) {
+        if (block.type === "p") {
+          info.appendChild(el("p", "pw-ob-info-p", block.text));
+        } else if (block.type === "list" && Array.isArray(block.items)) {
+          var ul2 = el("ul", "pw-ob-info-list");
+          block.items.forEach(function (it) { ul2.appendChild(el("li", null, it)); });
+          info.appendChild(ul2);
+        }
+      });
+      panelEl.appendChild(info);
+    }
+
+    /* --- Taken --- */
+    panelEl.appendChild(el("p", "pw-ob-hint", "Vink af wat je al hebt gedaan:"));
     var ul = el("ul", "pw-ob-tasks");
     step.tasks.forEach(function (task, t) {
       var li = el("li", "pw-ob-task");
@@ -257,12 +308,14 @@
     });
     panelEl.appendChild(ul);
 
+    /* --- Controle-vraag (verschijnt pas als alle taken zijn afgevinkt) --- */
     if (isDone(step)) {
       panelEl.appendChild(buildQuiz(step, answered));
     } else {
-      panelEl.appendChild(el("p", "pw-ob-hint", "Vink eerst alle taken hierboven af."));
+      panelEl.appendChild(el("p", "pw-ob-hint", "Vink eerst alle taken hierboven af. Daarna verschijnt de controle-vraag."));
     }
 
+    /* --- Footer --- */
     var foot = el("div", "pw-ob-panel-foot");
 
     if (step.link) {
@@ -288,6 +341,7 @@
     panelEl.appendChild(foot);
   }
 
+  /* ---------- Meerkeuze controle-vraag ---------- */
   function buildQuiz(step, answered) {
     var wrap = el("div", "pw-ob-quiz");
     wrap.appendChild(el("p", "pw-ob-quiz-title", step.quiz.question));
@@ -295,20 +349,21 @@
     var opts = el("div", "pw-ob-quiz-options");
     var feedback = el("p", "pw-ob-quiz-feedback");
 
-    step.quiz.options.forEach(function (opt) {
+    step.quiz.options.forEach(function (opt, oi) {
       var b = el("button", "pw-ob-quiz-btn", opt.label);
       b.type = "button";
+      b.dataset.ok = opt.ok ? "1" : "0";
       if (answered && opt.ok) b.classList.add("is-selected");
       b.addEventListener("click", function () {
         Array.prototype.forEach.call(opts.children, function (c) { c.classList.remove("is-selected"); });
         b.classList.add("is-selected");
         if (opt.ok) {
           state.quiz[step.id] = true;
-          feedback.textContent = "Top! Je kunt verder.";
+          feedback.textContent = "Top! Je antwoord is goed. Je kunt verder.";
           feedback.className = "pw-ob-quiz-feedback is-ok";
         } else {
           state.quiz[step.id] = false;
-          feedback.textContent = step.quiz.hint;
+          feedback.textContent = "Nog niet helemaal. " + step.quiz.hint;
           feedback.className = "pw-ob-quiz-feedback is-no";
         }
         saveState();
@@ -322,7 +377,7 @@
     wrap.appendChild(opts);
 
     if (answered) {
-      feedback.textContent = "Je hebt deze vraag al beantwoord.";
+      feedback.textContent = "Je hebt deze vraag al goed beantwoord.";
       feedback.className = "pw-ob-quiz-feedback is-ok";
     }
     wrap.appendChild(feedback);
@@ -361,7 +416,7 @@
     renderStatus();
   });
 
-  /* ---------- Init: lees hash uit URL (bijv. /frontend/beleid/beleid.html#start) ---------- */
+  /* ---------- Init: lees hash uit URL (bijv. #start) ---------- */
   var hashId = (location.hash || "").replace("#", "");
   var hashIndex = STEPS.findIndex(function (s) { return s.id === hashId; });
   if (hashIndex >= 0) {
