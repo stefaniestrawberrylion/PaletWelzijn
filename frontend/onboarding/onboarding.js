@@ -85,8 +85,9 @@
       ]
     }
   ];
-  
+
   var STORAGE_KEY = "pw-onboarding-v3";
+  var VIEW_KEY = "pw-onboarding-view";
   var BELEID_URL = "../beleid/beleid.html";
 
   /* ---------- Elementen ---------- */
@@ -102,26 +103,10 @@
   var barFillEl = root.querySelector("#pw-ob-bar-fill");
   var resetEl = root.querySelector("#pw-ob-reset");
 
+  var flipEl = root.querySelector("#pw-ob-flip");
+  var viewBtns = root.querySelectorAll(".pw-ob-viewbtn");
+
   /* ---------- Opslag ---------- */
-  function loadState() {
-    try {
-      var raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        var parsed = JSON.parse(raw);
-        if (parsed && typeof parsed === "object" && parsed.checked) return parsed;
-      }
-    } catch (e) { /* geen opslag beschikbaar */ }
-    return { checked: {} };
-  }
-  function saveState() {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch (e) { /* niet erg */ }
-  }
-
-  var state = loadState();
-
-   /* ---------- Opslag ---------- */
   function loadState() {
     try {
       var raw = window.localStorage.getItem(STORAGE_KEY);
@@ -137,7 +122,6 @@
     } catch (e) { /* geen opslag beschikbaar */ }
     return { checked: {}, quiz: {} };
   }
-
   function saveState() {
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -246,13 +230,11 @@
 
       var action = el("div", "pw-ob-action");
       if (status === "current") {
-        // Ga verder -> /frontend/beleid/beleid.html#<stap-id>
         var btn = el("a", "pw-ob-btn", "Ga verder");
         btn.href = BELEID_URL + "#" + step.id;
         btn.appendChild(svg(ICON_ARROW));
         action.appendChild(btn);
       } else if (status === "done") {
-        // Opnieuw bekijken -> /frontend/beleid/beleid.html#<stap-id>
         var again = el("a", "pw-ob-linkbtn", "Opnieuw bekijken");
         again.href = BELEID_URL + "#" + step.id;
         action.appendChild(again);
@@ -284,6 +266,7 @@
 
   /* ---------- Route-lijn ---------- */
   function positionTrack(cur) {
+    if (flipEl && flipEl.classList.contains("is-flipped")) return;
     var stops = listEl.querySelectorAll(".pw-ob-stop");
     if (stops.length < 2) return;
     var base = routeEl.getBoundingClientRect();
@@ -322,9 +305,39 @@
     node.style.height = height + "px";
   }
 
+  /* ---------- View switch (route ↔ praatplaat) ---------- */
+  function setView(view) {
+    if (!flipEl) return;
+    var isFlip = view === "praatplaat";
+    flipEl.classList.toggle("is-flipped", isFlip);
+
+    viewBtns.forEach(function (b) {
+      var active = b.dataset.view === view;
+      b.classList.toggle("is-active", active);
+      b.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+
+    // Route-lijn opnieuw uitlijnen nadat de flip klaar is
+    if (!isFlip) {
+      setTimeout(function () { positionTrack(currentIndex()); }, 750);
+    }
+
+    try { window.localStorage.setItem(VIEW_KEY, view); } catch (e) {}
+  }
+
+  viewBtns.forEach(function (b) {
+    b.addEventListener("click", function () { setView(b.dataset.view); });
+  });
+
+  // Onthoud de laatst gekozen weergave
+  try {
+    var savedView = window.localStorage.getItem(VIEW_KEY);
+    if (savedView === "praatplaat") setView("praatplaat");
+  } catch (e) {}
+
   /* ---------- Overige ---------- */
   resetEl.addEventListener("click", function () {
-    state = { checked: {} };
+    state = { checked: {}, quiz: {} };
     saveState();
     renderSteps();
   });
