@@ -15,6 +15,7 @@
       icon: "fa-regular fa-hand",
       color: "#120a5c",
       link: "/stap1.html",
+      quizCount: 2,
       tasks: [
         "Ik weet wie Palet Welzijn is",
         "Ik weet dat ik één van de ruim 1300 vrijwilligers ben"
@@ -29,6 +30,7 @@
       icon: "fa-regular fa-file-lines",
       color: "#0055ff",
       link: "stap2.html",
+      quizCount: 4,
       tasks: [
         "Kennisgemaakt met mijn contactpersoon",
         "Gratis VOG aangevraagd en laten zien",
@@ -44,6 +46,7 @@
       icon: "fa-solid fa-graduation-cap",
       color: "#008241",
       link: "stap3.html",
+      quizCount: 3,
       tasks: [
         "Ik ken de gedragscode",
         "Wat ik over cliënten hoor, blijft geheim",
@@ -59,6 +62,7 @@
       icon: "fa-solid fa-shield-halved",
       color: "#92278F",
       link: "stap4.html",
+      quizCount: 1,
       tasks: [
         "Ik weet bij wie ik terechtkan als er iets gebeurt",
         "Ik ken de vertrouwenslijn: 088 - 144 02 00",
@@ -74,15 +78,15 @@
       icon: "fa-solid fa-flag-checkered",
       color: "#C2410C",
       link: "stap5.html",
+      quizCount: 4,
       tasks: [
         "Ik weet wat ik van Palet Welzijn krijg",
         "Ik weet dat ik altijd kan praten over wat bij mij past"
       ]
     }
   ];
-
-  var STORAGE_KEY = "pw-onboarding-v1";
-
+  
+  var STORAGE_KEY = "pw-onboarding-v3";
   var BELEID_URL = "../beleid/beleid.html";
 
   /* ---------- Elementen ---------- */
@@ -109,6 +113,31 @@
     } catch (e) { /* geen opslag beschikbaar */ }
     return { checked: {} };
   }
+  function saveState() {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (e) { /* niet erg */ }
+  }
+
+  var state = loadState();
+
+   /* ---------- Opslag ---------- */
+  function loadState() {
+    try {
+      var raw = window.localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === "object") {
+          return {
+            checked: parsed.checked || {},
+            quiz: parsed.quiz || {}
+          };
+        }
+      }
+    } catch (e) { /* geen opslag beschikbaar */ }
+    return { checked: {}, quiz: {} };
+  }
+
   function saveState() {
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
