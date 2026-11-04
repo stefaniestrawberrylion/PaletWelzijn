@@ -1101,21 +1101,22 @@
 
     next.disabled = !(isDone(step) && answered);
 
+next.addEventListener("click", function () {
 
-    next.addEventListener("click", function () {
+  if (isLast) {
 
-      if (isLast) {
+    renderStatus();
 
-        renderStatus();
+    badgeEl.textContent = "Klaar voor je eerste dag!";
 
-        badgeEl.textContent = "Klaar voor je eerste dag!";
+    window.location.href = "../onboarding/onboarding.html";
 
-        return;
-      }
+    return;
+  }
 
-      setActive(STEPS[index + 1].id);
+  setActive(STEPS[index + 1].id);
 
-    });
+});
 
 
     foot.appendChild(next);
