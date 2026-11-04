@@ -10,7 +10,7 @@
       id: "welkom",
       title: "Welkom",
       text: "Maak kennis met Palet Welzijn en wat jij als vrijwilliger betekent.",
-      img: "./assets/welkom.png",
+      img: "./welkom.png",
       alt: "Welkom",
       icon: "fa-regular fa-hand",
       color: "#120a5c",
@@ -24,7 +24,7 @@
       id: "start",
       title: "Je start",
       text: "Je contactpersoon, je VOG en je vrijwilligersovereenkomst.",
-      img: "./assets/start.png",
+      img: "./start.png",
       alt: "Start",
       icon: "fa-regular fa-file-lines",
       color: "#0055ff",
@@ -39,7 +39,7 @@
       id: "afspraken",
       title: "Wat vragen wij van jou?",
       text: "De gedragscode, geheimhouding en geen zorgtaken.",
-      img: "./assets/afspraken.png",
+      img: "./afspraken.png",
       alt: "Afspraken",
       icon: "fa-solid fa-graduation-cap",
       color: "#008241",
@@ -54,7 +54,7 @@
       id: "veiligheid",
       title: "Veiligheid",
       text: "Wat doe je als er iets gebeurt? En hoe ben je verzekerd?",
-      img: "./assets/veiligheid.png",
+      img: "./veiligheid.png",
       alt: "Veiligheid",
       icon: "fa-solid fa-shield-halved",
       color: "#92278F",
@@ -69,7 +69,7 @@
       id: "voor-jou",
       title: "Wat doet Palet Welzijn voor jou?",
       text: "Waardering, workshops en samen kijken wat bij je past.",
-      img: "./assets/voor-jou.png",
+      img: "./voor-jou.png",
       alt: "Voor jou",
       icon: "fa-solid fa-flag-checkered",
       color: "#C2410C",
@@ -84,7 +84,7 @@
   var STORAGE_KEY = "pw-onboarding-v1";
 
   /* === FIX: volledig pad naar beleid.html === */
-  var BELEID_URL = "./frontend/beleid/beleid.html";
+  var BELEID_URL = "./beleid.html";
 
   /* ---------- Elementen ---------- */
   var root = document.querySelector(".pw-onboarding");
