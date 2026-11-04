@@ -1,4 +1,3 @@
-
 /* =========================================================
    Palet Welzijn - Beleid & Onboarding
    5 stappen | 14 controle-vragen
@@ -1067,18 +1066,26 @@
     var foot = el("div", "pw-ob-panel-foot");
 
 
-    if (step.link) {
+    /* "Ga terug"-knop (vervangt de oude landingspagina-link) */
+    var backBtn = el(
+      "button",
+      "pw-ob-btn pw-ob-btn--ghost",
+      "Ga terug"
+    );
 
-      var linkBtn = el(
-        "a",
-        "pw-ob-btn pw-ob-btn--ghost",
-        "Ga naar landingpagina"
-      );
+    backBtn.type = "button";
 
-      linkBtn.href = step.link;
+    backBtn.addEventListener("click", function () {
 
-      foot.appendChild(linkBtn);
-    }
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "../onboarding/onboarding.html";
+      }
+
+    });
+
+    foot.appendChild(backBtn);
 
 
     var isLast = index === STEPS.length - 1;
