@@ -20,7 +20,7 @@
      1. STAPPEN EN INHOUD
      ========================================================= */
 
-  var STEPS = [
+    var STEPS = [
 
     /* -------------------------------------------------------
        STAP 1 - WELKOM
@@ -40,21 +40,21 @@
       body: [
         {
           type: "p",
-          text: "Palet Welzijn is een organisatie die mensen in hun eigen omgeving ondersteunt met allerlei activiteiten: van samen koffiedrinken tot wandelen, koken of meegaan naar een afspraak. Vrijwilligers zijn daarbij onmisbaar."
+          text: "Palet Welzijn is een organisatie zonder winstoogmerk die zich inzet voor een samenleving waarin we met oprechte belangstelling naar elkaar omkijken. We versterken sociale netwerken, houden mensen actief en stellen professionele zorg waar mogelijk uit. Dat doen we samen met maatschappelijke organisaties en gemeenten in Midden-Holland."
         },
         {
           type: "p",
-          text: "Als vrijwilliger maak je écht het verschil. Je biedt gezelschap, een luisterend oor en praktische hulp. Daarbij werk je altijd samen met een vaste contactpersoon binnen Palet Welzijn."
+          text: "Vrijwilligers zijn daarbij onmisbaar. Met jouw tijd, aandacht en betrokkenheid maak je écht verschil: een gezellig gesprek, samen een kop koffie drinken, een wandeling maken of iemand de ruimte geven om even op adem te komen."
         },
         {
           type: "p",
-          text: "Met ruim 1300 vrijwilligers vormen we samen een grote, betrokken club. Jij bent daar vanaf vandaag onderdeel van — welkom!"
+          text: "Bij Palet Welzijn zijn meer dan 1.300 vrijwilligers actief — in de wijk, op woonzorglocaties en binnen verschillende onderdelen van het sociaal domein. Jij bent daar vanaf vandaag onderdeel van. Welkom!"
         }
       ],
 
       tasks: [
-        "Ik weet wie Palet Welzijn is",
-        "Ik weet dat ik één van de ruim 1300 vrijwilligers ben"
+        "Ik weet wie Palet Welzijn is en wat onze droom en missie zijn",
+        "Ik weet dat ik één van de ruim 1.300 vrijwilligers ben"
       ],
 
       quizzes: [
@@ -129,22 +129,22 @@
       body: [
         {
           type: "p",
-          text: "Voordat je echt aan de slag gaat, regel je een paar praktische zaken. Je krijgt een vaste contactpersoon binnen Palet Welzijn. Bij die persoon kun je terecht met al je vragen over je vrijwilligerswerk."
+          text: "Je start met een informeel kennismakingsgesprek met de contactpersoon vrijwilligers van de locatie of dienst. Jullie bespreken de rol waarin je geïnteresseerd bent, je motivatie en ervaring. Je mag alle vragen stellen. Als je dat prettig vindt, kun je ook een keer meelopen op locatie."
         },
         {
           type: "p",
-          text: "Daarnaast vraag je een Verklaring Omtrent het Gedrag (VOG) aan. Dit is gratis voor vrijwilligers en laat zien dat je betrouwbaar bent in de omgang met kwetsbare mensen."
+          text: "Samen bekijken we of de rol bij jouw wensen, interesses en mogelijkheden past. Omdat je werkt met kwetsbare mensen, vragen we iedere vrijwilliger om een Verklaring Omtrent het Gedrag (VOG). Je ontvangt van Palet Welzijn een digitale link waarmee je de VOG kosteloos kunt aanvragen. Zodra je hem hebt ontvangen, laat je hem zien aan jouw contactpersoon. De VOG blijft jouw eigendom."
         },
         {
           type: "p",
-          text: "Tot slot onderteken je een vrijwilligersovereenkomst. Daarin staan wederzijdse afspraken: wat jij doet, wat Palet Welzijn voor jou regelt (zoals verzekering) en hoe lang je betrokken blijft."
+          text: "Daarnaast ontvang je een vrijwilligersovereenkomst. Deze lees je door, vul je in en onderteken je. Dit is nodig voor je aanmelding en verzekering. Soms spreken we eerst een proefperiode af, zodat jullie samen kunnen ervaren of de samenwerking en de rol goed passen."
         }
       ],
 
       tasks: [
-        "Ik heb kennisgemaakt met mijn contactpersoon",
-        "Ik heb mijn gratis VOG aangevraagd en laten zien",
-        "Ik heb mijn vrijwilligersovereenkomst getekend"
+        "Ik heb een kennismakingsgesprek gehad met mijn contactpersoon",
+        "Ik heb mijn gratis VOG aangevraagd en laten zien aan mijn contactpersoon",
+        "Ik heb mijn vrijwilligersovereenkomst ingevuld en ondertekend"
       ],
 
       quizzes: [
@@ -269,22 +269,22 @@
       body: [
         {
           type: "p",
-          text: "Palet Welzijn heeft een gedragscode. Daarin staat hoe we met elkaar en met cliënten omgaan: respectvol, betrouwbaar en met aandacht voor ieders grenzen."
+          text: "Palet Welzijn heeft een gedragscode. Daarin staat hoe we met elkaar en met cliënten omgaan. De belangrijkste uitgangspunten: respect voor elkaar (geen grensoverschrijdend fysiek of seksueel gedrag, geen agressie, geweld of schelden), verantwoord omgaan met middelen (geen roken of alcohol/drugs tijdens je inzet), respect voor eigendommen (geen diefstal) en zorgvuldig omgaan met sociale media."
         },
         {
           type: "p",
-          text: "Wat je tijdens je vrijwilligerswerk over cliënten hoort of ziet, blijft geheim. Je deelt geen namen, situaties of foto's zonder toestemming."
+          text: "Wat je tijdens je vrijwilligerswerk over cliënten, bewoners of de organisatie hoort of ziet, blijft geheim. Je deelt geen namen, situaties of foto's zonder toestemming. Ook wanneer je samen met iemand een leuke foto maakt, mag je deze niet zonder toestemming online zetten. Deze geheimhoudingsplicht blijft gelden, ook wanneer je stopt met vrijwilligerswerk."
         },
         {
           type: "p",
-          text: "Belangrijk: je doet géén medische of verpleegkundige handelingen. Dat mag alleen door bevoegde zorgverleners. Ook als je vroeger in de zorg hebt gewerkt, geldt deze afspraak. Twijfel je? Overleg altijd met je contactpersoon."
+          text: "Belangrijk: je doet géén medische of verpleegtechnische handelingen. Dat mag alleen door bevoegde zorgverleners. Ook als je vroeger in de zorg hebt gewerkt, geldt deze afspraak. Beslissingen over zorggerelateerde zaken laat je altijd over aan de verantwoordelijke professional. Twijfel je? Overleg altijd met je contactpersoon."
         }
       ],
 
       tasks: [
-        "Ik ken de gedragscode",
-        "Wat ik over cliënten hoor, blijft geheim",
-        "Ik doe geen medische of verpleegkundige handelingen"
+        "Ik ken de gedragscode van Palet Welzijn",
+        "Wat ik over cliënten hoor of zie, blijft geheim — ook na mijn vrijwilligerswerk",
+        "Ik doe geen medische of verpleegtechnische handelingen"
       ],
 
       quizzes: [
@@ -384,22 +384,22 @@
       body: [
         {
           type: "p",
-          text: "Als er iets gebeurt — een val, een verwarde situatie of een onveilig gevoel — dan is er altijd iemand bij wie je terechtkunt. Je contactpersoon is je eerste aanspreekpunt."
+          text: "Als er iets gebeurt — een val, een verwarde situatie of een onveilig gevoel — dan is er altijd iemand bij wie je terechtkunt. Je contactpersoon is je eerste aanspreekpunt. Ben je getuige van een incident of maak je een situatie mee die mogelijk schadelijke gevolgen heeft? Bespreek dit altijd met jouw contactpersoon, ook als je twijfelt. Wacht hier niet mee."
         },
         {
           type: "p",
-          text: "Daarnaast is er een vertrouwenslijn: 088 - 144 02 00. Je kunt daar terecht als je iets wilt melden wat je liever niet met je contactpersoon bespreekt."
+          text: "Kun je niet terecht bij je contactpersoon of manager? Dan is er een vertrouwenslijn: 088 - 144 0200, verzorgd door Bezemer & Schubad. Je kunt een terugbelverzoek achterlaten; de vertrouwenspersoon neemt zo snel mogelijk contact met je op, op een tijdstip dat jou uitkomt."
         },
         {
           type: "p",
-          text: "Als vrijwilliger ben je via Palet Welzijn verzekerd tijdens je werkzaamheden. Dit staat ook in je vrijwilligersovereenkomst."
+          text: "Palet Welzijn heeft voor vrijwilligers een ongevallen- en aansprakelijkheidsverzekering afgesloten. Je bent verzekerd voor eventuele schade die onbedoeld ontstaat tijdens je vrijwilligerswerk. Het eigen risico van de aansprakelijkheidsverzekering neemt Palet Welzijn voor haar rekening. Voor de actuele voorwaarden vraag je deze op bij de manager informele ondersteuning."
         }
       ],
 
       tasks: [
-        "Ik weet bij wie ik terechtkan als er iets gebeurt",
-        "Ik ken de vertrouwenslijn: 088 - 144 02 00",
-        "Ik weet dat ik verzekerd ben"
+        "Ik weet dat mijn contactpersoon mijn eerste aanspreekpunt is",
+        "Ik ken de vertrouwenslijn: 088 - 144 0200",
+        "Ik weet dat ik via Palet Welzijn verzekerd ben voor ongevallen en aansprakelijkheid"
       ],
 
       quizzes: [
@@ -449,25 +449,25 @@
       body: [
         {
           type: "p",
-          text: "Palet Welzijn waardeert haar vrijwilligers. Dat uit zich in attenties, een jaarlijks uitje en aandacht voor jouw welzijn."
+          text: "Palet Welzijn waardeert haar vrijwilligers. Dat laat zich zien in een aantal extra's: je ontvangt een digitale nieuwsbrief met nieuwtjes en columns, een jaarlijkse attentie, een kleine attentie bij bijzondere gelegenheden, en één keer per jaar een gezellige vrijwilligersbijeenkomst."
         },
         {
           type: "p",
-          text: "Daarnaast ontvang je een gratis persoonlijk lidmaatschap van Vierstroom Ledenservice. Ook ontvang je een nieuwsbrief, een jaarlijkse attentie en een kleine attentie bij bijzondere gelegenheden."
+          text: "Daarnaast ontvang je een gratis persoonlijk lidmaatschap op naam van Vierstroom Ledenservice, waarmee je gebruik kunt maken van verschillende kortingen en aanbiedingen. Je kunt ook deelnemen aan workshops en scholingen."
         },
         {
           type: "p",
-          text: "Palet Welzijn organiseert workshops en trainingen. Denk aan een cursus omgaan met dementie, grenzen aangeven of EHBO. Je kunt je hiervoor aanmelden via je contactpersoon."
+          text: "Past een taak niet meer bij je? Samen met je contactpersoon kijk je wat wél bij je past. Jouw plezier en welzijn staan voorop. En ken je iemand die ook iets voor een ander wil betekenen? Vertel gerust over je ervaringen bij Palet Welzijn — misschien inspireer je iemand om ook vrijwilliger te worden."
         },
         {
           type: "p",
-          text: "Past een taak niet meer bij je? Samen met je contactpersoon kijk je wat wél bij je past. Jouw plezier en welzijn staan voorop."
+          text: "Meer weten of aanmelden? Kijk op www.paletwelzijn.nl, mail naar vrijwilligerswerk@paletwelzijn.nl of bel 088 - 359 45 66."
         }
       ],
 
       tasks: [
-        "Ik weet wat ik van Palet Welzijn krijg",
-        "Ik weet dat ik altijd kan praten over wat bij mij past"
+        "Ik weet welke extra's ik van Palet Welzijn krijg",
+        "Ik weet dat ik met vragen of twijfels altijd in gesprek kan gaan"
       ],
 
       quizzes: [
@@ -574,7 +574,6 @@
     }
 
   ];
-
 
   /* =========================================================
      2. OPSLAG EN ELEMENTEN
