@@ -318,3 +318,134 @@ html, body {
     color: var(--pw-text);
 }
 .pw-ob-info-list li { margin-bottom: 6px; }
+/* Scrollbare inhoud van de onboarding-module */
+.pw-ob-panel {
+  max-height: min(78vh, 900px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #b8b8c8 transparent;
+  padding-right: 12px;
+}
+
+/* Quiz-intro */
+.pw-ob-quiz-heading {
+  font-size: 21px;
+  margin: 24px 0 8px;
+}
+
+.pw-ob-quiz-intro {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Iedere vraag krijgt een eigen blok */
+.pw-ob-question {
+  padding: 20px;
+  margin-bottom: 18px;
+  border: 1px solid #e5e5ed;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.pw-ob-question-number {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0055ff;
+  margin-bottom: 10px;
+}
+
+.pw-ob-question .pw-ob-quiz-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+/* Antwoordknoppen */
+.pw-ob-quiz-options {
+  display: grid;
+  gap: 9px;
+}
+
+.pw-ob-quiz-btn {
+  width: 100%;
+  text-align: left;
+  padding: 13px 15px;
+  border: 1px solid #dedee8;
+  border-radius: 9px;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.5;
+  transition: background .2s, border-color .2s;
+}
+
+.pw-ob-quiz-btn:hover:not(:disabled) {
+  border-color: #0055ff;
+  background: #f4f6ff;
+}
+
+.pw-ob-quiz-btn.is-correct,
+.pw-ob-quiz-btn.is-selected {
+  border-color: #008241;
+  background: #edf8f1;
+  color: #006b35;
+}
+
+.pw-ob-quiz-btn:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+/* Feedback */
+.pw-ob-quiz-feedback {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.pw-ob-quiz-feedback:empty {
+  display: none;
+}
+
+.pw-ob-quiz-feedback.is-ok {
+  background: #edf8f1;
+  color: #176b38;
+}
+
+.pw-ob-quiz-feedback.is-no {
+  background: #fff1f0;
+  color: #a52b24;
+}
+
+/* Alle vragen goed beantwoord */
+.pw-ob-quiz-complete {
+  margin: 20px 0;
+  padding: 16px;
+  border-radius: 10px;
+  background: #edf8f1;
+  color: #176b38;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Mobiel */
+@media (max-width: 767px) {
+  .pw-ob-panel {
+    max-height: 78vh;
+    padding-right: 8px;
+  }
+
+  .pw-ob-question {
+    padding: 14px;
+  }
+
+  .pw-ob-quiz-btn {
+    padding: 12px;
+  }
+}
