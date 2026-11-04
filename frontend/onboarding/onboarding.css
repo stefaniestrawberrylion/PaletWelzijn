@@ -40,7 +40,7 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 5%; /* Iets dunner */
+    padding: 10px 5%;
     box-shadow: 0 1px 5px rgba(0,0,0,0.05);
     z-index: 100;
     flex-shrink: 0;
@@ -58,7 +58,7 @@ html, body {
 .hero {
     position: relative;
     width: 100%;
-    height: 18vh; /* Iets kleiner zodat er meer ruimte overblijft */
+    height: 18vh;
     min-height: 140px;
     display: flex;
     align-items: center;
@@ -83,7 +83,7 @@ html, body {
     --pw-muted: var(--text-licht);
     --pw-line: var(--border-kleur);
     --pw-track: #C9D3CB;
-    --pw-radius: 8px; /* Iets strakker */
+    --pw-radius: 8px;
     --pw-font-head: "Montserrat", Arial, sans-serif;
     --pw-font-body: "Open Sans", Calibri, Arial, sans-serif;
     --pw-font-hand: "Permanent Marker", "Comic Sans MS", cursive;
@@ -92,7 +92,7 @@ html, body {
     width: 95%;
     max-width: 1400px;
     margin: -20px auto 0;
-    padding: 16px 24px 24px; /* Minder padding */
+    padding: 16px 24px 24px;
     background: #ffffff;
     border-radius: 16px 16px 0 0;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
@@ -124,7 +124,7 @@ html, body {
     align-items: flex-end;
     justify-content: space-between;
     gap: 15px 32px;
-    margin-bottom: 12px; /* Strakker */
+    margin-bottom: 12px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--pw-line);
     flex-shrink: 0;
@@ -154,7 +154,7 @@ html, body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 12px; /* Iets kleiner */
+    padding: 6px 12px;
     border: 0;
     border-radius: 6px;
     background: transparent;
@@ -179,9 +179,10 @@ html, body {
     flex: 1 1 auto;
     min-height: 0;
     position: relative;
-    overflow-y: auto; /* HIERDOOR KUN JE SCROLLEN IN DE BLOKKEN */
+    overflow-y: auto;
     border-radius: 8px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
+    margin-bottom: 16px; /* RUIMTE TUSSEN KAARTEN EN FOOTER */
 }
 
 /* De aparte weergaves */
@@ -213,8 +214,8 @@ html, body {
     padding: 0;
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 15px; /* Kleiner gat */
-    align-items: start;
+    gap: 15px;
+    /* align-items: start; <-- DEZE IS WEGGEHAALD ZODAT KAARTEN NIET IN ELKAAR SCHUIVEN */
 }
 
 .pw-ob-step {
@@ -222,8 +223,8 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px; /* Kleiner gat */
-    height: 100%;
+    gap: 12px;
+    height: 100%; /* Zorgt dat ze allemaal even hoog zijn */
 }
 
 /* Halte op de route */
@@ -231,7 +232,7 @@ html, body {
     position: relative;
     z-index: 1;
     flex: 0 0 auto;
-    width: 44px; /* Kleiner */
+    width: 44px;
     height: 44px;
     border-radius: 50%;
     border: 3px solid #ffffff;
@@ -252,13 +253,13 @@ html, body {
 .pw-ob-step.is-locked .pw-ob-stop i { font-size: 16px; }
 .pw-ob-stop svg { width: 20px; height: 20px; }
 
-/* Kaart - VEEL COMPACTER */
+/* Kaart */
 .pw-ob-card {
     align-self: stretch;
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    padding: 12px; /* Minder padding */
+    padding: 16px; /* Iets ruimer dan de vorige, zodat de knop er goed in past */
     background: #ffffff;
     border: 2px solid var(--pw-line);
     border-radius: var(--pw-radius);
@@ -270,10 +271,10 @@ html, body {
 
 .pw-ob-card img {
     width: 100%;
-    height: 90px; /* VEEL KLEINER */
+    height: 100px;
     object-fit: cover;
     border-radius: 6px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     background-color: #f0f0f0;
 }
 
@@ -281,10 +282,10 @@ html, body {
 .pw-ob-step.is-done .pw-ob-label { color: var(--pw-green); }
 .pw-ob-step.is-current .pw-ob-label { color: var(--pw-navy); }
 
-.pw-ob-card h3 { margin: 0 0 4px 0; font-family: var(--pw-font-head); font-weight: 800; font-size: 14px; line-height: 1.2; color: var(--pw-navy); }
-.pw-ob-card p.pw-ob-text { margin: 0; font-size: 12px; color: var(--pw-muted); line-height: 1.3; }
+.pw-ob-card h3 { margin: 0 0 6px 0; font-family: var(--pw-font-head); font-weight: 800; font-size: 15px; line-height: 1.2; color: var(--pw-navy); }
+.pw-ob-card p.pw-ob-text { margin: 0; font-size: 13px; color: var(--pw-muted); line-height: 1.4; }
 
-.pw-ob-action { margin-top: auto; padding-top: 10px; }
+.pw-ob-action { margin-top: auto; padding-top: 15px; } /* Zorgt dat de knop onderaan de kaart staat */
 
 /* =========================================================
    KNOPPEN
@@ -296,14 +297,14 @@ html, body {
     justify-content: center;
     gap: 6px;
     width: 100%;
-    min-height: 34px; /* Kleiner */
-    padding: 0 10px;
+    min-height: 38px;
+    padding: 0 12px;
     border: 0;
     border-radius: 6px;
     background: var(--pw-navy);
     color: #ffffff !important;
     font-family: var(--pw-font-body);
-    font-size: 13px; /* Kleiner */
+    font-size: 14px;
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
@@ -316,17 +317,17 @@ html, body {
 }
 .pw-onboarding .pw-ob-btn:disabled { background: #C9C7D9; color: #4A466B !important; cursor: not-allowed; }
 .pw-onboarding a.pw-ob-btn svg,
-.pw-onboarding .pw-ob-btn svg { width: 14px; height: 14px; }
+.pw-onboarding .pw-ob-btn svg { width: 16px; height: 16px; }
 
 .pw-onboarding a.pw-ob-linkbtn,
 .pw-onboarding .pw-ob-linkbtn {
     padding: 4px 0;
-    min-height: 34px;
+    min-height: 38px;
     border: 0;
     background: none;
     color: var(--pw-navy);
     font-family: var(--pw-font-body);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     text-decoration: underline;
     cursor: pointer;
@@ -338,8 +339,8 @@ html, body {
 .pw-onboarding a.pw-ob-linkbtn:hover,
 .pw-onboarding .pw-ob-linkbtn:hover { color: var(--pw-green); }
 
-.pw-ob-locked { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0; min-height: 34px; font-size: 11px; font-weight: 700; color: var(--pw-muted); }
-.pw-ob-locked svg { width: 12px; height: 12px; }
+.pw-ob-locked { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0; min-height: 38px; font-size: 12px; font-weight: 700; color: var(--pw-muted); }
+.pw-ob-locked svg { width: 14px; height: 14px; }
 
 /* ---------- Praatplaat ---------- */
 .pw-ob-view--praatplaat {
@@ -378,7 +379,7 @@ html, body {
 }
 
 /* ---------- Footer (Hulp & Reset) ---------- */
-.pw-ob-help { display: flex; align-items: center; gap: 15px; margin-top: 12px; padding: 12px 20px; border-radius: 8px; background: var(--pw-navy); color: #ffffff; flex-shrink: 0; }
+.pw-ob-help { display: flex; align-items: center; gap: 15px; margin-top: 0; padding: 14px 20px; border-radius: 8px; background: var(--pw-navy); color: #ffffff; flex-shrink: 0; }
 .pw-ob-help-icon { flex: 0 0 auto; color: var(--pw-green-light); }
 .pw-ob-help-icon i { font-size: 24px !important; }
 .pw-ob-help-text p { margin: 0; font-size: 13px; }
@@ -386,7 +387,7 @@ html, body {
 .pw-ob-help a { color: #ffffff; }
 .pw-ob-help a:hover { color: #DCF1D2; }
 
-.pw-ob-reset-wrap { margin: 4px 0 0; text-align: right; flex-shrink: 0; }
+.pw-ob-reset-wrap { margin: 8px 0 0; text-align: right; flex-shrink: 0; }
 .pw-ob-reset { border: 0; background: none; color: var(--pw-muted); font-family: var(--pw-font-body); font-size: 12px; text-decoration: underline; cursor: pointer; min-height: 30px; }
 .pw-ob-noscript { font-size: 14px; color: var(--pw-muted); }
 
