@@ -12,7 +12,7 @@
       text: "Maak kennis met Palet Welzijn en wat jij als vrijwilliger betekent.",
       img: "../../assets/welkom.png", alt: "Welkom",
       icon: "fa-regular fa-hand", color: "#120a5c",
-      link: "./frontend/onboarding/onboarding.html",
+      link: "../onboarding/onboarding.html",
       body: [
         { type: "p", text: "Palet Welzijn is een organisatie die mensen in hun eigen omgeving ondersteunt met allerlei activiteiten: van samen koffiedrinken tot wandelen, koken of meegaan naar een afspraak. Vrijwilligers zijn daarbij onmisbaar." },
         { type: "p", text: "Als vrijwilliger maak je écht het verschil. Je biedt gezelschap, een luisterend oor en praktische hulp. Daarbij werk je altijd samen met een vaste contactpersoon binnen Palet Welzijn." },
