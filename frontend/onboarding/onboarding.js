@@ -83,7 +83,6 @@
 
   var STORAGE_KEY = "pw-onboarding-v1";
 
-  /* === FIX: volledig pad naar beleid.html === */
   var BELEID_URL = "./beleid.html";
 
   /* ---------- Elementen ---------- */
