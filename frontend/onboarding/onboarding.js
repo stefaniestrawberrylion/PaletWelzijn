@@ -1,6 +1,5 @@
 /* =========================================================
    Palet Welzijn – Onboarding "Jouw route als vrijwilliger"
-   Kaarten linken door naar /frontend/beleid/beleid.html#<stap-id>
    ========================================================= */
 (function () {
   "use strict";
@@ -15,11 +14,7 @@
       icon: "fa-regular fa-hand",
       color: "#120a5c",
       link: "/stap1.html",
-      quizCount: 2,
-      tasks: [
-        "Ik weet wie Palet Welzijn is",
-        "Ik weet dat ik één van de ruim 1300 vrijwilligers ben"
-      ]
+      tasks: ["Ik weet wie Palet Welzijn is", "Ik weet dat ik één van de ruim 1300 vrijwilligers ben"]
     },
     {
       id: "start",
@@ -30,12 +25,7 @@
       icon: "fa-regular fa-file-lines",
       color: "#0055ff",
       link: "stap2.html",
-      quizCount: 4,
-      tasks: [
-        "Kennisgemaakt met mijn contactpersoon",
-        "Gratis VOG aangevraagd en laten zien",
-        "Vrijwilligersovereenkomst getekend"
-      ]
+      tasks: ["Kennisgemaakt met mijn contactpersoon", "Gratis VOG aangevraagd en laten zien", "Vrijwilligersovereenkomst getekend"]
     },
     {
       id: "afspraken",
@@ -46,12 +36,7 @@
       icon: "fa-solid fa-graduation-cap",
       color: "#008241",
       link: "stap3.html",
-      quizCount: 3,
-      tasks: [
-        "Ik ken de gedragscode",
-        "Wat ik over cliënten hoor, blijft geheim",
-        "Ik doe geen medische of verpleegkundige handelingen"
-      ]
+      tasks: ["Ik ken de gedragscode", "Wat ik over cliënten hoor, blijft geheim", "Ik doe geen medische of verpleegkundige handelingen"]
     },
     {
       id: "veiligheid",
@@ -62,12 +47,7 @@
       icon: "fa-solid fa-shield-halved",
       color: "#92278F",
       link: "stap4.html",
-      quizCount: 1,
-      tasks: [
-        "Ik weet bij wie ik terechtkan als er iets gebeurt",
-        "Ik ken de vertrouwenslijn: 088 - 144 02 00",
-        "Ik weet dat ik verzekerd ben"
-      ]
+      tasks: ["Ik weet bij wie ik terechtkan als er iets gebeurt", "Ik ken de vertrouwenslijn: 088 - 144 02 00", "Ik weet dat ik verzekerd ben"]
     },
     {
       id: "voor-jou",
@@ -78,11 +58,7 @@
       icon: "fa-solid fa-flag-checkered",
       color: "#C2410C",
       link: "stap5.html",
-      quizCount: 4,
-      tasks: [
-        "Ik weet wat ik van Palet Welzijn krijg",
-        "Ik weet dat ik altijd kan praten over wat bij mij past"
-      ]
+      tasks: ["Ik weet wat ik van Palet Welzijn krijg", "Ik weet dat ik altijd kan praten over wat bij mij past"]
     }
   ];
 
@@ -93,6 +69,7 @@
   /* ---------- Elementen ---------- */
   var root = document.querySelector(".pw-onboarding");
   if (!root) return;
+  
   var listEl = root.querySelector("#pw-ob-steps");
   var routeEl = root.querySelector("#pw-ob-route");
   var trackEl = root.querySelector("#pw-ob-track");
@@ -103,7 +80,10 @@
   var barFillEl = root.querySelector("#pw-ob-bar-fill");
   var resetEl = root.querySelector("#pw-ob-reset");
 
-  var flipEl = root.querySelector("#pw-ob-flip");
+  // Nieuwe switch elementen
+  var contentEl = root.querySelector("#pw-ob-content");
+  var viewRouteEl = root.querySelector("#pw-ob-view-route");
+  var viewPraatplaatEl = root.querySelector("#pw-ob-view-praatplaat");
   var viewBtns = root.querySelectorAll(".pw-ob-viewbtn");
 
   /* ---------- Opslag ---------- */
@@ -113,19 +93,14 @@
       if (raw) {
         var parsed = JSON.parse(raw);
         if (parsed && typeof parsed === "object") {
-          return {
-            checked: parsed.checked || {},
-            quiz: parsed.quiz || {}
-          };
+          return { checked: parsed.checked || {}, quiz: parsed.quiz || {} };
         }
       }
-    } catch (e) { /* geen opslag beschikbaar */ }
+    } catch (e) {}
     return { checked: {}, quiz: {} };
   }
   function saveState() {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch (e) { /* niet erg */ }
+    try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
   }
 
   var state = loadState();
@@ -136,9 +111,7 @@
     if (!Array.isArray(arr)) arr = [];
     return step.tasks.map(function (_, i) { return arr[i] === true; });
   }
-  function isDone(step) {
-    return checkedFor(step).every(Boolean);
-  }
+  function isDone(step) { return checkedFor(step).every(Boolean); }
   function currentIndex() {
     for (var i = 0; i < STEPS.length; i++) {
       if (!isDone(STEPS[i])) return i;
@@ -210,9 +183,7 @@
       img.src = step.img;
       img.alt = step.alt;
       img.loading = "lazy";
-      img.onerror = function () {
-        this.style.display = "none";
-      };
+      img.onerror = function () { this.style.display = "none"; };
       card.appendChild(img);
 
       var content = el("div", "pw-ob-card-content");
@@ -225,7 +196,6 @@
       content.appendChild(el("p", "pw-ob-label", labelText));
       content.appendChild(el("h3", null, step.title));
       content.appendChild(el("p", "pw-ob-text", step.text));
-
       card.appendChild(content);
 
       var action = el("div", "pw-ob-action");
@@ -253,7 +223,6 @@
     positionTrack(cur);
   }
 
-  /* ---------- Kop: badge en voortgangsbalk ---------- */
   function renderStatus(cur) {
     var done = Math.min(cur, STEPS.length);
     progressLabelEl.textContent = done + " van " + STEPS.length + " stappen afgerond";
@@ -264,9 +233,10 @@
       : "Je bent bij stap " + (cur + 1) + "!";
   }
 
-  /* ---------- Route-lijn ---------- */
   function positionTrack(cur) {
-    if (flipEl && flipEl.classList.contains("is-flipped")) return;
+    // Als we niet in de route-view zitten, niet positioneren
+    if (!viewRouteEl.classList.contains("is-active")) return;
+
     var stops = listEl.querySelectorAll(".pw-ob-stop");
     if (stops.length < 2) return;
     var base = routeEl.getBoundingClientRect();
@@ -307,19 +277,22 @@
 
   /* ---------- View switch (route ↔ praatplaat) ---------- */
   function setView(view) {
-    if (!flipEl) return;
-    var isFlip = view === "praatplaat";
-    flipEl.classList.toggle("is-flipped", isFlip);
+    var isRoute = view === "route";
+    
+    // Toggle de classes op de blokken
+    viewRouteEl.classList.toggle("is-active", isRoute);
+    viewPraatplaatEl.classList.toggle("is-active", !isRoute);
 
+    // Toggle de knoppen
     viewBtns.forEach(function (b) {
       var active = b.dataset.view === view;
       b.classList.toggle("is-active", active);
       b.setAttribute("aria-pressed", active ? "true" : "false");
     });
 
-    // Route-lijn opnieuw uitlijnen nadat de flip klaar is
-    if (!isFlip) {
-      setTimeout(function () { positionTrack(currentIndex()); }, 750);
+    // Als we teruggaan naar route, herbereken de lijntjes
+    if (isRoute) {
+      setTimeout(function () { positionTrack(currentIndex()); }, 50);
     }
 
     try { window.localStorage.setItem(VIEW_KEY, view); } catch (e) {}

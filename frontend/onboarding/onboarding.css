@@ -103,7 +103,7 @@ html, body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* was: overflow-y: auto */
+    overflow: hidden;
     z-index: 10;
     position: relative;
     min-height: 0;
@@ -139,7 +139,7 @@ html, body {
 .pw-ob-bar { height: 12px; border-radius: 6px; background: #E6F3EC; overflow: hidden; }
 .pw-ob-bar-fill { height: 100%; width: 0; border-radius: 6px; background: var(--pw-green); transition: width 0.4s ease; }
 
-/* ---------- View switch (boven de blokken) ---------- */
+/* ---------- View switch ---------- */
 .pw-ob-viewswitch {
     display: inline-flex;
     gap: 4px;
@@ -172,49 +172,35 @@ html, body {
     box-shadow: 0 2px 6px rgba(18,10,92,.25);
 }
 
-/* ---------- Flip container ---------- */
-.pw-ob-flip {
-    perspective: 1600px;
-    position: relative;
+/* =========================================================
+   NIEUWE CONTENT WRAPPER (Geen 3D flip meer, gewoon smooth)
+   ========================================================= */
+.pw-ob-content {
     flex: 1 1 auto;
-    min-height: 0;
-    margin-top: 0;
-}
-.pw-ob-flip-inner {
+    min-height: 0; /* Essentieel voor scrollen in flexbox */
     position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-    transform-style: preserve-3d;
-    transition: transform .7s cubic-bezier(.4,.2,.2,1);
-}
-.pw-ob-flip.is-flipped .pw-ob-flip-inner {
-    transform: rotateY(180deg);
-}
-
-.pw-ob-face {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
+    overflow-y: auto; /* Scrollt de blokken, niet de footer */
     border-radius: 12px;
-}
-.pw-ob-face--back {
-    transform: rotateY(180deg);
-    background: #F4F8F4;
-    padding: 16px;
+    padding-bottom: 20px;
 }
 
-/* Route-face: laat bestaande layout intact */
-.pw-ob-face--front .pw-ob-route {
-    flex: 1 1 auto;
+/* De aparte weergaves */
+.pw-ob-view {
+    display: none;
+    opacity: 0;
+    animation: pwFadeIn 0.4s ease forwards;
+}
+.pw-ob-view.is-active {
+    display: block;
+}
+
+@keyframes pwFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* ---------- Route ---------- */
-.pw-ob-route { position: relative; flex-shrink: 0; }
+.pw-ob-route { position: relative; }
 
 .pw-ob-track { position: absolute; border-radius: 4px; background: repeating-linear-gradient(90deg, var(--pw-track) 0 16px, transparent 16px 26px); pointer-events: none; }
 .pw-ob-track-fill { position: absolute; left: 0; top: 0; border-radius: 4px; background: var(--pw-green); transition: width 0.4s ease, height 0.4s ease; }
@@ -355,24 +341,25 @@ html, body {
 .pw-ob-locked { display: flex; align-items: center; gap: 6px; margin: 0; min-height: 44px; font-size: 13px; font-weight: 700; color: var(--pw-muted); }
 .pw-ob-locked svg { width: 16px; height: 16px; }
 
-/* ---------- Hulpblok ---------- */
-.pw-ob-help { display: flex; align-items: center; gap: 18px; margin-top: 24px; padding: 18px 24px; border-radius: 12px; background: var(--pw-navy); color: #ffffff; flex-shrink: 0; }
-.pw-ob-help-icon { flex: 0 0 auto; color: var(--pw-green-light); }
-.pw-ob-help-text p { margin: 0; font-size: 15px; }
-.pw-ob-help-title { font-family: var(--pw-font-head); font-weight: 800; font-size: 18px !important; margin-bottom: 2px !important; }
-.pw-ob-help a { color: #ffffff; }
-.pw-ob-help a:hover { color: #DCF1D2; }
-
-.pw-ob-reset-wrap { margin: 12px 0 0; text-align: right; flex-shrink: 0; }
-.pw-ob-reset { border: 0; background: none; color: var(--pw-muted); font-family: var(--pw-font-body); font-size: 13px; text-decoration: underline; cursor: pointer; min-height: 44px; }
-.pw-ob-noscript { font-size: 16px; color: var(--pw-muted); }
-
 /* ---------- Praatplaat ---------- */
+.pw-ob-view--praatplaat {
+    height: 100%;
+    display: none; /* Wordt block via .is-active */
+    padding: 10px;
+    background: #F4F8F4;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+.pw-ob-view--praatplaat.is-active {
+    display: flex;
+    flex-direction: column;
+}
 .pw-ob-praatplaat {
-    margin: 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-width: 100%;
     height: 100%;
 }
 .pw-ob-praatplaat img {
@@ -390,10 +377,17 @@ html, body {
     text-align: center;
 }
 
-/* ---------- Reduced motion ---------- */
-@media (prefers-reduced-motion: reduce) {
-    .pw-ob-flip-inner { transition: none; }
-}
+/* ---------- Footer (Hulp & Reset) ---------- */
+.pw-ob-help { display: flex; align-items: center; gap: 18px; margin-top: 16px; padding: 18px 24px; border-radius: 12px; background: var(--pw-navy); color: #ffffff; flex-shrink: 0; }
+.pw-ob-help-icon { flex: 0 0 auto; color: var(--pw-green-light); }
+.pw-ob-help-text p { margin: 0; font-size: 15px; }
+.pw-ob-help-title { font-family: var(--pw-font-head); font-weight: 800; font-size: 18px !important; margin-bottom: 2px !important; }
+.pw-ob-help a { color: #ffffff; }
+.pw-ob-help a:hover { color: #DCF1D2; }
+
+.pw-ob-reset-wrap { margin: 8px 0 0; text-align: right; flex-shrink: 0; }
+.pw-ob-reset { border: 0; background: none; color: var(--pw-muted); font-family: var(--pw-font-body); font-size: 13px; text-decoration: underline; cursor: pointer; min-height: 44px; }
+.pw-ob-noscript { font-size: 16px; color: var(--pw-muted); }
 
 /* ---------- Tablet ---------- */
 @media (max-width: 1024px) {
@@ -418,10 +412,10 @@ html, body {
     .pw-ob-card p.pw-ob-text { display: none; }
     .pw-ob-stop { width: 40px; height: 40px; font-size: 16px; border-width: 3px; }
     .pw-ob-action { width: 100%; }
+    
     .pw-ob-help { flex-direction: column; align-items: flex-start; }
     .pw-ob-reset-wrap { text-align: left; }
 
     .pw-ob-viewswitch { width: 100%; justify-content: center; align-self: stretch; }
     .pw-ob-viewbtn { flex: 1; justify-content: center; }
-    .pw-ob-praatplaat img { max-height: none; }
 }

@@ -60,39 +60,36 @@
             <!-- Switch: boven de blokken -->
             <div class="pw-ob-viewswitch" role="group" aria-label="Weergave kiezen">
                 <button type="button" class="pw-ob-viewbtn is-active" data-view="route" aria-pressed="true">
-                    <i class="fa-solid fa-route" aria-hidden="true"></i>
-                    Route
+                    <i class="fa-solid fa-route" aria-hidden="true"></i> Route
                 </button>
                 <button type="button" class="pw-ob-viewbtn" data-view="praatplaat" aria-pressed="false">
-                    <i class="fa-solid fa-image" aria-hidden="true"></i>
-                    Praatplaat
+                    <i class="fa-solid fa-image" aria-hidden="true"></i> Praatplaat
                 </button>
             </div>
 
-            <!-- Flip-container met route (voor) en praatplaat (achter) -->
-            <div class="pw-ob-flip" id="pw-ob-flip">
-                <div class="pw-ob-flip-inner">
-
-                    <!-- VOORKANT: route -->
-                    <div class="pw-ob-face pw-ob-face--front">
-                        <div class="pw-ob-route" id="pw-ob-route">
-                            <div class="pw-ob-track" id="pw-ob-track"></div>
-                            <div class="pw-ob-track-fill" id="pw-ob-track-fill"></div>
-                            <ol class="pw-ob-steps" id="pw-ob-steps"></ol>
-                        </div>
+            <!-- CONTENT BLOCK (Route of Praatplaat) -->
+            <div class="pw-ob-content" id="pw-ob-content">
+                
+                <!-- Route Weergave (Standaard zichtbaar) -->
+                <div class="pw-ob-view pw-ob-view--route is-active" id="pw-ob-view-route">
+                    <div class="pw-ob-route" id="pw-ob-route">
+                        <div class="pw-ob-track" id="pw-ob-track"></div>
+                        <div class="pw-ob-track-fill" id="pw-ob-track-fill"></div>
+                        <ol class="pw-ob-steps" id="pw-ob-steps"></ol>
                     </div>
-
-                    <!-- ACHTERKANT: praatplaat -->
-                    <div class="pw-ob-face pw-ob-face--back">
-                        <figure class="pw-ob-praatplaat">
-                            <img src="../../assets/praatplaat.png" alt="Visuele praatplaat van de onboarding route van Palet Welzijn" loading="lazy">
-                            <figcaption>Bekijk de route als plaat — sleep of scroll om alles te zien.</figcaption>
-                        </figure>
-                    </div>
-
                 </div>
+
+                <!-- Praatplaat Weergave (Verborgen) -->
+                <div class="pw-ob-view pw-ob-view--praatplaat" id="pw-ob-view-praatplaat">
+                    <figure class="pw-ob-praatplaat">
+                        <img src="../../assets/praatplaat.png" alt="Visuele praatplaat van de onboarding route van Palet Welzijn" loading="lazy">
+                        <figcaption>Bekijk de route als plaat — sleep of scroll om alles te zien.</figcaption>
+                    </figure>
+                </div>
+
             </div>
 
+            <!-- Footer (Blijft altijd onderaan) -->
             <aside class="pw-ob-help">
                 <span class="pw-ob-help-icon" aria-hidden="true">
                     <i class="fa-solid fa-circle-question" style="font-size:32px;"></i>
