@@ -84,7 +84,7 @@
   var STORAGE_KEY = "pw-onboarding-v1";
 
   /* === FIX: volledig pad naar beleid.html === */
-  var BELEID_URL = "/frontend/beleid/beleid.html";
+  var BELEID_URL = "./frontend/beleid/beleid.html";
 
   /* ---------- Elementen ---------- */
   var root = document.querySelector(".pw-onboarding");
