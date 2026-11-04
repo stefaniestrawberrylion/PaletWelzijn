@@ -1,15 +1,25 @@
-/* ---------- Variabelen ---------- */
+
+/* =========================================================
+   VARIABELEN
+========================================================= */
+
 :root {
     --pw-donkerblauw: #120a5c;
     --pw-blauw: #0055ff;
     --pw-groen: #008241;
     --pw-groen-licht: #4d88ff;
+
     --bg-body: #f8f9fa;
     --bg-card: #ffffff;
+
     --text-donker: #1a1a1a;
     --text-licht: #666666;
     --border-kleur: #e2e2e2;
 }
+
+/* =========================================================
+   ALGEMENE STYLING
+========================================================= */
 
 * {
     margin: 0;
@@ -18,7 +28,8 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -34,7 +45,10 @@ html, body {
     overflow: hidden;
 }
 
-/* --- Navbar --- */
+/* =========================================================
+   NAVBAR
+========================================================= */
+
 .navbar {
     background-color: #fff;
     display: flex;
@@ -45,16 +59,65 @@ html, body {
     z-index: 100;
     flex-shrink: 0;
 }
-.logo img { height: 40px; object-fit: contain; }
-.menu-toggle { display: none; background: none; border: none; font-size: 24px; color: var(--pw-donkerblauw); cursor: pointer; }
-.nav-links { display: flex; gap: 35px; }
-.nav-links a { text-decoration: none; color: var(--text-donker); font-weight: 600; font-size: 15px; transition: color 0.3s ease; position: relative; padding-bottom: 5px; }
-.nav-links a:hover { color: var(--pw-blauw); }
-.nav-links a.active { color: var(--pw-blauw); }
-.nav-links a.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--pw-blauw); }
-.profile-icon { width: 40px; height: 40px; background-color: var(--pw-donkerblauw); border-radius: 50%; }
 
-/* --- Hero Sectie --- */
+.logo img {
+    height: 40px;
+    object-fit: contain;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--pw-donkerblauw);
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-donker);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a:hover {
+    color: var(--pw-blauw);
+}
+
+.nav-links a.active {
+    color: var(--pw-blauw);
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--pw-blauw);
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--pw-donkerblauw);
+    border-radius: 50%;
+}
+
+/* =========================================================
+   HERO SECTIE
+========================================================= */
+
 .hero {
     position: relative;
     width: 100%;
@@ -66,14 +129,46 @@ html, body {
     overflow: hidden;
     flex-shrink: 0;
 }
-.hero img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; z-index: 1; }
-.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(18, 10, 92, 0.6); z-index: 2; }
-.hero-content { position: relative; z-index: 3; text-align: center; padding: 0 20px; }
-.hero-content h1 { color: white; font-size: clamp(24px, 3vw, 36px); font-weight: 700; line-height: 1.2; }
+
+.hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 10, 92, 0.6);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    color: white;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    line-height: 1.2;
+}
 
 /* =========================================================
-   Onboarding Kaarten
-   ========================================================= */
+   ONBOARDING CONTAINER
+========================================================= */
+
 .pw-onboarding {
     --pw-navy: var(--pw-donkerblauw);
     --pw-green: var(--pw-groen);
@@ -84,6 +179,7 @@ html, body {
     --pw-line: var(--border-kleur);
     --pw-track: #C9D3CB;
     --pw-radius: 8px;
+
     --pw-font-head: "Montserrat", Arial, sans-serif;
     --pw-font-body: "Open Sans", Calibri, Arial, sans-serif;
     --pw-font-hand: "Permanent Marker", "Comic Sans MS", cursive;
@@ -91,81 +187,166 @@ html, body {
     box-sizing: border-box;
     width: 95%;
     max-width: 1400px;
+
     margin: -20px auto 0;
-    padding: 16px 24px 24px;
+    padding: 16px 24px 12px;
+
     background: #ffffff;
     border-radius: 16px 16px 0 0;
     box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+
     color: var(--pw-text);
     font-family: var(--pw-font-body);
     font-size: 16px;
     line-height: 1.45;
-    flex: 1;
+
+    flex: 1 1 0;
     display: flex;
     flex-direction: column;
+
+    min-height: 0;
     overflow: hidden;
     z-index: 10;
     position: relative;
-    min-height: 0;
 }
 
 .pw-onboarding *,
 .pw-onboarding *::before,
-.pw-onboarding *::after { box-sizing: border-box; }
+.pw-onboarding *::after {
+    box-sizing: border-box;
+}
 
-.pw-onboarding a { color: var(--pw-navy); font-weight: 700; }
-.pw-onboarding a:hover { color: var(--pw-green); }
-.pw-onboarding :focus-visible { outline: 3px solid var(--pw-green-light); outline-offset: 3px; }
+.pw-onboarding a {
+    color: var(--pw-navy);
+    font-weight: 700;
+}
 
-/* ---------- Kop ---------- */
+.pw-onboarding a:hover {
+    color: var(--pw-green);
+}
+
+.pw-onboarding :focus-visible {
+    outline: 3px solid var(--pw-green-light);
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   KOP EN VOORTGANG
+========================================================= */
+
 .pw-ob-header {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
     justify-content: space-between;
     gap: 15px 32px;
+
     margin-bottom: 12px;
     padding-bottom: 12px;
+
     border-bottom: 1px solid var(--pw-line);
     flex-shrink: 0;
 }
-.pw-ob-eyebrow { margin: 0 0 4px; font-family: var(--pw-font-head); font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pw-green); }
-.pw-ob-title { margin: 0; font-family: var(--pw-font-head); font-weight: 800; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.15; color: var(--pw-navy); }
-.pw-ob-intro { margin: 4px 0 0; font-size: 14px; color: var(--pw-muted); }
 
-.pw-ob-status { width: min(300px, 100%); }
-.pw-ob-badge { margin: 0 0 4px; font-family: var(--pw-font-hand); font-size: 20px; color: var(--pw-navy); transform: rotate(-3deg); transform-origin: left center; }
-.pw-ob-progress-label { margin: 0 0 4px; font-weight: 700; font-size: 13px; color: var(--pw-navy); }
-.pw-ob-bar { height: 10px; border-radius: 5px; background: #E6F3EC; overflow: hidden; }
-.pw-ob-bar-fill { height: 100%; width: 0; border-radius: 5px; background: var(--pw-green); transition: width 0.4s ease; }
+.pw-ob-eyebrow {
+    margin: 0 0 4px;
+    font-family: var(--pw-font-head);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--pw-green);
+}
 
-/* ---------- View switch ---------- */
+.pw-ob-title {
+    margin: 0;
+    font-family: var(--pw-font-head);
+    font-weight: 800;
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.15;
+    color: var(--pw-navy);
+}
+
+.pw-ob-intro {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: var(--pw-muted);
+}
+
+.pw-ob-status {
+    width: min(300px, 100%);
+}
+
+.pw-ob-badge {
+    margin: 0 0 4px;
+    font-family: var(--pw-font-hand);
+    font-size: 20px;
+    color: var(--pw-navy);
+    transform: rotate(-3deg);
+    transform-origin: left center;
+}
+
+.pw-ob-progress-label {
+    margin: 0 0 4px;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--pw-navy);
+}
+
+.pw-ob-bar {
+    height: 10px;
+    border-radius: 5px;
+    background: #E6F3EC;
+    overflow: hidden;
+}
+
+.pw-ob-bar-fill {
+    height: 100%;
+    width: 0;
+    border-radius: 5px;
+    background: var(--pw-green);
+    transition: width 0.4s ease;
+}
+
+/* =========================================================
+   WEERGAVE SWITCH
+========================================================= */
+
 .pw-ob-viewswitch {
     display: inline-flex;
     gap: 4px;
     padding: 4px;
     background: #EEF2FF;
     border-radius: 10px;
-    margin: 0 0 16px;
+    margin: 0 0 12px;
     flex-shrink: 0;
     align-self: flex-start;
 }
+
 .pw-ob-viewbtn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 6px 12px;
+
     border: 0;
     border-radius: 6px;
+
     background: transparent;
     color: var(--pw-navy);
+
     font-family: var(--pw-font-body);
     font-size: 13px;
     font-weight: 700;
+
     cursor: pointer;
     transition: background .2s ease, color .2s ease, box-shadow .2s ease;
 }
-.pw-ob-viewbtn:hover { background: #DCE4FF; }
+
+.pw-ob-viewbtn:hover {
+    background: #DCE4FF;
+}
+
 .pw-ob-viewbtn.is-active {
     background: var(--pw-navy);
     color: #fff;
@@ -174,100 +355,198 @@ html, body {
 
 /* =========================================================
    CONTENT WRAPPER
-   ========================================================= */
+   MEER RUIMTE VOOR DE KAARTEN
+========================================================= */
+
 .pw-ob-content {
-    flex: 1 1 auto;
+    flex: 1 1 0;
     min-height: 0;
     position: relative;
+
     overflow-y: auto;
+    overflow-x: hidden;
+
     border-radius: 8px;
-    padding-bottom: 20px;
-    margin-bottom: 16px; /* RUIMTE TUSSEN KAARTEN EN FOOTER */
+
+    padding: 10px 4px 20px;
+    margin-bottom: 8px;
 }
 
 /* De aparte weergaves */
+
 .pw-ob-view {
     display: none;
     opacity: 0;
     animation: pwFadeIn 0.4s ease forwards;
 }
+
 .pw-ob-view.is-active {
     display: block;
 }
 
 @keyframes pwFadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* ---------- Route ---------- */
-.pw-ob-route { position: relative; }
+/* =========================================================
+   ROUTE
+========================================================= */
 
-.pw-ob-track { position: absolute; border-radius: 4px; background: repeating-linear-gradient(90deg, var(--pw-track) 0 16px, transparent 16px 26px); pointer-events: none; }
-.pw-ob-track-fill { position: absolute; left: 0; top: 0; border-radius: 4px; background: var(--pw-green); transition: width 0.4s ease, height 0.4s ease; }
-.pw-ob-route.is-vertical .pw-ob-track { background: repeating-linear-gradient(180deg, var(--pw-track) 0 16px, transparent 16px 26px); }
+.pw-ob-route {
+    position: relative;
+}
+
+.pw-ob-track {
+    position: absolute;
+    border-radius: 4px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--pw-track) 0 16px,
+        transparent 16px 26px
+    );
+    pointer-events: none;
+}
+
+.pw-ob-track-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 4px;
+    background: var(--pw-green);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.pw-ob-route.is-vertical .pw-ob-track {
+    background: repeating-linear-gradient(
+        180deg,
+        var(--pw-track) 0 16px,
+        transparent 16px 26px
+    );
+}
 
 .pw-ob-steps {
     position: relative;
     list-style: none;
     margin: 0;
     padding: 0;
+
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 15px;
-    /* align-items: start; <-- DEZE IS WEGGEHAALD ZODAT KAARTEN NIET IN ELKAAR SCHUIVEN */
 }
 
 .pw-ob-step {
     --step-color: var(--pw-navy);
+
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    height: 100%; /* Zorgt dat ze allemaal even hoog zijn */
+
+    height: 100%;
 }
 
-/* Halte op de route */
+/* =========================================================
+   ROUTE HALTES
+========================================================= */
+
 .pw-ob-stop {
     position: relative;
     z-index: 1;
+
     flex: 0 0 auto;
+
     width: 44px;
     height: 44px;
+
     border-radius: 50%;
     border: 3px solid #ffffff;
+
     background: #ffffff;
     color: var(--step-color);
+
     box-shadow: 0 0 0 2px var(--step-color);
+
     font-family: var(--pw-font-head);
     font-weight: 800;
     font-size: 18px;
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.pw-ob-stop i { font-size: 18px; }
-.pw-ob-step.is-done .pw-ob-stop { background: var(--pw-green); color: #ffffff; box-shadow: 0 0 0 2px var(--pw-green); }
-.pw-ob-step.is-current .pw-ob-stop { background: var(--pw-navy); color: #ffffff; box-shadow: 0 0 0 3px var(--pw-green-light); }
-.pw-ob-step.is-locked .pw-ob-stop { background: #ffffff; color: #9a9a9a; box-shadow: 0 0 0 2px #c9c9c9; }
-.pw-ob-step.is-locked .pw-ob-stop i { font-size: 16px; }
-.pw-ob-stop svg { width: 20px; height: 20px; }
 
-/* Kaart */
+.pw-ob-stop i {
+    font-size: 18px;
+}
+
+.pw-ob-step.is-done .pw-ob-stop {
+    background: var(--pw-green);
+    color: #ffffff;
+    box-shadow: 0 0 0 2px var(--pw-green);
+}
+
+.pw-ob-step.is-current .pw-ob-stop {
+    background: var(--pw-navy);
+    color: #ffffff;
+    box-shadow: 0 0 0 3px var(--pw-green-light);
+}
+
+.pw-ob-step.is-locked .pw-ob-stop {
+    background: #ffffff;
+    color: #9a9a9a;
+    box-shadow: 0 0 0 2px #c9c9c9;
+}
+
+.pw-ob-step.is-locked .pw-ob-stop i {
+    font-size: 16px;
+}
+
+.pw-ob-stop svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* =========================================================
+   KAARTEN
+========================================================= */
+
 .pw-ob-card {
     align-self: stretch;
     flex: 1 1 auto;
+
     display: flex;
     flex-direction: column;
-    padding: 16px; /* Iets ruimer dan de vorige, zodat de knop er goed in past */
+
+    padding: 16px;
+
     background: #ffffff;
     border: 2px solid var(--pw-line);
     border-radius: var(--pw-radius);
+
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.pw-ob-step.is-current .pw-ob-card { border: 2px solid var(--pw-green); box-shadow: 0 4px 12px rgba(0, 130, 65, 0.15); }
-.pw-ob-step.is-locked .pw-ob-card { background: #fafafa; }
-.pw-ob-card:hover { border-color: #b0b0b0; }
+
+.pw-ob-step.is-current .pw-ob-card {
+    border: 2px solid var(--pw-green);
+    box-shadow: 0 4px 12px rgba(0, 130, 65, 0.15);
+}
+
+.pw-ob-step.is-locked .pw-ob-card {
+    background: #fafafa;
+}
+
+.pw-ob-card:hover {
+    border-color: #b0b0b0;
+}
 
 .pw-ob-card img {
     width: 100%;
@@ -278,146 +557,451 @@ html, body {
     background-color: #f0f0f0;
 }
 
-.pw-ob-label { margin: 0 0 4px 0; font-family: var(--pw-font-head); font-weight: 700; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--pw-muted); }
-.pw-ob-step.is-done .pw-ob-label { color: var(--pw-green); }
-.pw-ob-step.is-current .pw-ob-label { color: var(--pw-navy); }
+.pw-ob-label {
+    margin: 0 0 4px;
+    font-family: var(--pw-font-head);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--pw-muted);
+}
 
-.pw-ob-card h3 { margin: 0 0 6px 0; font-family: var(--pw-font-head); font-weight: 800; font-size: 15px; line-height: 1.2; color: var(--pw-navy); }
-.pw-ob-card p.pw-ob-text { margin: 0; font-size: 13px; color: var(--pw-muted); line-height: 1.4; }
+.pw-ob-step.is-done .pw-ob-label {
+    color: var(--pw-green);
+}
 
-.pw-ob-action { margin-top: auto; padding-top: 15px; } /* Zorgt dat de knop onderaan de kaart staat */
+.pw-ob-step.is-current .pw-ob-label {
+    color: var(--pw-navy);
+}
+
+.pw-ob-card h3 {
+    margin: 0 0 6px;
+    font-family: var(--pw-font-head);
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 1.2;
+    color: var(--pw-navy);
+}
+
+.pw-ob-card p.pw-ob-text {
+    margin: 0;
+    font-size: 13px;
+    color: var(--pw-muted);
+    line-height: 1.4;
+}
+
+.pw-ob-action {
+    margin-top: auto;
+    padding-top: 15px;
+}
 
 /* =========================================================
    KNOPPEN
-   ========================================================= */
+========================================================= */
+
 .pw-onboarding a.pw-ob-btn,
 .pw-onboarding .pw-ob-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
+
     width: 100%;
     min-height: 38px;
     padding: 0 12px;
+
     border: 0;
     border-radius: 6px;
+
     background: var(--pw-navy);
     color: #ffffff !important;
+
     font-family: var(--pw-font-body);
     font-size: 14px;
     font-weight: 700;
+
     text-decoration: none;
     cursor: pointer;
+
     transition: background 0.2s ease, color 0.2s ease;
 }
+
 .pw-onboarding a.pw-ob-btn:hover,
 .pw-onboarding .pw-ob-btn:hover {
     background: #1F1A55;
     color: #ffffff !important;
 }
-.pw-onboarding .pw-ob-btn:disabled { background: #C9C7D9; color: #4A466B !important; cursor: not-allowed; }
+
+.pw-onboarding .pw-ob-btn:disabled {
+    background: #C9C7D9;
+    color: #4A466B !important;
+    cursor: not-allowed;
+}
+
 .pw-onboarding a.pw-ob-btn svg,
-.pw-onboarding .pw-ob-btn svg { width: 16px; height: 16px; }
+.pw-onboarding .pw-ob-btn svg {
+    width: 16px;
+    height: 16px;
+}
 
 .pw-onboarding a.pw-ob-linkbtn,
 .pw-onboarding .pw-ob-linkbtn {
     padding: 4px 0;
     min-height: 38px;
+
     border: 0;
     background: none;
     color: var(--pw-navy);
+
     font-family: var(--pw-font-body);
     font-size: 13px;
     font-weight: 700;
+
     text-decoration: underline;
     cursor: pointer;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
+
 .pw-onboarding a.pw-ob-linkbtn:hover,
-.pw-onboarding .pw-ob-linkbtn:hover { color: var(--pw-green); }
+.pw-onboarding .pw-ob-linkbtn:hover {
+    color: var(--pw-green);
+}
 
-.pw-ob-locked { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0; min-height: 38px; font-size: 12px; font-weight: 700; color: var(--pw-muted); }
-.pw-ob-locked svg { width: 14px; height: 14px; }
+.pw-ob-locked {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 
-/* ---------- Praatplaat ---------- */
+    margin: 0;
+    min-height: 38px;
+
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--pw-muted);
+}
+
+.pw-ob-locked svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* =========================================================
+   PRAATPLAAT
+   GROTERE AFBEELDING
+========================================================= */
+
 .pw-ob-view--praatplaat {
     height: 100%;
     display: none;
-    padding: 10px;
+
+    padding: 4px;
     background: #F4F8F4;
     border-radius: 8px;
+
     box-sizing: border-box;
 }
+
 .pw-ob-view--praatplaat.is-active {
     display: flex;
     flex-direction: column;
 }
+
 .pw-ob-praatplaat {
     margin: 0 auto;
+
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    max-width: 100%;
-    height: 100%;
-}
-.pw-ob-praatplaat img {
+    align-items: center;
+
+    gap: 6px;
+
     width: 100%;
-    height: auto;
-    max-height: 100%;
+    max-width: 1200px;
+    height: 100%;
+    min-height: 0;
+}
+
+.pw-ob-praatplaat img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
     object-fit: contain;
+    object-position: center;
+
     border-radius: 6px;
     background: #fff;
+
     box-shadow: 0 4px 12px rgba(0,0,0,.08);
 }
+
 .pw-ob-praatplaat figcaption {
+    flex-shrink: 0;
     font-size: 12px;
     color: var(--pw-muted);
     text-align: center;
 }
 
-/* ---------- Footer (Hulp & Reset) ---------- */
-.pw-ob-help { display: flex; align-items: center; gap: 15px; margin-top: 0; padding: 14px 20px; border-radius: 8px; background: var(--pw-navy); color: #ffffff; flex-shrink: 0; }
-.pw-ob-help-icon { flex: 0 0 auto; color: var(--pw-green-light); }
-.pw-ob-help-icon i { font-size: 24px !important; }
-.pw-ob-help-text p { margin: 0; font-size: 13px; }
-.pw-ob-help-title { font-family: var(--pw-font-head); font-weight: 800; font-size: 16px !important; margin-bottom: 2px !important; }
-.pw-ob-help a { color: #ffffff; }
-.pw-ob-help a:hover { color: #DCF1D2; }
+/* =========================================================
+   FOOTER - HULP
+   WORDT NAAR ONDEREN GEDRUKT
+========================================================= */
 
-.pw-ob-reset-wrap { margin: 8px 0 0; text-align: right; flex-shrink: 0; }
-.pw-ob-reset { border: 0; background: none; color: var(--pw-muted); font-family: var(--pw-font-body); font-size: 12px; text-decoration: underline; cursor: pointer; min-height: 30px; }
-.pw-ob-noscript { font-size: 14px; color: var(--pw-muted); }
+.pw-ob-help {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 
-/* ---------- Tablet ---------- */
-@media (max-width: 1024px) {
-    .pw-onboarding { padding: 16px; width: 100%; margin-top: 0; border-radius: 0; }
-    .pw-ob-steps { grid-template-columns: 1fr; gap: 12px; }
-    .pw-ob-step { flex-direction: row; align-items: stretch; gap: 12px; }
-    .pw-ob-stop { width: 40px; height: 40px; font-size: 16px; align-self: flex-start; }
-    .pw-ob-card { flex-direction: row; align-items: center; gap: 12px; padding: 12px; }
-    .pw-ob-card img { width: 80px; height: 60px; margin-bottom: 0; flex-shrink: 0; }
-    .pw-ob-card-content { display: flex; flex-direction: column; flex: 1; }
-    .pw-ob-action { width: 140px; flex-shrink: 0; }
+    margin-top: auto;
+    padding: 12px 20px;
+
+    border-radius: 8px;
+    background: var(--pw-navy);
+    color: #ffffff;
+
+    flex-shrink: 0;
 }
 
-/* ---------- Telefoon ---------- */
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .menu-toggle { display: block; }
-    .hero { height: 15vh; min-height: 120px; }
-    .pw-onboarding { padding: 12px; }
-    .pw-ob-card { flex-direction: column; align-items: stretch; }
-    .pw-ob-card img { width: 100%; height: 100px; }
-    .pw-ob-card p.pw-ob-text { display: none; }
-    .pw-ob-stop { width: 36px; height: 36px; font-size: 14px; border-width: 2px; }
-    .pw-ob-action { width: 100%; }
-    
-    .pw-ob-help { flex-direction: column; align-items: flex-start; padding: 12px; }
-    .pw-ob-reset-wrap { text-align: left; }
+.pw-ob-help-icon {
+    flex: 0 0 auto;
+    color: var(--pw-green-light);
+}
 
-    .pw-ob-viewswitch { width: 100%; justify-content: center; align-self: stretch; }
-    .pw-ob-viewbtn { flex: 1; justify-content: center; }
+.pw-ob-help-icon i {
+    font-size: 24px !important;
+}
+
+.pw-ob-help-text p {
+    margin: 0;
+    font-size: 13px;
+}
+
+.pw-ob-help-title {
+    font-family: var(--pw-font-head);
+    font-weight: 800;
+    font-size: 16px !important;
+    margin-bottom: 2px !important;
+}
+
+.pw-ob-help a {
+    color: #ffffff;
+}
+
+.pw-ob-help a:hover {
+    color: #DCF1D2;
+}
+
+/* =========================================================
+   RESET KNOP
+========================================================= */
+
+.pw-ob-reset-wrap {
+    margin: 4px 0 0;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.pw-ob-reset {
+    border: 0;
+    background: none;
+    color: var(--pw-muted);
+
+    font-family: var(--pw-font-body);
+    font-size: 12px;
+    text-decoration: underline;
+
+    cursor: pointer;
+    min-height: 26px;
+}
+
+.pw-ob-noscript {
+    font-size: 14px;
+    color: var(--pw-muted);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    .pw-onboarding {
+        padding: 16px;
+        width: 100%;
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    .pw-ob-steps {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .pw-ob-step {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .pw-ob-stop {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        align-self: flex-start;
+    }
+
+    .pw-ob-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .pw-ob-card img {
+        width: 80px;
+        height: 60px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .pw-ob-card-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .pw-ob-action {
+        width: 140px;
+        flex-shrink: 0;
+    }
+}
+
+/* =========================================================
+   TELEFOON
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero {
+        height: 15vh;
+        min-height: 120px;
+    }
+
+    .pw-onboarding {
+        padding: 12px;
+    }
+
+    .pw-ob-header {
+        gap: 10px;
+    }
+
+    .pw-ob-status {
+        width: 100%;
+    }
+
+    .pw-ob-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pw-ob-card img {
+        width: 100%;
+        height: 100px;
+    }
+
+    .pw-ob-card p.pw-ob-text {
+        display: none;
+    }
+
+    .pw-ob-stop {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+        border-width: 2px;
+    }
+
+    .pw-ob-action {
+        width: 100%;
+    }
+
+    .pw-ob-help {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+    }
+
+    .pw-ob-reset-wrap {
+        text-align: left;
+    }
+
+    .pw-ob-viewswitch {
+        width: 100%;
+        justify-content: center;
+        align-self: stretch;
+    }
+
+    .pw-ob-viewbtn {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+/* =========================================================
+   KLEINERE SCHERMEN
+   VOLLEDIGE PAGINA KAN SCROLLEN
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    html,
+    body {
+        overflow: auto;
+        height: auto;
+        min-height: 100%;
+    }
+
+    .app-container {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .pw-onboarding {
+        flex: none;
+        min-height: 700px;
+        overflow: visible;
+    }
+
+    .pw-ob-content {
+        overflow: visible;
+    }
+
+    .pw-ob-view--praatplaat.is-active {
+        min-height: 400px;
+    }
+
+    .pw-ob-praatplaat {
+        height: auto;
+    }
+
+    .pw-ob-praatplaat img {
+        height: auto;
+        max-height: none;
+    }
 }
