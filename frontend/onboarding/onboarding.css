@@ -1,25 +1,16 @@
-
-/* =========================================================
-   VARIABELEN
-========================================================= */
+/* ---------- Variabelen ---------- */
 
 :root {
     --pw-donkerblauw: #120a5c;
     --pw-blauw: #0055ff;
     --pw-groen: #008241;
     --pw-groen-licht: #4d88ff;
-
     --bg-body: #f8f9fa;
     --bg-card: #ffffff;
-
     --text-donker: #1a1a1a;
     --text-licht: #666666;
     --border-kleur: #e2e2e2;
 }
-
-/* =========================================================
-   ALGEMENE STYLING
-========================================================= */
 
 * {
     margin: 0;
@@ -28,8 +19,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html,
-body {
+html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -45,9 +35,7 @@ body {
     overflow: hidden;
 }
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+/* --- Navbar --- */
 
 .navbar {
     background-color: #fff;
@@ -55,7 +43,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 5%;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
     z-index: 100;
     flex-shrink: 0;
 }
@@ -114,9 +102,7 @@ body {
     border-radius: 50%;
 }
 
-/* =========================================================
-   HERO SECTIE
-========================================================= */
+/* --- Hero Sectie --- */
 
 .hero {
     position: relative;
@@ -166,8 +152,8 @@ body {
 }
 
 /* =========================================================
-   ONBOARDING CONTAINER
-========================================================= */
+   Onboarding Kaarten
+   ========================================================= */
 
 .pw-onboarding {
     --pw-navy: var(--pw-donkerblauw);
@@ -179,7 +165,6 @@ body {
     --pw-line: var(--border-kleur);
     --pw-track: #C9D3CB;
     --pw-radius: 8px;
-
     --pw-font-head: "Montserrat", Arial, sans-serif;
     --pw-font-body: "Open Sans", Calibri, Arial, sans-serif;
     --pw-font-hand: "Permanent Marker", "Comic Sans MS", cursive;
@@ -187,27 +172,22 @@ body {
     box-sizing: border-box;
     width: 95%;
     max-width: 1400px;
-
     margin: -20px auto 0;
-    padding: 16px 24px 12px;
-
+    padding: 16px 24px 24px;
     background: #ffffff;
     border-radius: 16px 16px 0 0;
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
-
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
     color: var(--pw-text);
     font-family: var(--pw-font-body);
     font-size: 16px;
     line-height: 1.45;
-
-    flex: 1 1 0;
+    flex: 1;
     display: flex;
     flex-direction: column;
-
-    min-height: 0;
     overflow: hidden;
     z-index: 10;
     position: relative;
+    min-height: 0;
 }
 
 .pw-onboarding *,
@@ -230,9 +210,7 @@ body {
     outline-offset: 3px;
 }
 
-/* =========================================================
-   KOP EN VOORTGANG
-========================================================= */
+/* ---------- Kop ---------- */
 
 .pw-ob-header {
     display: flex;
@@ -240,10 +218,8 @@ body {
     align-items: flex-end;
     justify-content: space-between;
     gap: 15px 32px;
-
     margin-bottom: 12px;
     padding-bottom: 12px;
-
     border-bottom: 1px solid var(--pw-line);
     flex-shrink: 0;
 }
@@ -308,9 +284,7 @@ body {
     transition: width 0.4s ease;
 }
 
-/* =========================================================
-   WEERGAVE SWITCH
-========================================================= */
+/* ---------- View switch ---------- */
 
 .pw-ob-viewswitch {
     display: inline-flex;
@@ -318,7 +292,7 @@ body {
     padding: 4px;
     background: #EEF2FF;
     border-radius: 10px;
-    margin: 0 0 12px;
+    margin: 0 0 16px;
     flex-shrink: 0;
     align-self: flex-start;
 }
@@ -328,19 +302,15 @@ body {
     align-items: center;
     gap: 8px;
     padding: 6px 12px;
-
     border: 0;
     border-radius: 6px;
-
     background: transparent;
     color: var(--pw-navy);
-
     font-family: var(--pw-font-body);
     font-size: 13px;
     font-weight: 700;
-
     cursor: pointer;
-    transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .pw-ob-viewbtn:hover {
@@ -350,26 +320,21 @@ body {
 .pw-ob-viewbtn.is-active {
     background: var(--pw-navy);
     color: #fff;
-    box-shadow: 0 2px 6px rgba(18,10,92,.25);
+    box-shadow: 0 2px 6px rgba(18, 10, 92, 0.25);
 }
 
 /* =========================================================
    CONTENT WRAPPER
-   MEER RUIMTE VOOR DE KAARTEN
-========================================================= */
+   ========================================================= */
 
 .pw-ob-content {
-    flex: 1 1 0;
+    flex: 1 1 auto;
     min-height: 0;
     position: relative;
-
     overflow-y: auto;
-    overflow-x: hidden;
-
     border-radius: 8px;
-
-    padding: 10px 4px 20px;
-    margin-bottom: 8px;
+    padding-bottom: 20px;
+    margin-bottom: 16px; /* RUIMTE TUSSEN KAARTEN EN FOOTER */
 }
 
 /* De aparte weergaves */
@@ -380,7 +345,7 @@ body {
     animation: pwFadeIn 0.4s ease forwards;
 }
 
-.pw-ob-view.is-active {
+.pw-ob-view\.is-active {
     display: block;
 }
 
@@ -389,16 +354,13 @@ body {
         opacity: 0;
         transform: translateY(10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* =========================================================
-   ROUTE
-========================================================= */
+/* ---------- Route ---------- */
 
 .pw-ob-route {
     position: relative;
@@ -407,11 +369,7 @@ body {
 .pw-ob-track {
     position: absolute;
     border-radius: 4px;
-    background: repeating-linear-gradient(
-        90deg,
-        var(--pw-track) 0 16px,
-        transparent 16px 26px
-    );
+    background: repeating-linear-gradient(90deg, var(--pw-track) 0 16px, transparent 16px 26px);
     pointer-events: none;
 }
 
@@ -425,11 +383,7 @@ body {
 }
 
 .pw-ob-route.is-vertical .pw-ob-track {
-    background: repeating-linear-gradient(
-        180deg,
-        var(--pw-track) 0 16px,
-        transparent 16px 26px
-    );
+    background: repeating-linear-gradient(180deg, var(--pw-track) 0 16px, transparent 16px 26px);
 }
 
 .pw-ob-steps {
@@ -437,48 +391,37 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
-
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 15px;
+    /* align-items: start; <-- DEZE IS WEGGEHAALD ZODAT KAARTEN NIET IN ELKAAR SCHUIVEN */
 }
 
 .pw-ob-step {
     --step-color: var(--pw-navy);
-
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
-
-    height: 100%;
+    height: 100%; /* Zorgt dat ze allemaal even hoog zijn */
 }
 
-/* =========================================================
-   ROUTE HALTES
-========================================================= */
+/* Halte op de route */
 
 .pw-ob-stop {
     position: relative;
     z-index: 1;
-
     flex: 0 0 auto;
-
     width: 44px;
     height: 44px;
-
     border-radius: 50%;
     border: 3px solid #ffffff;
-
     background: #ffffff;
     color: var(--step-color);
-
     box-shadow: 0 0 0 2px var(--step-color);
-
     font-family: var(--pw-font-head);
     font-weight: 800;
     font-size: 18px;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -515,23 +458,17 @@ body {
     height: 20px;
 }
 
-/* =========================================================
-   KAARTEN
-========================================================= */
+/* Kaart */
 
 .pw-ob-card {
     align-self: stretch;
     flex: 1 1 auto;
-
     display: flex;
     flex-direction: column;
-
-    padding: 16px;
-
+    padding: 16px; /* Iets ruimer dan de vorige, zodat de knop er goed in past */
     background: #ffffff;
     border: 2px solid var(--pw-line);
     border-radius: var(--pw-radius);
-
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -558,7 +495,7 @@ body {
 }
 
 .pw-ob-label {
-    margin: 0 0 4px;
+    margin: 0 0 4px 0;
     font-family: var(--pw-font-head);
     font-weight: 700;
     font-size: 10px;
@@ -576,7 +513,7 @@ body {
 }
 
 .pw-ob-card h3 {
-    margin: 0 0 6px;
+    margin: 0 0 6px 0;
     font-family: var(--pw-font-head);
     font-weight: 800;
     font-size: 15px;
@@ -593,12 +530,12 @@ body {
 
 .pw-ob-action {
     margin-top: auto;
-    padding-top: 15px;
+    padding-top: 15px; /* Zorgt dat de knop onderaan de kaart staat */
 }
 
 /* =========================================================
    KNOPPEN
-========================================================= */
+   ========================================================= */
 
 .pw-onboarding a.pw-ob-btn,
 .pw-onboarding .pw-ob-btn {
@@ -606,24 +543,18 @@ body {
     align-items: center;
     justify-content: center;
     gap: 6px;
-
     width: 100%;
     min-height: 38px;
     padding: 0 12px;
-
     border: 0;
     border-radius: 6px;
-
     background: var(--pw-navy);
     color: #ffffff !important;
-
     font-family: var(--pw-font-body);
     font-size: 14px;
     font-weight: 700;
-
     text-decoration: none;
     cursor: pointer;
-
     transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -649,18 +580,14 @@ body {
 .pw-onboarding .pw-ob-linkbtn {
     padding: 4px 0;
     min-height: 38px;
-
     border: 0;
     background: none;
     color: var(--pw-navy);
-
     font-family: var(--pw-font-body);
     font-size: 13px;
     font-weight: 700;
-
     text-decoration: underline;
     cursor: pointer;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -677,10 +604,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 4px;
-
     margin: 0;
     min-height: 38px;
-
     font-size: 12px;
     font-weight: 700;
     color: var(--pw-muted);
@@ -691,19 +616,14 @@ body {
     height: 14px;
 }
 
-/* =========================================================
-   PRAATPLAAT
-   GROTERE AFBEELDING
-========================================================= */
+/* ---------- Praatplaat ---------- */
 
 .pw-ob-view--praatplaat {
     height: 100%;
     display: none;
-
-    padding: 4px;
+    padding: 10px;
     background: #F4F8F4;
     border-radius: 8px;
-
     box-sizing: border-box;
 }
 
@@ -714,59 +634,40 @@ body {
 
 .pw-ob-praatplaat {
     margin: 0 auto;
-
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-    gap: 6px;
-
-    width: 100%;
-    max-width: 1200px;
+    gap: 10px;
+    max-width: 100%;
     height: 100%;
-    min-height: 0;
 }
 
 .pw-ob-praatplaat img {
-    display: block;
-
     width: 100%;
-    height: 100%;
-    min-height: 0;
-
+    height: auto;
+    max-height: 100%;
     object-fit: contain;
-    object-position: center;
-
     border-radius: 6px;
     background: #fff;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .pw-ob-praatplaat figcaption {
-    flex-shrink: 0;
     font-size: 12px;
     color: var(--pw-muted);
     text-align: center;
 }
 
-/* =========================================================
-   FOOTER - HULP
-   WORDT NAAR ONDEREN GEDRUKT
-========================================================= */
+/* ---------- Footer (Hulp & Reset) ---------- */
 
 .pw-ob-help {
     display: flex;
     align-items: center;
     gap: 15px;
-
-    margin-top: auto;
-    padding: 12px 20px;
-
+    margin-top: 0;
+    padding: 14px 20px;
     border-radius: 8px;
     background: var(--pw-navy);
     color: #ffffff;
-
     flex-shrink: 0;
 }
 
@@ -799,12 +700,8 @@ body {
     color: #DCF1D2;
 }
 
-/* =========================================================
-   RESET KNOP
-========================================================= */
-
 .pw-ob-reset-wrap {
-    margin: 4px 0 0;
+    margin: 8px 0 0;
     text-align: right;
     flex-shrink: 0;
 }
@@ -813,13 +710,11 @@ body {
     border: 0;
     background: none;
     color: var(--pw-muted);
-
     font-family: var(--pw-font-body);
     font-size: 12px;
     text-decoration: underline;
-
     cursor: pointer;
-    min-height: 26px;
+    min-height: 30px;
 }
 
 .pw-ob-noscript {
@@ -827,12 +722,9 @@ body {
     color: var(--pw-muted);
 }
 
-/* =========================================================
-   TABLET
-========================================================= */
+/* ---------- Tablet ---------- */
 
 @media (max-width: 1024px) {
-
     .pw-onboarding {
         padding: 16px;
         width: 100%;
@@ -884,12 +776,9 @@ body {
     }
 }
 
-/* =========================================================
-   TELEFOON
-========================================================= */
+/* ---------- Telefoon ---------- */
 
 @media (max-width: 768px) {
-
     .nav-links {
         display: none;
     }
@@ -905,14 +794,6 @@ body {
 
     .pw-onboarding {
         padding: 12px;
-    }
-
-    .pw-ob-header {
-        gap: 10px;
-    }
-
-    .pw-ob-status {
-        width: 100%;
     }
 
     .pw-ob-card {
@@ -963,45 +844,73 @@ body {
 }
 
 /* =========================================================
-   KLEINERE SCHERMEN
-   VOLLEDIGE PAGINA KAN SCROLLEN
-========================================================= */
+   AANPASSINGEN: compactere stappen + footer onderaan
+   ========================================================= */
 
-@media (max-width: 1024px) {
+/* De content neemt de beschikbare ruimte in; de footer blijft eronder staan. */
+.pw-ob-content {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+}
 
-    html,
-    body {
-        overflow: auto;
-        height: auto;
-        min-height: 100%;
-    }
+/* Voorkom dat de kaarten onnodig de volledige hoogte van de content vullen. */
+.pw-ob-steps {
+    align-items: start;
+}
 
-    .app-container {
-        height: auto;
-        min-height: 100vh;
-        overflow: visible;
-    }
+.pw-ob-step {
+    height: auto;
+    align-self: start;
+}
 
-    .pw-onboarding {
-        flex: none;
-        min-height: 700px;
-        overflow: visible;
-    }
+.pw-ob-card {
+    flex: 0 0 auto;
+    min-height: 0;
+    padding: 12px;
+}
 
-    .pw-ob-content {
-        overflow: visible;
-    }
+/* Afbeeldingen in de stapkaarten iets compacter. */
+.pw-ob-card img {
+    height: 82px;
+    margin-bottom: 9px;
+}
 
-    .pw-ob-view--praatplaat.is-active {
-        min-height: 400px;
-    }
+/* De praatplaat krijgt een begrensde hoogte en blijft volledig zichtbaar. */
+.pw-ob-view--praatplaat {
+    height: auto;
+    min-height: 0;
+}
 
-    .pw-ob-praatplaat {
-        height: auto;
-    }
+.pw-ob-praatplaat {
+    height: auto;
+    min-height: 0;
+}
 
+.pw-ob-praatplaat img {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: min(42vh, 380px);
+    object-fit: contain;
+}
+
+/* Footer en resetlink krimpen niet en blijven onder de scrollbare content. */
+.pw-ob-help {
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.pw-ob-reset-wrap {
+    flex-shrink: 0;
+}
+
+/* Op kleinere schermen blijft de praatplaat eveneens binnen beeld. */
+@media (max-width: 768px) {
     .pw-ob-praatplaat img {
-        height: auto;
-        max-height: none;
+        max-height: 45vh;
     }
 }
