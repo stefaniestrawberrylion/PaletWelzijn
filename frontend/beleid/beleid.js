@@ -12,7 +12,7 @@
       text: "Maak kennis met Palet Welzijn en wat jij als vrijwilliger betekent.",
       img: "/assets/welkom.png", alt: "Welkom",
       icon: "fa-regular fa-hand", color: "#120a5c",
-      link: "stap1.html",
+      link: "/frontend/onboarding/onboarding.html",
       body: [
         { type: "p", text: "Palet Welzijn is een organisatie die mensen in hun eigen omgeving ondersteunt met allerlei activiteiten: van samen koffiedrinken tot wandelen, koken of meegaan naar een afspraak. Vrijwilligers zijn daarbij onmisbaar." },
         { type: "p", text: "Als vrijwilliger maak je écht het verschil. Je biedt gezelschap, een luisterend oor en praktische hulp. Daarbij werk je altijd samen met een vaste contactpersoon binnen Palet Welzijn." },
@@ -34,7 +34,7 @@
       text: "Je contactpersoon, je VOG en je vrijwilligersovereenkomst.",
       img: "/assets/start.png", alt: "Start",
       icon: "fa-regular fa-file-lines", color: "#0055ff",
-      link: "stap2.html",
+      link: "/frontend/onboarding/onboarding.html",
       body: [
         { type: "p", text: "Voordat je echt aan de slag gaat, regel je een paar praktische zaken. Je krijgt een vaste contactpersoon binnen Palet Welzijn. Bij die persoon kun je terecht met al je vragen over je vrijwilligerswerk." },
         { type: "p", text: "Daarnaast vraag je een Verklaring Omtrent het Gedrag (VOG) aan. Dit is gratis voor vrijwilligers en laat zien dat je betrouwbaar bent in de omgang met kwetsbare mensen." },
@@ -56,7 +56,7 @@
       text: "De gedragscode, geheimhouding en geen zorgtaken.",
       img: "/assets/afspraken.png", alt: "Afspraken",
       icon: "fa-solid fa-graduation-cap", color: "#008241",
-      link: "stap3.html",
+      link: "/frontend/onboarding/onboarding.html",
       body: [
         { type: "p", text: "Palet Welzijn heeft een gedragscode. Daarin staat hoe we met elkaar en met cliënten omgaan: respectvol, betrouwbaar en met aandacht voor ieders grenzen." },
         { type: "p", text: "Wat je tijdens je vrijwilligerswerk over cliënten hoort of ziet, blijft geheim. Je deelt geen namen, situaties of foto's — ook niet op social media." },
@@ -78,7 +78,7 @@
       text: "Wat doe je als er iets gebeurt? En hoe ben je verzekerd?",
       img: "/assets/veiligheid.png", alt: "Veiligheid",
       icon: "fa-solid fa-shield-halved", color: "#92278F",
-      link: "stap4.html",
+      link: "/frontend/onboarding/onboarding.html",
       body: [
         { type: "p", text: "Als er iets gebeurt — een val, een verwarde situatie of een onveilig gevoel — dan is er altijd iemand bij wie je terechtkunt. Je contactpersoon is je eerste aanspreekpunt." },
         { type: "p", text: "Daarnaast is er een vertrouwenslijn: 088 - 144 02 00. Je kunt daar terecht als je iets wilt melden wat je liever niet met je contactpersoon bespreekt." },
@@ -100,7 +100,7 @@
       text: "Waardering, workshops en samen kijken wat bij je past.",
       img: "/assets/voor-jou.png", alt: "Voor jou",
       icon: "fa-solid fa-flag-checkered", color: "#C2410C",
-      link: "stap5.html",
+      link: "/frontend/onboarding/onboarding.html",
       body: [
         { type: "p", text: "Palet Welzijn waardeert haar vrijwilligers. Dat uit zich in attenties, een jaarlijks uitje en aandacht voor jouw welzijn." },
         { type: "p", text: "Daarnaast organiseert Palet Welzijn workshops en trainingen. Denk aan een cursus omgaan met dementie, grenzen aangeven of EHBO. Je kunt je hiervoor aanmelden via je contactpersoon." },
@@ -319,7 +319,7 @@
     var foot = el("div", "pw-ob-panel-foot");
 
     if (step.link) {
-      var linkBtn = el("a", "pw-ob-btn pw-ob-btn--ghost", "Open " + step.link);
+      var linkBtn = el("a", "pw-ob-btn pw-ob-btn--ghost", "Ga naar landingpagina"); 
       linkBtn.href = step.link;
       foot.appendChild(linkBtn);
     }
