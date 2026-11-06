@@ -1,5 +1,6 @@
 /* =========================================================
    Palet Welzijn – Onboarding "Jouw route als vrijwilliger"
+   6 stappen naast elkaar
    ========================================================= */
 (function () {
   "use strict";
@@ -7,35 +8,46 @@
   var STEPS = [
     {
       id: "welkom",
-      title: "Welkom",
+      title: "Welkom – fijn dat je er bent!",
       text: "Maak kennis met Palet Welzijn en wat jij als vrijwilliger betekent.",
       img: "../../assets/welkom.png",
       alt: "Welkom",
       icon: "fa-regular fa-hand",
       color: "#120a5c",
-      link: "/stap1.html",
-      tasks: ["Ik weet wie Palet Welzijn is", "Ik weet dat ik één van de ruim 1300 vrijwilligers ben"]
+      link: "../beleid/beleid.html",
+      tasks: ["Ik weet wie Palet Welzijn is", "Ik weet dat ik één van de ruim 1.300 vrijwilligers ben"]
     },
     {
       id: "start",
-      title: "Je start",
+      title: "Je start bij Palet Welzijn",
       text: "Je contactpersoon, je VOG en je vrijwilligersovereenkomst.",
       img: "../../assets/start.png",
       alt: "Start",
       icon: "fa-regular fa-file-lines",
       color: "#0055ff",
-      link: "stap2.html",
+      link: "../beleid/beleid.html",
       tasks: ["Kennisgemaakt met mijn contactpersoon", "Gratis VOG aangevraagd en laten zien", "Vrijwilligersovereenkomst getekend"]
     },
     {
+      id: "voor-jou",
+      title: "Wat brengt vrijwilligerswerk jou?",
+      text: "Plezier, voldoening, contacten en wat Palet Welzijn jou biedt.",
+      img: "../../assets/voor-jou.png",
+      alt: "Voor jou",
+      icon: "fa-solid fa-star",
+      color: "#C2410C",
+      link: "../beleid/beleid.html",
+      tasks: ["Ik weet wat vrijwilligerswerk mij oplevert", "Ik weet welke extra's ik van Palet Welzijn krijg"]
+    },
+    {
       id: "afspraken",
-      title: "Wat vragen wij van jou?",
+      title: "Wat verwachten wij van jou?",
       text: "De gedragscode, geheimhouding en geen zorgtaken.",
       img: "../../assets/afspraken.png",
       alt: "Afspraken",
       icon: "fa-solid fa-graduation-cap",
       color: "#008241",
-      link: "stap3.html",
+      link: "../beleid/beleid.html",
       tasks: ["Ik ken de gedragscode", "Wat ik over cliënten hoor, blijft geheim", "Ik doe geen medische of verpleegkundige handelingen"]
     },
     {
@@ -46,23 +58,23 @@
       alt: "Veiligheid",
       icon: "fa-solid fa-shield-halved",
       color: "#92278F",
-      link: "stap4.html",
+      link: "../beleid/beleid.html",
       tasks: ["Ik weet bij wie ik terechtkan als er iets gebeurt", "Ik ken de vertrouwenslijn: 088 - 144 02 00", "Ik weet dat ik verzekerd ben"]
     },
     {
-      id: "voor-jou",
-      title: "Wat doet Palet Welzijn voor jou?",
-      text: "Waardering, workshops en samen kijken wat bij je past.",
-      img: "../../assets/voor-jou.png",
-      alt: "Voor jou",
+      id: "aanmelding",
+      title: "Aanmelding & tot slot",
+      text: "Je officiële aanmelding en samen maken we het verschil.",
+      img: "../../assets/aanmelding.png",
+      alt: "Aanmelding",
       icon: "fa-solid fa-flag-checkered",
-      color: "#C2410C",
-      link: "stap5.html",
-      tasks: ["Ik weet wat ik van Palet Welzijn krijg", "Ik weet dat ik altijd kan praten over wat bij mij past"]
+      color: "#0F766E",
+      link: "../beleid/beleid.html",
+      tasks: ["Ik heb de checklist doorlopen", "Ik weet dat ik altijd in gesprek kan over wat bij mij past"]
     }
   ];
 
-  var STORAGE_KEY = "pw-onboarding-v3";
+  var STORAGE_KEY = "pw-onboarding-v4";
   var VIEW_KEY = "pw-onboarding-view";
   var BELEID_URL = "../beleid/beleid.html";
 
@@ -80,8 +92,6 @@
   var barFillEl = root.querySelector("#pw-ob-bar-fill");
   var resetEl = root.querySelector("#pw-ob-reset");
 
-  // Nieuwe switch elementen
-  var contentEl = root.querySelector("#pw-ob-content");
   var viewRouteEl = root.querySelector("#pw-ob-view-route");
   var viewPraatplaatEl = root.querySelector("#pw-ob-view-praatplaat");
   var viewBtns = root.querySelectorAll(".pw-ob-viewbtn");
@@ -234,7 +244,6 @@
   }
 
   function positionTrack(cur) {
-    // Als we niet in de route-view zitten, niet positioneren
     if (!viewRouteEl.classList.contains("is-active")) return;
 
     var stops = listEl.querySelectorAll(".pw-ob-stop");
@@ -279,18 +288,15 @@
   function setView(view) {
     var isRoute = view === "route";
     
-    // Toggle de classes op de blokken
     viewRouteEl.classList.toggle("is-active", isRoute);
     viewPraatplaatEl.classList.toggle("is-active", !isRoute);
 
-    // Toggle de knoppen
     viewBtns.forEach(function (b) {
       var active = b.dataset.view === view;
       b.classList.toggle("is-active", active);
       b.setAttribute("aria-pressed", active ? "true" : "false");
     });
 
-    // Als we teruggaan naar route, herbereken de lijntjes
     if (isRoute) {
       setTimeout(function () { positionTrack(currentIndex()); }, 50);
     }
@@ -302,7 +308,6 @@
     b.addEventListener("click", function () { setView(b.dataset.view); });
   });
 
-  // Onthoud de laatst gekozen weergave
   try {
     var savedView = window.localStorage.getItem(VIEW_KEY);
     if (savedView === "praatplaat") setView("praatplaat");

@@ -1164,3 +1164,156 @@ html, body {
         animation-duration: 0.01ms !important;
     }
 }
+/* =========================================================
+   Felicitatie Modal
+   ========================================================= */
+.pw-ob-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.pw-ob-modal[hidden] { display: none; }
+
+.pw-ob-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 10, 92, 0.65);
+  backdrop-filter: blur(3px);
+  animation: pwFadeIn .25s ease;
+}
+
+.pw-ob-modal-box {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 100%);
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px 26px 22px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  animation: pwModalIn .35s cubic-bezier(.2,.9,.3,1.1);
+}
+
+@keyframes pwModalIn {
+  from { opacity: 0; transform: translateY(20px) scale(.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.pw-ob-modal-emoji {
+  font-size: 54px;
+  line-height: 1;
+  margin-bottom: 6px;
+  animation: pwBounce .8s ease;
+}
+@keyframes pwBounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-4px); }
+}
+
+.pw-ob-modal-title {
+  margin: 0 0 10px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: #120a5c;
+}
+
+.pw-ob-modal-text {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333;
+}
+.pw-ob-modal-text--small {
+  font-size: 13px;
+  color: #666;
+}
+
+.pw-ob-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.pw-ob-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: 0;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.pw-ob-modal-btn--primary {
+  background: #008241;
+  color: #ffffff !important;
+}
+.pw-ob-modal-btn--primary:hover {
+  background: #006b35;
+  color: #ffffff !important;
+}
+
+.pw-ob-modal-btn--ghost {
+  background: transparent;
+  color: #120a5c;
+  border: 2px solid #e2e2e2;
+}
+.pw-ob-modal-btn--ghost:hover {
+  border-color: #008241;
+  color: #008241;
+  background: #F3FBF5;
+}
+
+@media (max-width: 480px) {
+  .pw-ob-modal-box { padding: 22px 18px 18px; }
+  .pw-ob-modal-title { font-size: 20px; }
+  .pw-ob-modal-text { font-size: 14px; }
+}
+/* ---------- Tussenkopjes in het infoblok ---------- */
+.pw-ob-info-h {
+  margin: 14px 0 6px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 1.3;
+  color: #120a5c;
+}
+.pw-ob-info-h:first-child { margin-top: 0; }
+
+.pw-ob-info-h3 {
+  margin: 10px 0 4px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #0055ff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Opsommingen in het infoblok ---------- */
+.pw-ob-info-list {
+  margin: 6px 0 10px 20px;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #1a1a1a;
+}
+.pw-ob-info-list li {
+  margin-bottom: 4px;
+}
+.pw-ob-info-list li:last-child { margin-bottom: 0; }

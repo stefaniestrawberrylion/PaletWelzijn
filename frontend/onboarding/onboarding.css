@@ -182,10 +182,9 @@ html, body {
     overflow-y: auto;
     border-radius: 8px;
     padding-bottom: 20px;
-    margin-bottom: 16px; /* RUIMTE TUSSEN KAARTEN EN FOOTER */
+    margin-bottom: 16px;
 }
 
-/* De aparte weergaves */
 .pw-ob-view {
     display: none;
     opacity: 0;
@@ -213,9 +212,8 @@ html, body {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 15px;
-    /* align-items: start; <-- DEZE IS WEGGEHAALD ZODAT KAARTEN NIET IN ELKAAR SCHUIVEN */
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
 }
 
 .pw-ob-step {
@@ -224,7 +222,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    height: 100%; /* Zorgt dat ze allemaal even hoog zijn */
+    height: 100%;
 }
 
 /* Halte op de route */
@@ -259,7 +257,7 @@ html, body {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    padding: 16px; /* Iets ruimer dan de vorige, zodat de knop er goed in past */
+    padding: 14px;
     background: #ffffff;
     border: 2px solid var(--pw-line);
     border-radius: var(--pw-radius);
@@ -271,10 +269,10 @@ html, body {
 
 .pw-ob-card img {
     width: 100%;
-    height: 100px;
+    height: 90px;
     object-fit: cover;
     border-radius: 6px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     background-color: #f0f0f0;
 }
 
@@ -282,10 +280,10 @@ html, body {
 .pw-ob-step.is-done .pw-ob-label { color: var(--pw-green); }
 .pw-ob-step.is-current .pw-ob-label { color: var(--pw-navy); }
 
-.pw-ob-card h3 { margin: 0 0 6px 0; font-family: var(--pw-font-head); font-weight: 800; font-size: 15px; line-height: 1.2; color: var(--pw-navy); }
-.pw-ob-card p.pw-ob-text { margin: 0; font-size: 13px; color: var(--pw-muted); line-height: 1.4; }
+.pw-ob-card h3 { margin: 0 0 6px 0; font-family: var(--pw-font-head); font-weight: 800; font-size: 14px; line-height: 1.2; color: var(--pw-navy); }
+.pw-ob-card p.pw-ob-text { margin: 0; font-size: 12px; color: var(--pw-muted); line-height: 1.4; }
 
-.pw-ob-action { margin-top: auto; padding-top: 15px; } /* Zorgt dat de knop onderaan de kaart staat */
+.pw-ob-action { margin-top: auto; padding-top: 14px; }
 
 /* =========================================================
    KNOPPEN
@@ -297,14 +295,14 @@ html, body {
     justify-content: center;
     gap: 6px;
     width: 100%;
-    min-height: 38px;
+    min-height: 36px;
     padding: 0 12px;
     border: 0;
     border-radius: 6px;
     background: var(--pw-navy);
     color: #ffffff !important;
     font-family: var(--pw-font-body);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
@@ -322,7 +320,7 @@ html, body {
 .pw-onboarding a.pw-ob-linkbtn,
 .pw-onboarding .pw-ob-linkbtn {
     padding: 4px 0;
-    min-height: 38px;
+    min-height: 36px;
     border: 0;
     background: none;
     color: var(--pw-navy);
@@ -339,7 +337,7 @@ html, body {
 .pw-onboarding a.pw-ob-linkbtn:hover,
 .pw-onboarding .pw-ob-linkbtn:hover { color: var(--pw-green); }
 
-.pw-ob-locked { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0; min-height: 38px; font-size: 12px; font-weight: 700; color: var(--pw-muted); }
+.pw-ob-locked { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0; min-height: 36px; font-size: 12px; font-weight: 700; color: var(--pw-muted); }
 .pw-ob-locked svg { width: 14px; height: 14px; }
 
 /* ---------- Praatplaat ---------- */
@@ -392,15 +390,13 @@ html, body {
 .pw-ob-noscript { font-size: 14px; color: var(--pw-muted); }
 
 /* ---------- Tablet ---------- */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .pw-onboarding { padding: 16px; width: 100%; margin-top: 0; border-radius: 0; }
-    .pw-ob-steps { grid-template-columns: 1fr; gap: 12px; }
-    .pw-ob-step { flex-direction: row; align-items: stretch; gap: 12px; }
-    .pw-ob-stop { width: 40px; height: 40px; font-size: 16px; align-self: flex-start; }
-    .pw-ob-card { flex-direction: row; align-items: center; gap: 12px; padding: 12px; }
-    .pw-ob-card img { width: 80px; height: 60px; margin-bottom: 0; flex-shrink: 0; }
-    .pw-ob-card-content { display: flex; flex-direction: column; flex: 1; }
-    .pw-ob-action { width: 140px; flex-shrink: 0; }
+    .pw-ob-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+}
+
+@media (max-width: 900px) {
+    .pw-ob-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ---------- Telefoon ---------- */
@@ -409,15 +405,23 @@ html, body {
     .menu-toggle { display: block; }
     .hero { height: 15vh; min-height: 120px; }
     .pw-onboarding { padding: 12px; }
+    .pw-ob-steps { grid-template-columns: 1fr; gap: 12px; }
+    .pw-ob-step { flex-direction: row; align-items: stretch; gap: 12px; }
+    .pw-ob-stop { width: 40px; height: 40px; font-size: 16px; align-self: flex-start; }
+    .pw-ob-card { flex-direction: row; align-items: center; gap: 12px; padding: 12px; }
+    .pw-ob-card img { width: 80px; height: 60px; margin-bottom: 0; flex-shrink: 0; }
+    .pw-ob-card-content { display: flex; flex-direction: column; flex: 1; }
+    .pw-ob-action { width: 140px; flex-shrink: 0; }
+    .pw-ob-help { flex-direction: column; align-items: flex-start; padding: 12px; }
+    .pw-ob-reset-wrap { text-align: left; }
+    .pw-ob-viewswitch { width: 100%; justify-content: center; align-self: stretch; }
+    .pw-ob-viewbtn { flex: 1; justify-content: center; }
+}
+
+@media (max-width: 480px) {
     .pw-ob-card { flex-direction: column; align-items: stretch; }
     .pw-ob-card img { width: 100%; height: 100px; }
     .pw-ob-card p.pw-ob-text { display: none; }
     .pw-ob-stop { width: 36px; height: 36px; font-size: 14px; border-width: 2px; }
     .pw-ob-action { width: 100%; }
-    
-    .pw-ob-help { flex-direction: column; align-items: flex-start; padding: 12px; }
-    .pw-ob-reset-wrap { text-align: left; }
-
-    .pw-ob-viewswitch { width: 100%; justify-content: center; align-self: stretch; }
-    .pw-ob-viewbtn { flex: 1; justify-content: center; }
 }
