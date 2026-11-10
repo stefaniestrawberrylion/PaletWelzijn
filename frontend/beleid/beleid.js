@@ -332,7 +332,6 @@
 
       tasks: [
         "Ik heb de checklist doorlopen (kennismaking, VOG, overeenkomst, afspraken)",
-        "Ik heb mijn gratis VOG aangevraagd en laten zien aan mijn contactpersoon",
         "Ik heb mijn vrijwilligersovereenkomst ingevuld en ondertekend",
         "Ik weet dat ik altijd in gesprek kan over wat bij mij past",
         "Ik weet hoe ik Palet Welzijn kan bereiken voor vragen of aanmeldingen"
