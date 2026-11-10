@@ -366,8 +366,10 @@
   try { welkomGezien = window.localStorage.getItem(WELKOM_KEY) === "1"; } catch (e) {}
   if (!welkomGezien) openWelkom();
 
-  /* ---------- Afronden modal ---------- */
+    /* ---------- Afronden modal ---------- */
   var lastFocused = null;
+  var finishGrid = document.querySelector(".pw-ob-finish-grid");
+  var lockOverlay = document.getElementById("pw-ob-finish-lock-overlay");
 
   function openModal() {
     if (!modalEl) return;
@@ -375,12 +377,15 @@
     modalEl.hidden = false;
     document.body.style.overflow = "hidden";
 
-    // Reset naar block 1
+    // Reset naar beginstaat
+    if (finishGrid) finishGrid.style.display = ""; // Toon de 2 blokken weer
     if (block1) block1.classList.remove("pw-ob-finish-block--hidden");
-    if (block2) block2.classList.add("pw-ob-finish-block--hidden");
+    if (block2) block2.classList.add("is-locked"); // Doe blok 2 op slot
+    if (lockOverlay) lockOverlay.style.display = "flex"; // Toon slot
     if (block3) block3.classList.add("pw-ob-finish-block--hidden");
     if (check1) check1.checked = false;
     if (modalX) modalX.style.display = "";
+    if (contactForm) contactForm.reset();
 
     setTimeout(function () {
       var firstBtn = modalEl.querySelector(".pw-ob-finish-btn--outline, .pw-ob-modal-btn");
@@ -409,22 +414,23 @@
     });
   }
 
-  // Block 1 → block 2
+  // Blok 1 afvinken → Blok 2 ontgrendelen
   if (check1) {
     check1.addEventListener("change", function () {
       if (check1.checked) {
-        block2.classList.remove("pw-ob-finish-block--hidden");
+        if (block2) block2.classList.remove("is-locked");
+        if (lockOverlay) lockOverlay.style.display = "none";
         setTimeout(function () {
-          block2.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          if (block2) block2.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }, 80);
       } else {
-        block2.classList.add("pw-ob-finish-block--hidden");
-        block3.classList.add("pw-ob-finish-block--hidden");
+        if (block2) block2.classList.add("is-locked");
+        if (lockOverlay) lockOverlay.style.display = "flex";
       }
     });
   }
 
-  // Block 2 → block 3 (felicitatie)
+  // Formulier versturen → Felicitatie tonen
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -432,11 +438,11 @@
         contactForm.reportValidity();
         return;
       }
-      // Placeholder: hier zou een fetch naar een backend komen
-      if (block1) block1.classList.add("pw-ob-finish-block--hidden");
-      if (block2) block2.classList.add("pw-ob-finish-block--hidden");
+      // Verberg de 2 blokken en toon de felicitatie
+      if (finishGrid) finishGrid.style.display = "none";
       if (block3) block3.classList.remove("pw-ob-finish-block--hidden");
       if (modalX) modalX.style.display = "none";
+      
       setTimeout(function () {
         var c = block3.querySelector(".pw-ob-modal-btn");
         if (c) c.focus();
@@ -444,12 +450,10 @@
     });
   }
 
-  // Praatplaat CTA → open modal
+  // CTA knoppen → open modal
   if (praatplaatCta) {
     praatplaatCta.addEventListener("click", function () { openModal(); });
   }
-
-  // Route CTA → open modal (NIEUW)
   if (routeCta) {
     routeCta.addEventListener("click", function () { openModal(); });
   }
