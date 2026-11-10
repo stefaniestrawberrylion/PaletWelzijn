@@ -766,20 +766,40 @@
   }
 
   /* ---------- Navigatie ---------- */
-  function setActive(id) {
-    var targetIndex = STEPS.findIndex(function (s) { return s.id === id; });
-    if (targetIndex < 0) return;
-    if (statusOf(targetIndex) === "locked") return;
-    activeId = id;
-    renderRail();
-    renderPanel();
-    panelEl.focus({ preventScroll: true });
-    panelEl.scrollIntoView({
-      behavior: (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ? "auto" : "smooth",
-      block: "nearest"
-    });
-    if (history.replaceState) history.replaceState(null, "", "#" + id);
+  /* ---------- Navigatie ---------- */
+function setActive(id) {
+  var targetIndex = STEPS.findIndex(function (s) { return s.id === id; });
+  if (targetIndex < 0) return;
+  if (statusOf(targetIndex) === "locked") return;
+  activeId = id;
+  renderRail();
+  renderPanel();
+
+  panelEl.focus({ preventScroll: true });
+
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var behavior = reduceMotion ? "auto" : "smooth";
+
+  // Scroll het panel zelf naar boven (voor als het panel interne scroll heeft)
+  if (panelEl.scrollTo) {
+    panelEl.scrollTo({ top: 0, behavior: behavior });
+  } else {
+    panelEl.scrollTop = 0;
   }
+
+  // Scroll het venster naar de bovenkant van het panel,
+  // rekening houdend met de hoogte van de navbar (anders verdwijnt de titel erachter).
+  var navbar = document.querySelector(".navbar");
+  var navH = navbar ? navbar.getBoundingClientRect().height : 0;
+  var top = panelEl.getBoundingClientRect().top + window.pageYOffset - navH - 12;
+
+  if (top < 0) top = 0;
+
+  window.scrollTo({ top: top, behavior: behavior });
+
+  if (history.replaceState) history.replaceState(null, "", "#" + id);
+}
 
   /* ---------- Modal ---------- */
   var lastFocused = null;
