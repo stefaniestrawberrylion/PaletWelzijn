@@ -1,6 +1,6 @@
 /* =========================================================
    Palet Welzijn – Onboarding "Jouw route als vrijwilliger"
-   6 stappen naast elkaar
+   6 kaarten + voltooiing zichtbaar + inschrijf-flow
    ========================================================= */
 (function () {
   "use strict";
@@ -71,28 +71,16 @@
       color: "#0055ff",
       link: "../beleid/beleid.html",
       tasks: ["Ik heb een kennismakingsgesprek gehad", "Ik heb mijn VOG aangevraagd", "Ik heb mijn overeenkomst ingevuld", "Ik heb het contactformulier verstuurd"]
-    },
-    {
-      id: "aanmelding",
-      title: "Tot slot – samen maken we het verschil!",
-      text: "Je officiële aanmelding en samen maken we het verschil.",
-      img: "../../assets/aanmelding.png",
-      alt: "Aanmelding",
-      icon: "fa-solid fa-flag-checkered",
-      color: "#0F766E",
-      link: "../beleid/beleid.html",
-      tasks: ["Ik heb de checklist doorlopen", "Ik weet dat ik altijd in gesprek kan over wat bij mij past"]
     }
   ];
 
-  var STORAGE_KEY = "pw-onboarding-v6";
+  var STORAGE_KEY = "pw-onboarding-v7";
   var VIEW_KEY = "pw-onboarding-view";
   var BELEID_URL = "../beleid/beleid.html";
 
-  /* ---------- Elementen ---------- */
   var root = document.querySelector(".pw-onboarding");
   if (!root) return;
-  
+
   var listEl = root.querySelector("#pw-ob-steps");
   var routeEl = root.querySelector("#pw-ob-route");
   var trackEl = root.querySelector("#pw-ob-track");
@@ -114,11 +102,11 @@
       if (raw) {
         var parsed = JSON.parse(raw);
         if (parsed && typeof parsed === "object") {
-          return { checked: parsed.checked || {}, quiz: parsed.quiz || {} };
+          return { checked: parsed.checked || {}, quiz: parsed.quiz || {}, enrolled: parsed.enrolled === true };
         }
       }
     } catch (e) {}
-    return { checked: {}, quiz: {} };
+    return { checked: {}, quiz: {}, enrolled: false };
   }
   function saveState() {
     try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
@@ -133,17 +121,16 @@
     return step.tasks.map(function (_, i) { return arr[i] === true; });
   }
   function isDone(step) { return checkedFor(step).every(Boolean); }
-  
+
   function currentIndex() {
     for (var i = 0; i < STEPS.length; i++) {
       if (!isDone(STEPS[i])) return i;
     }
     return STEPS.length;
   }
-  
+
   function statusOf(index) {
     var cur = currentIndex();
-    // Als alles klaar is, is ALLES done
     if (cur >= STEPS.length) return "done";
     if (index < cur) return "done";
     if (index === cur) return "current";
@@ -224,9 +211,8 @@
       card.appendChild(content);
 
       var action = el("div", "pw-ob-action");
-      
+
       if (allDone) {
-        // Alles is klaar: toon overal "Opnieuw bekijken"
         var again = el("a", "pw-ob-linkbtn", "Opnieuw bekijken");
         again.href = BELEID_URL + "#" + step.id;
         action.appendChild(again);
@@ -250,19 +236,23 @@
       listEl.appendChild(li);
     });
 
-    // Als alles klaar is, voeg een mooie afsluitende banner toe
+    /* ---------- VOLTOOIING ZICHTBAAR MAKEN ---------- */
     if (allDone) {
       var banner = el("li", "pw-ob-finished-banner");
-      var bannerContent = el("div", "pw-ob-finished-content");
-      bannerContent.appendChild(el("h3", null, "🎉 Je bent helemaal klaar!"));
-      bannerContent.appendChild(el("p", null, "Je hebt alle stappen doorlopen en alle controle-vragen goed beantwoord. Je kunt je nu officieel aanmelden als vrijwilliger bij Palet Welzijn."));
-      
-      var bannerBtn = el("a", "pw-ob-btn", "Meld je nu aan");
-      bannerBtn.href = "../onboarding/onboarding.html";
+      banner.appendChild(el("h3", null, "🎉 Je bent helemaal klaar!"));
+      banner.appendChild(el("p", null, "Je hebt alle 6 stappen doorlopen. Je kunt je nu officieel aanmelden als vrijwilliger bij Palet Welzijn."));
+
+      var bannerBtn = el("button", "pw-ob-btn", state.enrolled ? "Bekijk je felicitatie" : "Schrijf je in");
+      bannerBtn.type = "button";
       bannerBtn.appendChild(svg(ICON_ARROW));
-      bannerContent.appendChild(bannerBtn);
-      
-      banner.appendChild(bannerContent);
+      bannerBtn.addEventListener("click", function () {
+        if (state.enrolled) {
+          showSlide(4);
+        } else {
+          showSlide(3);
+        }
+      });
+      banner.appendChild(bannerBtn);
       listEl.appendChild(banner);
     }
 
@@ -282,7 +272,6 @@
 
   function positionTrack(cur) {
     if (!viewRouteEl.classList.contains("is-active")) return;
-
     var stops = listEl.querySelectorAll(".pw-ob-stop");
     if (stops.length < 2) return;
     var base = routeEl.getBoundingClientRect();
@@ -321,23 +310,19 @@
     node.style.height = height + "px";
   }
 
-  /* ---------- View switch (route ↔ praatplaat) ---------- */
+  /* ---------- View switch ---------- */
   function setView(view) {
     var isRoute = view === "route";
-    
     viewRouteEl.classList.toggle("is-active", isRoute);
     viewPraatplaatEl.classList.toggle("is-active", !isRoute);
-
     viewBtns.forEach(function (b) {
       var active = b.dataset.view === view;
       b.classList.toggle("is-active", active);
       b.setAttribute("aria-pressed", active ? "true" : "false");
     });
-
     if (isRoute) {
       setTimeout(function () { positionTrack(currentIndex()); }, 50);
     }
-
     try { window.localStorage.setItem(VIEW_KEY, view); } catch (e) {}
   }
 
@@ -350,9 +335,10 @@
     if (savedView === "praatplaat") setView("praatplaat");
   } catch (e) {}
 
-  /* ---------- Overige ---------- */
+  /* ---------- Reset ---------- */
   resetEl.addEventListener("click", function () {
-    state = { checked: {}, quiz: {} };
+    if (!window.confirm("Weet je zeker dat je alle voortgang wilt wissen?")) return;
+    state = { checked: {}, quiz: {}, enrolled: false };
     saveState();
     renderSteps();
   });
@@ -366,21 +352,28 @@
 
   renderSteps();
 
-
-    /* ---------- Welkomst-dia Slideshow ---------- */
+  /* =========================================================
+     Welkomst-dia Slideshow + inschrijf-flow
+     ========================================================= */
   var welcomeEl = document.getElementById("pw-welcome");
   var slide1 = document.getElementById("pw-slide-1");
   var slide2 = document.getElementById("pw-slide-2");
+  var slide3 = document.getElementById("pw-slide-3");
+  var slide4 = document.getElementById("pw-slide-4");
   var btnNext = document.getElementById("pw-slide-next");
   var welcomeStartBtn = document.getElementById("pw-welcome-start");
   var welcomePlaatBtn = document.getElementById("pw-welcome-plaat");
+  var contactBtn = document.getElementById("pw-slide-contact");
+  var closeFinalBtn = document.getElementById("pw-welcome-close-final");
 
-  function showWelcome() {
+  var allSlides = [slide1, slide2, slide3, slide4];
+
+  function showSlide(n) {
+    allSlides.forEach(function (s, i) {
+      if (!s) return;
+      s.classList.toggle("is-active", i === n - 1);
+    });
     if (!welcomeEl) return;
-    // Zorg dat we altijd op dia 1 beginnen
-    if(slide1) slide1.classList.add("is-active");
-    if(slide2) slide2.classList.remove("is-active");
-    
     welcomeEl.classList.add("is-visible");
     document.body.style.overflow = "hidden";
   }
@@ -391,32 +384,28 @@
     document.body.style.overflow = "";
   }
 
-  // Toon de dia ALTIJD bij het laden van de pagina
-  showWelcome();
-
-  // Knop "Volgende" (van dia 1 naar dia 2)
-  if (btnNext) {
-    btnNext.addEventListener("click", function () {
-      slide1.classList.remove("is-active");
-      slide2.classList.add("is-active");
-    });
+  // Toon dia 1 bij laden (alleen als niet eerder enrolled)
+  if (!state.enrolled) {
+    showSlide(1);
   }
 
-  // Knop "Ga verder naar de stappen" (sluit dia, start route)
+  if (btnNext) {
+    btnNext.addEventListener("click", function () { showSlide(2); });
+  }
+
   if (welcomeStartBtn) {
     welcomeStartBtn.addEventListener("click", function () {
       hideWelcome();
       setView("route");
       var firstStep = listEl.querySelector(".pw-ob-step.is-current");
       if (firstStep) {
-        setTimeout(function() {
-            firstStep.scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(function () {
+          firstStep.scrollIntoView({ behavior: "smooth", block: "center" });
         }, 300);
       }
     });
   }
 
-  // Knop "Bekijk de praatplaat" (sluit dia, start praatplaat)
   if (welcomePlaatBtn) {
     welcomePlaatBtn.addEventListener("click", function () {
       hideWelcome();
@@ -424,10 +413,46 @@
     });
   }
 
-  // Sluiten met Escape (optioneel: sluit de dia zonder iets te kiezen)
+  /* ---------- Inschrijf-flow: bestanden -> contactformulier -> WOEHOEEE ---------- */
+  if (contactBtn) {
+    // Als er op "Naar het contactformulier" wordt geklikt, markeer als enrolled
+    // en toon daarna de felicitatie-dia.
+    contactBtn.addEventListener("click", function (e) {
+      // Laat de link gewoon werken (opent contactformulier in nieuw tabblad)
+      // maar markeer ook als enrolled en toon de felicitatie na een korte vertraging.
+      state.enrolled = true;
+      saveState();
+      // Open het contactformulier in een nieuw tabblad (optioneel)
+      // e.preventDefault(); window.open(contactBtn.href, "_blank");
+      // Toon daarna dia 4
+      setTimeout(function () { showSlide(4); }, 400);
+    });
+  }
+
+  if (closeFinalBtn) {
+    closeFinalBtn.addEventListener("click", function () {
+      hideWelcome();
+      setView("route");
+      // Scroll naar de banner
+      var banner = listEl.querySelector(".pw-ob-finished-banner");
+      if (banner) {
+        setTimeout(function () {
+          banner.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 200);
+      }
+    });
+  }
+
+  // Escape sluit de dia
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && welcomeEl && welcomeEl.classList.contains("is-visible")) {
       hideWelcome();
     }
   });
+
+  // Als de pagina wordt herladen en enrolled === true, toon dan meteen de felicitatie
+  if (state.enrolled) {
+    showSlide(4);
+  }
+
 })();
