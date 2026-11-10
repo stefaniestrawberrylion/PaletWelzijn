@@ -233,7 +233,7 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    width: 90%;
+    width: 95%;
 }
 .pw-ob-section {
     background: #FBFCFD;
