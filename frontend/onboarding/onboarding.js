@@ -308,14 +308,18 @@
       : "Je bent bij stap " + (cur + 1) + "!";
   }
 
-  function positionTrack(cur) {
+    function positionTrack(cur) {
     if (!viewRouteEl.classList.contains("is-active")) return;
     var stops = listEl.querySelectorAll(".pw-ob-stop");
     if (stops.length < 2) return;
     var base = routeEl.getBoundingClientRect();
     var first = stops[0].getBoundingClientRect();
     var last = stops[stops.length - 1].getBoundingClientRect();
-    var target = stops[Math.min(cur, stops.length - 1)].getBoundingClientRect();
+    
+    // Als alle stappen klaar zijn, laat de lijn dan helemaal tot het einde lopen
+    var allDone = cur >= STEPS.length;
+    var target = allDone ? last : stops[Math.min(cur, stops.length - 1)].getBoundingClientRect();
+    
     var vertical = Math.abs(last.top - first.top) > Math.abs(last.left - first.left);
     var size = 8;
 
@@ -341,6 +345,7 @@
       trackFillEl.style.top = y + "px";
     }
   }
+  
   function setBox(node, left, top, width, height) {
     node.style.left = left + "px";
     node.style.top = top + "px";

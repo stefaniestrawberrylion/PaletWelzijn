@@ -811,3 +811,55 @@ html, body {
 .pw-onboarding {
     background: linear-gradient(180deg, #FFFFFF 0%, #FDFAF6 100%);
 }
+
+/* ---------- Actieblokken onder de kaarten ---------- */
+.pw-ob-end-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 2px dashed var(--border-kleur);
+    animation: pwFadeIn 0.5s ease;
+}
+
+.pw-ob-end-card {
+    background: #F7F9FB;
+    border: 1px solid #E8EDF2;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pw-ob-end-card h3 {
+    margin: 0;
+    font-family: var(--pw-font-head);
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--pw-navy);
+}
+
+.pw-ob-end-card p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--pw-text-licht);
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.pw-ob-end-card .pw-ob-btn {
+    align-self: flex-start;
+    width: auto;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .pw-ob-end-actions {
+        grid-template-columns: 1fr;
+    }
+    .pw-ob-end-card .pw-ob-btn {
+        width: 100%;
+    }
+}
