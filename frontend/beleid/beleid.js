@@ -28,40 +28,8 @@
       link: "../onboarding/onboarding.html",
 
      body: [
-  { type: "p", text: "Wat fijn dat je je als vrijwilliger wilt inzetten voor Palet Welzijn! Met jouw tijd, aandacht en betrokkenheid maak je écht verschil in het leven van anderen. Soms zit dat verschil in iets kleins: een gezellig gesprek, samen een kop koffie drinken, een wandeling maken of iemand de ruimte geven om even op adem te komen. Jij bent onmisbaar!" },
-  { type: "p", text: "Op deze pagina vind je alle informatie die je nodig hebt om goed van start te gaan. Je leest wie we zijn, wat je van ons mag verwachten en wat wij belangrijk vinden in onze samenwerking. We hopen dat je met plezier aan de slag gaat en je snel thuis voelt bij Palet Welzijn." },
-
-  { type: "h", text: "Onze droom" },
-  { type: "p", text: "'Een samenleving waar we met oprechte belangstelling naar elkaar omkijken en ieder op eigen-wijze invulling kan geven aan zijn leven.'" },
-  { type: "p", text: "Palet Welzijn zet zich in voor een wereld waarin iedereen de hoogst mogelijke kwaliteit van leven ervaart en waarin zorg en welzijn elkaar versterken. Of iemand nu thuis woont of in een woonzorglocatie verblijft: wij dragen bij aan het welzijn van mensen door sociale netwerken te versterken, mensen actief te houden en professionele zorg waar mogelijk uit te stellen. We zijn een organisatie zonder winstoogmerk en werken samen met maatschappelijke organisaties en gemeenten." },
-
-  { type: "h", text: "Onze missie en visie" },
-  { type: "p", text: "Vanuit onze droom zetten we ons dagelijks in om mensen met elkaar te verbinden, hun sociale netwerk te vergroten en ervoor te zorgen dat iedereen zoveel mogelijk mee kan blijven doen in de samenleving. We geloven dat oprechte aandacht, betrokkenheid en kleine momenten van betekenis grote waarde hebben voor iemands welzijn. Samen maken we het verschil!" },
-
-  { type: "h", text: "Wat is een vrijwilliger?" },
-  { type: "p", text: "Een vrijwilliger is iemand die zich vanuit eigen motivatie inzet voor een ander of voor de samenleving, zonder daarvoor een financiële vergoeding te ontvangen. Vrijwilligerswerk bij Palet Welzijn:" },
-  { type: "list", items: [
-    "Doe je uit vrije wil.",
-    "Is onbetaald.",
-    "Vindt plaats binnen een georganiseerde omgeving.",
-    "Heeft een maatschappelijk doel."
-  ]},
-  { type: "p", text: "Bij Palet Welzijn zijn meer dan 1.300 vrijwilligers actief: in de wijk, op woonzorglocaties en binnen verschillende onderdelen van het sociaal domein in Midden-Holland. Als vrijwilliger ben je een belangrijk gezicht van Palet Welzijn. Met jouw houding, aandacht en manier van omgaan met anderen draag je bij aan hoe mensen onze organisatie ervaren." },
-
-  { type: "h", text: "Verschillende soorten vrijwilligers en rollen" },
-  { type: "p", text: "Er zijn veel verschillende mogelijkheden om vrijwilligerswerk te doen. Hieronder vind je een aantal voorbeelden." },
-
-  { type: "h3", text: "Vrijwilliger Thuis" },
-  { type: "p", text: "Als Vrijwilliger Thuis bezoek je iemand in de eigen woonomgeving. Je biedt gezelschap en ondersteuning, zodat bijvoorbeeld een mantelzorger even tijd voor zichzelf heeft. Denk aan samen een kop koffie drinken, een gesprek voeren, samen iets ondernemen of gezelschap bieden zodat de mantelzorger even weg kan. Jouw aanwezigheid kan ervoor zorgen dat een mantelzorger even kan ontspannen, boodschappen kan doen of iets leuks kan ondernemen." },
-
-  { type: "h3", text: "Activiteitenvrijwilliger" },
-  { type: "p", text: "Als activiteitenvrijwilliger help je bij het organiseren en begeleiden van activiteiten en evenementen. Je kunt bijvoorbeeld helpen met klaarzetten en opruimen, bewoners naar een activiteit brengen en ophalen, koffie en thee verzorgen, deelnemers enthousiast maken en begeleiden, of individuele activiteiten ondernemen zoals wandelen, voorlezen, koffiedrinken of een handmassage geven. Je kunt zowel bij groepsactiviteiten als bij persoonlijke één-op-één activiteiten worden ingezet." },
-
-  { type: "h3", text: "Projectvrijwilliger" },
-  { type: "p", text: "Als projectvrijwilliger help je mee aan een tijdelijk project. Een project heeft een duidelijk begin en einde. Hierdoor weet je vooraf wat er van je wordt verwacht en voor welke periode je je inzet. Voorbeelden zijn een wandelgroep in de zomer, tuinonderhoud in het voor- en naseizoen, creatieve activiteiten voor een markt, het bezoeken van voetbalwedstrijden of de rolstoelvierdaagse." },
-
-  { type: "h3", text: "Overige vrijwilligersrollen" },
-  { type: "p", text: "Er zijn nog veel meer mogelijkheden. Denk bijvoorbeeld aan gastvrouw of gastheer in een wijkcentrum of woonzorglocatie, chauffeur voor seniorenvervoer, ondersteuning achter de bar of in een wijkrestaurant, of het afleggen van preventieve huisbezoeken bij ouderen. Er is veel mogelijk. Samen kijken we welke rol bij jou, jouw interesses en jouw mogelijkheden past." }
+  { type: "p", text: "Wat fijn dat je je als vrijwilliger wilt inzetten voor Palet Welzijn! Met jouw tijd en aandacht maak je écht verschil. Jij bent onmisbaar." },
+  { type: "p", text: "Palet Welzijn gelooft in een samenleving waarin we met oprechte belangstelling naar elkaar omkijken. We versterken sociale netwerken, houden mensen actief en stellen professionele zorg waar mogelijk uit. Samen maken we het verschil!" }
 ],
 
       tasks: [
