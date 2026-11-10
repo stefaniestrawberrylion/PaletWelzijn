@@ -370,7 +370,7 @@
     }
   ];
 
-  var STORAGE_KEY = "pw-onboarding-v6";
+  var STORAGE_KEY = "pw-onboarding-v7";
 
   var root = document.querySelector(".pw-onboarding");
   if (!root) return;
