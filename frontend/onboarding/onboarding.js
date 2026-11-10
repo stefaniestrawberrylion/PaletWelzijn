@@ -1,5 +1,6 @@
 /* =========================================================
    Palet Welzijn – Onboarding "Jouw route als vrijwilliger"
+   6 stappen naast elkaar
    ========================================================= */
 (function () {
   "use strict";
@@ -61,25 +62,26 @@
       tasks: ["Ik weet bij wie ik terechtkan als er iets gebeurt", "Ik ken de vertrouwenslijn: 088 - 144 02 00", "Ik weet dat ik verzekerd ben"]
     },
     {
-      id: "checklist",
-      title: "Checklist: je start bij Palet Welzijn",
-      text: "Je contactpersoon, je VOG, je overeenkomst en het contactformulier.",
-      img: "../../assets/start.png",
-      alt: "Checklist",
-      icon: "fa-regular fa-file-lines",
-      color: "#0055ff",
+      id: "aanmelding",
+      title: "Aanmelding & tot slot",
+      text: "Je officiële aanmelding en samen maken we het verschil.",
+      img: "../../assets/aanmelding.png",
+      alt: "Aanmelding",
+      icon: "fa-solid fa-flag-checkered",
+      color: "#0F766E",
       link: "../beleid/beleid.html",
-      tasks: ["Ik heb een kennismakingsgesprek gehad", "Ik heb mijn VOG aangevraagd", "Ik heb mijn overeenkomst ingevuld", "Ik heb het contactformulier verstuurd"]
+      tasks: ["Ik heb de checklist doorlopen", "Ik weet dat ik altijd in gesprek kan over wat bij mij past"]
     }
   ];
 
-  var STORAGE_KEY = "pw-onboarding-v7";
+  var STORAGE_KEY = "pw-onboarding-v4";
   var VIEW_KEY = "pw-onboarding-view";
   var BELEID_URL = "../beleid/beleid.html";
 
+  /* ---------- Elementen ---------- */
   var root = document.querySelector(".pw-onboarding");
   if (!root) return;
-
+  
   var listEl = root.querySelector("#pw-ob-steps");
   var routeEl = root.querySelector("#pw-ob-route");
   var trackEl = root.querySelector("#pw-ob-track");
@@ -94,8 +96,6 @@
   var viewPraatplaatEl = root.querySelector("#pw-ob-view-praatplaat");
   var viewBtns = root.querySelectorAll(".pw-ob-viewbtn");
 
-  var endActionsEl = document.getElementById("pw-ob-end-actions");
-
   /* ---------- Opslag ---------- */
   function loadState() {
     try {
@@ -103,11 +103,11 @@
       if (raw) {
         var parsed = JSON.parse(raw);
         if (parsed && typeof parsed === "object") {
-          return { checked: parsed.checked || {}, quiz: parsed.quiz || {}, enrolled: parsed.enrolled === true };
+          return { checked: parsed.checked || {}, quiz: parsed.quiz || {} };
         }
       }
     } catch (e) {}
-    return { checked: {}, quiz: {}, enrolled: false };
+    return { checked: {}, quiz: {} };
   }
   function saveState() {
     try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
@@ -122,17 +122,14 @@
     return step.tasks.map(function (_, i) { return arr[i] === true; });
   }
   function isDone(step) { return checkedFor(step).every(Boolean); }
-
   function currentIndex() {
     for (var i = 0; i < STEPS.length; i++) {
       if (!isDone(STEPS[i])) return i;
     }
     return STEPS.length;
   }
-
   function statusOf(index) {
     var cur = currentIndex();
-    if (cur >= STEPS.length) return "done";
     if (index < cur) return "done";
     if (index === cur) return "current";
     return "locked";
@@ -169,43 +166,10 @@
   var ICON_ARROW = '<path d="M5 12h14M13 6l6 6-6 6"/>';
   var ICON_LOCK = '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>';
 
-  /* =========================================================
-     WELKOM-DIA ELEMENTEN
-     ========================================================= */
-  var welcomeEl = document.getElementById("pw-welcome");
-  var slide1 = document.getElementById("pw-slide-1");
-  var slide2 = document.getElementById("pw-slide-2");
-  var slide3 = document.getElementById("pw-slide-3");
-  var slide4 = document.getElementById("pw-slide-4");
-  var btnNext = document.getElementById("pw-slide-next");
-  var welcomeStartBtn = document.getElementById("pw-welcome-start");
-  var welcomePlaatBtn = document.getElementById("pw-welcome-plaat");
-  var contactBtn = document.getElementById("pw-slide-contact");
-  var closeFinalBtn = document.getElementById("pw-welcome-close-final");
-
-  var allSlides = [slide1, slide2, slide3, slide4];
-
-  function showSlide(n) {
-    allSlides.forEach(function (s, i) {
-      if (!s) return;
-      s.classList.toggle("is-active", i === n - 1);
-    });
-    if (!welcomeEl) return;
-    welcomeEl.classList.add("is-visible");
-    document.body.style.overflow = "hidden";
-  }
-
-  function hideWelcome() {
-    if (!welcomeEl) return;
-    welcomeEl.classList.remove("is-visible");
-    document.body.style.overflow = "";
-  }
-
   /* ---------- Kaarten tekenen ---------- */
   function renderSteps() {
     listEl.textContent = "";
     var cur = currentIndex();
-    var allDone = cur >= STEPS.length;
 
     STEPS.forEach(function (step, i) {
       var status = statusOf(i);
@@ -237,6 +201,7 @@
       var labelText = "Stap " + (i + 1);
       if (status === "done") labelText += " · Voltooid";
       if (status === "current") labelText += " · Hier ben je";
+      if (i === STEPS.length - 1 && status !== "done") labelText += " · Finish";
 
       content.appendChild(el("p", "pw-ob-label", labelText));
       content.appendChild(el("h3", null, step.title));
@@ -244,20 +209,15 @@
       card.appendChild(content);
 
       var action = el("div", "pw-ob-action");
-
-      if (allDone) {
-        var again = el("a", "pw-ob-linkbtn", "Opnieuw bekijken");
-        again.href = BELEID_URL + "#" + step.id;
-        action.appendChild(again);
-      } else if (status === "current") {
+      if (status === "current") {
         var btn = el("a", "pw-ob-btn", "Ga verder");
         btn.href = BELEID_URL + "#" + step.id;
         btn.appendChild(svg(ICON_ARROW));
         action.appendChild(btn);
       } else if (status === "done") {
-        var again2 = el("a", "pw-ob-linkbtn", "Opnieuw bekijken");
-        again2.href = BELEID_URL + "#" + step.id;
-        action.appendChild(again2);
+        var again = el("a", "pw-ob-linkbtn", "Opnieuw bekijken");
+        again.href = BELEID_URL + "#" + step.id;
+        action.appendChild(again);
       } else {
         var locked = el("p", "pw-ob-locked");
         locked.appendChild(svg(ICON_LOCK));
@@ -268,15 +228,6 @@
       li.appendChild(card);
       listEl.appendChild(li);
     });
-
-    // TOON/VERBERG DE ACTIEBLOKKEN (Bestanden & Formulier)
-    if (endActionsEl) {
-      if (allDone && !state.enrolled) {
-        endActionsEl.style.display = "grid";
-      } else {
-        endActionsEl.style.display = "none";
-      }
-    }
 
     renderStatus(cur);
     positionTrack(cur);
@@ -294,15 +245,13 @@
 
   function positionTrack(cur) {
     if (!viewRouteEl.classList.contains("is-active")) return;
+
     var stops = listEl.querySelectorAll(".pw-ob-stop");
     if (stops.length < 2) return;
     var base = routeEl.getBoundingClientRect();
     var first = stops[0].getBoundingClientRect();
     var last = stops[stops.length - 1].getBoundingClientRect();
-    
-    var allDone = cur >= STEPS.length;
-    var target = allDone ? last : stops[Math.min(cur, stops.length - 1)].getBoundingClientRect();
-    
+    var target = stops[Math.min(cur, stops.length - 1)].getBoundingClientRect();
     var vertical = Math.abs(last.top - first.top) > Math.abs(last.left - first.left);
     var size = 8;
 
@@ -335,19 +284,23 @@
     node.style.height = height + "px";
   }
 
-  /* ---------- View switch ---------- */
+  /* ---------- View switch (route ↔ praatplaat) ---------- */
   function setView(view) {
     var isRoute = view === "route";
+    
     viewRouteEl.classList.toggle("is-active", isRoute);
     viewPraatplaatEl.classList.toggle("is-active", !isRoute);
+
     viewBtns.forEach(function (b) {
       var active = b.dataset.view === view;
       b.classList.toggle("is-active", active);
       b.setAttribute("aria-pressed", active ? "true" : "false");
     });
+
     if (isRoute) {
       setTimeout(function () { positionTrack(currentIndex()); }, 50);
     }
+
     try { window.localStorage.setItem(VIEW_KEY, view); } catch (e) {}
   }
 
@@ -360,14 +313,11 @@
     if (savedView === "praatplaat") setView("praatplaat");
   } catch (e) {}
 
-  /* ---------- Reset ---------- */
+  /* ---------- Overige ---------- */
   resetEl.addEventListener("click", function () {
-    if (!window.confirm("Weet je zeker dat je alle voortgang wilt wissen?")) return;
-    state = { checked: {}, quiz: {}, enrolled: false };
+    state = { checked: {}, quiz: {} };
     saveState();
     renderSteps();
-    // Verwijder de hash uit de URL bij reset
-    if (history.replaceState) history.replaceState(null, "", window.location.pathname);
   });
 
   var resizeTimer;
@@ -377,98 +327,5 @@
   });
   window.addEventListener("load", function () { positionTrack(currentIndex()); });
 
-  /* =========================================================
-     WELKOM-DIA: knoppen koppelen
-     ========================================================= */
-  if (btnNext) {
-    btnNext.addEventListener("click", function () { showSlide(2); });
-  }
-
-  if (welcomeStartBtn) {
-    welcomeStartBtn.addEventListener("click", function () {
-      hideWelcome();
-      setView("route");
-      // Verwijder #start uit de URL zodat een herlaad de dia niet opent
-      if (history.replaceState) history.replaceState(null, "", window.location.pathname);
-      
-      var firstStep = listEl.querySelector(".pw-ob-step.is-current");
-      if (firstStep) {
-        setTimeout(function () {
-          firstStep.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 300);
-      }
-    });
-  }
-
-  if (welcomePlaatBtn) {
-    welcomePlaatBtn.addEventListener("click", function () {
-      hideWelcome();
-      setView("praatplaat");
-      if (history.replaceState) history.replaceState(null, "", window.location.pathname);
-    });
-  }
-
-  /* ---------- Inschrijf-flow ---------- */
-  // 1. De knop in dia 3
-  if (contactBtn) {
-    contactBtn.addEventListener("click", function (e) {
-      state.enrolled = true;
-      saveState();
-      setTimeout(function () { showSlide(4); }, 400);
-    });
-  }
-
-  // 2. De nieuwe knop onder de kaarten
-  var endContactBtn = document.querySelector(".pw-ob-end-card a[href*='contactformulier']");
-  if (endContactBtn) {
-    endContactBtn.addEventListener("click", function (e) {
-      state.enrolled = true;
-      saveState();
-      setTimeout(function () { showSlide(4); }, 400);
-    });
-  }
-
-  if (closeFinalBtn) {
-    closeFinalBtn.addEventListener("click", function () {
-      hideWelcome();
-      setView("route");
-      renderSteps(); // Update de weergave (verberg de actieblokken)
-      
-      // Verwijder #gefeliciteerd uit de URL
-      if (history.replaceState) history.replaceState(null, "", window.location.pathname);
-      
-      var banner = listEl.querySelector(".pw-ob-finished-banner");
-      if (banner) {
-        setTimeout(function () {
-          banner.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 200);
-      }
-    });
-  }
-
-  // Escape sluit de dia
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && welcomeEl && welcomeEl.classList.contains("is-visible")) {
-      hideWelcome();
-      if (history.replaceState) history.replaceState(null, "", window.location.pathname);
-    }
-  });
-
-  /* =========================================================
-     INITIALISATIE: Alleen dia's tonen op basis van de URL (hash)
-     ========================================================= */
   renderSteps();
-
-  // Kijk naar de URL (bijv. onboarding.html#start of #gefeliciteerd)
-  var hash = window.location.hash;
-
-  if (hash === "#start") {
-    // Als er op de navbar is geklikt -> Toon Welcome Dia
-    showSlide(1);
-  } else if (hash === "#gefeliciteerd") {
-    // Als er op Afronden is geklikt in Beleid -> Toon Felicitatie Dia
-    showSlide(4);
-  } 
-  // Anders: doe helemaal niks. De dia's blijven verborgen en je ziet alleen de kaarten.
-
 })();
