@@ -328,4 +328,65 @@
   window.addEventListener("load", function () { positionTrack(currentIndex()); });
 
   renderSteps();
+
+
+    /* ---------- Welkomst-dia ---------- */
+  var welcomeEl = document.getElementById("pw-welcome");
+  var welcomeStartBtn = document.getElementById("pw-welcome-start");
+  var welcomePlaatBtn = document.getElementById("pw-welcome-plaat");
+  var WELCOME_KEY = "pw-onboarding-welcome-seen";
+
+  function showWelcome() {
+    if (!welcomeEl) return;
+    welcomeEl.classList.add("is-visible");
+    document.body.style.overflow = "hidden";
+    // Focus op de eerste knop voor toegankelijkheid
+    setTimeout(function () {
+      if (welcomeStartBtn) welcomeStartBtn.focus();
+    }, 100);
+  }
+
+  function hideWelcome() {
+    if (!welcomeEl) return;
+    welcomeEl.classList.remove("is-visible");
+    document.body.style.overflow = "";
+  }
+
+  function markWelcomeSeen() {
+    try { window.localStorage.setItem(WELCOME_KEY, "1"); } catch (e) {}
+  }
+
+  // Toon de dia bij eerste bezoek (of als hij nog niet gezien is)
+  var welcomeSeen = false;
+  try { welcomeSeen = window.localStorage.getItem(WELCOME_KEY) === "1"; } catch (e) {}
+  if (!welcomeSeen) showWelcome();
+
+  if (welcomeStartBtn) {
+    welcomeStartBtn.addEventListener("click", function () {
+      markWelcomeSeen();
+      hideWelcome();
+      setView("route");
+      // Scroll naar de eerste stap
+      var firstStep = listEl.querySelector(".pw-ob-step.is-current");
+      if (firstStep) {
+        firstStep.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  }
+
+  if (welcomePlaatBtn) {
+    welcomePlaatBtn.addEventListener("click", function () {
+      markWelcomeSeen();
+      hideWelcome();
+      setView("praatplaat");
+    });
+  }
+
+  // Sluiten met Escape
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && welcomeEl && welcomeEl.classList.contains("is-visible")) {
+      markWelcomeSeen();
+      hideWelcome();
+    }
+  });
 })();
