@@ -1,6 +1,6 @@
 /* =========================================================
-   Palet Welzijn – Onboarding "Jouw route als vrijwilliger"
-   5 stappen · welkom-overlay · afronden met 2 blocks
+   Palet Welzijn - Onboarding
+   5 stappen, welkom-overlay, upload, confetti
    ========================================================= */
 (function () {
   "use strict";
@@ -8,7 +8,7 @@
   var STEPS = [
     {
       id: "welkom",
-      title: "Welkom – fijn dat je er bent!",
+      title: "Welkom - fijn dat je er bent!",
       text: "Maak kennis met Palet Welzijn en wat jij als vrijwilliger betekent.",
       img: "../../assets/welkom.png",
       alt: "Welkom",
@@ -45,7 +45,7 @@
       link: "../beleid/beleid.html",
       tasks: [
         "Ik ken de gedragscode",
-        "Wat ik over cliënten hoor, blijft geheim — ook na mijn vrijwilligerswerk",
+        "Wat ik over clienten hoor, blijft geheim - ook na mijn vrijwilligerswerk",
         "Ik doe geen medische of verpleegkundige handelingen"
       ]
     },
@@ -82,7 +82,7 @@
     }
   ];
 
-  var STORAGE_KEY = "pw-onboarding-v7";
+  var STORAGE_KEY = "pw-onboarding-v8";
   var VIEW_KEY = "pw-onboarding-view";
   var WELKOM_KEY = "pw-welkom-gezien";
   var BELEID_URL = "../beleid/beleid.html";
@@ -103,21 +103,29 @@
   var viewRouteEl = root.querySelector("#pw-ob-view-route");
   var viewPraatplaatEl = root.querySelector("#pw-ob-view-praatplaat");
   var viewBtns = root.querySelectorAll(".pw-ob-viewbtn");
-  
-  // CTA knoppen voor beide weergaven
+
   var praatplaatCta = root.querySelector("#pw-ob-praatplaat-cta");
-  var routeCta = root.querySelector("#pw-ob-route-cta"); 
+  var routeCta = root.querySelector("#pw-ob-route-cta");
+  var praatplaatCtaWrap = root.querySelector("#pw-ob-praatplaat-cta-wrap");
+  var routeCtaWrap = root.querySelector("#pw-ob-route-cta-wrap");
 
   var welkomEl = document.getElementById("pw-welkom");
   var welkomStartBtns = welkomEl ? welkomEl.querySelectorAll("[data-start]") : [];
 
   var modalEl = document.getElementById("pw-ob-modal");
   var modalX = document.getElementById("pw-ob-modal-x");
+  var finishGrid = document.getElementById("pw-ob-finish-grid");
   var block1 = document.getElementById("pw-ob-finish-block1");
   var block2 = document.getElementById("pw-ob-finish-block2");
   var block3 = document.getElementById("pw-ob-finish-block3");
-  var check1 = document.getElementById("pw-ob-finish-check1");
+  var lockOverlay = document.getElementById("pw-ob-finish-lock-overlay");
   var contactForm = document.getElementById("pw-ob-contactform");
+
+  var uploadBox = document.getElementById("pw-ob-upload-box");
+  var uploadInput = document.getElementById("pw-ob-upload");
+  var uploadStatus = document.getElementById("pw-ob-upload-status");
+
+  var confettiCanvas = document.getElementById("pw-ob-confetti");
 
   /* ---------- Opslag ---------- */
   function loadState() {
@@ -212,22 +220,28 @@
 
       var card = el("article", "pw-ob-card");
 
-      // Banner-afbeelding boven titel
       var banner = el("div", "pw-ob-card-banner");
       var img = el("img");
       img.src = step.img;
       img.alt = step.alt;
       img.loading = "lazy";
-      img.onerror = function () { this.style.display = "none"; };
+      img.onerror = function () {
+        this.style.display = "none";
+        if (!banner.querySelector(".pw-ob-card-banner-fallback")) {
+          var fb = el("div", "pw-ob-card-banner-fallback");
+          fb.appendChild(icon(step.icon));
+          banner.appendChild(fb);
+        }
+      };
       banner.appendChild(img);
       card.appendChild(banner);
 
       var content = el("div", "pw-ob-card-content");
 
       var labelText = "Stap " + (i + 1);
-      if (status === "done") labelText += " · Voltooid";
-      if (status === "current") labelText += " · Hier ben je";
-      if (i === STEPS.length - 1 && status !== "done") labelText += " · Finish";
+      if (status === "done") labelText += " - Voltooid";
+      if (status === "current") labelText += " - Hier ben je";
+      if (i === STEPS.length - 1 && status !== "done") labelText += " - Finish";
 
       content.appendChild(el("p", "pw-ob-label", labelText));
       content.appendChild(el("h3", null, step.title));
@@ -256,6 +270,7 @@
     });
 
     renderStatus(cur);
+    updateCtaVisibility(cur);
     positionTrack(cur);
   }
 
@@ -268,6 +283,12 @@
     badgeEl.textContent = cur >= STEPS.length
       ? "Klaar voor je eerste dag!"
       : "Je bent bij stap " + (cur + 1) + "!";
+  }
+
+  function updateCtaVisibility(cur) {
+    var allDone = cur >= STEPS.length;
+    if (routeCtaWrap) routeCtaWrap.style.display = allDone ? "" : "none";
+    if (praatplaatCtaWrap) praatplaatCtaWrap.style.display = allDone ? "" : "none";
   }
 
   function positionTrack(cur) {
@@ -337,7 +358,7 @@
     if (savedView === "praatplaat") setView("praatplaat");
   } catch (e) {}
 
-  /* ---------- Welkom overlay (eenmalig per bezoeker) ---------- */
+  /* ---------- Welkom overlay ---------- */
   function openWelkom() {
     if (!welkomEl) return;
     welkomEl.hidden = false;
@@ -351,11 +372,8 @@
     document.body.style.overflow = "";
     try { window.localStorage.setItem(WELKOM_KEY, "1"); } catch (e) {}
 
-    if (startView === "visueel") {
-      setView("praatplaat");
-    } else if (startView === "tekstueel") {
-      setView("route");
-    }
+    if (startView === "visueel") setView("praatplaat");
+    else if (startView === "tekstueel") setView("route");
   }
 
   welkomStartBtns.forEach(function (b) {
@@ -366,29 +384,35 @@
   try { welkomGezien = window.localStorage.getItem(WELKOM_KEY) === "1"; } catch (e) {}
   if (!welkomGezien) openWelkom();
 
-    /* ---------- Afronden modal ---------- */
+  /* ---------- Modal ---------- */
   var lastFocused = null;
-  var finishGrid = document.querySelector(".pw-ob-finish-grid");
-  var lockOverlay = document.getElementById("pw-ob-finish-lock-overlay");
+
+  function resetModalState() {
+    if (finishGrid) finishGrid.style.display = "";
+    if (block1) block1.classList.remove("pw-ob-finish-block--hidden");
+    if (block2) block2.classList.add("is-locked");
+    if (lockOverlay) lockOverlay.style.display = "flex";
+    if (block3) block3.classList.add("pw-ob-finish-block--hidden");
+    if (modalX) modalX.style.display = "";
+    if (contactForm) contactForm.reset();
+    if (uploadInput) uploadInput.value = "";
+    if (uploadBox) uploadBox.classList.remove("has-file", "is-dragover");
+    if (uploadStatus) {
+      uploadStatus.textContent = "";
+      uploadStatus.className = "pw-ob-upload-status";
+    }
+    stopConfetti();
+  }
 
   function openModal() {
     if (!modalEl) return;
     lastFocused = document.activeElement;
+    resetModalState();
     modalEl.hidden = false;
     document.body.style.overflow = "hidden";
 
-    // Reset naar beginstaat
-    if (finishGrid) finishGrid.style.display = ""; // Toon de 2 blokken weer
-    if (block1) block1.classList.remove("pw-ob-finish-block--hidden");
-    if (block2) block2.classList.add("is-locked"); // Doe blok 2 op slot
-    if (lockOverlay) lockOverlay.style.display = "flex"; // Toon slot
-    if (block3) block3.classList.add("pw-ob-finish-block--hidden");
-    if (check1) check1.checked = false;
-    if (modalX) modalX.style.display = "";
-    if (contactForm) contactForm.reset();
-
     setTimeout(function () {
-      var firstBtn = modalEl.querySelector(".pw-ob-finish-btn--outline, .pw-ob-modal-btn");
+      var firstBtn = modalEl.querySelector(".pw-ob-finish-btn--outline");
       if (firstBtn) firstBtn.focus();
     }, 50);
 
@@ -400,6 +424,7 @@
     modalEl.hidden = true;
     document.body.style.overflow = "";
     document.removeEventListener("keydown", onModalKeydown);
+    stopConfetti();
     if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
   }
 
@@ -414,23 +439,68 @@
     });
   }
 
-  // Blok 1 afvinken → Blok 2 ontgrendelen
-  if (check1) {
-    check1.addEventListener("change", function () {
-      if (check1.checked) {
-        if (block2) block2.classList.remove("is-locked");
-        if (lockOverlay) lockOverlay.style.display = "none";
-        setTimeout(function () {
-          if (block2) block2.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        }, 80);
-      } else {
-        if (block2) block2.classList.add("is-locked");
-        if (lockOverlay) lockOverlay.style.display = "flex";
+  /* ---------- Upload van ondertekende overeenkomst ---------- */
+  function isPdf(file) {
+    if (!file) return false;
+    var name = (file.name || "").toLowerCase();
+    return file.type === "application/pdf" || name.endsWith(".pdf");
+  }
+
+  function handleUpload(file) {
+    if (!uploadStatus || !block2 || !lockOverlay) return;
+    if (!file) {
+      uploadStatus.textContent = "Geen bestand gekozen.";
+      uploadStatus.className = "pw-ob-upload-status is-err";
+      return;
+    }
+    if (!isPdf(file)) {
+      uploadStatus.textContent = "Alleen PDF-bestanden zijn toegestaan.";
+      uploadStatus.className = "pw-ob-upload-status is-err";
+      if (uploadBox) uploadBox.classList.remove("has-file");
+      block2.classList.add("is-locked");
+      lockOverlay.style.display = "flex";
+      return;
+    }
+    var kb = Math.round(file.size / 1024);
+    uploadStatus.textContent = "Bestand geupload: " + file.name + " (" + kb + " KB). Je kunt nu het formulier invullen.";
+    uploadStatus.className = "pw-ob-upload-status is-ok";
+    if (uploadBox) uploadBox.classList.add("has-file");
+    block2.classList.remove("is-locked");
+    lockOverlay.style.display = "none";
+    setTimeout(function () {
+      if (block2) block2.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 80);
+  }
+
+  if (uploadInput) {
+    uploadInput.addEventListener("change", function () {
+      handleUpload(uploadInput.files && uploadInput.files[0]);
+    });
+  }
+
+  if (uploadBox) {
+    ["dragenter", "dragover"].forEach(function (evt) {
+      uploadBox.addEventListener(evt, function (e) {
+        e.preventDefault();
+        uploadBox.classList.add("is-dragover");
+      });
+    });
+    ["dragleave", "drop"].forEach(function (evt) {
+      uploadBox.addEventListener(evt, function (e) {
+        e.preventDefault();
+        uploadBox.classList.remove("is-dragover");
+      });
+    });
+    uploadBox.addEventListener("drop", function (e) {
+      var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (f && uploadInput) {
+        uploadInput.files = e.dataTransfer.files;
+        handleUpload(f);
       }
     });
   }
 
-  // Formulier versturen → Felicitatie tonen
+  /* ---------- Formulier versturen -> confetti ---------- */
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -438,24 +508,133 @@
         contactForm.reportValidity();
         return;
       }
-      // Verberg de 2 blokken en toon de felicitatie
       if (finishGrid) finishGrid.style.display = "none";
       if (block3) block3.classList.remove("pw-ob-finish-block--hidden");
       if (modalX) modalX.style.display = "none";
-      
+
       setTimeout(function () {
         var c = block3.querySelector(".pw-ob-modal-btn");
         if (c) c.focus();
-      }, 80);
+        startConfetti(6000);
+      }, 100);
     });
   }
 
-  // CTA knoppen → open modal
-  if (praatplaatCta) {
-    praatplaatCta.addEventListener("click", function () { openModal(); });
+  /* ---------- CTA knoppen ---------- */
+  if (praatplaatCta) praatplaatCta.addEventListener("click", openModal);
+  if (routeCta) routeCta.addEventListener("click", openModal);
+
+  /* ---------- Confetti ---------- */
+  var confettiRAF = null;
+  var confettiStopTimer = null;
+
+  function stopConfetti() {
+    if (confettiRAF) { cancelAnimationFrame(confettiRAF); confettiRAF = null; }
+    if (confettiStopTimer) { clearTimeout(confettiStopTimer); confettiStopTimer = null; }
+    if (confettiCanvas) {
+      var ctx = confettiCanvas.getContext("2d");
+      if (ctx) ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    }
   }
-  if (routeCta) {
-    routeCta.addEventListener("click", function () { openModal(); });
+
+  function startConfetti(duration) {
+    if (!confettiCanvas) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    stopConfetti();
+
+    var ctx = confettiCanvas.getContext("2d");
+    var box = confettiCanvas.parentElement;
+
+    function size() {
+      var rect = box.getBoundingClientRect();
+      var dpr = window.devicePixelRatio || 1;
+      confettiCanvas.width = Math.max(1, Math.floor(rect.width * dpr));
+      confettiCanvas.height = Math.max(1, Math.floor(rect.height * dpr));
+      confettiCanvas.style.width = rect.width + "px";
+      confettiCanvas.style.height = rect.height + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    size();
+
+    var W = function () { return confettiCanvas.width / (window.devicePixelRatio || 1); };
+    var H = function () { return confettiCanvas.height / (window.devicePixelRatio || 1); };
+
+    var colors = ["#120a5c", "#008241", "#0055ff", "#4d88ff", "#F2C230", "#ffffff"];
+    var pieces = [];
+    var spawnEnd = Math.min(duration - 1500, 4000);
+    var start = performance.now();
+
+    function spawn() {
+      var w = W();
+      pieces.push({
+        x: Math.random() * w,
+        y: -10 - Math.random() * 40,
+        vx: (Math.random() - 0.5) * 60,
+        vy: 60 + Math.random() * 120,
+        size: 5 + Math.random() * 6,
+        rot: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 10,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        sway: Math.random() * Math.PI * 2,
+        swaySpeed: 1 + Math.random() * 2,
+        shape: Math.random() < 0.5 ? "rect" : "strip"
+      });
+    }
+
+    var last = start;
+    function frame(now) {
+      var elapsed = now - start;
+      var dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+
+      if (elapsed < spawnEnd) {
+        for (var i = 0; i < 3; i++) spawn();
+      }
+
+      var w = W();
+      var h = H();
+      ctx.clearRect(0, 0, w, h);
+
+      for (var p = pieces.length - 1; p >= 0; p--) {
+        var it = pieces[p];
+        it.sway += it.swaySpeed * dt;
+        it.vx += Math.sin(it.sway) * 20 * dt;
+        it.vy += 90 * dt;
+        it.x += it.vx * dt;
+        it.y += it.vy * dt;
+        it.rot += it.vr * dt;
+
+        if (it.y > h + 20) { pieces.splice(p, 1); continue; }
+
+        ctx.save();
+        ctx.translate(it.x, it.y);
+        ctx.rotate(it.rot);
+        ctx.fillStyle = it.color;
+        if (it.shape === "rect") {
+          ctx.fillRect(-it.size / 2, -it.size / 2, it.size, it.size * 0.6);
+        } else {
+          ctx.fillRect(-it.size / 2, -it.size / 4, it.size, it.size * 0.35);
+        }
+        ctx.restore();
+      }
+
+      if (elapsed < duration || pieces.length > 0) {
+        confettiRAF = requestAnimationFrame(frame);
+      } else {
+        ctx.clearRect(0, 0, w, h);
+        confettiRAF = null;
+      }
+    }
+
+    confettiRAF = requestAnimationFrame(frame);
+    confettiStopTimer = setTimeout(function () {
+      if (confettiRAF) { cancelAnimationFrame(confettiRAF); confettiRAF = null; }
+      if (confettiCanvas) {
+        var cx = confettiCanvas.getContext("2d");
+        if (cx) cx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      }
+    }, duration + 100);
   }
 
   /* ---------- Reset ---------- */

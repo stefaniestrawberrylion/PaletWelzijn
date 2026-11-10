@@ -72,8 +72,8 @@
                         <div class="pw-ob-track-fill" id="pw-ob-track-fill"></div>
                         <ol class="pw-ob-steps" id="pw-ob-steps"></ol>
                     </div>
-                    <!-- NIEUW: CTA knop voor de route -->
-                    <div class="pw-ob-praatplaat-cta" style="margin-top: 24px;">
+                    <!-- CTA verschijnt pas als alle stappen klaar zijn -->
+                    <div class="pw-ob-praatplaat-cta" id="pw-ob-route-cta-wrap" style="margin-top: 24px; display: none;">
                         <button type="button" class="pw-ob-btn pw-ob-btn--cta" id="pw-ob-route-cta">
                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             Ga direct naar overeenkomst &amp; contactformulier
@@ -84,9 +84,9 @@
                 <div class="pw-ob-view pw-ob-view--praatplaat" id="pw-ob-view-praatplaat">
                     <figure class="pw-ob-praatplaat">
                         <img src="../../assets/praatplaat.png" alt="Visuele praatplaat van de onboarding route van Palet Welzijn" loading="lazy">
-                        <figcaption>Bekijk de route als plaat — sleep of scroll om alles te zien.</figcaption>
+                        <figcaption>Bekijk de route als plaat. Sleep of scroll om alles te zien.</figcaption>
                     </figure>
-                    <div class="pw-ob-praatplaat-cta">
+                    <div class="pw-ob-praatplaat-cta" id="pw-ob-praatplaat-cta-wrap" style="display: none;">
                         <button type="button" class="pw-ob-btn pw-ob-btn--cta" id="pw-ob-praatplaat-cta">
                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                             Ga direct naar overeenkomst &amp; contactformulier
@@ -113,15 +113,17 @@
         </section>
     </div>
 
-    <!-- ========== WELKOM OVERLAY (eenmalig per bezoeker) ========== -->
+    <!-- ========== WELKOM OVERLAY ========== -->
     <div class="pw-welkom" id="pw-welkom" role="dialog" aria-modal="true" aria-labelledby="pw-welkom-title" hidden>
         <div class="pw-welkom-backdrop"></div>
         <div class="pw-welkom-box">
-            <div class="pw-welkom-emoji" aria-hidden="true">👋</div>
+            <div class="pw-welkom-emoji" aria-hidden="true">
+                <i class="fa-regular fa-hand"></i>
+            </div>
             <h2 class="pw-welkom-title" id="pw-welkom-title">Welkom bij Palet Welzijn!</h2>
             <div class="pw-welkom-text">
                 <p>Wat fijn dat je je als vrijwilliger wilt inzetten voor Palet Welzijn!</p>
-                <p>Met jouw tijd, aandacht en betrokkenheid maak je écht verschil in het leven van anderen. Soms zit dat verschil in iets kleins: een gezellig gesprek, samen een kop koffie drinken, een wandeling maken of iemand de ruimte geven om even op adem te komen.</p>
+                <p>Met jouw tijd, aandacht en betrokkenheid maak je echt verschil in het leven van anderen. Soms zit dat verschil in iets kleins: een gezellig gesprek, samen een kop koffie drinken, een wandeling maken of iemand de ruimte geven om even op adem te komen.</p>
                 <p><strong>Jij bent onmisbaar!</strong></p>
                 <p>Op deze pagina vind je alle informatie die je nodig hebt om goed van start te gaan als vrijwilliger bij Palet Welzijn. Je leest wie we zijn, wat je van ons mag verwachten en wat wij belangrijk vinden in onze samenwerking.</p>
                 <p>We hopen dat je met plezier aan de slag gaat en je snel thuis voelt bij Palet Welzijn.</p>
@@ -140,20 +142,20 @@
         </div>
     </div>
 
-       <!-- ========== AFRONDEN MODAL (2 blocks + felicitatie) ========== -->
+    <!-- ========== AFRONDEN MODAL ========== -->
     <div class="pw-ob-modal" id="pw-ob-modal" role="dialog" aria-modal="true" aria-labelledby="pw-ob-modal-title" hidden>
       <div class="pw-ob-modal-backdrop" data-close="true"></div>
       <div class="pw-ob-modal-box pw-ob-modal-box--wide">
 
-        <div class="pw-ob-finish-grid">
-            <!-- Block 1: overeenkomst -->
+        <div class="pw-ob-finish-grid" id="pw-ob-finish-grid">
+            <!-- Block 1: overeenkomst lezen + uploaden -->
             <div class="pw-ob-finish-block" id="pw-ob-finish-block1">
                 <div class="pw-ob-finish-icon pw-ob-finish-icon--doc" aria-hidden="true">
                     <i class="fa-solid fa-file-signature"></i>
                 </div>
-                <h3 class="pw-ob-finish-title">1. Bestanden inzien</h3>
+                <h3 class="pw-ob-finish-title">1. Overeenkomst lezen en uploaden</h3>
                 <p class="pw-ob-finish-text">
-                    Lees de vrijwilligersovereenkomst aandachtig door. Je kunt het document openen en downloaden.
+                    Open de vrijwilligersovereenkomst, lees hem door, onderteken hem en upload het ondertekende bestand hieronder.
                 </p>
                 <div class="pw-ob-finish-actions">
                     <a href="../../assets/vrijwilligersovereenkomst-formulier-2026.pdf" target="_blank" rel="noopener" class="pw-ob-finish-btn pw-ob-finish-btn--outline">
@@ -161,18 +163,23 @@
                         Open overeenkomst (PDF)
                     </a>
                 </div>
-                <label class="pw-ob-finish-check">
-                    <input type="checkbox" id="pw-ob-finish-check1">
-                    <span>Ik heb de overeenkomst gelezen</span>
+
+                <label class="pw-ob-upload" id="pw-ob-upload-box" for="pw-ob-upload">
+                    <span class="pw-ob-upload-icon" aria-hidden="true">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </span>
+                    <span class="pw-ob-upload-title">Upload ondertekende overeenkomst</span>
+                    <span class="pw-ob-upload-sub">Klik om een PDF te kiezen of sleep het bestand hierheen</span>
+                    <input type="file" id="pw-ob-upload" accept="application/pdf,.pdf" hidden>
                 </label>
+                <p class="pw-ob-upload-status" id="pw-ob-upload-status" aria-live="polite"></p>
             </div>
 
-            <!-- Block 2: contactformulier (vergrendeld tot block 1 klaar is) -->
+            <!-- Block 2: contactformulier (vergrendeld tot upload klaar is) -->
             <div class="pw-ob-finish-block is-locked" id="pw-ob-finish-block2">
-                <!-- Overlay voor als hij op slot zit -->
                 <div class="pw-ob-finish-lock-overlay" id="pw-ob-finish-lock-overlay">
-                    <i class="fa-solid fa-lock"></i>
-                    <span>Rond eerst stap 1 af</span>
+                    <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                    <span>Upload eerst de ondertekende overeenkomst</span>
                 </div>
 
                 <div class="pw-ob-finish-icon pw-ob-finish-icon--form" aria-hidden="true">
@@ -183,32 +190,42 @@
                     Vul je gegevens in. We nemen daarna contact met je op.
                 </p>
                 <form class="pw-ob-contactform" id="pw-ob-contactform" novalidate>
-                    <div class="pw-ob-form-grid">
-                        <label class="pw-ob-field">
-                            <span>Voornaam</span>
-                            <input type="text" name="voornaam" required autocomplete="given-name">
-                        </label>
-                        <label class="pw-ob-field">
-                            <span>Achternaam</span>
-                            <input type="text" name="achternaam" required autocomplete="family-name">
-                        </label>
-                        <label class="pw-ob-field">
-                            <span>Leeftijd</span>
-                            <input type="number" name="leeftijd" min="16" max="120" required>
-                        </label>
-                        <label class="pw-ob-field">
-                            <span>Woonplaats</span>
-                            <input type="text" name="woonplaats" required autocomplete="address-level2">
-                        </label>
-                        <label class="pw-ob-field pw-ob-field--full">
-                            <span>E-mailadres</span>
-                            <input type="email" name="email" required autocomplete="email">
-                        </label>
-                        <label class="pw-ob-field pw-ob-field--full">
-                            <span>Telefoonnummer</span>
-                            <input type="tel" name="telefoon" required autocomplete="tel">
-                        </label>
-                    </div>
+                    <fieldset class="pw-ob-form-section">
+                        <legend class="pw-ob-form-legend">Persoonsgegevens</legend>
+                        <div class="pw-ob-form-grid">
+                            <label class="pw-ob-field">
+                                <span>Voornaam</span>
+                                <input type="text" name="voornaam" required autocomplete="given-name">
+                            </label>
+                            <label class="pw-ob-field">
+                                <span>Achternaam</span>
+                                <input type="text" name="achternaam" required autocomplete="family-name">
+                            </label>
+                            <label class="pw-ob-field">
+                                <span>Leeftijd</span>
+                                <input type="number" name="leeftijd" min="16" max="120" required>
+                            </label>
+                            <label class="pw-ob-field">
+                                <span>Woonplaats</span>
+                                <input type="text" name="woonplaats" required autocomplete="address-level2">
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="pw-ob-form-section">
+                        <legend class="pw-ob-form-legend">Contactgegevens</legend>
+                        <div class="pw-ob-form-grid">
+                            <label class="pw-ob-field pw-ob-field--full">
+                                <span>E-mailadres</span>
+                                <input type="email" name="email" required autocomplete="email">
+                            </label>
+                            <label class="pw-ob-field pw-ob-field--full">
+                                <span>Telefoonnummer</span>
+                                <input type="tel" name="telefoon" required autocomplete="tel">
+                            </label>
+                        </div>
+                    </fieldset>
+
                     <button type="submit" class="pw-ob-finish-btn pw-ob-finish-btn--primary">
                         <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
                         Verstuur aanmelding
@@ -217,26 +234,30 @@
             </div>
         </div>
 
-        <!-- Felicitatie (verschijnt na versturen, verbergt de grid) -->
-        <div class="pw-ob-finish-block pw-ob-finish-block--hidden pw-ob-finish-block--celebrate" id="pw-ob-finish-block3" style="margin-top: 20px;">
-            <div class="pw-ob-modal-emoji" aria-hidden="true">🎉</div>
-            <h2 class="pw-ob-modal-title" id="pw-ob-modal-title">Woehoe! Gefeliciteerd!</h2>
-            <p class="pw-ob-modal-text">
-                Je hebt alle stappen gelezen, alle controle-vragen goed beantwoord en je aanmelding verstuurd.
-                Je bent nu helemaal klaar om je officieel in te schrijven als vrijwilliger bij Palet Welzijn.
-            </p>
-            <div class="pw-ob-modal-actions">
-                <a href="../onboarding/onboarding.html" class="pw-ob-modal-btn pw-ob-modal-btn--primary">
-                    <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
-                    Schrijf je in
-                </a>
-                <button type="button" class="pw-ob-modal-btn pw-ob-modal-btn--ghost" data-close="true">
-                    Sluiten
-                </button>
+        <!-- Felicitatie + confetti -->
+        <div class="pw-ob-finish-block pw-ob-finish-block--hidden pw-ob-finish-block--celebrate" id="pw-ob-finish-block3">
+            <canvas class="pw-ob-confetti" id="pw-ob-confetti" aria-hidden="true"></canvas>
+            <div class="pw-ob-celebrate-content">
+                <h2 class="pw-ob-modal-title" id="pw-ob-modal-title">Woehoe! Gefeliciteerd!</h2>
+                <p class="pw-ob-modal-text">
+                    Je hebt alle stappen gelezen, de overeenkomst ondertekend en je gegevens ingevuld.
+                    Je bent helemaal klaar om je officieel in te schrijven als vrijwilliger bij Palet Welzijn.
+                </p>
+                <p class="pw-ob-modal-text pw-ob-modal-text--small">
+                    Samen maken we het verschil. We zijn blij met je!
+                </p>
+                <div class="pw-ob-modal-actions">
+                    <a href="../onboarding/onboarding.html" class="pw-ob-modal-btn pw-ob-modal-btn--primary">
+                        <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+                        Schrijf je in
+                    </a>
+                    <button type="button" class="pw-ob-modal-btn pw-ob-modal-btn--ghost" data-close="true">
+                        Sluiten
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Sluitknop voor de modal -->
         <button type="button" class="pw-ob-modal-x" id="pw-ob-modal-x" aria-label="Sluiten" data-close="true">
             <i class="fa-solid fa-xmark" aria-hidden="true"></i>
         </button>
