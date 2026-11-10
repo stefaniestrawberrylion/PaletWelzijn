@@ -337,11 +337,10 @@
   var btnNext = document.getElementById("pw-slide-next");
   var welcomeStartBtn = document.getElementById("pw-welcome-start");
   var welcomePlaatBtn = document.getElementById("pw-welcome-plaat");
-  var WELCOME_KEY = "pw-onboarding-welcome-seen";
 
   function showWelcome() {
     if (!welcomeEl) return;
-    // Reset naar dia 1 als we opnieuw starten
+    // Zorg dat we altijd op dia 1 beginnen
     if(slide1) slide1.classList.add("is-active");
     if(slide2) slide2.classList.remove("is-active");
     
@@ -355,14 +354,8 @@
     document.body.style.overflow = "";
   }
 
-  function markWelcomeSeen() {
-    try { window.localStorage.setItem(WELCOME_KEY, "1"); } catch (e) {}
-  }
-
-  // Toon de dia bij eerste bezoek
-  var welcomeSeen = false;
-  try { welcomeSeen = window.localStorage.getItem(WELCOME_KEY) === "1"; } catch (e) {}
-  if (!welcomeSeen) showWelcome();
+  // Toon de dia ALTIJD bij het laden van de pagina
+  showWelcome();
 
   // Knop "Volgende" (van dia 1 naar dia 2)
   if (btnNext) {
@@ -375,14 +368,13 @@
   // Knop "Ga verder naar de stappen" (sluit dia, start route)
   if (welcomeStartBtn) {
     welcomeStartBtn.addEventListener("click", function () {
-      markWelcomeSeen();
       hideWelcome();
       setView("route");
       var firstStep = listEl.querySelector(".pw-ob-step.is-current");
       if (firstStep) {
         setTimeout(function() {
             firstStep.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 300); // Wacht tot de fade-out animatie klaar is
+        }, 300);
       }
     });
   }
@@ -390,16 +382,14 @@
   // Knop "Bekijk de praatplaat" (sluit dia, start praatplaat)
   if (welcomePlaatBtn) {
     welcomePlaatBtn.addEventListener("click", function () {
-      markWelcomeSeen();
       hideWelcome();
       setView("praatplaat");
     });
   }
 
-  // Sluiten met Escape
+  // Sluiten met Escape (optioneel: sluit de dia zonder iets te kiezen)
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && welcomeEl && welcomeEl.classList.contains("is-visible")) {
-      markWelcomeSeen();
       hideWelcome();
     }
   });
