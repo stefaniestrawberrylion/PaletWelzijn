@@ -701,21 +701,3 @@ html, body {
 }
 
 
-/* =========================================================
-   PRAATPLAAT-MODUS: statusblok verbergen + CTA centraal onder de plaat
-   (alleen actief als .pw-onboarding de class .is-praatplaat heeft)
-   ========================================================= */
-.pw-onboarding.is-praatplaat .pw-ob-status--header {
-    display: none;
-}
-
-/* Header niet meer uitlijnen op het verdwenen statusblok */
-.pw-onboarding.is-praatplaat .pw-ob-header {
-    align-items: flex-start;
-}
-
-/* CTA binnen de praatplaat netjes gecentreerd onder de afbeelding */
-.pw-onboarding.is-praatplaat .pw-ob-view--praatplaat .pw-ob-praatplaat-cta {
-    justify-content: center;
-    padding: 16px 0 8px;
-}
