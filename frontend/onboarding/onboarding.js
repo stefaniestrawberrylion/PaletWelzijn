@@ -82,7 +82,7 @@
     }
   ];
 
-  var STORAGE_KEY = "pw-onboarding-v8";
+  var STORAGE_KEY = "pw-onboarding-v7";
   var VIEW_KEY = "pw-onboarding-view";
   var WELKOM_KEY = "pw-welkom-gezien";
   var BELEID_URL = "../beleid/beleid.html";
