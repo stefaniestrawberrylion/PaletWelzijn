@@ -1,6 +1,7 @@
 /* =========================================================
    Palet Welzijn - Beleid & Onboarding
    6 stappen | controle-vragen | felicitatie-modal
+   SYNCHROON MET onboarding.js (STORAGE_KEY = pw-onboarding-v7)
    ========================================================= */
 
 (function () {
@@ -71,7 +72,48 @@
     },
 
     /* -------------------------------------------------------
-       STAP 2 - WAT BRENGT VRIJWILLIGERSWERK JOU?
+       STAP 2 - START BIJ PALET WELZIJN (VOG + overeenkomst)
+       ------------------------------------------------------- */
+    {
+      id: "start",
+      title: "Je start bij Palet Welzijn",
+      text: "Je contactpersoon, je VOG en je vrijwilligersovereenkomst.",
+      img: "../../assets/start.png",
+      alt: "Start",
+      icon: "fa-regular fa-file-lines",
+      color: "#0055ff",
+      link: "../onboarding/onboarding.html",
+
+      body: [
+        { type: "p", text: "Voordat je echt aan de slag gaat, regelen we een paar praktische zaken. Hieronder zie je wat er nodig is." },
+
+        { type: "block", h: "Kennismaken", p: "Je hebt een kennismakingsgesprek met de contactpersoon vrijwilligers van de locatie of dienst. Tijdens dit gesprek vertellen we je meer over Palet Welzijn, bespreken we de vrijwilligersrol waarin je geïnteresseerd bent, kijken we naar jouw motivatie en eventuele ervaring en krijg je alle ruimte om vragen te stellen. Het gesprek is informeel." },
+        { type: "block", h: "De juiste match", p: "Samen bekijken we of de vrijwilligersrol aansluit bij jouw wensen, interesses en mogelijkheden. We vinden het belangrijk dat je op een plek terechtkomt waar jij je prettig voelt." },
+        { type: "block", h: "VOG en vrijwilligersovereenkomst", p: "Omdat je werkt met kwetsbare mensen, vragen we iedere vrijwilliger om een Verklaring Omtrent het Gedrag (VOG). Je ontvangt van Palet Welzijn een digitale link waarmee je de VOG kosteloos kunt aanvragen. Zodra je deze hebt ontvangen, laat je hem zien aan jouw contactpersoon. De VOG blijft jouw eigendom. Daarnaast ontvang je een vrijwilligersovereenkomst. Deze lees je door, vul je in en onderteken je. Dit is nodig voor je aanmelding en verzekering." }
+      ],
+
+      tasks: [
+        "Kennisgemaakt met mijn contactpersoon",
+        "Gratis VOG aangevraagd en laten zien",
+        "Vrijwilligersovereenkomst getekend"
+      ],
+
+      quizzes: [
+        {
+          question: "Wat doe je met je VOG nadat je hem hebt ontvangen?",
+          options: [
+            { label: "A. Je stuurt hem op naar de vertrouwenspersoon", ok: false },
+            { label: "B. Je geeft hem aan Palet Welzijn, die hem bewaart", ok: false },
+            { label: "C. Je betaalt de kosten en dient hem later in", ok: false },
+            { label: "D. Je laat hem zien aan je contactpersoon. De VOG blijft van jou", ok: true }
+          ],
+          explanation: "De VOG vraag je kosteloos aan via een digitale link van Palet Welzijn. De VOG blijft jouw eigendom."
+        }
+      ]
+    },
+
+    /* -------------------------------------------------------
+       STAP 3 - WAT BRENGT VRIJWILLIGERSWERK JOU?
        ------------------------------------------------------- */
     {
       id: "voor-jou",
@@ -142,7 +184,7 @@
     },
 
     /* -------------------------------------------------------
-       STAP 3 - WAT VERWACHTEN WIJ VAN JOU?
+       STAP 4 - WAT VERWACHTEN WIJ VAN JOU?
        ------------------------------------------------------- */
     {
       id: "afspraken",
@@ -184,7 +226,7 @@
     },
 
     /* -------------------------------------------------------
-       STAP 4 - VEILIGHEID
+       STAP 5 - VEILIGHEID
        ------------------------------------------------------- */
     {
       id: "veiligheid",
@@ -233,7 +275,7 @@
     },
 
     /* -------------------------------------------------------
-       STAP 5 - CHECKLIST
+       STAP 6 - CHECKLIST (bestanden + contactformulier)
        ------------------------------------------------------- */
     {
       id: "checklist",
@@ -246,36 +288,22 @@
       link: "../onboarding/onboarding.html",
 
       body: [
-        { type: "p", text: "We vinden het belangrijk dat je goed begint en weet waar je aan toe bent. Daarom doorlopen we samen een aantal stappen. Hieronder zie je wat er allemaal geregeld moet worden voordat je officieel aan de slag gaat." },
+        { type: "p", text: "We vinden het belangrijk dat je goed begint en weet waar je aan toe bent. Hieronder zie je wat er allemaal geregeld moet worden voordat je officieel aan de slag gaat." },
 
-        { type: "block", h: "Stap 1. Kennismaken", p: "Je hebt een kennismakingsgesprek met de contactpersoon vrijwilligers van de locatie of dienst. Tijdens dit gesprek vertellen we je meer over Palet Welzijn, bespreken we de vrijwilligersrol waarin je geïnteresseerd bent, kijken we naar jouw motivatie en eventuele ervaring en krijg je alle ruimte om vragen te stellen. Het gesprek is informeel. Als je dat prettig vindt, kun je ook een keer meelopen op locatie." },
-        { type: "block", h: "Stap 2. De juiste match", p: "Samen bekijken we of de vrijwilligersrol aansluit bij jouw wensen, interesses en mogelijkheden. We vinden het belangrijk dat je op een plek terechtkomt waar jij je prettig voelt." },
-        { type: "block", h: "Stap 3. VOG en vrijwilligersovereenkomst", p: "Omdat je werkt met kwetsbare mensen, vragen we iedere vrijwilliger om een Verklaring Omtrent het Gedrag (VOG). Je ontvangt van Palet Welzijn een digitale link waarmee je de VOG kosteloos kunt aanvragen. Zodra je deze hebt ontvangen, laat je hem zien aan jouw contactpersoon. De VOG blijft jouw eigendom. Daarnaast ontvang je een vrijwilligersovereenkomst. Deze lees je door, vul je in en onderteken je. Dit is nodig voor je aanmelding en verzekering." },
-        { type: "block", h: "Stap 4. Bestanden doornemen en invullen", p: "Voordat je je aanmeldt, is het belangrijk dat je de bestanden die je van ons hebt ontvangen, goed doorneemt en invult. Denk aan de vrijwilligersovereenkomst en eventuele andere formulieren. Lees alles rustig door, vul de gevraagde gegevens in en onderteken waar nodig. Zo weet je precies waar je aan toe bent en kunnen wij je aanmelding goed verwerken." },
-        { type: "block", h: "Stap 5. Contactformulier invullen en bestanden meesturen", p: "Als je alle bestanden hebt doorgenomen en ingevuld, vul je het contactformulier in. Op het contactformulier geef je aan dat je de checklist hebt doorlopen: heb ik het kennismakingsgesprek gehad? Heb ik mijn VOG aangevraagd en laten zien? Heb ik mijn vrijwilligersovereenkomst ingevuld en ondertekend? Heb ik de afspraken over mijn start en begeleiding gemaakt? Vink alles aan, stuur de ingevulde bestanden mee en je aanmelding is compleet. VOILA!" },
-        { type: "block", h: "Stap 6. Aan de slag!", p: "Wanneer alles geregeld is, kun je beginnen met jouw vrijwilligerswerk. Soms spreken we eerst een proefperiode af. Zo kunnen we samen ervaren of de samenwerking en de rol goed bij je passen." },
-        { type: "block", h: "Stap 7. Wanneer je wilt stoppen", p: "Er kunnen verschillende redenen zijn waarom je wilt stoppen. Misschien verandert je privésituatie, wordt het te druk of past de rol niet meer bij je. Bespreek dit altijd eerst met jouw contactpersoon. Samen kijken we of een andere rol, locatie of aangepaste inzet een oplossing kan zijn. Als stoppen uiteindelijk de beste keuze is, bespreken we hoe we jouw vrijwilligerswerk op een goede manier kunnen afronden." }
+        { type: "block", h: "Bestanden doornemen en invullen", p: "Voordat je je aanmeldt, is het belangrijk dat je de bestanden die je van ons hebt ontvangen, goed doorneemt en invult. Denk aan de vrijwilligersovereenkomst en eventuele andere formulieren. Lees alles rustig door, vul de gevraagde gegevens in en onderteken waar nodig." },
+        { type: "block", h: "Contactformulier invullen en bestanden meesturen", p: "Als je alle bestanden hebt doorgenomen en ingevuld, vul je het contactformulier in. Op het contactformulier geef je aan dat je de checklist hebt doorlopen: heb ik het kennismakingsgesprek gehad? Heb ik mijn VOG aangevraagd en laten zien? Heb ik mijn vrijwilligersovereenkomst ingevuld en ondertekend? Vink alles aan, stuur de ingevulde bestanden mee en je aanmelding is compleet. VOILA!" },
+        { type: "block", h: "Aan de slag!", p: "Wanneer alles geregeld is, kun je beginnen met jouw vrijwilligerswerk. Soms spreken we eerst een proefperiode af." },
+        { type: "block", h: "Wanneer je wilt stoppen", p: "Er kunnen verschillende redenen zijn waarom je wilt stoppen. Bespreek dit altijd eerst met jouw contactpersoon. Samen kijken we of een andere rol, locatie of aangepaste inzet een oplossing kan zijn. Als stoppen uiteindelijk de beste keuze is, bespreken we hoe we jouw vrijwilligerswerk op een goede manier kunnen afronden." },
+        { type: "block", h: "Meer weten of aanmelden?", p: "Palet Welzijn — Website: www.paletwelzijn.nl · E-mail: vrijwilligerswerk@paletwelzijn.nl · Telefoon: 088 - 359 45 66" }
       ],
 
       tasks: [
-        "Ik heb een kennismakingsgesprek gehad met mijn contactpersoon",
-        "Ik heb mijn gratis VOG aangevraagd en laten zien aan mijn contactpersoon",
-        "Ik heb mijn vrijwilligersovereenkomst ingevuld en ondertekend",
         "Ik heb alle bestanden doorgenomen en ingevuld",
-        "Ik heb het contactformulier ingevuld, de checklist aangevinkt en de bestanden meegestuurd"
+        "Ik heb het contactformulier ingevuld, de checklist aangevinkt en de bestanden meegestuurd",
+        "Ik weet dat ik kan beginnen als alles geregeld is"
       ],
 
       quizzes: [
-        {
-          question: "Wat doe je met je VOG nadat je hem hebt ontvangen?",
-          options: [
-            { label: "A. Je stuurt hem op naar de vertrouwenspersoon", ok: false },
-            { label: "B. Je geeft hem aan Palet Welzijn, die hem bewaart", ok: false },
-            { label: "C. Je betaalt de kosten en dient hem later in", ok: false },
-            { label: "D. Je laat hem zien aan je contactpersoon. De VOG blijft van jou", ok: true }
-          ],
-          explanation: "De VOG vraag je kosteloos aan via een digitale link van Palet Welzijn. De VOG blijft jouw eigendom."
-        },
         {
           question: "Wat moet je doen voordat je het contactformulier invult?",
           options: [
@@ -297,66 +325,6 @@
           explanation: "Pas als alles geregeld is, inclusief de ondertekende vrijwilligersovereenkomst en het verstuurde contactformulier, ben je officieel aangemeld."
         }
       ]
-    },
-
-    /* -------------------------------------------------------
-       STAP 6 - EINDE & AANMELDEN
-       ------------------------------------------------------- */
-    {
-      id: "aanmelding",
-      title: "Tot slot – samen maken we het verschil!",
-      text: "Je officiële aanmelding en samen maken we het verschil.",
-      img: "../../assets/aanmelding.png",
-      alt: "Aanmelding & tot slot",
-      icon: "fa-solid fa-flag-checkered",
-      color: "#0F766E",
-      link: "../onboarding/onboarding.html",
-
-      body: [
-        { type: "p", text: "We hopen dat je met veel plezier jouw rol als vrijwilliger bij Palet Welzijn gaat invullen." },
-        { type: "p", text: "Onthoud dat jouw inzet waardevol is. Iedere vrijwilliger draagt op zijn of haar eigen manier bij aan het welzijn van onze cliënten, bewoners, mantelzorgers en hun sociale omgeving." },
-        { type: "p", text: "Heb je vragen, loop je ergens tegenaan of ervaar je minder plezier in je vrijwilligerswerk? Blijf er niet mee rondlopen, maar ga met ons in gesprek. Samen zoeken we naar een passende oplossing." },
-
-        { type: "block", h: "Lijkt het je wat?", p: "Ken je iemand die ook iets voor een ander wil betekenen? Vertel dan gerust over jouw ervaringen bij Palet Welzijn! Misschien inspireer je iemand om ook vrijwilliger te worden. Er is veel mogelijk en we kijken graag samen welke rol bij iemand past." },
-
-        { type: "block", h: "Meer weten of aanmelden?", p: "Palet Welzijn" },
-        { type: "list", items: [
-          "Website: www.paletwelzijn.nl",
-          "E-mail: vrijwilligerswerk@paletwelzijn.nl",
-          "Telefoon: 088 - 359 45 66"
-        ]},
-        { type: "p", text: "Bedankt voor jouw betrokkenheid, jouw tijd en jouw aandacht. We zijn blij met je!" },
-        { type: "p", text: "Samen maken we het verschil." }
-      ],
-
-      tasks: [
-        "Ik heb de checklist doorlopen (kennismaking, VOG, overeenkomst, bestanden, contactformulier)",
-        "Ik weet dat ik altijd in gesprek kan over wat bij mij past",
-        "Ik weet hoe ik Palet Welzijn kan bereiken voor vragen of aanmeldingen"
-      ],
-
-      quizzes: [
-        {
-          question: "Je ervaart minder plezier in je vrijwilligerswerk. Wat vraagt Palet Welzijn van je?",
-          options: [
-            { label: "A. Gewoon doorgaan en er niets over zeggen", ok: false },
-            { label: "B. In gesprek gaan, zodat jullie samen naar een passende oplossing zoeken", ok: true },
-            { label: "C. Wachten tot de organisatie er zelf over begint", ok: false },
-            { label: "D. Zonder te overleggen stoppen", ok: false }
-          ],
-          explanation: "Je hoeft hier niet mee rond te blijven lopen. Jullie zoeken samen naar een oplossing."
-        },
-        {
-          question: "Een kennis wil ook iets voor een ander betekenen. Wat kun je doen?",
-          options: [
-            { label: "A. Hem zonder gesprek laten meelopen", ok: false },
-            { label: "B. Zelf zijn VOG voor hem aanvragen", ok: false },
-            { label: "C. Vertellen over je ervaringen en hem verwijzen naar de website of vrijwilligerswerk@paletwelzijn.nl", ok: true },
-            { label: "D. Niets, aanmelden kan niet zomaar", ok: false }
-          ],
-          explanation: "Je mag je ervaringen delen. Voor aanmelden is er altijd eerst een kennismaking."
-        }
-      ]
     }
   ];
 
@@ -364,7 +332,8 @@
      2. OPSLAG EN ELEMENTEN
      ========================================================= */
 
-  var STORAGE_KEY = "pw-onboarding-v6";
+  /* BELANGRIJK: zelfde key als onboarding.js, anders raken ze uit sync */
+  var STORAGE_KEY = "pw-onboarding-v7";
 
   var root = document.querySelector(".pw-onboarding");
   if (!root) return;
@@ -389,13 +358,17 @@
       if (raw) {
         var p = JSON.parse(raw);
         if (p && typeof p === "object") {
-          return { checked: p.checked || {}, quiz: p.quiz || {} };
+          return {
+            checked: p.checked || {},
+            quiz: p.quiz || {},
+            enrolled: p.enrolled === true
+          };
         }
       }
     } catch (e) {
       console.warn("Voortgang kon niet worden geladen.", e);
     }
-    return { checked: {}, quiz: {} };
+    return { checked: {}, quiz: {}, enrolled: false };
   }
 
   var state = loadState();
@@ -809,6 +782,11 @@
 
   function openModal() {
     if (!modalEl) return;
+
+    /* Markeer als enrolled, zodat onboarding.js de felicitatie toont */
+    state.enrolled = true;
+    saveState();
+
     lastFocused = document.activeElement;
     modalEl.hidden = false;
     document.body.style.overflow = "hidden";
@@ -847,7 +825,7 @@
       var confirmed = window.confirm("Weet je zeker dat je alle voortgang wilt wissen en opnieuw wilt beginnen?");
       if (!confirmed) return;
 
-      state = { checked: {}, quiz: {} };
+      state = { checked: {}, quiz: {}, enrolled: false };
       saveState();
       activeId = STEPS[0].id;
       renderRail();

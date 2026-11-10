@@ -1,6 +1,7 @@
 /* =========================================================
    Palet Welzijn – Onboarding "Jouw route als vrijwilliger"
    6 kaarten + voltooiing zichtbaar + inschrijf-flow
+   SYNCHROON MET beleid.js (STORAGE_KEY = pw-onboarding-v7)
    ========================================================= */
 (function () {
   "use strict";
@@ -168,6 +169,43 @@
   var ICON_ARROW = '<path d="M5 12h14M13 6l6 6-6 6"/>';
   var ICON_LOCK = '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>';
 
+  /* =========================================================
+     WELKOM-DIA ELEMENTEN (eerst declareren, zodat renderSteps
+     ze kan gebruiken bij de banner-knop)
+     ========================================================= */
+  var welcomeEl = document.getElementById("pw-welcome");
+  var slide1 = document.getElementById("pw-slide-1");
+  var slide2 = document.getElementById("pw-slide-2");
+  var slide3 = document.getElementById("pw-slide-3");
+  var slide4 = document.getElementById("pw-slide-4");
+  var btnNext = document.getElementById("pw-slide-next");
+  var welcomeStartBtn = document.getElementById("pw-welcome-start");
+  var welcomePlaatBtn = document.getElementById("pw-welcome-plaat");
+  var contactBtn = document.getElementById("pw-slide-contact");
+  var closeFinalBtn = document.getElementById("pw-welcome-close-final");
+
+  var allSlides = [slide1, slide2, slide3, slide4];
+
+  function showSlide(n) {
+    allSlides.forEach(function (s, i) {
+      if (!s) return;
+      s.classList.toggle("is-active", i === n - 1);
+    });
+    if (!welcomeEl) return;
+    welcomeEl.classList.add("is-visible");
+    document.body.style.overflow = "hidden";
+  }
+
+  function openWelcome(n) {
+    showSlide(n);
+  }
+
+  function hideWelcome() {
+    if (!welcomeEl) return;
+    welcomeEl.classList.remove("is-visible");
+    document.body.style.overflow = "";
+  }
+
   /* ---------- Kaarten tekenen ---------- */
   function renderSteps() {
     listEl.textContent = "";
@@ -247,9 +285,9 @@
       bannerBtn.appendChild(svg(ICON_ARROW));
       bannerBtn.addEventListener("click", function () {
         if (state.enrolled) {
-          showSlide(4);
+          openWelcome(4);   // felicitatie
         } else {
-          showSlide(3);
+          openWelcome(3);   // bestanden + contactformulier
         }
       });
       banner.appendChild(bannerBtn);
@@ -350,45 +388,9 @@
   });
   window.addEventListener("load", function () { positionTrack(currentIndex()); });
 
-  renderSteps();
-
   /* =========================================================
-     Welkomst-dia Slideshow + inschrijf-flow
+     WELKOM-DIA: knoppen koppelen
      ========================================================= */
-  var welcomeEl = document.getElementById("pw-welcome");
-  var slide1 = document.getElementById("pw-slide-1");
-  var slide2 = document.getElementById("pw-slide-2");
-  var slide3 = document.getElementById("pw-slide-3");
-  var slide4 = document.getElementById("pw-slide-4");
-  var btnNext = document.getElementById("pw-slide-next");
-  var welcomeStartBtn = document.getElementById("pw-welcome-start");
-  var welcomePlaatBtn = document.getElementById("pw-welcome-plaat");
-  var contactBtn = document.getElementById("pw-slide-contact");
-  var closeFinalBtn = document.getElementById("pw-welcome-close-final");
-
-  var allSlides = [slide1, slide2, slide3, slide4];
-
-  function showSlide(n) {
-    allSlides.forEach(function (s, i) {
-      if (!s) return;
-      s.classList.toggle("is-active", i === n - 1);
-    });
-    if (!welcomeEl) return;
-    welcomeEl.classList.add("is-visible");
-    document.body.style.overflow = "hidden";
-  }
-
-  function hideWelcome() {
-    if (!welcomeEl) return;
-    welcomeEl.classList.remove("is-visible");
-    document.body.style.overflow = "";
-  }
-
-  // Toon dia 1 bij laden (alleen als niet eerder enrolled)
-  if (!state.enrolled) {
-    showSlide(1);
-  }
-
   if (btnNext) {
     btnNext.addEventListener("click", function () { showSlide(2); });
   }
@@ -415,16 +417,10 @@
 
   /* ---------- Inschrijf-flow: bestanden -> contactformulier -> WOEHOEEE ---------- */
   if (contactBtn) {
-    // Als er op "Naar het contactformulier" wordt geklikt, markeer als enrolled
-    // en toon daarna de felicitatie-dia.
     contactBtn.addEventListener("click", function (e) {
-      // Laat de link gewoon werken (opent contactformulier in nieuw tabblad)
-      // maar markeer ook als enrolled en toon de felicitatie na een korte vertraging.
+      // Markeer als enrolled en toon daarna de felicitatie-dia.
       state.enrolled = true;
       saveState();
-      // Open het contactformulier in een nieuw tabblad (optioneel)
-      // e.preventDefault(); window.open(contactBtn.href, "_blank");
-      // Toon daarna dia 4
       setTimeout(function () { showSlide(4); }, 400);
     });
   }
@@ -433,7 +429,6 @@
     closeFinalBtn.addEventListener("click", function () {
       hideWelcome();
       setView("route");
-      // Scroll naar de banner
       var banner = listEl.querySelector(".pw-ob-finished-banner");
       if (banner) {
         setTimeout(function () {
@@ -450,9 +445,19 @@
     }
   });
 
-  // Als de pagina wordt herladen en enrolled === true, toon dan meteen de felicitatie
+  /* =========================================================
+     INITIALISATIE: kaarten tekenen + juiste dia tonen
+     ========================================================= */
+  renderSteps();
+
+  var allStepsDoneAtInit = currentIndex() >= STEPS.length;
+
   if (state.enrolled) {
-    showSlide(4);
+    showSlide(4);          // felicitatie
+  } else if (allStepsDoneAtInit) {
+    showSlide(3);          // bestanden + contactformulier
+  } else {
+    showSlide(1);          // welkom
   }
 
 })();
