@@ -1,21 +1,19 @@
 /* =========================================================
    Palet Welzijn - Beleid & Onboarding
-   6 stappen | 14 controle-vragen | felicitatie-modal
-   Body = LETTERLIJKE tekst uit het handboek
+   6 stappen | controle-vragen | felicitatie-modal
    ========================================================= */
 
 (function () {
   "use strict";
 
   /* =========================================================
-     1. STAPPEN EN INHOUD (letterlijk uit handboek)
+     1. STAPPEN EN INHOUD
      ========================================================= */
 
   var STEPS = [
 
     /* -------------------------------------------------------
-       STAP 1 - WELKOM (H1 + 1.1 + 1.2)
-       Vragen 1 en 2
+       STAP 1 - WELKOM
        ------------------------------------------------------- */
     {
       id: "welkom",
@@ -27,36 +25,37 @@
       color: "#120a5c",
       link: "../onboarding/onboarding.html",
 
-     body: [
-  { type: "p", text: "Wat fijn dat je je als vrijwilliger wilt inzetten voor Palet Welzijn! Met jouw tijd en aandacht maak je écht verschil. Jij bent onmisbaar." },
-  { type: "p", text: "Palet Welzijn gelooft in een samenleving waarin we met oprechte belangstelling naar elkaar omkijken. We versterken sociale netwerken, houden mensen actief en stellen professionele zorg waar mogelijk uit. Samen maken we het verschil!" },
+      body: [
+        { type: "p", text: "Wat fijn dat je je als vrijwilliger wilt inzetten voor Palet Welzijn! Met jouw tijd en aandacht maak je écht verschil. Jij bent onmisbaar." },
+        { type: "p", text: "Palet Welzijn gelooft in een samenleving waarin we met oprechte belangstelling naar elkaar omkijken. We versterken sociale netwerken, houden mensen actief en stellen professionele zorg waar mogelijk uit. Samen maken we het verschil!" },
 
-  { type: "h", text: "Onze droom" },
-  { type: "p", text: "'Een samenleving waar we met oprechte belangstelling naar elkaar omkijken en ieder op eigen-wijze invulling kan geven aan zijn leven.'" },
+        { type: "h", text: "Onze droom" },
+        { type: "p", text: "'Een samenleving waar we met oprechte belangstelling naar elkaar omkijken en ieder op eigen-wijze invulling kan geven aan zijn leven.'" },
 
-  { type: "h", text: "Onze missie" },
-  { type: "p", text: "Mensen met elkaar verbinden, hun netwerk vergroten en ervoor zorgen dat iedereen zoveel mogelijk mee kan blijven doen. We zijn een organisatie zonder winstoogmerk en werken samen met maatschappelijke organisaties en gemeenten." },
+        { type: "h", text: "Onze missie" },
+        { type: "p", text: "Mensen met elkaar verbinden, hun netwerk vergroten en ervoor zorgen dat iedereen zoveel mogelijk mee kan blijven doen. We zijn een organisatie zonder winstoogmerk en werken samen met maatschappelijke organisaties en gemeenten." },
 
-  { type: "h", text: "Verschillende rollen" },
-  { type: "p", text: "Bij Palet Welzijn zijn meer dan 1.300 vrijwilligers actief, in veel verschillende rollen. Hieronder een aantal voorbeelden." },
+        { type: "h", text: "Verschillende rollen" },
+        { type: "p", text: "Bij Palet Welzijn zijn meer dan 1.300 vrijwilligers actief, in veel verschillende rollen. Hieronder een aantal voorbeelden." },
 
-  { type: "h3", text: "Vrijwilliger Thuis" },
-  { type: "p", text: "Je bezoekt iemand thuis en biedt gezelschap en ondersteuning, zodat bijvoorbeeld een mantelzorger even tijd voor zichzelf heeft. Denk aan samen koffie drinken, een gesprek voeren of samen iets ondernemen." },
+        { type: "h3", text: "Vrijwilliger Thuis" },
+        { type: "p", text: "Je bezoekt iemand thuis en biedt gezelschap en ondersteuning, zodat bijvoorbeeld een mantelzorger even tijd voor zichzelf heeft. Denk aan samen koffie drinken, een gesprek voeren of samen iets ondernemen." },
 
-  { type: "h3", text: "Activiteitenvrijwilliger" },
-  { type: "p", text: "Je helpt bij het organiseren en begeleiden van activiteiten en evenementen: klaarzetten, opruimen, koffie en thee verzorgen, deelnemers begeleiden of individuele activiteiten ondernemen zoals wandelen, voorlezen of een handmassage geven." },
+        { type: "h3", text: "Activiteitenvrijwilliger" },
+        { type: "p", text: "Je helpt bij het organiseren en begeleiden van activiteiten en evenementen: klaarzetten, opruimen, koffie en thee verzorgen, deelnemers begeleiden of individuele activiteiten ondernemen zoals wandelen, voorlezen of een handmassage geven." },
 
-  { type: "h3", text: "Projectvrijwilliger" },
-  { type: "p", text: "Je werkt mee aan een tijdelijk project met een duidelijk begin en einde. Voorbeelden zijn een wandelgroep in de zomer, tuinonderhoud, creatieve activiteiten voor een markt of de rolstoelvierdaagse." },
+        { type: "h3", text: "Projectvrijwilliger" },
+        { type: "p", text: "Je werkt mee aan een tijdelijke project met een duidelijk begin en einde. Voorbeelden zijn een wandelgroep in de zomer, tuinonderhoud, creatieve activiteiten voor een markt of de rolstoelvierdaagse." },
 
-  { type: "h3", text: "Overige rollen" },
-  { type: "p", text: "Denk aan gastvrouw of gastheer in een wijkcentrum, chauffeur voor seniorenvervoer, ondersteuning in een wijkrestaurant of preventieve huisbezoeken bij ouderen. Samen kijken we welke rol bij jou past." }
-],
+        { type: "h3", text: "Overige rollen" },
+        { type: "p", text: "Denk aan gastvrouw of gastheer in een wijkcentrum, chauffeur voor seniorenvervoer, ondersteuning in een wijkrestaurant of preventieve huisbezoeken bij ouderen. Samen kijken we welke rol bij jou past." }
+      ],
 
       tasks: [
-  "Ik weet wie Palet Welzijn is en wat onze droom en missie zijn",
-  "Ik ken alle rollen die Palet Welzijn biedt"
-],
+        "Ik weet wie Palet Welzijn is en wat onze droom en missie zijn",
+        "Ik ken alle rollen die Palet Welzijn biedt"
+      ],
+
       quizzes: [
         {
           question: "Welke kenmerken heeft vrijwilligerswerk bij Palet Welzijn?",
@@ -82,114 +81,7 @@
     },
 
     /* -------------------------------------------------------
-       STAP 2 - JE START (H4)
-       Vragen 3, 4, 11 en 12
-       ------------------------------------------------------- */
-    {
-      id: "start",
-      title: "Je start bij Palet Welzijn",
-      text: "Je contactpersoon, je VOG en je vrijwilligersovereenkomst.",
-      img: "../../assets/start.png",
-      alt: "Je start",
-      icon: "fa-regular fa-file-lines",
-      color: "#0055ff",
-      link: "../onboarding/onboarding.html",
-
-      body: [
-        { type: "p", text: "We vinden het belangrijk dat je goed begint en weet waar je aan toe bent. Daarom doorlopen we samen een aantal stappen." },
-
-        { type: "h", text: "Stap 1. Kennismaken" },
-        { type: "p", text: "Je hebt een kennismakingsgesprek met de contactpersoon vrijwilligers van de locatie of dienst." },
-        { type: "p", text: "Tijdens dit gesprek:" },
-        { type: "list", items: [
-          "Vertellen we je meer over Palet Welzijn.",
-          "Bespreken we de vrijwilligersrol waarin je geïnteresseerd bent.",
-          "Kijken we naar jouw motivatie en eventuele ervaring.",
-          "Krijg je alle ruimte om vragen te stellen."
-        ]},
-        { type: "p", text: "Het gesprek is informeel. Als je dat prettig vindt, kun je ook een keer meelopen op locatie." },
-
-        { type: "h", text: "Stap 2. De juiste match" },
-        { type: "p", text: "Samen bekijken we of de vrijwilligersrol aansluit bij jouw wensen, interesses en mogelijkheden." },
-        { type: "p", text: "We vinden het belangrijk dat je op een plek terechtkomt waar jij je prettig voelt." },
-
-        { type: "h", text: "Stap 3. VOG en vrijwilligersovereenkomst" },
-        { type: "p", text: "Omdat je werkt met kwetsbare mensen, vragen we iedere vrijwilliger om een Verklaring Omtrent het Gedrag (VOG)." },
-        { type: "p", text: "Je ontvangt van Palet Welzijn een digitale link waarmee je de VOG kosteloos kunt aanvragen. Zodra je deze hebt ontvangen, laat je hem zien aan jouw contactpersoon. De VOG blijft jouw eigendom." },
-        { type: "p", text: "Daarnaast ontvang je een vrijwilligersovereenkomst. Deze lees je door, vul je in en onderteken je. Dit is nodig voor je aanmelding en verzekering." },
-
-        { type: "h", text: "Stap 4. Aan de slag!" },
-        { type: "p", text: "Wanneer alles geregeld is, kun je beginnen met jouw vrijwilligerswerk." },
-        { type: "p", text: "Soms spreken we eerst een proefperiode af. Zo kunnen we samen ervaren of de samenwerking en de rol goed bij je passen." },
-
-        { type: "h", text: "Stap 5. Begeleiding en contact" },
-        { type: "p", text: "Ook wanneer je eenmaal begonnen bent, sta je er niet alleen voor." },
-        { type: "p", text: "Je kunt met vragen terecht bij:" },
-        { type: "list", items: [
-          "Jouw contactpersoon vrijwilligers.",
-          "Een professional die in jouw omgeving werkzaam is."
-        ]},
-        { type: "p", text: "Na een aantal maanden plannen we een gesprek om te bespreken hoe het gaat. Daarnaast vinden we het belangrijk om regelmatig contact met je te houden." },
-
-        { type: "h", text: "Stap 6. Wanneer je wilt stoppen" },
-        { type: "p", text: "Er kunnen verschillende redenen zijn waarom je wilt stoppen. Misschien verandert je privésituatie, wordt het te druk of past de rol niet meer bij je." },
-        { type: "p", text: "Bespreek dit altijd eerst met jouw contactpersoon. Samen kijken we of een andere rol, locatie of aangepaste inzet een oplossing kan zijn." },
-        { type: "p", text: "Als stoppen uiteindelijk de beste keuze is, bespreken we hoe we jouw vrijwilligerswerk op een goede manier kunnen afronden." }
-      ],
-
-      tasks: [
-        "Ik heb een kennismakingsgesprek gehad met mijn contactpersoon",
-        "Ik heb mijn gratis VOG aangevraagd en laten zien aan mijn contactpersoon",
-        "Ik heb mijn vrijwilligersovereenkomst ingevuld en ondertekend"
-      ],
-
-      quizzes: [
-        {
-          question: "Wat doe je met je VOG nadat je hem hebt ontvangen?",
-          options: [
-            { label: "A. Je stuurt hem op naar de vertrouwenspersoon", ok: false },
-            { label: "B. Je geeft hem aan Palet Welzijn, die hem bewaart", ok: false },
-            { label: "C. Je betaalt de kosten en dient hem later in", ok: false },
-            { label: "D. Je laat hem zien aan je contactpersoon. De VOG blijft van jou", ok: true }
-          ],
-          explanation: "De VOG vraag je kosteloos aan via een digitale link van Palet Welzijn. De VOG blijft jouw eigendom."
-        },
-        {
-          question: "Je overweegt te stoppen met je vrijwilligerswerk. Wat is de beste eerste stap?",
-          options: [
-            { label: "A. Het eerst bespreken met je contactpersoon, zodat jullie samen kunnen kijken naar een andere rol, locatie of aangepaste inzet", ok: true },
-            { label: "B. Gewoon niet meer komen", ok: false },
-            { label: "C. Wachten tot het gesprek na een paar maanden", ok: false },
-            { label: "D. Een bericht sturen aan de cliënt", ok: false }
-          ],
-          explanation: "Als stoppen de beste keuze is, bespreken jullie samen hoe je je vrijwilligerswerk op een goede manier afrondt."
-        },
-        {
-          question: "Wanneer ben je officieel aangemeld als vrijwilliger?",
-          options: [
-            { label: "A. Direct na het kennismakingsgesprek", ok: false },
-            { label: "B. Zodra je de VOG hebt aangevraagd", ok: false },
-            { label: "C. Wanneer alles op de checklist is geregeld, inclusief de ondertekende overeenkomst", ok: true },
-            { label: "D. Na afloop van de proefperiode", ok: false }
-          ],
-          explanation: "Pas als alles geregeld is, inclusief de ondertekende vrijwilligersovereenkomst, ben je officieel aangemeld."
-        },
-        {
-          question: "Welk onderdeel staat op de checklist?",
-          options: [
-            { label: "A. Een EHBO-diploma", ok: false },
-            { label: "B. Referenties van twee oud-werkgevers", ok: false },
-            { label: "C. Een medische keuring", ok: false },
-            { label: "D. Afspraken over je start en begeleiding", ok: true }
-          ],
-          explanation: "Op de checklist staan onder andere het kennismakingsgesprek, de VOG, de overeenkomst en de afspraken over je start en begeleiding."
-        }
-      ]
-    },
-
-    /* -------------------------------------------------------
-       STAP 3 - WAT BRENGT VRIJWILLIGERSWERK JOU? (H5)
-       Vragen 5 en 6
+       STAP 2 - WAT BRENGT VRIJWILLIGERSWERK JOU?
        ------------------------------------------------------- */
     {
       id: "voor-jou",
@@ -234,12 +126,18 @@
           "Bijzondere gelegenheden: ook op bijzondere momenten laten we graag van ons horen met een kleine attentie.",
           "Workshops en scholingen: je kunt deelnemen aan verschillende workshops en scholingen.",
           "Vrijwilligersbijeenkomst: één keer per jaar organiseren we een gezellige bijeenkomst voor onze vrijwilligers."
-        ]}
+        ]},
+
+        { type: "h", text: "Begeleiding en contact" },
+        { type: "p", text: "Ook wanneer je eenmaal begonnen bent, sta je er niet alleen voor. Je kunt met vragen terecht bij jouw contactpersoon vrijwilligers of bij een professional die in jouw omgeving werkzaam is." },
+        { type: "p", text: "We vinden het belangrijk om regelmatig contact met je te houden. Waarom? Omdat jij als vrijwilliger midden in de praktijk staat en als eerste merkt wanneer iets niet goed loopt, wanneer je ergens tegenaan loopt of wanneer je juist iets moois meemaakt. Door contact te houden, kunnen we je op tijd ondersteunen, meedenken en bijsturen waar nodig. Ook horen we graag wat er goed gaat, zodat we dat kunnen vasthouden." },
+        { type: "p", text: "Na een aantal maanden plannen we een gesprek om te bespreken hoe het gaat. Daarnaast is er altijd ruimte om tussendoor contact op te nemen." }
       ],
 
       tasks: [
         "Ik weet wat vrijwilligerswerk mij oplevert (plezier, voldoening, contacten)",
-        "Ik weet welke extra's ik van Palet Welzijn krijg"
+        "Ik weet welke extra's ik van Palet Welzijn krijg",
+        "Ik weet dat ik met vragen terecht kan bij mijn contactpersoon en dat we regelmatig contact houden"
       ],
 
       quizzes: [
@@ -267,8 +165,8 @@
     },
 
     /* -------------------------------------------------------
-       STAP 4 - WAT VERWACHTEN WIJ VAN JOU? (H6)
-       Vragen 7 en 8
+       STAP 3 - WAT VERWACHTEN WIJ VAN JOU?
+       Tekst in blocks met animatie, alleen aanvinken (geen quiz)
        ------------------------------------------------------- */
     {
       id: "afspraken",
@@ -281,43 +179,19 @@
       link: "../onboarding/onboarding.html",
 
       body: [
-        { type: "p", text: "We zijn ontzettend blij met jouw inzet. Om het vrijwilligerswerk voor iedereen prettig en veilig te houden, vinden we een aantal zaken belangrijk." },
-
-        { type: "h", text: "Affiniteit met de doelgroep" },
-        { type: "p", text: "Je hebt belangstelling voor de mensen met wie je werkt en vindt het fijn om iets voor een ander te betekenen." },
-
-        { type: "h", text: "Betrouwbaarheid en discretie" },
-        { type: "p", text: "We moeten op elkaar kunnen rekenen. Je gaat zorgvuldig om met informatie en respecteert de privacy van anderen." },
-
-        { type: "h", text: "Communicatie en samenwerking" },
-        { type: "p", text: "Je kunt zelfstandig werken, maar ook samenwerken met andere vrijwilligers en professionals. Je gaat respectvol om met meningsverschillen en oordeelt niet direct." },
-
-        { type: "h", text: "Vrijwilligersovereenkomst en VOG" },
-        { type: "p", text: "Je bent bereid een vrijwilligersovereenkomst met Palet Welzijn aan te gaan en een VOG aan te vragen." },
-
-        { type: "h", text: "Beslissingen over zorg" },
-        { type: "p", text: "Beslissingen over zorggerelateerde zaken laat je altijd over aan de verantwoordelijke professional. Twijfel je over een situatie? Bespreek dit dan met jouw contactpersoon." },
-
-        { type: "h", text: "Medische handelingen" },
-        { type: "p", text: "Als vrijwilliger verricht je nooit medische of verpleegtechnische handelingen. Dit geldt ook wanneer je deze handelingen in het verleden beroepsmatig hebt uitgevoerd." },
-        { type: "p", text: "Daarnaast is het niet toegestaan om gevoelige of privéinformatie van cliënten te beheren of giften aan te nemen." },
-
-        { type: "h", text: "Sociale media" },
-        { type: "p", text: "Wees voorzichtig met het gebruik van sociale media, zoals WhatsApp, Facebook, Instagram en YouTube." },
-        { type: "p", text: "Privacy is belangrijk. Je mag niet zomaar foto's, filmpjes of informatie over cliënten of bewoners online plaatsen of delen." },
-        { type: "p", text: "Ook wanneer je samen met iemand een leuke foto maakt, mag je deze niet zonder toestemming op sociale media zetten." },
-        { type: "p", text: "Palet Welzijn plaatst zelf ook geen duidelijk herkenbare portretfoto van jou online zonder jouw toestemming." },
-        { type: "p", text: "Twijfel je? Overleg dan met jouw contactpersoon." },
-
-        { type: "h", text: "Onze gedragscode" },
-        { type: "p", text: "Bij Palet Welzijn vinden we respect voor elkaar belangrijk. Daarom hebben we een gedragscode opgesteld." },
-        { type: "p", text: "We verwachten dat iedereen zich hieraan houdt." },
-        { type: "p", text: "De belangrijkste uitgangspunten zijn:" },
+        { type: "block", h: "Affiniteit met de doelgroep", p: "Je hebt belangstelling voor de mensen met wie je werkt en vindt het fijn om iets voor een ander te betekenen." },
+        { type: "block", h: "Betrouwbaarheid en discretie", p: "We moeten op elkaar kunnen rekenen. Je gaat zorgvuldig om met informatie en respecteert de privacy van anderen." },
+        { type: "block", h: "Communicatie en samenwerking", p: "Je kunt zelfstandig werken, maar ook samenwerken met andere vrijwilligers en professionals. Je gaat respectvol om met meningsverschillen en oordeelt niet direct." },
+        { type: "block", h: "Vrijwilligersovereenkomst en VOG", p: "Je bent bereid een vrijwilligersovereenkomst met Palet Welzijn aan te gaan en een VOG aan te vragen." },
+        { type: "block", h: "Beslissingen over zorg", p: "Beslissingen over zorggerelateerde zaken laat je altijd over aan de verantwoordelijke professional. Twijfel je over een situatie? Bespreek dit dan met jouw contactpersoon." },
+        { type: "block", h: "Medische handelingen", p: "Als vrijwilliger verricht je nooit medische of verpleegtechnische handelingen. Dit geldt ook wanneer je deze handelingen in het verleden beroepsmatig hebt uitgevoerd. Daarnaast is het niet toegestaan om gevoelige of privéinformatie van cliënten te beheren of giften aan te nemen." },
+        { type: "block", h: "Sociale media", p: "Wees voorzichtig met het gebruik van sociale media, zoals WhatsApp, Facebook, Instagram en YouTube. Privacy is belangrijk. Je mag niet zomaar foto's, filmpjes of informatie over cliënten of bewoners online plaatsen of delen. Ook wanneer je samen met iemand een leuke foto maakt, mag je deze niet zonder toestemming op sociale media zetten. Palet Welzijn plaatst zelf ook geen duidelijk herkenbare portretfoto van jou online zonder jouw toestemming. Twijfel je? Overleg dan met jouw contactpersoon." },
+        { type: "block", h: "Geheimhouding en privacy", p: "Wanneer je vrijwilligerswerk doet, kun je persoonlijke en vertrouwelijke informatie te horen krijgen. We verwachten dat je hier zorgvuldig mee omgaat. Alles wat je vertrouwelijk over cliënten, bewoners of de organisatie te weten komt, valt onder de geheimhoudingsplicht. Deze verplichting blijft ook gelden wanneer je stopt met vrijwilligerswerk bij Palet Welzijn. Ook jouw eigen persoonsgegevens behandelen we zorgvuldig. Palet Welzijn bewaart deze in een beveiligd systeem volgens de Algemene Verordening Gegevensbescherming (AVG). Je gegevens worden alleen met jouw toestemming met anderen gedeeld. Dit geldt bijvoorbeeld voor het doorgeven van gegevens aan Vierstroom Ledenservice." },
+        { type: "block", h: "Onze gedragscode", p: "Bij Palet Welzijn vinden we respect voor elkaar belangrijk. Daarom hebben we een gedragscode opgesteld. We verwachten dat iedereen zich hieraan houdt. De belangrijkste uitgangspunten zijn:" },
         { type: "list", items: [
           "Respect voor elkaar: grensoverschrijdend fysiek of seksueel gedrag is niet toegestaan. Agressie, geweld en schelden worden niet geaccepteerd.",
           "Verantwoord omgaan met middelen: roken en het onder invloed zijn van alcohol en/of drugs tijdens je inzet zijn niet toegestaan.",
-          "Respect voor eigendommen: diefstal is niet toegestaan.",
-          "Zorgvuldig omgaan met sociale media: houd rekening met privacy en de gevolgen van wat je online plaatst."
+          "Respect voor eigendommen: diefstal is niet toegestaan."
         ]},
         { type: "p", text: "Je gedrag, kleding, representativiteit en uiterlijke verzorging passen bij een respectvolle benadering van anderen en bij de uitstraling van Palet Welzijn." },
         { type: "p", text: "Wanneer je ongewenste omgangsvormen of gedrag ervaart, bespreek dit dan met jouw contactpersoon of de vertrouwenspersoon." }
@@ -326,36 +200,16 @@
       tasks: [
         "Ik ken de gedragscode van Palet Welzijn",
         "Wat ik over cliënten hoor of zie, blijft geheim — ook na mijn vrijwilligerswerk",
-        "Ik doe geen medische of verpleegtechnische handelingen"
+        "Ik doe geen medische of verpleegtechnische handelingen",
+        "Ik ga zorgvuldig om met sociale media en de privacy van cliënten"
       ],
 
-      quizzes: [
-        {
-          question: "Je werkte vroeger in de zorg. Een bewoner vraagt of jij zijn medicijnen wilt klaarzetten. Wat doe je?",
-          options: [
-            { label: "A. Ik doe het niet, laat het aan de professional en bespreek het met mijn contactpersoon", ok: true },
-            { label: "B. Ik doe het, want ik heb er ervaring mee", ok: false },
-            { label: "C. Ik doe het alleen als de bewoner dat prettig vindt", ok: false },
-            { label: "D. Ik doe het alleen als niemand het ziet", ok: false }
-          ],
-          explanation: "Als vrijwilliger verricht je nooit medische of verpleegtechnische handelingen, ook niet als je deze eerder beroepsmatig deed. Twijfel je? Bespreek het met je contactpersoon."
-        },
-        {
-          question: "Je maakt tijdens een wandeling een leuke foto met een bewoner. Mag je die op sociale media zetten?",
-          options: [
-            { label: "A. Ja, het is jouw eigen account", ok: false },
-            { label: "B. Ja, als je geen naam noemt", ok: false },
-            { label: "C. Alleen met toestemming van de bewoner", ok: true },
-            { label: "D. Ja, als je de foto na een dag verwijdert", ok: false }
-          ],
-          explanation: "Ook bij een leuke foto mag je niets zonder toestemming online zetten. Twijfel je? Overleg met je contactpersoon."
-        }
-      ]
+      quizzes: []
     },
 
     /* -------------------------------------------------------
-       STAP 5 - VEILIGHEID (H7)
-       Vragen 9 en 10
+       STAP 4 - VEILIGHEID
+       Korte stukken in blocks
        ------------------------------------------------------- */
     {
       id: "veiligheid",
@@ -368,33 +222,9 @@
       link: "../onboarding/onboarding.html",
 
       body: [
-        { type: "p", text: "Bij Palet Welzijn staat veilig werken voorop. We vragen je om tijdens je vrijwilligerswerk bewust en verantwoordelijk met veiligheid om te gaan." },
-
-        { type: "h", text: "Incidenten melden" },
-        { type: "p", text: "Ben je getuige van een incident of maak je een situatie mee die mogelijk schadelijke gevolgen heeft voor jou of voor iemand anders?" },
-        { type: "p", text: "Bespreek dit altijd met jouw contactpersoon." },
-        { type: "p", text: "Deze kan naar je luisteren en samen met jou beoordelen of de situatie ook formeel gemeld moet worden." },
-        { type: "p", text: "Wacht hier niet mee. Ook wanneer je twijfelt, is het belangrijk om een situatie bespreekbaar te maken." },
-
-        { type: "h", text: "Vertrouwenspersoon" },
-        { type: "p", text: "Heb je iets meegemaakt tijdens je vrijwilligerswerk en kun je hiermee niet terecht bij jouw contactpersoon of manager? Dan kun je contact opnemen met de vertrouwenspersoon van Palet Welzijn." },
-        { type: "p", text: "Dit kan via de vertrouwenslijn:" },
-        { type: "p", text: "088 - 144 0200" },
-        { type: "p", text: "De vertrouwenslijn wordt verzorgd door Bezemer & Schubad. Je kunt een terugbelverzoek achterlaten. De vertrouwenspersoon neemt vervolgens zo snel mogelijk contact met je op, op een tijdstip dat jou uitkomt." },
-
-        { type: "h", text: "Verzekering" },
-        { type: "p", text: "Palet Welzijn heeft voor vrijwilligers een ongevallen- en aansprakelijkheidsverzekering afgesloten." },
-        { type: "p", text: "Hierdoor ben je verzekerd voor eventuele schade die onbedoeld ontstaat tijdens je vrijwilligerswerk." },
-        { type: "p", text: "Het eigen risico van de aansprakelijkheidsverzekering neemt Palet Welzijn voor haar rekening." },
-        { type: "p", text: "Wil je meer weten over de actuele verzekeringsvoorwaarden? Vraag deze dan op bij de manager informele ondersteuning van Palet Welzijn." },
-
-        { type: "h", text: "Geheimhouding en privacy" },
-        { type: "p", text: "Wanneer je vrijwilligerswerk doet, kun je persoonlijke en vertrouwelijke informatie te horen krijgen." },
-        { type: "p", text: "We verwachten dat je hier zorgvuldig mee omgaat." },
-        { type: "p", text: "Alles wat je vertrouwelijk over cliënten, bewoners of de organisatie te weten komt, valt onder de geheimhoudingsplicht." },
-        { type: "p", text: "Deze verplichting blijft ook gelden wanneer je stopt met vrijwilligerswerk bij Palet Welzijn." },
-        { type: "p", text: "Ook jouw eigen persoonsgegevens behandelen we zorgvuldig. Palet Welzijn bewaart deze in een beveiligd systeem volgens de Algemene Verordening Gegevensbescherming (AVG)." },
-        { type: "p", text: "Je gegevens worden alleen met jouw toestemming met anderen gedeeld. Dit geldt bijvoorbeeld voor het doorgeven van gegevens aan Vierstroom Ledenservice." }
+        { type: "block", h: "Incidenten melden", p: "Ben je getuige van een incident of maak je een situatie mee die mogelijk schadelijke gevolgen heeft voor jou of voor iemand anders? Bespreek dit altijd met jouw contactpersoon. Deze kan naar je luisteren en samen met jou beoordelen of de situatie ook formeel gemeld moet worden. Wacht hier niet mee. Ook wanneer je twijfelt, is het belangrijk om een situatie bespreekbaar te maken." },
+        { type: "block", h: "Vertrouwenspersoon", p: "Heb je iets meegemaakt tijdens je vrijwilligerswerk en kun je hiermee niet terecht bij jouw contactpersoon of manager? Dan kun je contact opnemen met de vertrouwenspersoon van Palet Welzijn via de vertrouwenslijn: 088 - 144 0200. De vertrouwenslijn wordt verzorgd door Bezemer & Schubad. Je kunt een terugbelverzoek achterlaten. De vertrouwenspersoon neemt vervolgens zo snel mogelijk contact met je op, op een tijdstip dat jou uitkomt." },
+        { type: "block", h: "Verzekering", p: "Palet Welzijn heeft voor vrijwilligers een ongevallen- en aansprakelijkheidsverzekering afgesloten. Hierdoor ben je verzekerd voor eventuele schade die onbedoeld ontstaat tijdens je vrijwilligerswerk. Het eigen risico van de aansprakelijkheidsverzekering neemt Palet Welzijn voor haar rekening. Wil je meer weten over de actuele verzekeringsvoorwaarden? Vraag deze dan op bij de manager informele ondersteuning van Palet Welzijn." }
       ],
 
       tasks: [
@@ -415,12 +245,12 @@
           explanation: "Je contactpersoon luistert en beoordeelt samen met jou of de situatie formeel gemeld moet worden. Wacht hier niet mee."
         },
         {
-          question: "Je bent gestopt met vrijwilligerswerk bij Palet Welzijn. Geldt de geheimhoudingsplicht dan nog?",
+          question: "Ik ben gestopt met vrijwilligerswerk, maar vertel wat vertrouwelijks aan een bekende. Mag dat?",
           options: [
-            { label: "A. Nee, alleen zolang je vrijwilliger bent", ok: false },
-            { label: "B. Ja, maar alleen een jaar lang", ok: false },
-            { label: "C. Ja, de geheimhoudingsplicht blijft ook gelden na het stoppen", ok: true },
-            { label: "D. Alleen als je nog contact hebt met cliënten", ok: false }
+            { label: "A. Ja, want ik ben geen vrijwilliger meer", ok: false },
+            { label: "B. Ja, maar alleen als ik geen namen noem", ok: false },
+            { label: "C. Nee, de geheimhoudingsplicht blijft ook gelden na het stoppen", ok: true },
+            { label: "D. Alleen als de bekende het niet doorvertelt", ok: false }
           ],
           explanation: "Alles wat je vertrouwelijk over cliënten, bewoners of de organisatie te weten komt, valt onder de geheimhouding. Dat geldt ook na het stoppen."
         }
@@ -428,12 +258,92 @@
     },
 
     /* -------------------------------------------------------
-       STAP 6 - AANMELDING & TOT SLOT (H8 + H9 samengevoegd)
-       Vragen 13 en 14
+       STAP 5 - CHECKLIST (was H2)
+       Bestanden doornemen + invullen, contactformulier met checklist
+       ------------------------------------------------------- */
+    {
+      id: "checklist",
+      title: "Checklist: je start bij Palet Welzijn",
+      text: "Je contactpersoon, je VOG, je overeenkomst en het contactformulier.",
+      img: "../../assets/start.png",
+      alt: "Checklist",
+      icon: "fa-regular fa-file-lines",
+      color: "#0055ff",
+      link: "../onboarding/onboarding.html",
+
+      body: [
+        { type: "p", text: "We vinden het belangrijk dat je goed begint en weet waar je aan toe bent. Daarom doorlopen we samen een aantal stappen. Hieronder zie je wat er allemaal geregeld moet worden voordat je officieel aan de slag gaat." },
+
+        { type: "h", text: "Stap 1. Kennismaken" },
+        { type: "p", text: "Je hebt een kennismakingsgesprek met de contactpersoon vrijwilligers van de locatie of dienst. Tijdens dit gesprek vertellen we je meer over Palet Welzijn, bespreken we de vrijwilligersrol waarin je geïnteresseerd bent, kijken we naar jouw motivatie en eventuele ervaring en krijg je alle ruimte om vragen te stellen. Het gesprek is informeel. Als je dat prettig vindt, kun je ook een keer meelopen op locatie." },
+
+        { type: "h", text: "Stap 2. De juiste match" },
+        { type: "p", text: "Samen bekijken we of de vrijwilligersrol aansluit bij jouw wensen, interesses en mogelijkheden. We vinden het belangrijk dat je op een plek terechtkomt waar jij je prettig voelt." },
+
+        { type: "h", text: "Stap 3. VOG en vrijwilligersovereenkomst" },
+        { type: "p", text: "Omdat je werkt met kwetsbare mensen, vragen we iedere vrijwilliger om een Verklaring Omtrent het Gedrag (VOG). Je ontvangt van Palet Welzijn een digitale link waarmee je de VOG kosteloos kunt aanvragen. Zodra je deze hebt ontvangen, laat je hem zien aan jouw contactpersoon. De VOG blijft jouw eigendom. Daarnaast ontvang je een vrijwilligersovereenkomst. Deze lees je door, vul je in en onderteken je. Dit is nodig voor je aanmelding en verzekering." },
+
+        { type: "h", text: "Stap 4. Bestanden doornemen en invullen" },
+        { type: "p", text: "Voordat je je aanmeldt, is het belangrijk dat je de bestanden die je van ons hebt ontvangen, goed doorneemt en invult. Denk aan de vrijwilligersovereenkomst en eventuele andere formulieren. Lees alles rustig door, vul de gevraagde gegevens in en onderteken waar nodig. Zo weet je precies waar je aan toe bent en kunnen wij je aanmelding goed verwerken." },
+
+        { type: "h", text: "Stap 5. Contactformulier invullen en bestanden meesturen" },
+        { type: "p", text: "Als je alle bestanden hebt doorgenomen en ingevuld, vul je het contactformulier in. Op het contactformulier geef je aan dat je de checklist hebt doorlopen: heb ik het kennismakingsgesprek gehad? Heb ik mijn VOG aangevraagd en laten zien? Heb ik mijn vrijwilligersovereenkomst ingevuld en ondertekend? Heb ik de afspraken over mijn start en begeleiding gemaakt? Vink alles aan, stuur de ingevulde bestanden mee en je aanmelding is compleet. VOILA!" },
+
+        { type: "h", text: "Stap 6. Aan de slag!" },
+        { type: "p", text: "Wanneer alles geregeld is, kun je beginnen met jouw vrijwilligerswerk. Soms spreken we eerst een proefperiode af. Zo kunnen we samen ervaren of de samenwerking en de rol goed bij je passen." },
+
+        { type: "h", text: "Stap 7. Wanneer je wilt stoppen" },
+        { type: "p", text: "Er kunnen verschillende redenen zijn waarom je wilt stoppen. Misschien verandert je privésituatie, wordt het te druk of past de rol niet meer bij je. Bespreek dit altijd eerst met jouw contactpersoon. Samen kijken we of een andere rol, locatie of aangepaste inzet een oplossing kan zijn. Als stoppen uiteindelijk de beste keuze is, bespreken we hoe we jouw vrijwilligerswerk op een goede manier kunnen afronden." }
+      ],
+
+      tasks: [
+        "Ik heb een kennismakingsgesprek gehad met mijn contactpersoon",
+        "Ik heb mijn gratis VOG aangevraagd en laten zien aan mijn contactpersoon",
+        "Ik heb mijn vrijwilligersovereenkomst ingevuld en ondertekend",
+        "Ik heb alle bestanden doorgenomen en ingevuld",
+        "Ik heb het contactformulier ingevuld, de checklist aangevinkt en de bestanden meegestuurd"
+      ],
+
+      quizzes: [
+        {
+          question: "Wat doe je met je VOG nadat je hem hebt ontvangen?",
+          options: [
+            { label: "A. Je stuurt hem op naar de vertrouwenspersoon", ok: false },
+            { label: "B. Je geeft hem aan Palet Welzijn, die hem bewaart", ok: false },
+            { label: "C. Je betaalt de kosten en dient hem later in", ok: false },
+            { label: "D. Je laat hem zien aan je contactpersoon. De VOG blijft van jou", ok: true }
+          ],
+          explanation: "De VOG vraag je kosteloos aan via een digitale link van Palet Welzijn. De VOG blijft jouw eigendom."
+        },
+        {
+          question: "Wat moet je doen voordat je het contactformulier invult?",
+          options: [
+            { label: "A. Niets, je kunt direct het formulier invullen", ok: false },
+            { label: "B. Eerst de bestanden doornemen en invullen, daarna het formulier met checklist en bestanden meesturen", ok: true },
+            { label: "C. Alleen je VOG meesturen", ok: false },
+            { label: "D. Wachten tot je begint", ok: false }
+          ],
+          explanation: "Eerst de bestanden doornemen en invullen, daarna het contactformulier met de checklist en de bestanden meesturen."
+        },
+        {
+          question: "Wanneer ben je officieel aangemeld als vrijwilliger?",
+          options: [
+            { label: "A. Direct na het kennismakingsgesprek", ok: false },
+            { label: "B. Zodra je de VOG hebt aangevraagd", ok: false },
+            { label: "C. Wanneer alles op de checklist is geregeld, inclusief de ondertekende overeenkomst en het verstuurde contactformulier", ok: true },
+            { label: "D. Na afloop van de proefperiode", ok: false }
+          ],
+          explanation: "Pas als alles geregeld is, inclusief de ondertekende vrijwilligersovereenkomst en het verstuurde contactformulier, ben je officieel aangemeld."
+        }
+      ]
+    },
+
+    /* -------------------------------------------------------
+       STAP 6 - EINDE & AANMELDEN
        ------------------------------------------------------- */
     {
       id: "aanmelding",
-      title: "Aanmelding & tot slot",
+      title: "Tot slot – samen maken we het verschil!",
       text: "Je officiële aanmelding en samen maken we het verschil.",
       img: "../../assets/aanmelding.png",
       alt: "Aanmelding & tot slot",
@@ -442,28 +352,14 @@
       link: "../onboarding/onboarding.html",
 
       body: [
-        { type: "p", text: "Voordat je officieel aan de slag gaat, moeten een aantal zaken geregeld zijn." },
-
-        { type: "h", text: "Jouw checklist:" },
-        { type: "list", items: [
-          "Kennismakingsgesprek gevoerd.",
-          "Vrijwilligersrol en afspraken besproken.",
-          "VOG aangevraagd en getoond aan jouw contactpersoon.",
-          "Vrijwilligersovereenkomst ontvangen.",
-          "Vrijwilligersovereenkomst ingevuld en ondertekend.",
-          "Afspraken over jouw start en begeleiding gemaakt."
-        ]},
-        { type: "p", text: "Wanneer alles geregeld is, ben je officieel aangemeld als vrijwilliger bij Palet Welzijn." },
-        { type: "p", text: "Welkom bij het team!" },
-
-        { type: "h", text: "Tot slot – samen maken we het verschil!" },
         { type: "p", text: "We hopen dat je met veel plezier jouw rol als vrijwilliger bij Palet Welzijn gaat invullen." },
         { type: "p", text: "Onthoud dat jouw inzet waardevol is. Iedere vrijwilliger draagt op zijn of haar eigen manier bij aan het welzijn van onze cliënten, bewoners, mantelzorgers en hun sociale omgeving." },
         { type: "p", text: "Heb je vragen, loop je ergens tegenaan of ervaar je minder plezier in je vrijwilligerswerk? Blijf er niet mee rondlopen, maar ga met ons in gesprek. Samen zoeken we naar een passende oplossing." },
-        { type: "p", text: "Ken je iemand die ook iets voor een ander wil betekenen?" },
-        { type: "p", text: "Vertel dan gerust over jouw ervaringen bij Palet Welzijn! Misschien inspireer je iemand om ook vrijwilliger te worden." },
-        { type: "p", text: "Er is veel mogelijk en we kijken graag samen welke rol bij iemand past." },
-        { type: "p", text: "Meer weten of aanmelden?" },
+
+        { type: "h", text: "Lijkt het je wat?" },
+        { type: "p", text: "Ken je iemand die ook iets voor een ander wil betekenen? Vertel dan gerust over jouw ervaringen bij Palet Welzijn! Misschien inspireer je iemand om ook vrijwilliger te worden. Er is veel mogelijk en we kijken graag samen welke rol bij iemand past." },
+
+        { type: "h", text: "Meer weten of aanmelden?" },
         { type: "p", text: "Palet Welzijn" },
         { type: "list", items: [
           "Website: www.paletwelzijn.nl",
@@ -475,7 +371,7 @@
       ],
 
       tasks: [
-        "Ik heb de checklist doorlopen (kennismaking, VOG, overeenkomst, afspraken)",
+        "Ik heb de checklist doorlopen (kennismaking, VOG, overeenkomst, bestanden, contactformulier)",
         "Ik weet dat ik altijd in gesprek kan over wat bij mij past",
         "Ik weet hoe ik Palet Welzijn kan bereiken voor vragen of aanmeldingen"
       ],
@@ -509,7 +405,7 @@
      2. OPSLAG EN ELEMENTEN
      ========================================================= */
 
-  var STORAGE_KEY = "pw-onboarding-v4";
+  var STORAGE_KEY = "pw-onboarding-v5";
 
   var root = document.querySelector(".pw-onboarding");
   if (!root) return;
@@ -569,6 +465,7 @@
   }
 
   function quizAnswered(step) {
+    if (!Array.isArray(step.quizzes) || step.quizzes.length === 0) return true;
     var answers = state.quiz[step.id];
     if (!Array.isArray(answers)) return false;
     return step.quizzes.every(function (_, i) { return answers[i] === true; });
@@ -693,7 +590,7 @@
     panelEl.textContent = "";
     panelEl.style.setProperty("--step-color", step.color);
 
-       /* AFBEELDING */
+    /* AFBEELDING */
     var img = el("img", "pw-ob-panel-img");
     img.src = step.img;
     img.alt = step.alt;
@@ -718,10 +615,11 @@
     }
     head.appendChild(badge);
     panelEl.appendChild(head);
+
     /* INTRO */
     panelEl.appendChild(el("p", "pw-ob-panel-intro", step.text));
 
-    /* INFORMATIEBLOK — letterlijke tekst uit handboek */
+    /* INFORMATIEBLOK */
     if (Array.isArray(step.body) && step.body.length) {
       var info = el("div", "pw-ob-info");
 
@@ -736,6 +634,12 @@
 
         } else if (block.type === "h3") {
           info.appendChild(el("h5", "pw-ob-info-h3", block.text));
+
+        } else if (block.type === "block") {
+          var b = el("div", "pw-ob-block");
+          if (block.h) b.appendChild(el("h4", "pw-ob-info-h", block.h));
+          if (block.p) b.appendChild(el("p", "pw-ob-info-p", block.p));
+          info.appendChild(b);
 
         } else if (block.type === "list" && Array.isArray(block.items)) {
           var ul2 = el("ul", "pw-ob-info-list");
@@ -776,11 +680,13 @@
     });
     panelEl.appendChild(ul);
 
-    /* QUIZ */
-    if (isDone(step)) {
-      panelEl.appendChild(buildQuiz(step));
-    } else {
-      panelEl.appendChild(el("p", "pw-ob-hint", "Vink eerst alle taken hierboven af. Daarna verschijnen de controle-vragen."));
+    /* QUIZ (alleen als er vragen zijn) */
+    if (Array.isArray(step.quizzes) && step.quizzes.length > 0) {
+      if (isDone(step)) {
+        panelEl.appendChild(buildQuiz(step));
+      } else {
+        panelEl.appendChild(el("p", "pw-ob-hint", "Vink eerst alle taken hierboven af. Daarna verschijnen de controle-vragen."));
+      }
     }
 
     /* FOOTER */
@@ -814,7 +720,7 @@
   }
 
   /* =========================================================
-     8. MEERDERE CONTROLE-VRAGEN PER STAP
+     8. CONTROLE-VRAGEN
      ========================================================= */
 
   function buildQuiz(step) {
@@ -852,10 +758,10 @@
             b.classList.add("is-selected", "is-correct");
             Array.prototype.forEach.call(opts.children, function (c) { c.disabled = true; });
 
-            feedback.textContent = "Goed gedaan! ";
+            feedback.textContent = "Perfect!";
             feedback.className = "pw-ob-quiz-feedback is-ok";
           } else {
-            feedback.textContent = "Dat is helaas niet goed. Probeer het nog eens.";
+            feedback.textContent = "Nog niet goed, probeer opnieuw.";
             feedback.className = "pw-ob-quiz-feedback is-no";
           }
 
@@ -882,7 +788,7 @@
       card.appendChild(opts);
 
       if (correct) {
-        feedback.textContent = "Goed gedaan! " + quiz.explanation;
+        feedback.textContent = "Perfect!";
         feedback.className = "pw-ob-quiz-feedback is-ok";
       }
 
