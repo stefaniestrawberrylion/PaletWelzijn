@@ -1,6 +1,6 @@
 /* =========================================================
    Palet Welzijn – Onboarding "Jouw route als vrijwilliger"
-   6 stappen naast elkaar
+   5 stappen · welkom-overlay · afronden met 2 blocks
    ========================================================= */
 (function () {
   "use strict";
@@ -15,18 +15,10 @@
       icon: "fa-regular fa-hand",
       color: "#120a5c",
       link: "../beleid/beleid.html",
-      tasks: ["Ik weet wie Palet Welzijn is", "Ik weet dat ik één van de ruim 1.300 vrijwilligers ben"]
-    },
-    {
-      id: "start",
-      title: "Je start bij Palet Welzijn",
-      text: "Je contactpersoon, je VOG en je vrijwilligersovereenkomst.",
-      img: "../../assets/start.png",
-      alt: "Start",
-      icon: "fa-regular fa-file-lines",
-      color: "#0055ff",
-      link: "../beleid/beleid.html",
-      tasks: ["Kennisgemaakt met mijn contactpersoon", "Gratis VOG aangevraagd en laten zien", "Vrijwilligersovereenkomst getekend"]
+      tasks: [
+        "Ik weet wie Palet Welzijn is",
+        "Ik weet dat ik kan kiezen uit verschillende vrijwilligersrollen"
+      ]
     },
     {
       id: "voor-jou",
@@ -37,7 +29,10 @@
       icon: "fa-solid fa-star",
       color: "#C2410C",
       link: "../beleid/beleid.html",
-      tasks: ["Ik weet wat vrijwilligerswerk mij oplevert", "Ik weet welke extra's ik van Palet Welzijn krijg"]
+      tasks: [
+        "Ik weet wat vrijwilligerswerk mij oplevert",
+        "Ik weet welke extra's ik van Palet Welzijn krijg"
+      ]
     },
     {
       id: "afspraken",
@@ -48,7 +43,11 @@
       icon: "fa-solid fa-graduation-cap",
       color: "#008241",
       link: "../beleid/beleid.html",
-      tasks: ["Ik ken de gedragscode", "Wat ik over cliënten hoor, blijft geheim", "Ik doe geen medische of verpleegkundige handelingen"]
+      tasks: [
+        "Ik ken de gedragscode",
+        "Wat ik over cliënten hoor, blijft geheim — ook na mijn vrijwilligerswerk",
+        "Ik doe geen medische of verpleegkundige handelingen"
+      ]
     },
     {
       id: "veiligheid",
@@ -59,29 +58,38 @@
       icon: "fa-solid fa-shield-halved",
       color: "#92278F",
       link: "../beleid/beleid.html",
-      tasks: ["Ik weet bij wie ik terechtkan als er iets gebeurt", "Ik ken de vertrouwenslijn: 088 - 144 02 00", "Ik weet dat ik verzekerd ben"]
+      tasks: [
+        "Ik weet bij wie ik terechtkan als er iets gebeurt",
+        "Ik ken de vertrouwenslijn: 088 - 144 02 00",
+        "Ik weet dat ik verzekerd ben"
+      ]
     },
     {
       id: "aanmelding",
       title: "Aanmelding & tot slot",
-      text: "Je officiële aanmelding en samen maken we het verschil.",
+      text: "Je checklist, VOG, overeenkomst en samen maken we het verschil.",
       img: "../../assets/aanmelding.png",
       alt: "Aanmelding",
       icon: "fa-solid fa-flag-checkered",
       color: "#0F766E",
       link: "../beleid/beleid.html",
-      tasks: ["Ik heb de checklist doorlopen", "Ik weet dat ik altijd in gesprek kan over wat bij mij past"]
+      tasks: [
+        "Ik heb de checklist doorlopen",
+        "Ik heb mijn gratis VOG aangevraagd en laten zien",
+        "Ik heb mijn vrijwilligersovereenkomst ingevuld en ondertekend",
+        "Ik weet dat ik altijd in gesprek kan over wat bij mij past"
+      ]
     }
   ];
 
   var STORAGE_KEY = "pw-onboarding-v4";
   var VIEW_KEY = "pw-onboarding-view";
+  var WELKOM_KEY = "pw-welkom-gezien";
   var BELEID_URL = "../beleid/beleid.html";
 
-  /* ---------- Elementen ---------- */
   var root = document.querySelector(".pw-onboarding");
   if (!root) return;
-  
+
   var listEl = root.querySelector("#pw-ob-steps");
   var routeEl = root.querySelector("#pw-ob-route");
   var trackEl = root.querySelector("#pw-ob-track");
@@ -95,6 +103,18 @@
   var viewRouteEl = root.querySelector("#pw-ob-view-route");
   var viewPraatplaatEl = root.querySelector("#pw-ob-view-praatplaat");
   var viewBtns = root.querySelectorAll(".pw-ob-viewbtn");
+  var praatplaatCta = root.querySelector("#pw-ob-praatplaat-cta");
+
+  var welkomEl = document.getElementById("pw-welkom");
+  var welkomStartBtns = welkomEl ? welkomEl.querySelectorAll("[data-start]") : [];
+
+  var modalEl = document.getElementById("pw-ob-modal");
+  var modalX = document.getElementById("pw-ob-modal-x");
+  var block1 = document.getElementById("pw-ob-finish-block1");
+  var block2 = document.getElementById("pw-ob-finish-block2");
+  var block3 = document.getElementById("pw-ob-finish-block3");
+  var check1 = document.getElementById("pw-ob-finish-check1");
+  var contactForm = document.getElementById("pw-ob-contactform");
 
   /* ---------- Opslag ---------- */
   function loadState() {
@@ -166,7 +186,7 @@
   var ICON_ARROW = '<path d="M5 12h14M13 6l6 6-6 6"/>';
   var ICON_LOCK = '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>';
 
-  /* ---------- Kaarten tekenen ---------- */
+  /* ---------- Kaarten ---------- */
   function renderSteps() {
     listEl.textContent = "";
     var cur = currentIndex();
@@ -189,12 +209,15 @@
 
       var card = el("article", "pw-ob-card");
 
+      // Banner-afbeelding boven titel
+      var banner = el("div", "pw-ob-card-banner");
       var img = el("img");
       img.src = step.img;
       img.alt = step.alt;
       img.loading = "lazy";
       img.onerror = function () { this.style.display = "none"; };
-      card.appendChild(img);
+      banner.appendChild(img);
+      card.appendChild(banner);
 
       var content = el("div", "pw-ob-card-content");
 
@@ -237,6 +260,7 @@
     var done = Math.min(cur, STEPS.length);
     progressLabelEl.textContent = done + " van " + STEPS.length + " stappen afgerond";
     barEl.setAttribute("aria-valuenow", String(done));
+    barEl.setAttribute("aria-valuemax", String(STEPS.length));
     barFillEl.style.width = (done / STEPS.length) * 100 + "%";
     badgeEl.textContent = cur >= STEPS.length
       ? "Klaar voor je eerste dag!"
@@ -245,7 +269,6 @@
 
   function positionTrack(cur) {
     if (!viewRouteEl.classList.contains("is-active")) return;
-
     var stops = listEl.querySelectorAll(".pw-ob-stop");
     if (stops.length < 2) return;
     var base = routeEl.getBoundingClientRect();
@@ -284,10 +307,9 @@
     node.style.height = height + "px";
   }
 
-  /* ---------- View switch (route ↔ praatplaat) ---------- */
+  /* ---------- View switch ---------- */
   function setView(view) {
     var isRoute = view === "route";
-    
     viewRouteEl.classList.toggle("is-active", isRoute);
     viewPraatplaatEl.classList.toggle("is-active", !isRoute);
 
@@ -300,7 +322,6 @@
     if (isRoute) {
       setTimeout(function () { positionTrack(currentIndex()); }, 50);
     }
-
     try { window.localStorage.setItem(VIEW_KEY, view); } catch (e) {}
   }
 
@@ -313,13 +334,130 @@
     if (savedView === "praatplaat") setView("praatplaat");
   } catch (e) {}
 
-  /* ---------- Overige ---------- */
+  /* ---------- Welkom overlay (eenmalig per bezoeker) ---------- */
+  function openWelkom() {
+    if (!welkomEl) return;
+    welkomEl.hidden = false;
+    document.body.style.overflow = "hidden";
+    var first = welkomEl.querySelector("[data-start]");
+    if (first) setTimeout(function () { first.focus(); }, 60);
+  }
+  function closeWelkom(startView) {
+    if (!welkomEl) return;
+    welkomEl.hidden = true;
+    document.body.style.overflow = "";
+    try { window.localStorage.setItem(WELKOM_KEY, "1"); } catch (e) {}
+
+    if (startView === "visueel") {
+      setView("praatplaat");
+    } else if (startView === "tekstueel") {
+      setView("route");
+    }
+  }
+
+  welkomStartBtns.forEach(function (b) {
+    b.addEventListener("click", function () { closeWelkom(b.dataset.start); });
+  });
+
+  var welkomGezien = false;
+  try { welkomGezien = window.localStorage.getItem(WELKOM_KEY) === "1"; } catch (e) {}
+  if (!welkomGezien) openWelkom();
+
+  /* ---------- Afronden modal ---------- */
+  var lastFocused = null;
+
+  function openModal() {
+    if (!modalEl) return;
+    lastFocused = document.activeElement;
+    modalEl.hidden = false;
+    document.body.style.overflow = "hidden";
+
+    // Reset naar block 1
+    if (block1) block1.classList.remove("pw-ob-finish-block--hidden");
+    if (block2) block2.classList.add("pw-ob-finish-block--hidden");
+    if (block3) block3.classList.add("pw-ob-finish-block--hidden");
+    if (check1) check1.checked = false;
+    if (modalX) modalX.style.display = "";
+
+    setTimeout(function () {
+      var firstBtn = modalEl.querySelector(".pw-ob-finish-btn--outline, .pw-ob-modal-btn");
+      if (firstBtn) firstBtn.focus();
+    }, 50);
+
+    document.addEventListener("keydown", onModalKeydown);
+  }
+
+  function closeModal() {
+    if (!modalEl) return;
+    modalEl.hidden = true;
+    document.body.style.overflow = "";
+    document.removeEventListener("keydown", onModalKeydown);
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+  }
+
+  function onModalKeydown(e) {
+    if (e.key === "Escape") closeModal();
+  }
+
+  if (modalEl) {
+    modalEl.addEventListener("click", function (e) {
+      var t = e.target;
+      if (t && t.getAttribute && t.getAttribute("data-close") === "true") closeModal();
+    });
+  }
+
+  // Block 1 → block 2
+  if (check1) {
+    check1.addEventListener("change", function () {
+      if (check1.checked) {
+        block2.classList.remove("pw-ob-finish-block--hidden");
+        setTimeout(function () {
+          block2.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }, 80);
+      } else {
+        block2.classList.add("pw-ob-finish-block--hidden");
+        block3.classList.add("pw-ob-finish-block--hidden");
+      }
+    });
+  }
+
+  // Block 2 → block 3 (felicitatie)
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!contactForm.checkValidity()) {
+        contactForm.reportValidity();
+        return;
+      }
+      // Placeholder: hier zou een fetch naar een backend komen
+      if (block1) block1.classList.add("pw-ob-finish-block--hidden");
+      if (block2) block2.classList.add("pw-ob-finish-block--hidden");
+      if (block3) block3.classList.remove("pw-ob-finish-block--hidden");
+      if (modalX) modalX.style.display = "none";
+      setTimeout(function () {
+        var c = block3.querySelector(".pw-ob-modal-btn");
+        if (c) c.focus();
+      }, 80);
+    });
+  }
+
+  // Praatplaat CTA → open modal
+  if (praatplaatCta) {
+    praatplaatCta.addEventListener("click", function () { openModal(); });
+  }
+
+  /* ---------- Reset ---------- */
   resetEl.addEventListener("click", function () {
+    var ok = window.confirm("Weet je zeker dat je alle voortgang wilt wissen en opnieuw wilt beginnen?");
+    if (!ok) return;
     state = { checked: {}, quiz: {} };
     saveState();
     renderSteps();
+    try { window.localStorage.removeItem(WELKOM_KEY); } catch (e) {}
+    openWelkom();
   });
 
+  /* ---------- Resize ---------- */
   var resizeTimer;
   window.addEventListener("resize", function () {
     clearTimeout(resizeTimer);
