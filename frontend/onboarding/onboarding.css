@@ -4,15 +4,11 @@
     --pw-blauw: #0055ff;
     --pw-groen: #008241;
     --pw-groen-licht: #4d88ff;
-    --pw-warm: #F4A261;        /* zacht oranje voor accenten */
-    --pw-warm-licht: #FFF4E6;  /* warme achtergrond */
-    --pw-warm-donker: #C2410C; /* diep oranje voor nadruk */
-    --bg-body: #FBF7F2;        /* warme crème i.p.v. koud grijs */
+    --bg-body: #f8f9fa;
     --bg-card: #ffffff;
-    --text-donker: #2A2A3A;    /* zachter dan #1a1a1a */
-    --text-licht: #6B6B7B;
-    --border-kleur: #EDE4D8;   /* warme rand */
-    --pw-radius: 14px;
+    --text-donker: #1a1a1a;
+    --text-licht: #666666;
+    --border-kleur: #e2e2e2;
 }
 
 * {
@@ -220,16 +216,6 @@ html, body {
     gap: 12px;
 }
 
-@media (max-width: 1400px) {
-    .pw-ob-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-}
-@media (max-width: 900px) {
-    .pw-ob-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 600px) {
-    .pw-ob-steps { grid-template-columns: 1fr; }
-}
-
 .pw-ob-step {
     --step-color: var(--pw-navy);
     display: flex;
@@ -265,40 +251,21 @@ html, body {
 .pw-ob-step.is-locked .pw-ob-stop i { font-size: 16px; }
 .pw-ob-stop svg { width: 20px; height: 20px; }
 
+/* Kaart */
 .pw-ob-card {
     align-self: stretch;
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    padding: 16px;
+    padding: 14px;
     background: #ffffff;
-    border: 2px solid var(--border-kleur);
+    border: 2px solid var(--pw-line);
     border-radius: var(--pw-radius);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-    position: relative;
-    overflow: hidden;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.pw-ob-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: var(--step-color, var(--pw-groen));
-    opacity: 0.85;
-}
-.pw-ob-card:hover {
-    border-color: var(--step-color, var(--pw-groen));
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    transform: translateY(-2px);
-}
-.pw-ob-step.is-current .pw-ob-card {
-    border-color: var(--pw-groen);
-    box-shadow: 0 6px 20px rgba(0, 130, 65, 0.15);
-}
-.pw-ob-step.is-done .pw-ob-card {
-    background: #FAFDF9;
-    border-color: #C8E6D0;
-}
+.pw-ob-step.is-current .pw-ob-card { border: 2px solid var(--pw-green); box-shadow: 0 4px 12px rgba(0, 130, 65, 0.15); }
+.pw-ob-step.is-locked .pw-ob-card { background: #fafafa; }
+.pw-ob-card:hover { border-color: #b0b0b0; }
 
 .pw-ob-card img {
     width: 100%;
@@ -311,30 +278,10 @@ html, body {
 
 .pw-ob-label { margin: 0 0 4px 0; font-family: var(--pw-font-head); font-weight: 700; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--pw-muted); }
 .pw-ob-step.is-done .pw-ob-label { color: var(--pw-green); }
-.pw-ob-step.is-current .pw-ob-label {
-    color: var(--pw-warm-donker);
-    background: var(--pw-warm-licht);
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 999px;
-    font-size: 9px;
-}
-.pw-ob-card h3 {
-    margin: 0 0 6px 0;
-    font-family: var(--pw-font-head);
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 1.25;
-    color: var(--pw-navy);
-    letter-spacing: -0.01em;
-}
-.pw-ob-card p.pw-ob-text {
-    margin: 0;
-    font-size: 12px;
-    color: var(--text-licht);
-    line-height: 1.5;
-    font-family: var(--pw-font-body);
-}
+.pw-ob-step.is-current .pw-ob-label { color: var(--pw-navy); }
+
+.pw-ob-card h3 { margin: 0 0 6px 0; font-family: var(--pw-font-head); font-weight: 800; font-size: 14px; line-height: 1.2; color: var(--pw-navy); }
+.pw-ob-card p.pw-ob-text { margin: 0; font-size: 12px; color: var(--pw-muted); line-height: 1.4; }
 
 .pw-ob-action { margin-top: auto; padding-top: 14px; }
 
@@ -477,389 +424,4 @@ html, body {
     .pw-ob-card p.pw-ob-text { display: none; }
     .pw-ob-stop { width: 36px; height: 36px; font-size: 14px; border-width: 2px; }
     .pw-ob-action { width: 100%; }
-}
-
-
-/* =========================================================
-   Welkomst-dia Slideshow (PowerPoint stijl)
-   ========================================================= */
-.pw-welcome {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    /* Diepe blauwe waas met blur */
-    background: rgba(18, 10, 92, 0.75);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    
-    /* Initiële staat voor de fade-in van de achtergrond */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.pw-welcome.is-visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* De dia-kaart zelf */
-.pw-welcome-card {
-    width: 100%;
-    max-width: 800px;
-    min-height: 450px; /* Zorgt dat de dia niet verspringt tussen slide 1 en 2 */
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-    padding: 50px 60px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-
-    /* Initiële staat voor de slide-up animatie */
-    transform: translateY(40px) scale(0.95);
-    opacity: 0;
-    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.6s ease;
-}
-
-/* Als de dia zichtbaar wordt, schuift hij soepel omhoog */
-.pw-welcome.is-visible .pw-welcome-card {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-    transition-delay: 0.1s; /* Ietsje later dan de achtergrond */
-}
-
-/* De aparte dia's (slides) */
-.pw-slide {
-    display: none;
-    opacity: 0;
-    transform: translateX(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    width: 100%;
-}
-.pw-slide.is-active {
-    display: block;
-    opacity: 1;
-    transform: translateX(0);
-    /* Animatie voor als je op 'volgende' klikt */
-    animation: pwSlideIn 0.5s ease forwards;
-}
-
-@keyframes pwSlideIn {
-    from { opacity: 0; transform: translateX(30px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* Tekst opmaak */
-.pw-welcome-eyebrow {
-    margin: 0 0 12px;
-    font-family: var(--pw-font-head, 'Montserrat', Arial, sans-serif);
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--pw-groen, #008241);
-}
-
-.pw-welcome-title {
-    margin: 0 0 24px;
-    font-family: var(--pw-font-head, 'Montserrat', Arial, sans-serif);
-    font-weight: 800;
-    font-size: clamp(26px, 4vw, 36px);
-    line-height: 1.15;
-    color: var(--pw-donkerblauw, #120a5c);
-}
-.pw-mt-0 { margin-top: 0; }
-
-.pw-welcome-body p {
-    margin: 0 0 16px;
-    font-size: 16px;
-    line-height: 1.7;
-    color: #444;
-    font-family: var(--pw-font-body, 'Open Sans', Arial, sans-serif);
-}
-
-.pw-welcome-highlight {
-    font-family: var(--pw-font-hand, 'Permanent Marker', cursive);
-    font-size: 28px !important;
-    color: var(--pw-groen, #008241);
-    transform: rotate(-2deg);
-    transform-origin: left center;
-    margin: 24px 0 !important;
-}
-
-/* Knoppen onderaan */
-.pw-welcome-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 32px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border-kleur, #e2e2e2);
-}
-
-.pw-welcome-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    flex: 1 1 auto;
-    min-height: 48px;
-    padding: 0 24px;
-    border: 0;
-    border-radius: 8px;
-    font-family: var(--pw-font-body, 'Open Sans', Arial, sans-serif);
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-.pw-welcome-btn--primary {
-    background: var(--pw-donkerblauw, #120a5c);
-    color: #ffffff;
-    justify-content: center;
-}
-.pw-welcome-btn--primary:hover {
-    background: #1F1A55;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(18,10,92,0.2);
-}
-.pw-welcome-btn--secondary {
-    background: #EEF2FF;
-    color: var(--pw-donkerblauw, #120a5c);
-}
-.pw-welcome-btn--secondary:hover {
-    background: #DCE4FF;
-    transform: translateY(-2px);
-}
-
-/* Mobiel */
-@media (max-width: 768px) {
-    .pw-welcome-card { padding: 30px 20px; min-height: 400px; }
-    .pw-welcome-btn { flex: 1 1 100%; }
-    .pw-welcome-body p { font-size: 15px; }
-}
-
-
-/* ---------- Afsluitende banner als alles klaar is ---------- */
-.pw-ob-finished-banner {
-  grid-column: 1 / -1;
-  margin-top: 20px;
-  padding: 24px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #E6F3EC 0%, #D4EDE0 100%);
-  border: 2px solid #008241;
-  text-align: center;
-  animation: pwBlockIn 0.5s ease;
-}
-
-.pw-ob-finished-banner h3 {
-  margin: 0 0 8px;
-  font-family: "Montserrat", Arial, sans-serif;
-  font-weight: 800;
-  font-size: 22px;
-  color: #120a5c;
-}
-
-.pw-ob-finished-banner p {
-  margin: 0 0 16px;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #333;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.pw-ob-finished-banner .pw-ob-btn {
-  display: inline-flex;
-  background: #008241;
-  color: #fff;
-}
-
-.pw-ob-finished-banner .pw-ob-btn:hover {
-  background: #006b35;
-}
-
-
-/* ---------- Inschrijf-flow stappen ---------- */
-.pw-welcome-steps {
-    margin: 8px 0 0 18px;
-    padding: 0;
-    font-size: 15px;
-    line-height: 1.6;
-    color: #444;
-}
-.pw-welcome-steps li {
-    margin-bottom: 10px;
-}
-.pw-welcome-small {
-    margin-top: 14px !important;
-    font-size: 13px !important;
-    color: #777 !important;
-    font-style: italic;
-}
-
-/* ---------- WOEHOEEE dia ---------- */
-.pw-welcome-title--party {
-    font-family: var(--pw-font-hand);
-    font-size: clamp(32px, 6vw, 52px) !important;
-    color: var(--pw-groen) !important;
-    transform: rotate(-2deg);
-    text-align: center;
-    margin-bottom: 16px !important;
-}
-#pw-slide-4 { position: relative; }
-
-/* ---------- Confetti ---------- */
-.pw-confetti {
-    position: absolute;
-    inset: -50px -50px -50px -50px;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-}
-.pw-confetti::before,
-.pw-confetti::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    top: -20px;
-    border-radius: 2px;
-    background: #F4A261;
-    box-shadow:
-        5vw 0 0 #008241, 10vw 20px 0 #0055ff, 15vw -10px 0 #F4A261,
-        20vw 30px 0 #C2410C, 25vw 0 0 #92278F, 30vw 40px 0 #008241,
-        35vw -20px 0 #0055ff, 40vw 10px 0 #F4A261, 45vw 50px 0 #120a5c,
-        50vw 0 0 #008241, 55vw 30px 0 #F4A261, 60vw -10px 0 #0055ff,
-        65vw 40px 0 #C2410C, 70vw 10px 0 #92278F, 75vw 0 0 #008241,
-        80vw 30px 0 #F4A261, 85vw -20px 0 #0055ff, 90vw 50px 0 #120a5c,
-        95vw 0 0 #008241;
-    animation: pwConfettiFall 3s linear infinite;
-}
-.pw-confetti::after {
-    animation-delay: 1.2s;
-    top: -60px;
-    background: #92278F;
-    box-shadow:
-        3vw 10px 0 #F4A261, 8vw -10px 0 #008241, 13vw 30px 0 #0055ff,
-        18vw 0 0 #C2410C, 23vw 40px 0 #92278F, 28vw -20px 0 #008241,
-        33vw 10px 0 #F4A261, 38vw 50px 0 #120a5c, 43vw 0 0 #0055ff,
-        48vw 30px 0 #008241, 53vw -10px 0 #F4A261, 58vw 40px 0 #C2410C,
-        63vw 10px 0 #92278F, 68vw 0 0 #008241, 73vw 30px 0 #F4A261,
-        78vw -20px 0 #0055ff, 83vw 50px 0 #120a5c, 88vw 0 0 #008241,
-        93vw 30px 0 #F4A261, 98vw -10px 0 #0055ff;
-}
-@keyframes pwConfettiFall {
-    0%   { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(120vh) rotate(720deg); }
-}
-
-/* ---------- Voltooid-banner op de pagina zelf ---------- */
-.pw-ob-finished-banner {
-    grid-column: 1 / -1;
-    margin-top: 20px;
-    padding: 24px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #FFF4E6 0%, #E6F3EC 100%);
-    border: 2px solid var(--pw-groen);
-    text-align: center;
-    animation: pwBlockIn 0.5s ease;
-}
-.pw-ob-finished-banner h3 {
-    margin: 0 0 8px;
-    font-family: var(--pw-font-head);
-    font-weight: 800;
-    font-size: 22px;
-    color: var(--pw-navy);
-}
-.pw-ob-finished-banner p {
-    margin: 0 0 16px;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #333;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.pw-ob-finished-banner .pw-ob-btn {
-    display: inline-flex;
-    width: auto;
-    background: var(--pw-groen);
-    color: #fff;
-    padding: 0 20px;
-}
-.pw-ob-finished-banner .pw-ob-btn:hover {
-    background: #006b35;
-}
-
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: var(--bg-body);
-    color: var(--text-donker);
-    font-family: 'Open Sans', sans-serif;
-}
-.pw-onboarding {
-    background: linear-gradient(180deg, #FFFFFF 0%, #FDFAF6 100%);
-}
-
-/* ---------- Actieblokken onder de kaarten ---------- */
-.pw-ob-end-actions {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 24px;
-    padding-top: 24px;
-    border-top: 2px dashed var(--border-kleur);
-    animation: pwFadeIn 0.5s ease;
-}
-
-.pw-ob-end-card {
-    background: #F7F9FB;
-    border: 1px solid #E8EDF2;
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.pw-ob-end-card h3 {
-    margin: 0;
-    font-family: var(--pw-font-head);
-    font-weight: 800;
-    font-size: 16px;
-    color: var(--pw-navy);
-}
-
-.pw-ob-end-card p {
-    margin: 0;
-    font-size: 14px;
-    color: var(--pw-text-licht);
-    line-height: 1.5;
-    flex-grow: 1;
-}
-
-.pw-ob-end-card .pw-ob-btn {
-    align-self: flex-start;
-    width: auto;
-    text-decoration: none;
-}
-
-@media (max-width: 768px) {
-    .pw-ob-end-actions {
-        grid-template-columns: 1fr;
-    }
-    .pw-ob-end-card .pw-ob-btn {
-        width: 100%;
-    }
 }

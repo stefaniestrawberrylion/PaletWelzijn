@@ -25,7 +25,7 @@
                 <a href="../../index.html">Home</a>
                 <a href="#">Over ons</a>
                 <a href="#">Vacatures</a>
-<a href="./onboarding.html#start" class="active">Onboarding</a>
+                <a href="./onboarding.html" class="active">Onboarding</a>
                 <a href="#">Contact</a>
             </nav>
             <div class="profile-icon"></div>
@@ -77,24 +77,6 @@
                         <div class="pw-ob-track-fill" id="pw-ob-track-fill"></div>
                         <ol class="pw-ob-steps" id="pw-ob-steps"></ol>
                     </div>
-
-                    <!-- NIEUW: Actieblokken onder de kaarten -->
-                    <div class="pw-ob-end-actions" id="pw-ob-end-actions" style="display: none;">
-                        <div class="pw-ob-end-card">
-                            <h3>Stap 7: Bestanden bekijken</h3>
-                            <p>Lees en vul eerst de benodigde bestanden in (zoals de vrijwilligersovereenkomst).</p>
-                            <a href="../../assets/vrijwilligersovereenkomst.pdf" target="_blank" class="pw-ob-btn pw-ob-btn--ghost">
-                                <i class="fa-regular fa-file-lines"></i> Open bestanden
-                            </a>
-                        </div>
-                        <div class="pw-ob-end-card">
-                            <h3>Stap 8: Contactformulier</h3>
-                            <p>Zodra je de bestanden hebt ingevuld, kun je het contactformulier invullen en versturen.</p>
-                            <a href="../contact/contactformulier.html" class="pw-ob-btn">
-                                <i class="fa-solid fa-paper-plane"></i> Naar contactformulier
-                            </a>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Praatplaat Weergave (Verborgen) -->
@@ -122,108 +104,7 @@
                 <button type="button" class="pw-ob-reset" id="pw-ob-reset">Voortgang wissen</button>
             </div>
             <noscript><p class="pw-ob-noscript">Zet JavaScript aan om je voortgang bij te houden.</p></noscript>
-
         </section>
-
-        <!-- Welkomst-dia Slideshow -->
-        <div class="pw-welcome" id="pw-welcome" role="dialog" aria-modal="true" aria-labelledby="pw-welcome-title">
-            <div class="pw-welcome-card">
-
-                <!-- Dia 1 -->
-                <div class="pw-slide is-active" id="pw-slide-1">
-                    <p class="pw-welcome-eyebrow">Welkom bij Palet Welzijn</p>
-                    <h2 class="pw-welcome-title" id="pw-welcome-title">
-                        Wat fijn dat je je als vrijwilliger wilt inzetten!
-                    </h2>
-                    <div class="pw-welcome-body">
-                        <p>
-                            Met jouw tijd, aandacht en betrokkenheid maak je écht verschil in het leven van anderen.
-                            Soms zit dat verschil in iets kleins: een gezellig gesprek, samen een kop koffie drinken,
-                            een wandeling maken of iemand de ruimte geven om even op adem te komen.
-                        </p>
-                        <p class="pw-welcome-highlight">Jij bent onmisbaar!</p>
-                    </div>
-                    <div class="pw-welcome-actions">
-                        <button type="button" class="pw-welcome-btn pw-welcome-btn--primary" id="pw-slide-next">
-                            Volgende <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Dia 2 -->
-                <div class="pw-slide" id="pw-slide-2">
-                    <h2 class="pw-welcome-title pw-mt-0">Klaar om te beginnen?</h2>
-                    <div class="pw-welcome-body">
-                        <p>
-                            Op deze pagina vind je alle informatie die je nodig hebt om goed van start te gaan als
-                            vrijwilliger bij Palet Welzijn. Je leest wie we zijn, wat je van ons mag verwachten en
-                            wat wij belangrijk vinden in onze samenwerking.
-                        </p>
-                        <p>
-                            We hopen dat je met plezier aan de slag gaat en je snel thuis voelt bij Palet Welzijn.
-                        </p>
-                        <p>
-                            <strong>Kies hieronder hoe je het onboardingmateriaal wilt bekijken: tekstueel of visueel.</strong>
-                        </p>
-                    </div>
-                    <div class="pw-welcome-actions">
-                        <button type="button" class="pw-welcome-btn pw-welcome-btn--primary" id="pw-welcome-start">
-                            <i class="fa-solid fa-route" aria-hidden="true"></i> Onboardingmateriaal tekstueel
-                        </button>
-                        <button type="button" class="pw-welcome-btn pw-welcome-btn--secondary" id="pw-welcome-plaat">
-                            <i class="fa-solid fa-image" aria-hidden="true"></i> Onboardingmateriaal visueel
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Dia 3 - Inschrijf-flow (bestanden -> contactformulier) -->
-                <div class="pw-slide" id="pw-slide-3">
-                    <p class="pw-welcome-eyebrow">Bijna klaar!</p>
-                    <h2 class="pw-welcome-title pw-mt-0">Eerst de bestanden, dan het formulier</h2>
-                    <div class="pw-welcome-body">
-                        <p>
-                            Voordat je je officieel aanmeldt, is het belangrijk dat je de bestanden goed doorneemt en invult.
-                        </p>
-                        <ol class="pw-welcome-steps">
-                            <li><strong>Lees en vul de bestanden in</strong> — de vrijwilligersovereenkomst en eventuele andere formulieren.</li>
-                            <li><strong>Vul daarna het contactformulier in</strong> — vink de checklist aan en stuur de ingevulde bestanden mee.</li>
-                            <li><strong>Klaar!</strong> Dan ben je officieel aangemeld als vrijwilliger bij Palet Welzijn.</li>
-                        </ol>
-                    </div>
-                    <div class="pw-welcome-actions">
-                        <a href="../../assets/vrijwilligersovereenkomst.pdf" target="_blank" rel="noopener" class="pw-welcome-btn pw-welcome-btn--secondary">
-                            <i class="fa-regular fa-file-lines" aria-hidden="true"></i> Open de bestanden
-                        </a>
-                        <a href="../contact/contactformulier.html" class="pw-welcome-btn pw-welcome-btn--primary" id="pw-slide-contact">
-                            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Naar het contactformulier
-                        </a>
-                    </div>
-                    <p class="pw-welcome-small">Heb je de bestanden ingevuld en het formulier verstuurd? Dan verschijnt hierna jouw felicitatie.</p>
-                </div>
-
-                <!-- Dia 4 - WOEHOEEE + confetti -->
-                <div class="pw-slide" id="pw-slide-4">
-                    <div class="pw-confetti" aria-hidden="true"></div>
-                    <p class="pw-welcome-eyebrow">Gefeliciteerd!</p>
-                    <h2 class="pw-welcome-title pw-mt-0 pw-welcome-title--party">WOEHOEEE! 🎉</h2>
-                    <div class="pw-welcome-body">
-                        <p>
-                            Je hebt alle stappen doorlopen, de bestanden ingevuld en het contactformulier verstuurd.
-                        </p>
-                        <p class="pw-welcome-highlight">Je bent nu officieel vrijwilliger bij Palet Welzijn!</p>
-                        <p>
-                            Samen maken we het verschil. We zijn ontzettend blij met je!
-                        </p>
-                    </div>
-                    <div class="pw-welcome-actions">
-                        <button type="button" class="pw-welcome-btn pw-welcome-btn--primary" id="pw-welcome-close-final">
-                            <i class="fa-solid fa-flag-checkered" aria-hidden="true"></i> Sluiten en terug naar de route
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
 
     <script src="./onboarding.js"></script>
