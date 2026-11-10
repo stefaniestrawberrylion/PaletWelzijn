@@ -894,9 +894,11 @@ html, body {
 /* ---------- Block-animatie (voor H3/H4 korte stukken) ---------- */
 .pw-ob-block {
     margin: 0 0 12px;
-    padding: 14px 16px;
-    border-radius: 10px;
+    padding: 16px 18px;
+    border-radius: 12px;
     background: #F7F9FB;
+    border: 1px solid #E8EDF2;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     opacity: 0;
     transform: translateY(10px);
     animation: pwBlockIn 0.45s ease forwards;
@@ -909,6 +911,8 @@ html, body {
 .pw-ob-block:nth-child(6) { animation-delay: 0.25s; }
 .pw-ob-block:nth-child(7) { animation-delay: 0.30s; }
 .pw-ob-block:nth-child(8) { animation-delay: 0.35s; }
+.pw-ob-block:nth-child(9) { animation-delay: 0.40s; }
+.pw-ob-block:nth-child(10) { animation-delay: 0.45s; }
 
 @keyframes pwBlockIn {
     to {
@@ -919,9 +923,16 @@ html, body {
 
 .pw-ob-block .pw-ob-info-h {
     margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 15px;
 }
 
 .pw-ob-block .pw-ob-info-p:last-child {
+    margin-bottom: 0;
+}
+
+.pw-ob-block .pw-ob-info-list {
+    margin-top: 8px;
     margin-bottom: 0;
 }
 
