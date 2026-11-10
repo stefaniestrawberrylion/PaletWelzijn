@@ -74,7 +74,7 @@
       id: "aanmelding",
       title: "Aanmelding & tot slot",
       text: "Je checklist, VOG, overeenkomst en samen maken we het verschil.",
-      img: "../../assets/aanmelding.png",
+      img: "../../assets/start.png",
       alt: "Aanmelding",
       icon: "fa-solid fa-flag-checkered",
       color: "#0F766E",
