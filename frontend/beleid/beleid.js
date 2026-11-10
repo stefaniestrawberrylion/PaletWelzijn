@@ -636,28 +636,25 @@
     panelEl.appendChild(foot);
   }
 
-  /* ---------- Gerichte update na taakwissel (geen volledige re-render) ---------- */
+  /* ---------- Gerichte update na taakwissel ---------- */
   function updateAfterTaskChange(step, index) {
     renderRail();
     renderStatus();
 
     var doneNow = isDone(step);
 
-    /* Quiz-sectie: invoegen als taken net klaar zijn en quiz nog niet zichtbaar */
     if (doneNow && step.quizzes && step.quizzes.length > 0) {
       var existingQuiz = panelEl.querySelector(".pw-ob-quiz");
       var lockedHint = panelEl.querySelector(".pw-ob-quiz-locked-hint");
       if (!existingQuiz && lockedHint) {
         lockedHint.parentNode.removeChild(lockedHint);
         var quizWrap = buildQuiz(step);
-        /* invoegen vóór de footer */
         var foot = panelEl.querySelector(".pw-ob-panel-foot");
         if (foot) panelEl.insertBefore(quizWrap, foot);
         else panelEl.appendChild(quizWrap);
       }
     }
 
-    /* Verder-knop disabled-state bijwerken */
     var nextBtn = panelEl.querySelector(".pw-ob-panel-foot .pw-ob-btn:not(.pw-ob-btn--ghost)");
     if (nextBtn) nextBtn.disabled = !(doneNow && quizAnswered(step));
   }
@@ -786,64 +783,41 @@
 
   /* ---------- Modal ---------- */
   var lastFocused = null;
+  
   function openModal() {
     if (!modalEl) return;
     lastFocused = document.activeElement;
     modalEl.hidden = false;
     document.body.style.overflow = "hidden";
-    var firstBtn = modalEl.querySelector(".pw-ob-modal-btn");
-    if (firstBtn) setTimeout(function () { firstBtn.focus(); }, 50);
+    
+    // Focus op de eerste knop in de modal
+    setTimeout(function () {
+        var firstBtn = modalEl.querySelector(".pw-ob-modal-btn");
+        if (firstBtn) firstBtn.focus();
+    }, 50);
+
     document.addEventListener("keydown", onModalKeydown);
-    setupFinishModal();
+    
+    // Start direct de confetti
+    startConfetti(6000);
   }
+
   function closeModal() {
     if (!modalEl) return;
     modalEl.hidden = true;
     document.body.style.overflow = "";
     document.removeEventListener("keydown", onModalKeydown);
-    stopConfetti();
+    stopConfetti(); // Stop de confetti als de modal sluit
     if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
   }
+
   function onModalKeydown(e) { if (e.key === "Escape") closeModal(); }
+  
   if (modalEl) {
     modalEl.addEventListener("click", function (e) {
       var t = e.target;
       if (t && t.getAttribute && t.getAttribute("data-close") === "true") closeModal();
     });
-  }
-
-  /* ---------- Finish modal logica ---------- */
-  function setupFinishModal() {
-    var block1 = document.getElementById("pw-ob-finish-block1");
-    var block2 = document.getElementById("pw-ob-finish-block2");
-    var block3 = document.getElementById("pw-ob-finish-block3");
-    var check1 = document.getElementById("pw-ob-finish-check1");
-    var form = document.getElementById("pw-ob-contactform");
-
-    if (block1) block1.classList.remove("pw-ob-finish-block--hidden");
-    if (block2) block2.classList.add("pw-ob-finish-block--hidden");
-    if (block3) block3.classList.add("pw-ob-finish-block--hidden");
-    if (check1) check1.checked = false;
-
-    if (check1 && block2 && !check1.dataset.bound) {
-      check1.dataset.bound = "1";
-      check1.addEventListener("change", function () {
-        if (check1.checked) block2.classList.remove("pw-ob-finish-block--hidden");
-        else block2.classList.add("pw-ob-finish-block--hidden");
-      });
-    }
-
-    if (form && block3 && !form.dataset.bound) {
-      form.dataset.bound = "1";
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        if (!form.checkValidity()) { form.reportValidity(); return; }
-        block1.classList.add("pw-ob-finish-block--hidden");
-        block2.classList.add("pw-ob-finish-block--hidden");
-        block3.classList.remove("pw-ob-finish-block--hidden");
-        startConfetti(6000);
-      });
-    }
   }
 
   /* ---------- Confetti ---------- */
@@ -953,7 +927,6 @@
 
     confettiRAF = requestAnimationFrame(frame);
     confettiStopTimer = setTimeout(function () {
-      /* harde stop na duration, ook als er nog deeltjes zijn */
       if (confettiRAF) { cancelAnimationFrame(confettiRAF); confettiRAF = null; }
       var c = document.getElementById("pw-ob-confetti");
       if (c) {
