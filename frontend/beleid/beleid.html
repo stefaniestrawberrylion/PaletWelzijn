@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palet Welzijn - Beleid & Onboarding</title>
+    <title>Palet Welzijn - Stappen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
@@ -11,112 +11,87 @@
     <link rel="stylesheet" href="./beleid.css">
 </head>
 <body>
-
     <div class="app-container">
+        <!-- Navbar en Hero -->
+        <header class="navbar">
+            <a href="../../index.html" class="logo"><img src="../../logo-paletwelzijn.png" alt="Logo"></a>
+            <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+            <nav class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="#">Over ons</a>
+                <a href="#">Vacatures</a>
+                <a href="./beleid.html" class="active">Onboarding</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="profile-icon"></div>
+        </header>
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <img src="../../palet-welzijn-c395f88f.png" alt="Vrijwilligers">
+            <div class="hero-content"><h1>Jouw eerste stappen als vrijwilliger.</h1></div>
+        </section>
 
-      <header class="navbar">
-        <a href="/PaletWelzijn/index.html" class="logo">
-            <img src="/PaletWelzijn/logo-paletwelzijn.png" alt="Palet Welzijn Logo">
-        </a>
+        <section class="pw-onboarding">
+            <header class="pw-ob-header">
+                <div class="pw-ob-header-top">
+                    <a href="../onboarding/onboarding.html" class="pw-ob-back"><i class="fa-solid fa-arrow-left"></i> Terug naar landingspagina</a>
+                </div>
+                <div class="pw-ob-header-main">
+                    <div>
+                        <p class="pw-ob-eyebrow">Onboarding</p>
+                        <h2 class="pw-ob-title">Jouw route als vrijwilliger</h2>
+                        <p class="pw-ob-intro">Kies links een stap, lees rechts de info en vink af wat je hebt gedaan.</p>
+                    </div>
+                    <div class="pw-ob-status">
+                        <p class="pw-ob-badge" id="pw-ob-badge">Je bent bij stap 1!</p>
+                        <p class="pw-ob-progress-label" id="pw-ob-progress-label">0 van 6 stappen afgerond</p>
+                        <div class="pw-ob-bar" id="pw-ob-bar" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0">
+                            <div class="pw-ob-bar-fill" id="pw-ob-bar-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
 
-        <button class="menu-toggle" aria-label="Menu openen">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+            <div class="pw-ob-split">
+                <nav class="pw-ob-rail" aria-label="Onboarding stappen">
+                    <ol class="pw-ob-rail-list" id="pw-ob-rail-list"></ol>
+                </nav>
+                <section class="pw-ob-panel" id="pw-ob-panel" tabindex="-1" aria-live="polite"></section>
+            </div>
 
-        <nav class="nav-links">
-            <a href="/PaletWelzijn/index.html">Home</a>
-            <a href="#">Over ons</a>
-            <a href="#">Vacatures</a>
-            <a href="/PaletWelzijn/frontend/beleid/beleid.html" class="active">Onboarding</a>
-            <a href="#">Contact</a>
-        </nav>
-
-        <div class="profile-icon"></div>
-      </header>
-
-      <!-- Hero -->
-      <section class="hero">
-          <div class="hero-overlay"></div>
-          <img src="../../palet-welzijn-c395f88f.png" alt="Vrijwilligers aan het werk">
-          <div class="hero-content">
-              <h1>Jouw eerste stappen als vrijwilliger.</h1>
-          </div>
-      </section>
-
-      <!-- Onboarding / Beleid tweeluik -->
-      <section class="pw-onboarding">
-          <header class="pw-ob-header">
-              <div class="pw-ob-header-top">
-                  <a href="../onboarding/onboarding.html" class="pw-ob-back">
-                      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-                      Terug naar landingspagina
-                  </a>
-              </div>
-              <div class="pw-ob-header-main">
-                  <div>
-                      <p class="pw-ob-eyebrow">Onboarding</p>
-                      <h2 class="pw-ob-title">Jouw route als vrijwilliger</h2>
-                      <p class="pw-ob-intro">Kies links een stap, lees rechts de info en vink af wat je hebt gedaan.</p>
-                  </div>
-                  <div class="pw-ob-status">
-                      <p class="pw-ob-badge" id="pw-ob-badge">Je bent bij stap 1!</p>
-                      <p class="pw-ob-progress-label" id="pw-ob-progress-label">0 van 6 stappen afgerond</p>
-                      <div class="pw-ob-bar" id="pw-ob-bar" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0">
-                          <div class="pw-ob-bar-fill" id="pw-ob-bar-fill"></div>
-                      </div>
-                  </div>
-              </div>
-          </header>
-
-          <div class="pw-ob-split">
-              <nav class="pw-ob-rail" aria-label="Onboarding stappen">
-                  <ol class="pw-ob-rail-list" id="pw-ob-rail-list"></ol>
-              </nav>
-
-              <section class="pw-ob-panel" id="pw-ob-panel" tabindex="-1" aria-live="polite"></section>
-          </div>
-
-          <aside class="pw-ob-help">
-              <span class="pw-ob-help-icon" aria-hidden="true">
-                  <i class="fa-solid fa-circle-question" style="font-size:32px;"></i>
-              </span>
-              <div class="pw-ob-help-text">
-                  <p class="pw-ob-help-title">Hulp nodig of kom je er niet uit?</p>
-                  <p>Bekijk onze <a href="../faq/faq.html" style="text-decoration: underline;">Veelgestelde Vragen (FAQ)</a> of neem contact op.</p>
-              </div>
-          </aside>
-          <div class="pw-ob-reset-wrap">
-              <button type="button" class="pw-ob-reset" id="pw-ob-reset">Voortgang wissen</button>
-          </div>
-          <noscript><p class="pw-ob-noscript">Zet JavaScript aan om je voortgang bij te houden.</p></noscript>
-      </section>
+            <aside class="pw-ob-help">
+                <span class="pw-ob-help-icon"><i class="fa-solid fa-circle-question" style="font-size:32px;"></i></span>
+                <div class="pw-ob-help-text">
+                    <p class="pw-ob-help-title">Hulp nodig of kom je er niet uit?</p>
+                    <p>Bekijk onze <a href="../faq/faq.html" style="text-decoration: underline;">Veelgestelde Vragen (FAQ)</a> of neem contact op.</p>
+                </div>
+            </aside>
+            <div class="pw-ob-reset-wrap"><button type="button" class="pw-ob-reset" id="pw-ob-reset">Voortgang wissen</button></div>
+        </section>
     </div>
 
-    <!-- Felicitatie Modal -->
-    <div class="pw-ob-modal" id="pw-ob-modal" role="dialog" aria-modal="true" aria-labelledby="pw-ob-modal-title" hidden>
+    <!-- Confetti & Felicitatie Dia (Pop-up) -->
+    <div class="pw-ob-modal" id="pw-ob-modal" role="dialog" aria-modal="true" hidden>
       <div class="pw-ob-modal-backdrop" data-close="true"></div>
       <div class="pw-ob-modal-box">
         <div class="pw-ob-modal-emoji" aria-hidden="true">🎉</div>
-        <h2 class="pw-ob-modal-title" id="pw-ob-modal-title">Woehoe! Gefeliciteerd!</h2>
+        <h2 class="pw-ob-modal-title">Gefeliciteerd!</h2>
         <p class="pw-ob-modal-text">
-          Je hebt alle stappen gelezen en alle controle-vragen goed beantwoord.
+          Je hebt de checklist doorlopen, de bestanden gedownload en het contactformulier verzonden. 
           Je bent nu helemaal klaar om je officieel in te schrijven als vrijwilliger bij Palet Welzijn.
         </p>
-        <p class="pw-ob-modal-text pw-ob-modal-text--small">
-          Samen maken we het verschil. We zijn blij met je!
-        </p>
+        <p class="pw-ob-modal-text pw-ob-modal-text--small">Samen maken we het verschil. We zijn blij met je!</p>
         <div class="pw-ob-modal-actions">
-          <a href="../onboarding/onboarding.html" class="pw-ob-modal-btn pw-ob-modal-btn--primary">
-            <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
-            Schrijf je in
-          </a>
-          <button type="button" class="pw-ob-modal-btn pw-ob-modal-btn--ghost" data-close="true">
-            Sluiten
-          </button>
+          <button type="button" class="pw-ob-modal-btn pw-ob-modal-btn--ghost" data-close="true">Sluiten</button>
         </div>
       </div>
     </div>
 
+    <!-- Canvas voor Confetti Animatie -->
+    <canvas id="confetti-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9998;"></canvas>
+
+    <!-- Externe Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="./beleid.js"></script>
 </body>
 </html>

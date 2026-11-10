@@ -1310,3 +1310,56 @@ html, body {
   margin-bottom: 4px;
 }
 .pw-ob-info-list li:last-child { margin-bottom: 0; }
+
+/* =========================================================
+   NIEUW: Block Animaties & Styling
+   ========================================================= */
+.pw-ob-block {
+    animation: pwBlockIn 0.5s ease forwards;
+    opacity: 0;
+    transform: translateY(10px);
+}
+.pw-ob-block:nth-child(1) { animation-delay: 0.1s; }
+.pw-ob-block:nth-child(2) { animation-delay: 0.2s; }
+.pw-ob-block:nth-child(3) { animation-delay: 0.3s; }
+.pw-ob-block:nth-child(4) { animation-delay: 0.4s; }
+.pw-ob-block:nth-child(5) { animation-delay: 0.5s; }
+.pw-ob-block:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes pwBlockIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Zorg dat afbeeldingen en titels netjes onder elkaar staan */
+.pw-ob-panel-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    background-color: #f0f0f0;
+}
+
+/* Actie knoppen in de laatste stap */
+.pw-ob-panel-foot {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+.pw-ob-panel-foot .pw-ob-btn {
+    width: 100%;
+    min-height: 44px;
+    font-size: 14px;
+}
+
+/* Confetti Canvas */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+}
