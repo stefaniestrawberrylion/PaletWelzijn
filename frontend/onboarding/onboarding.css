@@ -592,3 +592,44 @@ html, body {
     .pw-welcome-btn { flex: 1 1 100%; }
     .pw-welcome-body p { font-size: 15px; }
 }
+
+
+/* ---------- Afsluitende banner als alles klaar is ---------- */
+.pw-ob-finished-banner {
+  grid-column: 1 / -1;
+  margin-top: 20px;
+  padding: 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #E6F3EC 0%, #D4EDE0 100%);
+  border: 2px solid #008241;
+  text-align: center;
+  animation: pwBlockIn 0.5s ease;
+}
+
+.pw-ob-finished-banner h3 {
+  margin: 0 0 8px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  color: #120a5c;
+}
+
+.pw-ob-finished-banner p {
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pw-ob-finished-banner .pw-ob-btn {
+  display: inline-flex;
+  background: #008241;
+  color: #fff;
+}
+
+.pw-ob-finished-banner .pw-ob-btn:hover {
+  background: #006b35;
+}

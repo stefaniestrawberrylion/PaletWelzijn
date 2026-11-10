@@ -62,8 +62,19 @@
       tasks: ["Ik weet bij wie ik terechtkan als er iets gebeurt", "Ik ken de vertrouwenslijn: 088 - 144 02 00", "Ik weet dat ik verzekerd ben"]
     },
     {
+      id: "checklist",
+      title: "Checklist: je start bij Palet Welzijn",
+      text: "Je contactpersoon, je VOG, je overeenkomst en het contactformulier.",
+      img: "../../assets/start.png",
+      alt: "Checklist",
+      icon: "fa-regular fa-file-lines",
+      color: "#0055ff",
+      link: "../beleid/beleid.html",
+      tasks: ["Ik heb een kennismakingsgesprek gehad", "Ik heb mijn VOG aangevraagd", "Ik heb mijn overeenkomst ingevuld", "Ik heb het contactformulier verstuurd"]
+    },
+    {
       id: "aanmelding",
-      title: "Aanmelding & tot slot",
+      title: "Tot slot – samen maken we het verschil!",
       text: "Je officiële aanmelding en samen maken we het verschil.",
       img: "../../assets/aanmelding.png",
       alt: "Aanmelding",
@@ -74,7 +85,7 @@
     }
   ];
 
-  var STORAGE_KEY = "pw-onboarding-v4";
+  var STORAGE_KEY = "pw-onboarding-v6";
   var VIEW_KEY = "pw-onboarding-view";
   var BELEID_URL = "../beleid/beleid.html";
 
@@ -122,14 +133,18 @@
     return step.tasks.map(function (_, i) { return arr[i] === true; });
   }
   function isDone(step) { return checkedFor(step).every(Boolean); }
+  
   function currentIndex() {
     for (var i = 0; i < STEPS.length; i++) {
       if (!isDone(STEPS[i])) return i;
     }
     return STEPS.length;
   }
+  
   function statusOf(index) {
     var cur = currentIndex();
+    // Als alles klaar is, is ALLES done
+    if (cur >= STEPS.length) return "done";
     if (index < cur) return "done";
     if (index === cur) return "current";
     return "locked";
@@ -170,6 +185,7 @@
   function renderSteps() {
     listEl.textContent = "";
     var cur = currentIndex();
+    var allDone = cur >= STEPS.length;
 
     STEPS.forEach(function (step, i) {
       var status = statusOf(i);
@@ -201,7 +217,6 @@
       var labelText = "Stap " + (i + 1);
       if (status === "done") labelText += " · Voltooid";
       if (status === "current") labelText += " · Hier ben je";
-      if (i === STEPS.length - 1 && status !== "done") labelText += " · Finish";
 
       content.appendChild(el("p", "pw-ob-label", labelText));
       content.appendChild(el("h3", null, step.title));
@@ -209,15 +224,21 @@
       card.appendChild(content);
 
       var action = el("div", "pw-ob-action");
-      if (status === "current") {
+      
+      if (allDone) {
+        // Alles is klaar: toon overal "Opnieuw bekijken"
+        var again = el("a", "pw-ob-linkbtn", "Opnieuw bekijken");
+        again.href = BELEID_URL + "#" + step.id;
+        action.appendChild(again);
+      } else if (status === "current") {
         var btn = el("a", "pw-ob-btn", "Ga verder");
         btn.href = BELEID_URL + "#" + step.id;
         btn.appendChild(svg(ICON_ARROW));
         action.appendChild(btn);
       } else if (status === "done") {
-        var again = el("a", "pw-ob-linkbtn", "Opnieuw bekijken");
-        again.href = BELEID_URL + "#" + step.id;
-        action.appendChild(again);
+        var again2 = el("a", "pw-ob-linkbtn", "Opnieuw bekijken");
+        again2.href = BELEID_URL + "#" + step.id;
+        action.appendChild(again2);
       } else {
         var locked = el("p", "pw-ob-locked");
         locked.appendChild(svg(ICON_LOCK));
@@ -228,6 +249,22 @@
       li.appendChild(card);
       listEl.appendChild(li);
     });
+
+    // Als alles klaar is, voeg een mooie afsluitende banner toe
+    if (allDone) {
+      var banner = el("li", "pw-ob-finished-banner");
+      var bannerContent = el("div", "pw-ob-finished-content");
+      bannerContent.appendChild(el("h3", null, "🎉 Je bent helemaal klaar!"));
+      bannerContent.appendChild(el("p", null, "Je hebt alle stappen doorlopen en alle controle-vragen goed beantwoord. Je kunt je nu officieel aanmelden als vrijwilliger bij Palet Welzijn."));
+      
+      var bannerBtn = el("a", "pw-ob-btn", "Meld je nu aan");
+      bannerBtn.href = "../onboarding/onboarding.html";
+      bannerBtn.appendChild(svg(ICON_ARROW));
+      bannerContent.appendChild(bannerBtn);
+      
+      banner.appendChild(bannerContent);
+      listEl.appendChild(banner);
+    }
 
     renderStatus(cur);
     positionTrack(cur);
