@@ -1,6 +1,7 @@
 /* =========================================================
    Palet Welzijn - Onboarding
    5 stappen, welkom-overlay, upload, confetti
+   Deelt localStorage met beleid.js (zelfde STORAGE_KEY, zelfde taken, zelfde quiz-check)
    ========================================================= */
 (function () {
   "use strict";
@@ -16,9 +17,10 @@
       color: "#120a5c",
       link: "../beleid/beleid.html",
       tasks: [
-        "Ik weet wie Palet Welzijn is",
+        "Ik weet wie Palet Welzijn is en wat onze droom en missie zijn",
         "Ik weet dat ik kan kiezen uit verschillende vrijwilligersrollen"
-      ]
+      ],
+      quizzes: [{}, {}]              // beleid heeft 2 vragen
     },
     {
       id: "voor-jou",
@@ -30,9 +32,10 @@
       color: "#C2410C",
       link: "../beleid/beleid.html",
       tasks: [
-        "Ik weet wat vrijwilligerswerk mij oplevert",
+        "Ik weet wat vrijwilligerswerk mij oplevert (plezier, voldoening, contacten)",
         "Ik weet welke extra's ik van Palet Welzijn krijg"
-      ]
+      ],
+      quizzes: []                    // geen quiz
     },
     {
       id: "afspraken",
@@ -44,10 +47,12 @@
       color: "#008241",
       link: "../beleid/beleid.html",
       tasks: [
-        "Ik ken de gedragscode",
-        "Wat ik over clienten hoor, blijft geheim - ook na mijn vrijwilligerswerk",
-        "Ik doe geen medische of verpleegkundige handelingen"
-      ]
+        "Ik ken de gedragscode van Palet Welzijn",
+        "Wat ik over clienten hoor of zie, blijft geheim, ook na mijn vrijwilligerswerk",
+        "Ik doe geen medische of verpleegtechnische handelingen",
+        "Ik weet wat gepaste kleding is tijdens mijn vrijwilligerswerk"
+      ],
+      quizzes: [{}, {}, {}, {}]      // beleid heeft 4 vragen
     },
     {
       id: "veiligheid",
@@ -59,10 +64,11 @@
       color: "#92278F",
       link: "../beleid/beleid.html",
       tasks: [
-        "Ik weet bij wie ik terechtkan als er iets gebeurt",
-        "Ik ken de vertrouwenslijn: 088 - 144 02 00",
-        "Ik weet dat ik verzekerd ben"
-      ]
+        "Ik weet dat mijn contactpersoon mijn eerste aanspreekpunt is",
+        "Ik ken de vertrouwenslijn: 088 - 144 0200",
+        "Ik weet dat ik via Palet Welzijn verzekerd ben voor ongevallen en aansprakelijkheid"
+      ],
+      quizzes: [{}]                  // beleid heeft 1 vraag
     },
     {
       id: "aanmelding",
@@ -74,15 +80,17 @@
       color: "#0F766E",
       link: "../beleid/beleid.html",
       tasks: [
-        "Ik heb de checklist doorlopen",
-        "Ik heb mijn gratis VOG aangevraagd en laten zien",
+        "Ik heb de checklist doorlopen (kennismaking, VOG, overeenkomst, afspraken)",
+        "Ik heb mijn gratis VOG aangevraagd en laten zien aan mijn contactpersoon",
         "Ik heb mijn vrijwilligersovereenkomst ingevuld en ondertekend",
-        "Ik weet dat ik altijd in gesprek kan over wat bij mij past"
-      ]
+        "Ik weet dat ik altijd in gesprek kan over wat bij mij past",
+        "Ik weet hoe ik Palet Welzijn kan bereiken voor vragen of aanmeldingen"
+      ],
+      quizzes: [{}, {}, {}]          // beleid heeft 3 vragen
     }
   ];
 
-  var STORAGE_KEY = "pw-onboarding-v7";
+  var STORAGE_KEY = "pw-onboarding-v7";   // ← zelfde als beleid.js
   var VIEW_KEY = "pw-onboarding-view";
   var WELKOM_KEY = "pw-welkom-gezien";
   var BELEID_URL = "../beleid/beleid.html";
@@ -152,7 +160,18 @@
     if (!Array.isArray(arr)) arr = [];
     return step.tasks.map(function (_, i) { return arr[i] === true; });
   }
-  function isDone(step) { return checkedFor(step).every(Boolean); }
+
+  // Taken + quiz samen bepalen of een stap klaar is (net als beleid.js)
+  function isDone(step) {
+    var tasksDone = checkedFor(step).every(Boolean);
+    if (!tasksDone) return false;
+    if (!step.quizzes || step.quizzes.length === 0) return true;
+
+    var answers = state.quiz[step.id];
+    if (!Array.isArray(answers)) return false;
+    return step.quizzes.every(function (_, i) { return answers[i] === true; });
+  }
+
   function currentIndex() {
     for (var i = 0; i < STEPS.length; i++) {
       if (!isDone(STEPS[i])) return i;
@@ -638,14 +657,30 @@
   }
 
   /* ---------- Reset ---------- */
-  resetEl.addEventListener("click", function () {
-    var ok = window.confirm("Weet je zeker dat je alle voortgang wilt wissen en opnieuw wilt beginnen?");
-    if (!ok) return;
-    state = { checked: {}, quiz: {} };
-    saveState();
-    renderSteps();
-    try { window.localStorage.removeItem(WELKOM_KEY); } catch (e) {}
-    openWelkom();
+  if (resetEl) {
+    resetEl.addEventListener("click", function () {
+      var ok = window.confirm("Weet je zeker dat je alle voortgang wilt wissen en opnieuw wilt beginnen?");
+      if (!ok) return;
+      state = { checked: {}, quiz: {} };
+      saveState();
+      renderSteps();
+      try { window.localStorage.removeItem(WELKOM_KEY); } catch (e) {}
+      openWelkom();
+    });
+  }
+
+  /* ---------- Cross-tab / bfcache sync ---------- */
+  window.addEventListener("storage", function (e) {
+    if (e.key === STORAGE_KEY) {
+      state = loadState();
+      renderSteps();
+    }
+  });
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted) {
+      state = loadState();
+      renderSteps();
+    }
   });
 
   /* ---------- Resize ---------- */
