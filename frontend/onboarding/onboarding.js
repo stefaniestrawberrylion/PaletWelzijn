@@ -103,7 +103,10 @@
   var viewRouteEl = root.querySelector("#pw-ob-view-route");
   var viewPraatplaatEl = root.querySelector("#pw-ob-view-praatplaat");
   var viewBtns = root.querySelectorAll(".pw-ob-viewbtn");
+  
+  // CTA knoppen voor beide weergaven
   var praatplaatCta = root.querySelector("#pw-ob-praatplaat-cta");
+  var routeCta = root.querySelector("#pw-ob-route-cta"); 
 
   var welkomEl = document.getElementById("pw-welkom");
   var welkomStartBtns = welkomEl ? welkomEl.querySelectorAll("[data-start]") : [];
@@ -444,6 +447,11 @@
   // Praatplaat CTA → open modal
   if (praatplaatCta) {
     praatplaatCta.addEventListener("click", function () { openModal(); });
+  }
+
+  // Route CTA → open modal (NIEUW)
+  if (routeCta) {
+    routeCta.addEventListener("click", function () { openModal(); });
   }
 
   /* ---------- Reset ---------- */
