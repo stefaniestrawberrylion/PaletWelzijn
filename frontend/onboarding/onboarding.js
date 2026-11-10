@@ -1,7 +1,5 @@
 /* =========================================================
    Palet Welzijn – Onboarding "Jouw route als vrijwilliger"
-   6 kaarten + voltooiing zichtbaar + inschrijf-flow
-   SYNCHROON MET beleid.js (STORAGE_KEY = pw-onboarding-v7)
    ========================================================= */
 (function () {
   "use strict";
@@ -96,6 +94,8 @@
   var viewPraatplaatEl = root.querySelector("#pw-ob-view-praatplaat");
   var viewBtns = root.querySelectorAll(".pw-ob-viewbtn");
 
+  var endActionsEl = document.getElementById("pw-ob-end-actions");
+
   /* ---------- Opslag ---------- */
   function loadState() {
     try {
@@ -170,8 +170,7 @@
   var ICON_LOCK = '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>';
 
   /* =========================================================
-     WELKOM-DIA ELEMENTEN (eerst declareren, zodat renderSteps
-     ze kan gebruiken bij de banner-knop)
+     WELKOM-DIA ELEMENTEN
      ========================================================= */
   var welcomeEl = document.getElementById("pw-welcome");
   var slide1 = document.getElementById("pw-slide-1");
@@ -194,10 +193,6 @@
     if (!welcomeEl) return;
     welcomeEl.classList.add("is-visible");
     document.body.style.overflow = "hidden";
-  }
-
-  function openWelcome(n) {
-    showSlide(n);
   }
 
   function hideWelcome() {
@@ -274,24 +269,13 @@
       listEl.appendChild(li);
     });
 
-    /* ---------- VOLTOOIING ZICHTBAAR MAKEN ---------- */
-    if (allDone) {
-      var banner = el("li", "pw-ob-finished-banner");
-      banner.appendChild(el("h3", null, "🎉 Je bent helemaal klaar!"));
-      banner.appendChild(el("p", null, "Je hebt alle 6 stappen doorlopen. Je kunt je nu officieel aanmelden als vrijwilliger bij Palet Welzijn."));
-
-      var bannerBtn = el("button", "pw-ob-btn", state.enrolled ? "Bekijk je felicitatie" : "Schrijf je in");
-      bannerBtn.type = "button";
-      bannerBtn.appendChild(svg(ICON_ARROW));
-      bannerBtn.addEventListener("click", function () {
-        if (state.enrolled) {
-          openWelcome(4);   // felicitatie
-        } else {
-          openWelcome(3);   // bestanden + contactformulier
-        }
-      });
-      banner.appendChild(bannerBtn);
-      listEl.appendChild(banner);
+    // TOON/VERBERG DE ACTIEBLOKKEN (Bestanden & Formulier)
+    if (endActionsEl) {
+      if (allDone && !state.enrolled) {
+        endActionsEl.style.display = "grid";
+      } else {
+        endActionsEl.style.display = "none";
+      }
     }
 
     renderStatus(cur);
@@ -308,7 +292,7 @@
       : "Je bent bij stap " + (cur + 1) + "!";
   }
 
-    function positionTrack(cur) {
+  function positionTrack(cur) {
     if (!viewRouteEl.classList.contains("is-active")) return;
     var stops = listEl.querySelectorAll(".pw-ob-stop");
     if (stops.length < 2) return;
@@ -316,7 +300,6 @@
     var first = stops[0].getBoundingClientRect();
     var last = stops[stops.length - 1].getBoundingClientRect();
     
-    // Als alle stappen klaar zijn, laat de lijn dan helemaal tot het einde lopen
     var allDone = cur >= STEPS.length;
     var target = allDone ? last : stops[Math.min(cur, stops.length - 1)].getBoundingClientRect();
     
@@ -345,7 +328,6 @@
       trackFillEl.style.top = y + "px";
     }
   }
-  
   function setBox(node, left, top, width, height) {
     node.style.left = left + "px";
     node.style.top = top + "px";
@@ -384,6 +366,8 @@
     state = { checked: {}, quiz: {}, enrolled: false };
     saveState();
     renderSteps();
+    // Verwijder de hash uit de URL bij reset
+    if (history.replaceState) history.replaceState(null, "", window.location.pathname);
   });
 
   var resizeTimer;
@@ -404,6 +388,9 @@
     welcomeStartBtn.addEventListener("click", function () {
       hideWelcome();
       setView("route");
+      // Verwijder #start uit de URL zodat een herlaad de dia niet opent
+      if (history.replaceState) history.replaceState(null, "", window.location.pathname);
+      
       var firstStep = listEl.querySelector(".pw-ob-step.is-current");
       if (firstStep) {
         setTimeout(function () {
@@ -417,13 +404,24 @@
     welcomePlaatBtn.addEventListener("click", function () {
       hideWelcome();
       setView("praatplaat");
+      if (history.replaceState) history.replaceState(null, "", window.location.pathname);
     });
   }
 
-  /* ---------- Inschrijf-flow: bestanden -> contactformulier -> WOEHOEEE ---------- */
+  /* ---------- Inschrijf-flow ---------- */
+  // 1. De knop in dia 3
   if (contactBtn) {
     contactBtn.addEventListener("click", function (e) {
-      // Markeer als enrolled en toon daarna de felicitatie-dia.
+      state.enrolled = true;
+      saveState();
+      setTimeout(function () { showSlide(4); }, 400);
+    });
+  }
+
+  // 2. De nieuwe knop onder de kaarten
+  var endContactBtn = document.querySelector(".pw-ob-end-card a[href*='contactformulier']");
+  if (endContactBtn) {
+    endContactBtn.addEventListener("click", function (e) {
       state.enrolled = true;
       saveState();
       setTimeout(function () { showSlide(4); }, 400);
@@ -434,6 +432,11 @@
     closeFinalBtn.addEventListener("click", function () {
       hideWelcome();
       setView("route");
+      renderSteps(); // Update de weergave (verberg de actieblokken)
+      
+      // Verwijder #gefeliciteerd uit de URL
+      if (history.replaceState) history.replaceState(null, "", window.location.pathname);
+      
       var banner = listEl.querySelector(".pw-ob-finished-banner");
       if (banner) {
         setTimeout(function () {
@@ -447,22 +450,25 @@
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && welcomeEl && welcomeEl.classList.contains("is-visible")) {
       hideWelcome();
+      if (history.replaceState) history.replaceState(null, "", window.location.pathname);
     }
   });
 
   /* =========================================================
-     INITIALISATIE: kaarten tekenen + juiste dia tonen
+     INITIALISATIE: Alleen dia's tonen op basis van de URL (hash)
      ========================================================= */
   renderSteps();
 
-  var allStepsDoneAtInit = currentIndex() >= STEPS.length;
+  // Kijk naar de URL (bijv. onboarding.html#start of #gefeliciteerd)
+  var hash = window.location.hash;
 
-  if (state.enrolled) {
-    showSlide(4);          // felicitatie
-  } else if (allStepsDoneAtInit) {
-    showSlide(3);          // bestanden + contactformulier
-  } else {
-    showSlide(1);          // welkom
-  }
+  if (hash === "#start") {
+    // Als er op de navbar is geklikt -> Toon Welcome Dia
+    showSlide(1);
+  } else if (hash === "#gefeliciteerd") {
+    // Als er op Afronden is geklikt in Beleid -> Toon Felicitatie Dia
+    showSlide(4);
+  } 
+  // Anders: doe helemaal niks. De dia's blijven verborgen en je ziet alleen de kaarten.
 
 })();

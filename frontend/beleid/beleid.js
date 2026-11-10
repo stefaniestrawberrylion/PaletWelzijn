@@ -787,6 +787,11 @@
     state.enrolled = true;
     saveState();
 
+    // Zorg dat de felicitatie dia opent als je terug gaat naar onboarding
+    if (history.replaceState) {
+      history.replaceState(null, "", "../onboarding/onboarding.html#gefeliciteerd");
+    }
+
     lastFocused = document.activeElement;
     modalEl.hidden = false;
     document.body.style.overflow = "hidden";
