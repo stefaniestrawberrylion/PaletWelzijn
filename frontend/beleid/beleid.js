@@ -29,14 +29,34 @@
 
      body: [
   { type: "p", text: "Wat fijn dat je je als vrijwilliger wilt inzetten voor Palet Welzijn! Met jouw tijd en aandacht maak je écht verschil. Jij bent onmisbaar." },
-  { type: "p", text: "Palet Welzijn gelooft in een samenleving waarin we met oprechte belangstelling naar elkaar omkijken. We versterken sociale netwerken, houden mensen actief en stellen professionele zorg waar mogelijk uit. Samen maken we het verschil!" }
+  { type: "p", text: "Palet Welzijn gelooft in een samenleving waarin we met oprechte belangstelling naar elkaar omkijken. We versterken sociale netwerken, houden mensen actief en stellen professionele zorg waar mogelijk uit. Samen maken we het verschil!" },
+
+  { type: "h", text: "Onze droom" },
+  { type: "p", text: "'Een samenleving waar we met oprechte belangstelling naar elkaar omkijken en ieder op eigen-wijze invulling kan geven aan zijn leven.'" },
+
+  { type: "h", text: "Onze missie" },
+  { type: "p", text: "Mensen met elkaar verbinden, hun netwerk vergroten en ervoor zorgen dat iedereen zoveel mogelijk mee kan blijven doen. We zijn een organisatie zonder winstoogmerk en werken samen met maatschappelijke organisaties en gemeenten." },
+
+  { type: "h", text: "Verschillende rollen" },
+  { type: "p", text: "Bij Palet Welzijn zijn meer dan 1.300 vrijwilligers actief, in veel verschillende rollen. Hieronder een aantal voorbeelden." },
+
+  { type: "h3", text: "Vrijwilliger Thuis" },
+  { type: "p", text: "Je bezoekt iemand thuis en biedt gezelschap en ondersteuning, zodat bijvoorbeeld een mantelzorger even tijd voor zichzelf heeft. Denk aan samen koffie drinken, een gesprek voeren of samen iets ondernemen." },
+
+  { type: "h3", text: "Activiteitenvrijwilliger" },
+  { type: "p", text: "Je helpt bij het organiseren en begeleiden van activiteiten en evenementen: klaarzetten, opruimen, koffie en thee verzorgen, deelnemers begeleiden of individuele activiteiten ondernemen zoals wandelen, voorlezen of een handmassage geven." },
+
+  { type: "h3", text: "Projectvrijwilliger" },
+  { type: "p", text: "Je werkt mee aan een tijdelijk project met een duidelijk begin en einde. Voorbeelden zijn een wandelgroep in de zomer, tuinonderhoud, creatieve activiteiten voor een markt of de rolstoelvierdaagse." },
+
+  { type: "h3", text: "Overige rollen" },
+  { type: "p", text: "Denk aan gastvrouw of gastheer in een wijkcentrum, chauffeur voor seniorenvervoer, ondersteuning in een wijkrestaurant of preventieve huisbezoeken bij ouderen. Samen kijken we welke rol bij jou past." }
 ],
 
       tasks: [
-        "Ik weet wie Palet Welzijn is en wat onze droom en missie zijn",
-        "Ik weet dat ik één van de ruim 1.300 vrijwilligers ben"
-      ],
-
+  "Ik weet wie Palet Welzijn is en wat onze droom en missie zijn",
+  "Ik ken alle rollen die Palet Welzijn biedt"
+],
       quizzes: [
         {
           question: "Welke kenmerken heeft vrijwilligerswerk bij Palet Welzijn?",
@@ -832,7 +852,7 @@
             b.classList.add("is-selected", "is-correct");
             Array.prototype.forEach.call(opts.children, function (c) { c.disabled = true; });
 
-            feedback.textContent = "Goed gedaan! " + quiz.explanation;
+            feedback.textContent = "Goed gedaan! ";
             feedback.className = "pw-ob-quiz-feedback is-ok";
           } else {
             feedback.textContent = "Dat is helaas niet goed. Probeer het nog eens.";
