@@ -523,54 +523,247 @@ html, body {
 /* =========================================================
    RESPONSIVE
    ========================================================= */
+
+/* Voorkom horizontale overflow */
+html, body { overflow-x: hidden; }
+.pw-onboarding { min-width: 0; }
+.pw-ob-split,
+.pw-ob-rail,
+.pw-ob-rail-list,
+.pw-ob-panel,
+.pw-ob-sections,
+.pw-ob-tasks,
+.pw-ob-question,
+.pw-ob-quiz-btn { min-width: 0; }
+
+/* Grote schermen */
 @media (min-width: 1440px) {
     .pw-onboarding { max-width: 1320px; }
     .pw-ob-split { grid-template-columns: 300px minmax(0, 1fr); gap: 28px; }
 }
+
+/* Tablet landscape / klein desktop */
 @media (max-width: 1024px) {
-    .pw-onboarding { padding: 16px; width: 100%; margin-top: 0; border-radius: 0; max-width: none; }
+    .pw-onboarding {
+        padding: 16px;
+        width: 100%;
+        margin-top: 0;
+        border-radius: 0;
+        max-width: none;
+    }
     .pw-ob-split { grid-template-columns: 1fr; gap: 14px; }
-    .pw-ob-rail-list { flex-direction: row; overflow-x: auto; padding-bottom: 6px; }
+
+    /* Rail wordt horizontaal scrollend */
+    .pw-ob-rail-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 8px;
+        gap: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+    .pw-ob-rail-list::-webkit-scrollbar { height: 6px; }
+    .pw-ob-rail-list::-webkit-scrollbar-thumb { background: #c9c9d6; border-radius: 3px; }
     .pw-ob-rail-list::before { display: none; }
-    .pw-ob-rail-item { min-width: 180px; flex-direction: column; align-items: flex-start; gap: 8px; }
+    .pw-ob-rail-item {
+        min-width: 180px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 10px;
+        flex-shrink: 0;
+    }
     .pw-ob-rail-stop { width: 42px; height: 42px; font-size: 15px; }
     .pw-ob-rail-label { white-space: normal; }
-    .pw-ob-panel { padding-bottom: 16px; max-height: 76vh; min-height: 300px; }
+
+    /* Panel: geen eigen scroll meer (voorkomt dubbele scroll op mobiel) */
+    .pw-ob-panel {
+        padding-bottom: 16px;
+        min-height: 300px;
+    }
     .pw-ob-sections, .pw-ob-quiz { max-width: none; }
 }
+
+/* =========================================================
+   Mobiel (tot 768px)
+   ========================================================= */
 @media (max-width: 768px) {
+    /* Navbar */
     .navbar { padding: 10px 4%; }
     .logo img { height: 34px; }
+    .menu-toggle { display: block; min-width: 44px; min-height: 44px; }
     .nav-links { display: none; }
-    .menu-toggle { display: block; }
-    .hero { height: 18vh; min-height: 120px; }
+
+    /* Hero */
+    .hero { height: 18vh; min-height: 110px; max-height: 160px; }
+    .hero-content h1 { font-size: clamp(18px, 5vw, 24px); padding: 0 12px; }
+
+    /* Card */
     .pw-onboarding { padding: 12px; }
-    .pw-ob-panel-banner, .pw-ob-panel-img { max-height: 140px; }
-    .pw-ob-help { flex-direction: column; align-items: flex-start; }
-    .pw-ob-reset-wrap { text-align: left; }
-    .pw-ob-header-main { flex-direction: column; align-items: stretch; }
+
+    /* Header */
+    .pw-ob-header-main {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
     .pw-ob-status { width: 100%; }
-    .pw-ob-badge { font-size: 18px; }
-    .pw-ob-back { width: 100%; justify-content: center; }
-    .pw-ob-rail-list { flex-direction: row; overflow-x: auto; gap: 8px; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
-    .pw-ob-rail-item { min-width: 165px; flex-direction: row; align-items: center; padding: 8px; }
+    .pw-ob-badge { font-size: 18px; transform: none; }
+    .pw-ob-back {
+        width: 100%;
+        justify-content: center;
+        min-height: 44px;
+    }
+
+    /* Rail: compacte horizontale pills */
+    .pw-ob-rail-list {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 8px;
+        padding-bottom: 10px;
+    }
+    .pw-ob-rail-item {
+        min-width: 170px;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px;
+        border-radius: 12px;
+        background: #F3F4F7;
+        flex-shrink: 0;
+    }
+    .pw-ob-rail-item.is-current { background: #E6F3EC; }
+    .pw-ob-rail-item.is-locked { background: #f6f6f8; }
     .pw-ob-rail-stop { width: 38px; height: 38px; font-size: 14px; }
-    .pw-ob-rail-label { font-size: 12px; white-space: normal; }
+    .pw-ob-rail-label { font-size: 12px; white-space: normal; line-height: 1.25; }
     .pw-ob-rail-meta { font-size: 9px; }
-    .pw-ob-panel-head, .pw-ob-panel-intro, .pw-ob-sections, .pw-ob-quiz, .pw-ob-hint, .pw-ob-tasks, .pw-ob-panel-foot { margin-left: 14px; margin-right: 14px; }
-    .pw-ob-panel-head { padding: 0; }
-    .pw-ob-panel-title { font-size: 18px; }
-    .pw-ob-tasks { grid-template-columns: 1fr; }
-    .pw-ob-panel-foot { flex-direction: column; align-items: stretch; }
-    .pw-ob-panel-foot .pw-ob-btn { width: 100%; }
-    .pw-ob-form-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 380px) {
-    .pw-ob-rail-item { min-width: 150px; }
-    .pw-ob-title { font-size: 20px; }
+
+    /* Panel: geen max-height, alles zichtbaar via pagina-scroll */
+    .pw-ob-panel {
+        max-height: none;
+        overflow: visible;
+        border-radius: 14px;
+    }
+    .pw-ob-panel-banner { max-height: 130px; margin-bottom: 12px; }
+    .pw-ob-panel-img { max-height: 130px; }
+
+    /* Panel-head compacter */
+    .pw-ob-panel-head {
+        padding: 0 14px;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+    .pw-ob-panel-num { width: 34px; height: 34px; font-size: 15px; }
     .pw-ob-panel-title { font-size: 17px; }
-    .pw-ob-quiz-btn { font-size: 13px; }
+    .pw-ob-panel-badge { font-size: 10px; padding: 2px 8px; }
+    .pw-ob-panel-intro { margin: 0 14px 12px; font-size: 14px; }
+
+    /* Secties compacter */
+    .pw-ob-sections { margin: 0 14px 14px; gap: 10px; }
+    .pw-ob-section { padding: 12px 14px; }
+    .pw-ob-section-h { font-size: 14px; }
+    .pw-ob-section-h3 { font-size: 11px; }
+    .pw-ob-section p,
+    .pw-ob-section ul { font-size: 14px; line-height: 1.6; }
+    .pw-ob-section ul { padding-left: 18px; }
+
+    /* Taken */
+    .pw-ob-hint { margin: 0 14px 8px; font-size: 12px; }
+    .pw-ob-tasks { grid-template-columns: 1fr; margin: 0 14px 14px; gap: 8px; }
+    .pw-ob-task label {
+        min-height: 48px;
+        padding: 12px 12px;
+        font-size: 14px;
+    }
+    .pw-ob-task input { width: 22px; height: 22px; }
+
+    /* Quiz */
+    .pw-ob-quiz { margin: 0 14px 14px; padding: 14px; }
+    .pw-ob-quiz-heading { font-size: 15px; }
+    .pw-ob-quiz-intro { font-size: 13px; }
+    .pw-ob-question { padding: 12px; }
+    .pw-ob-quiz-title { font-size: 14px; }
+    .pw-ob-quiz-btn {
+        min-height: 48px;
+        padding: 12px;
+        font-size: 14px;
+        gap: 10px;
+    }
+    .pw-ob-quiz-btn .pw-ob-quiz-letter { width: 28px; height: 28px; font-size: 13px; }
+    .pw-ob-quiz-complete { font-size: 13px; padding: 10px 12px; }
+
+    /* Footer */
+    .pw-ob-panel-foot {
+        margin: 8px 14px 0;
+        padding-top: 14px;
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 8px;
+    }
+    .pw-ob-panel-foot .pw-ob-btn { width: 100%; min-height: 48px; }
+    .pw-ob-btn--ghost { min-height: 44px; }
+
+    /* Help-aside */
+    .pw-ob-help {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px;
+        gap: 10px;
+    }
+    .pw-ob-help-title { font-size: 14px !important; }
+    .pw-ob-help-text p { font-size: 13px; }
+    .pw-ob-reset-wrap { text-align: left; }
+    .pw-ob-reset { min-height: 44px; }
+
+    /* Modal */
+    .pw-ob-modal {
+        padding: 10px;
+        align-items: flex-start;
+    }
+    .pw-ob-modal-box,
+    .pw-ob-modal-box--wide {
+        width: 100%;
+        padding: 22px 16px 18px;
+        max-height: calc(100vh - 20px);
+        overflow-y: auto;
+        border-radius: 14px;
+    }
+    .pw-ob-modal-title { font-size: 20px; }
+    .pw-ob-modal-text { font-size: 14px; }
+    .pw-ob-modal-actions { gap: 8px; }
+    .pw-ob-modal-btn { min-height: 46px; width: 100%; }
+
+    /* Finish blocks */
+    .pw-ob-finish-title { font-size: 16px; }
+    .pw-ob-finish-icon { width: 46px; height: 46px; font-size: 20px; margin-bottom: 10px; }
+    .pw-ob-finish-btn { min-height: 46px; }
+
+    /* Formulier */
+    .pw-ob-form-grid { grid-template-columns: 1fr; gap: 10px; }
+    .pw-ob-field input {
+        font-size: 16px; /* voorkomt iOS-zoom */
+        min-height: 44px;
+    }
 }
+
+/* =========================================================
+   Zeer kleine schermen (tot 380px)
+   ========================================================= */
+@media (max-width: 380px) {
+    .pw-onboarding { padding: 10px; }
+    .pw-ob-rail-item { min-width: 150px; padding: 8px; gap: 6px; }
+    .pw-ob-rail-stop { width: 34px; height: 34px; font-size: 13px; }
+    .pw-ob-rail-label { font-size: 11px; }
+    .pw-ob-title { font-size: 20px; }
+    .pw-ob-panel-title { font-size: 16px; }
+    .pw-ob-panel-intro { font-size: 13px; }
+    .pw-ob-section p,
+    .pw-ob-section ul { font-size: 13.5px; }
+    .pw-ob-quiz-btn { font-size: 13px; }
+    .pw-ob-modal-title { font-size: 18px; }
+    .pw-ob-modal-text { font-size: 13px; }
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         scroll-behavior: auto !important;

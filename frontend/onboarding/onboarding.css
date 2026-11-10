@@ -648,49 +648,242 @@ html, body {
 /* =========================================================
    RESPONSIVE
    ========================================================= */
+
+/* Voorkom horizontale overflow op mobiel */
+html, body { overflow-x: hidden; }
+.pw-onboarding { min-width: 0; }
+.pw-ob-header > div,
+.pw-ob-status,
+.pw-ob-content,
+.pw-ob-view,
+.pw-ob-route,
+.pw-ob-steps,
+.pw-ob-step,
+.pw-ob-card,
+.pw-ob-card-content,
+.pw-ob-action { min-width: 0; }
+
+/* Grotere schermen */
 @media (min-width: 1440px) {
     .pw-onboarding { max-width: 1320px; }
 }
+
+/* Tablet landscape / klein desktop */
 @media (max-width: 1024px) {
-    .pw-onboarding { padding: 18px; width: 100%; margin: -12px 0 0; border-radius: 0; max-width: none; }
+    .pw-onboarding {
+        padding: 18px;
+        width: 100%;
+        margin: -12px 0 0;
+        border-radius: 0;
+        max-width: none;
+    }
     .pw-ob-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 }
+
+/* Tablet portrait */
 @media (max-width: 900px) {
     .pw-ob-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* =========================================================
+   Mobiel (tot 768px)
+   ========================================================= */
 @media (max-width: 768px) {
+    /* Navbar */
     .nav-links { display: none; }
-    .menu-toggle { display: block; }
+    .menu-toggle { display: block; min-width: 44px; min-height: 44px; }
+
+    /* Hero */
     .hero { height: 15vh; min-height: 110px; max-height: 160px; }
-    .pw-onboarding { padding: 14px; }
-    .pw-ob-steps { grid-template-columns: 1fr; gap: 12px; }
-    .pw-ob-step { flex-direction: row; align-items: stretch; gap: 12px; }
-    .pw-ob-stop { width: 40px; height: 40px; font-size: 16px; align-self: flex-start; }
-    .pw-ob-card { flex-direction: row; align-items: center; gap: 12px; padding: 12px; }
-    .pw-ob-card-banner { width: 80px; height: 60px; border-radius: 8px; margin: 0; flex-shrink: 0; }
-    .pw-ob-card-content { padding: 0; }
-    .pw-ob-action { width: 140px; flex-shrink: 0; padding: 0; }
-    .pw-ob-help { flex-direction: column; align-items: flex-start; padding: 12px; }
+    .hero-content h1 { font-size: clamp(18px, 5vw, 24px); padding: 0 12px; }
+
+    /* Card-container */
+    .pw-onboarding { padding: 16px 14px 20px; }
+
+    /* Header: titel boven, status eronder */
+    .pw-ob-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .pw-ob-status { width: 100%; }
+    .pw-ob-badge { font-size: 18px; transform: none; }
+    .pw-ob-title { font-size: clamp(20px, 5vw, 24px); }
+    .pw-ob-intro { font-size: 13px; }
+
+    /* Viewswitch: volle breedte, gelijke knoppen */
+    .pw-ob-viewswitch {
+        width: 100%;
+        justify-content: stretch;
+        align-self: stretch;
+    }
+    .pw-ob-viewbtn {
+        flex: 1 1 0;
+        justify-content: center;
+        min-height: 44px;
+    }
+
+    /* Route-track op mobiel verbergen (kaarten staan verticaal) */
+    .pw-ob-track,
+    .pw-ob-track-fill { display: none; }
+
+    /* Stappen: 1 kolom, kaart als rij (banner links, content rechts) */
+    .pw-ob-steps { grid-template-columns: 1fr; gap: 14px; }
+    .pw-ob-step {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .pw-ob-stop {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        align-self: flex-start;
+        flex-shrink: 0;
+    }
+
+    .pw-ob-card {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 12px;
+        padding: 12px;
+    }
+    .pw-ob-card-banner {
+        width: 92px;
+        height: 92px;
+        border-radius: 10px;
+        flex-shrink: 0;
+        align-self: flex-start;
+    }
+    .pw-ob-card-content {
+        padding: 0;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .pw-ob-card h3 { font-size: 15px; }
+    .pw-ob-card p.pw-ob-text { font-size: 13px; }
+
+    /* Knop binnen de kaart: onder content, volle breedte */
+    .pw-ob-action {
+        width: auto;
+        flex-shrink: 0;
+        padding: 0;
+        margin-top: 8px;
+    }
+    .pw-onboarding a.pw-ob-btn,
+    .pw-onboarding .pw-ob-btn { min-height: 44px; }
+
+    /* Praatplaat */
+    .pw-ob-praatplaat { max-height: none; }
+    .pw-ob-praatplaat img { max-height: none; }
+    .pw-ob-praatplaat-cta { padding: 8px 0 4px; }
+    .pw-onboarding .pw-ob-btn--cta {
+        width: 100%;
+        min-height: 48px;
+        font-size: 14px;
+        padding: 0 18px;
+        text-align: center;
+        white-space: normal;
+        line-height: 1.2;
+    }
+
+    /* Help-aside + reset */
+    .pw-ob-help {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px;
+        gap: 10px;
+    }
+    .pw-ob-help-title { font-size: 15px !important; }
+    .pw-ob-help-text p { font-size: 13px; }
     .pw-ob-reset-wrap { text-align: left; }
-    .pw-ob-viewswitch { width: 100%; justify-content: center; align-self: stretch; }
-    .pw-ob-viewbtn { flex: 1; justify-content: center; }
-    .pw-ob-finish-grid { grid-template-columns: 1fr; }
-    .pw-ob-form-grid { grid-template-columns: 1fr; }
-    .pw-ob-finish-block { min-height: auto; }
-    .pw-welkom-box { padding: 24px 20px 20px; }
+    .pw-ob-reset { min-height: 44px; }
+
+    /* Welkom-overlay */
+    .pw-welkom { padding: 12px; align-items: flex-start; }
+    .pw-welkom-box { padding: 24px 18px 20px; max-height: calc(100vh - 24px); }
+    .pw-welkom-title { font-size: clamp(20px, 5vw, 24px); }
+    .pw-welkom-text p { font-size: 14px; }
     .pw-welkom-actions { flex-direction: column; }
-    .pw-welkom-btn { width: 100%; }
-    .pw-ob-modal-box { padding: 20px 16px 18px; }
-}
-@media (max-width: 480px) {
-    .pw-ob-card { flex-direction: column; align-items: stretch; }
-    .pw-ob-card-banner { width: 100%; height: 100px; }
-    .pw-ob-card p.pw-ob-text { display: none; }
-    .pw-ob-stop { width: 36px; height: 36px; font-size: 14px; border-width: 2px; }
-    .pw-ob-action { width: 100%; }
-    .pw-ob-modal-title { font-size: 20px; }
+    .pw-welkom-btn { width: 100%; min-height: 48px; }
+
+    /* Afronden-modal */
+    .pw-ob-modal { padding: 10px; align-items: flex-start; }
+    .pw-ob-modal-box {
+        padding: 20px 16px 18px;
+        max-height: calc(100vh - 20px);
+        border-radius: 14px;
+    }
+    .pw-ob-finish-grid { grid-template-columns: 1fr; gap: 16px; }
+    .pw-ob-finish-block { min-height: auto; padding: 18px; }
+    .pw-ob-finish-title { font-size: 16px; }
+    .pw-ob-finish-icon { width: 48px; height: 48px; font-size: 20px; margin-bottom: 12px; }
+
+    .pw-ob-form-grid { grid-template-columns: 1fr; gap: 10px; }
+    .pw-ob-field input { font-size: 16px; } /* voorkomt iOS-zoom */
+    .pw-ob-finish-btn { min-height: 48px; }
+
+    .pw-ob-modal-title { font-size: 22px; }
     .pw-ob-modal-text { font-size: 14px; }
+    .pw-ob-modal-actions { max-width: 100%; }
+    .pw-ob-modal-btn { min-height: 48px; width: 100%; }
+
+    /* Upload-box */
+    .pw-ob-upload { padding: 20px 12px; }
+    .pw-ob-upload-title { font-size: 14px; }
 }
+
+/* =========================================================
+   Zeer kleine schermen (tot 480px)
+   ========================================================= */
+@media (max-width: 480px) {
+    .pw-onboarding { padding: 12px 10px 16px; }
+
+    /* Kaart: banner boven, content eronder (beter leesbaar) */
+    .pw-ob-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 10px;
+    }
+    .pw-ob-card-banner {
+        width: 100%;
+        height: 120px;
+        border-radius: 10px;
+    }
+    .pw-ob-card p.pw-ob-text { display: block; font-size: 12.5px; }
+    .pw-ob-action { width: 100%; margin-top: 6px; }
+
+    .pw-ob-stop {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+        border-width: 2px;
+    }
+
+    /* Typografie */
+    .pw-ob-title { font-size: 20px; }
+    .pw-ob-badge { font-size: 16px; }
+    .pw-ob-card h3 { font-size: 14.5px; }
+    .pw-ob-modal-title { font-size: 20px; }
+    .pw-ob-modal-text { font-size: 13.5px; }
+
+    /* Praatplaat CTA compacter */
+    .pw-onboarding .pw-ob-btn--cta {
+        font-size: 13px;
+        padding: 0 14px;
+    }
+
+    /* Modal nog compacter */
+    .pw-ob-modal-box { padding: 16px 12px 14px; }
+    .pw-ob-finish-block { padding: 14px; }
+    .pw-ob-finish-title { font-size: 15px; }
+    .pw-ob-finish-text { font-size: 13px; }
+    .pw-ob-form-legend { font-size: 11px; }
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         scroll-behavior: auto !important;
@@ -699,5 +892,3 @@ html, body {
     }
     .pw-ob-confetti { display: none !important; }
 }
-
-
