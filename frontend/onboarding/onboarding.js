@@ -330,20 +330,23 @@
   renderSteps();
 
 
-    /* ---------- Welkomst-dia ---------- */
+    /* ---------- Welkomst-dia Slideshow ---------- */
   var welcomeEl = document.getElementById("pw-welcome");
+  var slide1 = document.getElementById("pw-slide-1");
+  var slide2 = document.getElementById("pw-slide-2");
+  var btnNext = document.getElementById("pw-slide-next");
   var welcomeStartBtn = document.getElementById("pw-welcome-start");
   var welcomePlaatBtn = document.getElementById("pw-welcome-plaat");
   var WELCOME_KEY = "pw-onboarding-welcome-seen";
 
   function showWelcome() {
     if (!welcomeEl) return;
+    // Reset naar dia 1 als we opnieuw starten
+    if(slide1) slide1.classList.add("is-active");
+    if(slide2) slide2.classList.remove("is-active");
+    
     welcomeEl.classList.add("is-visible");
     document.body.style.overflow = "hidden";
-    // Focus op de eerste knop voor toegankelijkheid
-    setTimeout(function () {
-      if (welcomeStartBtn) welcomeStartBtn.focus();
-    }, 100);
   }
 
   function hideWelcome() {
@@ -356,24 +359,35 @@
     try { window.localStorage.setItem(WELCOME_KEY, "1"); } catch (e) {}
   }
 
-  // Toon de dia bij eerste bezoek (of als hij nog niet gezien is)
+  // Toon de dia bij eerste bezoek
   var welcomeSeen = false;
   try { welcomeSeen = window.localStorage.getItem(WELCOME_KEY) === "1"; } catch (e) {}
   if (!welcomeSeen) showWelcome();
 
+  // Knop "Volgende" (van dia 1 naar dia 2)
+  if (btnNext) {
+    btnNext.addEventListener("click", function () {
+      slide1.classList.remove("is-active");
+      slide2.classList.add("is-active");
+    });
+  }
+
+  // Knop "Ga verder naar de stappen" (sluit dia, start route)
   if (welcomeStartBtn) {
     welcomeStartBtn.addEventListener("click", function () {
       markWelcomeSeen();
       hideWelcome();
       setView("route");
-      // Scroll naar de eerste stap
       var firstStep = listEl.querySelector(".pw-ob-step.is-current");
       if (firstStep) {
-        firstStep.scrollIntoView({ behavior: "smooth", block: "center" });
+        setTimeout(function() {
+            firstStep.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 300); // Wacht tot de fade-out animatie klaar is
       }
     });
   }
 
+  // Knop "Bekijk de praatplaat" (sluit dia, start praatplaat)
   if (welcomePlaatBtn) {
     welcomePlaatBtn.addEventListener("click", function () {
       markWelcomeSeen();
