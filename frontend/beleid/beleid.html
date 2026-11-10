@@ -92,7 +92,7 @@
       </section>
     </div>
 
-    <!-- ========== AFRONDEN MODAL (2 blocks + felicitatie) ========== -->
+    <!-- ========== AFRONDEN MODAL ========== -->
     <div class="pw-ob-modal" id="pw-ob-modal" role="dialog" aria-modal="true" aria-labelledby="pw-ob-modal-title" hidden>
       <div class="pw-ob-modal-backdrop" data-close="true"></div>
       <div class="pw-ob-modal-box pw-ob-modal-box--wide">
@@ -102,7 +102,7 @@
             <div class="pw-ob-finish-icon pw-ob-finish-icon--doc" aria-hidden="true">
                 <i class="fa-solid fa-file-signature"></i>
             </div>
-            <h3 class="pw-ob-finish-title">Stap 1 · Vrijwilligersovereenkomst inzien</h3>
+            <h3 class="pw-ob-finish-title">Stap 1 - Vrijwilligersovereenkomst inzien</h3>
             <p class="pw-ob-finish-text">
                 Lees de vrijwilligersovereenkomst aandachtig door. Je kunt het document openen en downloaden.
             </p>
@@ -118,12 +118,12 @@
             </label>
         </div>
 
-        <!-- Block 2: contactformulier (verschijnt pas na block 1) -->
+        <!-- Block 2: contactformulier -->
         <div class="pw-ob-finish-block pw-ob-finish-block--hidden" id="pw-ob-finish-block2">
             <div class="pw-ob-finish-icon pw-ob-finish-icon--form" aria-hidden="true">
                 <i class="fa-solid fa-envelope-open-text"></i>
             </div>
-            <h3 class="pw-ob-finish-title">Stap 2 · Contactformulier invullen</h3>
+            <h3 class="pw-ob-finish-title">Stap 2 - Contactformulier invullen</h3>
             <p class="pw-ob-finish-text">
                 Vul je gegevens in. We nemen daarna contact met je op om je aanmelding af te ronden.
             </p>
@@ -161,9 +161,9 @@
             </form>
         </div>
 
-        <!-- Felicitatie (verschijnt na versturen) -->
+        <!-- Felicitatie -->
         <div class="pw-ob-finish-block pw-ob-finish-block--hidden pw-ob-finish-block--celebrate" id="pw-ob-finish-block3">
-            <div class="pw-ob-modal-emoji" aria-hidden="true">🎉</div>
+            <canvas class="pw-ob-confetti" id="pw-ob-confetti" aria-hidden="true"></canvas>
             <h2 class="pw-ob-modal-title" id="pw-ob-modal-title">Woehoe! Gefeliciteerd!</h2>
             <p class="pw-ob-modal-text">
                 Je hebt alle stappen gelezen, alle controle-vragen goed beantwoord en je aanmelding verstuurd.

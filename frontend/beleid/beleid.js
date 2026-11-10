@@ -1,6 +1,6 @@
 /* =========================================================
    Palet Welzijn - Beleid & Onboarding
-   5 stappen · blocks · quiz zonder explanation
+   5 stappen, rustige secties, nette quiz, confetti, geen reload
    ========================================================= */
 
 (function () {
@@ -9,11 +9,11 @@
   var STEPS = [
 
     /* -------------------------------------------------------
-       STAP 1 - WELKOM (H1 + 1.1 + 1.2)
+       STAP 1 - WELKOM
        ------------------------------------------------------- */
     {
       id: "welkom",
-      title: "Welkom – fijn dat je er bent!",
+      title: "Welkom - fijn dat je er bent!",
       text: "Maak kennis met Palet Welzijn en wat jij als vrijwilliger betekent.",
       img: "../../assets/welkom.png",
       alt: "Welkom",
@@ -31,7 +31,7 @@
         { type: "p", text: "Samen maken we het verschil!" },
 
         { type: "h", text: "Vrijwilliger zijn bij Palet Welzijn" },
-        { type: "p", text: "Een vrijwilliger zet zich vanuit eigen motivatie in voor een ander of voor de samenleving, zonder financiële vergoeding. Bij Palet Welzijn zijn meer dan 1.300 vrijwilligers actief: in de wijk, op woonzorglocaties en binnen het sociaal domein in Midden-Holland." },
+        { type: "p", text: "Een vrijwilliger zet zich vanuit eigen motivatie in voor een ander of voor de samenleving, zonder financiele vergoeding. Bij Palet Welzijn zijn meer dan 1.300 vrijwilligers actief: in de wijk, op woonzorglocaties en binnen het sociaal domein in Midden-Holland." },
         { type: "p", text: "Vrijwilligerswerk bij Palet Welzijn:" },
         { type: "list", items: [
           "Doe je uit vrije wil.",
@@ -41,7 +41,7 @@
         ]},
 
         { type: "h", text: "Verschillende rollen" },
-        { type: "p", text: "Er zijn veel verschillende mogelijkheden. Je kunt kiezen uit meerdere rollen — samen kijken we welke bij jou, jouw interesses en jouw mogelijkheden past." },
+        { type: "p", text: "Er zijn veel verschillende mogelijkheden. Je kunt kiezen uit meerdere rollen. Samen kijken we welke bij jou, jouw interesses en jouw mogelijkheden past." },
         { type: "list", items: [
           "Vrijwilliger Thuis: je bezoekt iemand in de eigen woonomgeving en biedt gezelschap en ondersteuning.",
           "Activiteitenvrijwilliger: je helpt bij het organiseren en begeleiden van activiteiten en evenementen.",
@@ -59,19 +59,19 @@
         {
           question: "Welke kenmerken heeft vrijwilligerswerk bij Palet Welzijn?",
           options: [
-            { label: "A. Het is verplicht, onbetaald, binnen een organisatie en met een maatschappelijk doel", ok: false },
-            { label: "B. Je doet het uit vrije wil, tegen een kleine vergoeding en met een maatschappelijk doel", ok: false },
-            { label: "C. Je doet het uit vrije wil, het is onbetaald, het vindt plaats in een georganiseerde omgeving en het heeft een maatschappelijk doel", ok: true },
-            { label: "D. Je doet het in je eigen tijd, zonder afspraken en voor een organisatie naar keuze", ok: false }
+            { label: "Het is verplicht, onbetaald, binnen een organisatie en met een maatschappelijk doel", ok: false },
+            { label: "Je doet het uit vrije wil, tegen een kleine vergoeding en met een maatschappelijk doel", ok: false },
+            { label: "Je doet het uit vrije wil, het is onbetaald, het vindt plaats in een georganiseerde omgeving en het heeft een maatschappelijk doel", ok: true },
+            { label: "Je doet het in je eigen tijd, zonder afspraken en voor een organisatie naar keuze", ok: false }
           ]
         },
         {
           question: "Wat is typisch voor een projectvrijwilliger?",
           options: [
-            { label: "A. Hij of zij bezoekt iemand thuis zodat de mantelzorger even tijd voor zichzelf heeft", ok: false },
-            { label: "B. Hij of zij helpt mee aan een tijdelijk project met een duidelijk begin en einde", ok: true },
-            { label: "C. Hij of zij is vooral gastheer of gastvrouw in een wijkcentrum", ok: false },
-            { label: "D. Hij of zij is altijd chauffeur voor het seniorenvervoer", ok: false }
+            { label: "Hij of zij bezoekt iemand thuis zodat de mantelzorger even tijd voor zichzelf heeft", ok: false },
+            { label: "Hij of zij helpt mee aan een tijdelijk project met een duidelijk begin en einde", ok: true },
+            { label: "Hij of zij is vooral gastheer of gastvrouw in een wijkcentrum", ok: false },
+            { label: "Hij of zij is altijd chauffeur voor het seniorenvervoer", ok: false }
           ]
         }
       ]
@@ -79,7 +79,6 @@
 
     /* -------------------------------------------------------
        STAP 2 - WAT BRENGT VRIJWILLIGERSWERK JOU?
-       Alleen aanvink-taken, geen quiz
        ------------------------------------------------------- */
     {
       id: "voor-jou",
@@ -111,7 +110,7 @@
           "Vierstroom Ledenservice: je ontvangt een gratis persoonlijk lidmaatschap op naam, waarmee je gebruik kunt maken van verschillende kortingen en aanbiedingen.",
           "Bijzondere gelegenheden: ook op bijzondere momenten laten we graag van ons horen met een kleine attentie.",
           "Workshops en scholingen: je kunt deelnemen aan verschillende workshops en scholingen.",
-          "Vrijwilligersbijeenkomst: één keer per jaar organiseren we een gezellige bijeenkomst voor onze vrijwilligers."
+          "Vrijwilligersbijeenkomst: een keer per jaar organiseren we een gezellige bijeenkomst voor onze vrijwilligers."
         ]}
       ],
 
@@ -125,7 +124,6 @@
 
     /* -------------------------------------------------------
        STAP 3 - WAT VERWACHTEN WIJ VAN JOU?
-       + geheimhouding/privacy (uit H5) + kleding + betrouwbaarheid
        ------------------------------------------------------- */
     {
       id: "afspraken",
@@ -144,7 +142,7 @@
         { type: "p", text: "Je hebt belangstelling voor de mensen met wie je werkt en vindt het fijn om iets voor een ander te betekenen." },
 
         { type: "h", text: "Betrouwbaarheid en discretie" },
-        { type: "p", text: "We moeten op elkaar kunnen rekenen. Je gaat zorgvuldig om met informatie en respecteert de privacy van anderen. Alles wat je vertrouwelijk over cliënten, bewoners of de organisatie te weten komt, valt onder de geheimhoudingsplicht — ook wanneer je stopt met vrijwilligerswerk." },
+        { type: "p", text: "We moeten op elkaar kunnen rekenen. Je gaat zorgvuldig om met informatie en respecteert de privacy van anderen. Alles wat je vertrouwelijk over clienten, bewoners of de organisatie te weten komt, valt onder de geheimhoudingsplicht, ook wanneer je stopt met vrijwilligerswerk." },
 
         { type: "h", text: "Communicatie en samenwerking" },
         { type: "p", text: "Je kunt zelfstandig werken, maar ook samenwerken met andere vrijwilligers en professionals. Je gaat respectvol om met meningsverschillen en oordeelt niet direct." },
@@ -156,10 +154,10 @@
         { type: "p", text: "Beslissingen over zorggerelateerde zaken laat je altijd over aan de verantwoordelijke professional. Twijfel je over een situatie? Bespreek dit dan met jouw contactpersoon." },
 
         { type: "h", text: "Medische handelingen" },
-        { type: "p", text: "Als vrijwilliger verricht je nooit medische of verpleegtechnische handelingen. Dit geldt ook wanneer je deze handelingen in het verleden beroepsmatig hebt uitgevoerd. Daarnaast is het niet toegestaan om gevoelige of privéinformatie van cliënten te beheren of giften aan te nemen." },
+        { type: "p", text: "Als vrijwilliger verricht je nooit medische of verpleegtechnische handelingen. Dit geldt ook wanneer je deze handelingen in het verleden beroepsmatig hebt uitgevoerd. Daarnaast is het niet toegestaan om gevoelige of prive-informatie van clienten te beheren of giften aan te nemen." },
 
         { type: "h", text: "Sociale media" },
-        { type: "p", text: "Wees voorzichtig met het gebruik van sociale media, zoals WhatsApp, Facebook, Instagram en YouTube. Je mag niet zomaar foto's, filmpjes of informatie over cliënten of bewoners online plaatsen of delen. Ook wanneer je samen met iemand een leuke foto maakt, mag je deze niet zonder toestemming op sociale media zetten. Palet Welzijn plaatst zelf ook geen duidelijk herkenbare portretfoto van jou online zonder jouw toestemming. Twijfel je? Overleg dan met jouw contactpersoon." },
+        { type: "p", text: "Wees voorzichtig met het gebruik van sociale media, zoals WhatsApp, Facebook, Instagram en YouTube. Je mag niet zomaar foto's, filmpjes of informatie over clienten of bewoners online plaatsen of delen. Ook wanneer je samen met iemand een leuke foto maakt, mag je deze niet zonder toestemming op sociale media zetten. Palet Welzijn plaatst zelf ook geen duidelijk herkenbare portretfoto van jou online zonder jouw toestemming. Twijfel je? Overleg dan met jouw contactpersoon." },
 
         { type: "h", text: "Kleding en representativiteit" },
         { type: "p", text: "Je gedrag, kleding en uiterlijke verzorging passen bij een respectvolle benadering van anderen en bij de uitstraling van Palet Welzijn. Denk aan: rokjes en korte broeken minimaal tot op de knie, geen aanstootgevende teksten op kleding en kleding die schoon, verzorgd en passend is bij de werkzaamheden. Twijfel je of iets gepast is? Overleg met je contactpersoon." },
@@ -177,7 +175,7 @@
 
       tasks: [
         "Ik ken de gedragscode van Palet Welzijn",
-        "Wat ik over cliënten hoor of zie, blijft geheim — ook na mijn vrijwilligerswerk",
+        "Wat ik over clienten hoor of zie, blijft geheim, ook na mijn vrijwilligerswerk",
         "Ik doe geen medische of verpleegtechnische handelingen",
         "Ik weet wat gepaste kleding is tijdens mijn vrijwilligerswerk"
       ],
@@ -186,44 +184,44 @@
         {
           question: "Je bent gestopt met vrijwilligerswerk bij Palet Welzijn. Je wilt je vriendin vertellen wat een bewoner ooit tegen je zei. Mag dat?",
           options: [
-            { label: "A. Ja, want ik werk er niet meer", ok: false },
-            { label: "B. Ja, zolang ik geen naam noem", ok: false },
-            { label: "C. Nee, de geheimhoudingsplicht blijft ook gelden na het stoppen", ok: true },
-            { label: "D. Alleen als de bewoner dat goed vindt", ok: false }
+            { label: "Ja, want ik werk er niet meer", ok: false },
+            { label: "Ja, zolang ik geen naam noem", ok: false },
+            { label: "Nee, de geheimhoudingsplicht blijft ook gelden na het stoppen", ok: true },
+            { label: "Alleen als de bewoner dat goed vindt", ok: false }
           ]
         },
         {
           question: "Je werkte vroeger in de zorg. Een bewoner vraagt of jij zijn medicijnen wilt klaarzetten. Wat doe je?",
           options: [
-            { label: "A. Ik doe het niet, laat het aan de professional en bespreek het met mijn contactpersoon", ok: true },
-            { label: "B. Ik doe het, want ik heb er ervaring mee", ok: false },
-            { label: "C. Ik doe het alleen als de bewoner dat prettig vindt", ok: false },
-            { label: "D. Ik doe het alleen als niemand het ziet", ok: false }
+            { label: "Ik doe het niet, laat het aan de professional en bespreek het met mijn contactpersoon", ok: true },
+            { label: "Ik doe het, want ik heb er ervaring mee", ok: false },
+            { label: "Ik doe het alleen als de bewoner dat prettig vindt", ok: false },
+            { label: "Ik doe het alleen als niemand het ziet", ok: false }
           ]
         },
         {
           question: "Het is heet buiten en je weet niet wat je moet aandoen. Wat is het meest gangbare?",
           options: [
-            { label: "A. Ik draag wat ik wil, zolang het maar schoon is", ok: false },
-            { label: "B. Rokjes en korte broeken minimaal tot op de knie, geen aanstootgevende teksten, schoon en verzorgd", ok: true },
-            { label: "C. Alleen bedrijfskleding is toegestaan", ok: false },
-            { label: "D. Kleding maakt niet uit, want ik werk niet met cliënten", ok: false }
+            { label: "Ik draag wat ik wil, zolang het maar schoon is", ok: false },
+            { label: "Rokjes en korte broeken minimaal tot op de knie, geen aanstootgevende teksten, schoon en verzorgd", ok: true },
+            { label: "Alleen bedrijfskleding is toegestaan", ok: false },
+            { label: "Kleding maakt niet uit, want ik werk niet met clienten", ok: false }
           ]
         },
         {
           question: "Je maakt tijdens een wandeling een leuke foto met een bewoner. Mag je die op sociale media zetten?",
           options: [
-            { label: "A. Ja, het is jouw eigen account", ok: false },
-            { label: "B. Ja, als je geen naam noemt", ok: false },
-            { label: "C. Alleen met toestemming van de bewoner", ok: true },
-            { label: "D. Ja, als je de foto na een dag verwijdert", ok: false }
+            { label: "Ja, het is jouw eigen account", ok: false },
+            { label: "Ja, als je geen naam noemt", ok: false },
+            { label: "Alleen met toestemming van de bewoner", ok: true },
+            { label: "Ja, als je de foto na een dag verwijdert", ok: false }
           ]
         }
       ]
     },
 
     /* -------------------------------------------------------
-       STAP 4 - VEILIGHEID (geheimhouding eruit → naar stap 3)
+       STAP 4 - VEILIGHEID
        ------------------------------------------------------- */
     {
       id: "veiligheid",
@@ -264,17 +262,17 @@
         {
           question: "Je maakt iets mee dat mogelijk schadelijk is, maar je twijfelt of het ernstig genoeg is. Wat doe je?",
           options: [
-            { label: "A. Ik wacht af of het vanzelf overgaat", ok: false },
-            { label: "B. Ik meld het alleen als ik er zeker van ben", ok: false },
-            { label: "C. Ik los het zelf op", ok: false },
-            { label: "D. Ik bespreek het met mijn contactpersoon, ook als ik twijfel", ok: true }
+            { label: "Ik wacht af of het vanzelf overgaat", ok: false },
+            { label: "Ik meld het alleen als ik er zeker van ben", ok: false },
+            { label: "Ik los het zelf op", ok: false },
+            { label: "Ik bespreek het met mijn contactpersoon, ook als ik twijfel", ok: true }
           ]
         }
       ]
     },
 
     /* -------------------------------------------------------
-       STAP 5 - AANMELDING & TOT SLOT (checklist + VOG + overeenkomst + contact)
+       STAP 5 - AANMELDING & TOT SLOT
        ------------------------------------------------------- */
     {
       id: "aanmelding",
@@ -290,7 +288,7 @@
         { type: "p", text: "Voordat je officieel aan de slag gaat, moeten een aantal zaken geregeld zijn." },
 
         { type: "h", text: "Stap 1. Kennismaken" },
-        { type: "p", text: "Je hebt een kennismakingsgesprek met de contactpersoon vrijwilligers van de locatie of dienst. Tijdens dit gesprek vertellen we je meer over Palet Welzijn, bespreken we de vrijwilligersrol waarin je geïnteresseerd bent, kijken we naar jouw motivatie en eventuele ervaring en krijg je alle ruimte om vragen te stellen. Het gesprek is informeel. Als je dat prettig vindt, kun je ook een keer meelopen op locatie." },
+        { type: "p", text: "Je hebt een kennismakingsgesprek met de contactpersoon vrijwilligers van de locatie of dienst. Tijdens dit gesprek vertellen we je meer over Palet Welzijn, bespreken we de vrijwilligersrol waarin je geinteresseerd bent, kijken we naar jouw motivatie en eventuele ervaring en krijg je alle ruimte om vragen te stellen. Het gesprek is informeel. Als je dat prettig vindt, kun je ook een keer meelopen op locatie." },
 
         { type: "h", text: "Stap 2. De juiste match" },
         { type: "p", text: "Samen bekijken we of de vrijwilligersrol aansluit bij jouw wensen, interesses en mogelijkheden. We vinden het belangrijk dat je op een plek terechtkomt waar jij je prettig voelt." },
@@ -317,8 +315,8 @@
         ]},
         { type: "p", text: "Wanneer alles geregeld is, ben je officieel aangemeld als vrijwilliger bij Palet Welzijn. Welkom bij het team!" },
 
-        { type: "h", text: "Tot slot – samen maken we het verschil!" },
-        { type: "p", text: "We hopen dat je met veel plezier jouw rol als vrijwilliger bij Palet Welzijn gaat invullen. Onthoud dat jouw inzet waardevol is. Iedere vrijwilliger draagt op zijn of haar eigen manier bij aan het welzijn van onze cliënten, bewoners, mantelzorgers en hun sociale omgeving." },
+        { type: "h", text: "Tot slot - samen maken we het verschil!" },
+        { type: "p", text: "We hopen dat je met veel plezier jouw rol als vrijwilliger bij Palet Welzijn gaat invullen. Onthoud dat jouw inzet waardevol is. Iedere vrijwilliger draagt op zijn of haar eigen manier bij aan het welzijn van onze clienten, bewoners, mantelzorgers en hun sociale omgeving." },
         { type: "p", text: "Heb je vragen, loop je ergens tegenaan of ervaar je minder plezier in je vrijwilligerswerk? Blijf er niet mee rondlopen, maar ga met ons in gesprek. Samen zoeken we naar een passende oplossing." },
         { type: "p", text: "Ken je iemand die ook iets voor een ander wil betekenen? Vertel dan gerust over jouw ervaringen bij Palet Welzijn! Misschien inspireer je iemand om ook vrijwilliger te worden. Er is veel mogelijk en we kijken graag samen welke rol bij iemand past." },
 
@@ -344,35 +342,35 @@
         {
           question: "Wat doe je met je VOG nadat je hem hebt ontvangen?",
           options: [
-            { label: "A. Je stuurt hem op naar de vertrouwenspersoon", ok: false },
-            { label: "B. Je geeft hem aan Palet Welzijn, die hem bewaart", ok: false },
-            { label: "C. Je betaalt de kosten en dient hem later in", ok: false },
-            { label: "D. Je laat hem zien aan je contactpersoon. De VOG blijft van jou", ok: true }
+            { label: "Je stuurt hem op naar de vertrouwenspersoon", ok: false },
+            { label: "Je geeft hem aan Palet Welzijn, die hem bewaart", ok: false },
+            { label: "Je betaalt de kosten en dient hem later in", ok: false },
+            { label: "Je laat hem zien aan je contactpersoon. De VOG blijft van jou", ok: true }
           ]
         },
         {
           question: "Je overweegt te stoppen met je vrijwilligerswerk. Wat is de beste eerste stap?",
           options: [
-            { label: "A. Het eerst bespreken met je contactpersoon, zodat jullie samen kunnen kijken naar een andere rol, locatie of aangepaste inzet", ok: true },
-            { label: "B. Gewoon niet meer komen", ok: false },
-            { label: "C. Wachten tot het gesprek na een paar maanden", ok: false },
-            { label: "D. Een bericht sturen aan de cliënt", ok: false }
+            { label: "Het eerst bespreken met je contactpersoon, zodat jullie samen kunnen kijken naar een andere rol, locatie of aangepaste inzet", ok: true },
+            { label: "Gewoon niet meer komen", ok: false },
+            { label: "Wachten tot het gesprek na een paar maanden", ok: false },
+            { label: "Een bericht sturen aan de client", ok: false }
           ]
         },
         {
           question: "Je ervaart minder plezier in je vrijwilligerswerk. Wat vraagt Palet Welzijn van je?",
           options: [
-            { label: "A. Gewoon doorgaan en er niets over zeggen", ok: false },
-            { label: "B. In gesprek gaan, zodat jullie samen naar een passende oplossing zoeken", ok: true },
-            { label: "C. Wachten tot de organisatie er zelf over begint", ok: false },
-            { label: "D. Zonder te overleggen stoppen", ok: false }
+            { label: "Gewoon doorgaan en er niets over zeggen", ok: false },
+            { label: "In gesprek gaan, zodat jullie samen naar een passende oplossing zoeken", ok: true },
+            { label: "Wachten tot de organisatie er zelf over begint", ok: false },
+            { label: "Zonder te overleggen stoppen", ok: false }
           ]
         }
       ]
     }
   ];
 
-  var STORAGE_KEY = "pw-onboarding-v5";
+  var STORAGE_KEY = "pw-onboarding-v6";
 
   var root = document.querySelector(".pw-onboarding");
   if (!root) return;
@@ -464,6 +462,40 @@
   var ICON_CHECK = '<path d="M5 12l5 5 9-10"/>';
   var ICON_ARROW = '<path d="M5 12h14M13 6l6 6-6 6"/>';
   var ICON_LOCK = '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>';
+  var ICON_MARK_OK = '<path d="M5 12l5 5 9-10"/>';
+  var ICON_MARK_NO = '<path d="M6 6l12 12M18 6L6 18"/>';
+
+  /* ---------- Body -> secties ---------- */
+  function buildSections(body) {
+    var wrap = el("div", "pw-ob-sections");
+    var section = null;
+
+    function newSection() {
+      section = el("div", "pw-ob-section");
+      wrap.appendChild(section);
+    }
+
+    body.forEach(function (block) {
+      if (!block || !block.type) return;
+      if (block.type === "h" || block.type === "h3") {
+        newSection();
+        var h = el(block.type === "h" ? "h4" : "h5",
+          block.type === "h" ? "pw-ob-section-h" : "pw-ob-section-h3",
+          block.text);
+        section.appendChild(h);
+      } else {
+        if (!section) newSection();
+        if (block.type === "p") {
+          section.appendChild(el("p", null, block.text));
+        } else if (block.type === "list" && Array.isArray(block.items)) {
+          var ul = el("ul");
+          block.items.forEach(function (it) { ul.appendChild(el("li", null, it)); });
+          section.appendChild(ul);
+        }
+      }
+    });
+    return wrap;
+  }
 
   /* ---------- Rail ---------- */
   function renderRail() {
@@ -485,7 +517,7 @@
       btn.appendChild(stop);
 
       var txt = el("span", "pw-ob-rail-text");
-      txt.appendChild(el("span", "pw-ob-rail-label", "Stap " + (i + 1) + " · " + step.title));
+      txt.appendChild(el("span", "pw-ob-rail-label", "Stap " + (i + 1) + " - " + step.title));
       var meta;
       if (status === "done") meta = "Voltooid";
       else if (status === "current") meta = "Hier ben je";
@@ -511,7 +543,17 @@
     panelEl.textContent = "";
     panelEl.style.setProperty("--step-color", step.color);
 
-    /* Kop */
+    /* Banner bovenaan */
+    var banner = el("div", "pw-ob-panel-banner");
+    var img = el("img", "pw-ob-panel-img");
+    img.src = step.img;
+    img.alt = step.alt;
+    img.loading = "lazy";
+    img.onerror = function () { this.style.display = "none"; };
+    banner.appendChild(img);
+    panelEl.appendChild(banner);
+
+    /* Kop onder banner */
     var head = el("div", "pw-ob-panel-head");
     head.appendChild(el("span", "pw-ob-panel-num", String(index + 1)));
     head.appendChild(el("h3", "pw-ob-panel-title", step.title));
@@ -522,49 +564,17 @@
     head.appendChild(badge);
     panelEl.appendChild(head);
 
-    /* Banner-afbeelding boven titel */
-    var banner = el("div", "pw-ob-panel-banner");
-    var img = el("img", "pw-ob-panel-img");
-    img.src = step.img;
-    img.alt = step.alt;
-    img.loading = "lazy";
-    img.onerror = function () { this.style.display = "none"; };
-    banner.appendChild(img);
-    panelEl.appendChild(banner);
-
-    /* Intro */
     panelEl.appendChild(el("p", "pw-ob-panel-intro", step.text));
 
-    /* Info blocks */
+    /* Secties */
     if (Array.isArray(step.body) && step.body.length) {
-      var info = el("div", "pw-ob-info");
-      step.body.forEach(function (block, bi) {
-        if (!block || !block.type) return;
-        if (block.type === "p") {
-          var p = el("p", "pw-ob-info-p", block.text);
-          p.style.animationDelay = (bi * 40) + "ms";
-          info.appendChild(p);
-        } else if (block.type === "h") {
-          var h = el("h4", "pw-ob-info-h", block.text);
-          h.style.animationDelay = (bi * 40) + "ms";
-          info.appendChild(h);
-        } else if (block.type === "h3") {
-          var h3 = el("h5", "pw-ob-info-h3", block.text);
-          h3.style.animationDelay = (bi * 40) + "ms";
-          info.appendChild(h3);
-        } else if (block.type === "list" && Array.isArray(block.items)) {
-          var ul2 = el("ul", "pw-ob-info-list");
-          block.items.forEach(function (it) { ul2.appendChild(el("li", null, it)); });
-          ul2.style.animationDelay = (bi * 40) + "ms";
-          info.appendChild(ul2);
-        }
-      });
-      panelEl.appendChild(info);
+      panelEl.appendChild(buildSections(step.body));
     }
 
     /* Taken */
     panelEl.appendChild(el("p", "pw-ob-hint", "Vink af wat je al hebt gedaan:"));
     var ul = el("ul", "pw-ob-tasks");
+    var taskInputs = [];
     step.tasks.forEach(function (task, t) {
       var li = el("li", "pw-ob-task");
       var label = el("label");
@@ -577,23 +587,25 @@
         arr[t] = input.checked;
         state.checked[step.id] = arr;
         saveState();
-        renderRail();
-        renderPanel();
-        renderStatus();
+        updateAfterTaskChange(step, index);
       });
       label.appendChild(input);
       label.appendChild(el("span", null, task));
       li.appendChild(label);
       ul.appendChild(li);
+      taskInputs.push(input);
     });
     panelEl.appendChild(ul);
 
-    /* Quiz */
+    /* Quiz (alleen tonen als alle taken klaar zijn) */
+    var quizWrap = null;
     if (step.quizzes && step.quizzes.length > 0) {
       if (isDone(step)) {
-        panelEl.appendChild(buildQuiz(step));
+        quizWrap = buildQuiz(step);
+        panelEl.appendChild(quizWrap);
       } else {
-        panelEl.appendChild(el("p", "pw-ob-hint", "Vink eerst alle taken hierboven af. Daarna verschijnen de controle-vragen."));
+        var hint = el("p", "pw-ob-hint pw-ob-quiz-locked-hint", "Vink eerst alle taken hierboven af. Daarna verschijnen de controle-vragen.");
+        panelEl.appendChild(hint);
       }
     }
 
@@ -624,6 +636,32 @@
     panelEl.appendChild(foot);
   }
 
+  /* ---------- Gerichte update na taakwissel (geen volledige re-render) ---------- */
+  function updateAfterTaskChange(step, index) {
+    renderRail();
+    renderStatus();
+
+    var doneNow = isDone(step);
+
+    /* Quiz-sectie: invoegen als taken net klaar zijn en quiz nog niet zichtbaar */
+    if (doneNow && step.quizzes && step.quizzes.length > 0) {
+      var existingQuiz = panelEl.querySelector(".pw-ob-quiz");
+      var lockedHint = panelEl.querySelector(".pw-ob-quiz-locked-hint");
+      if (!existingQuiz && lockedHint) {
+        lockedHint.parentNode.removeChild(lockedHint);
+        var quizWrap = buildQuiz(step);
+        /* invoegen vóór de footer */
+        var foot = panelEl.querySelector(".pw-ob-panel-foot");
+        if (foot) panelEl.insertBefore(quizWrap, foot);
+        else panelEl.appendChild(quizWrap);
+      }
+    }
+
+    /* Verder-knop disabled-state bijwerken */
+    var nextBtn = panelEl.querySelector(".pw-ob-panel-foot .pw-ob-btn:not(.pw-ob-btn--ghost)");
+    if (nextBtn) nextBtn.disabled = !(doneNow && quizAnswered(step));
+  }
+
   /* ---------- Quiz ---------- */
   function buildQuiz(step) {
     var wrap = el("div", "pw-ob-quiz");
@@ -632,6 +670,8 @@
 
     var answers = state.quiz[step.id];
     if (!Array.isArray(answers)) answers = [];
+
+    var letters = ["A", "B", "C", "D", "E", "F"];
 
     step.quizzes.forEach(function (quiz, qi) {
       var correct = answers[qi] === true;
@@ -642,37 +682,54 @@
       var opts = el("div", "pw-ob-quiz-options");
       var feedback = el("div", "pw-ob-quiz-feedback");
 
-      quiz.options.forEach(function (opt) {
-        var b = el("button", "pw-ob-quiz-btn", opt.label);
+      quiz.options.forEach(function (opt, oi) {
+        var b = el("button", "pw-ob-quiz-btn");
         b.type = "button";
-        if (correct && opt.ok) b.classList.add("is-selected", "is-correct");
+
+        var letter = el("span", "pw-ob-quiz-letter", letters[oi] || String(oi + 1));
+        var label = el("span", "pw-ob-quiz-label", opt.label);
+        var mark = el("span", "pw-ob-quiz-mark");
+        b.appendChild(letter);
+        b.appendChild(label);
+        b.appendChild(mark);
+
+        if (correct && opt.ok) {
+          b.classList.add("is-correct");
+          mark.appendChild(svg(ICON_MARK_OK, "Goed"));
+        }
         if (correct) b.disabled = true;
+
         b.addEventListener("click", function () {
           if (answers[qi] === true) return;
           if (opt.ok) {
             answers[qi] = true;
             state.quiz[step.id] = answers;
             saveState();
-            b.classList.add("is-selected", "is-correct");
+
+            b.classList.add("is-correct");
+            mark.innerHTML = "";
+            mark.appendChild(svg(ICON_MARK_OK, "Goed"));
             Array.prototype.forEach.call(opts.children, function (c) { c.disabled = true; });
             feedback.textContent = "Perfect!";
             feedback.className = "pw-ob-quiz-feedback is-ok";
+
+            renderRail();
+            renderStatus();
+            updateQuizFooterState(step);
+            maybeShowQuizComplete(wrap, step);
           } else {
+            b.classList.add("is-wrong");
+            mark.innerHTML = "";
+            mark.appendChild(svg(ICON_MARK_NO, "Fout"));
             feedback.textContent = "Dat is helaas niet goed. Probeer het nog eens.";
             feedback.className = "pw-ob-quiz-feedback is-no";
-          }
-          renderRail();
-          renderStatus();
-          var nextBtn = panelEl.querySelector(".pw-ob-panel-foot .pw-ob-btn:not(.pw-ob-btn--ghost)");
-          if (nextBtn) nextBtn.disabled = !(isDone(step) && quizAnswered(step));
-          if (quizAnswered(step)) {
-            var success = wrap.querySelector(".pw-ob-quiz-complete");
-            if (!success) {
-              success = el("div", "pw-ob-quiz-complete", "Fantastisch! Je hebt alle vragen goed beantwoord. Je kunt verder naar de volgende stap.");
-              wrap.appendChild(success);
-            }
+            setTimeout(function () {
+              b.classList.remove("is-wrong");
+              mark.innerHTML = "";
+            }, 1200);
           }
         });
+
         opts.appendChild(b);
       });
 
@@ -685,10 +742,19 @@
       wrap.appendChild(card);
     });
 
-    if (quizAnswered(step)) {
+    maybeShowQuizComplete(wrap, step);
+    return wrap;
+  }
+
+  function maybeShowQuizComplete(wrap, step) {
+    if (quizAnswered(step) && !wrap.querySelector(".pw-ob-quiz-complete")) {
       wrap.appendChild(el("div", "pw-ob-quiz-complete", "Fantastisch! Je hebt alle vragen goed beantwoord. Je kunt verder naar de volgende stap."));
     }
-    return wrap;
+  }
+
+  function updateQuizFooterState(step) {
+    var nextBtn = panelEl.querySelector(".pw-ob-panel-foot .pw-ob-btn:not(.pw-ob-btn--ghost)");
+    if (nextBtn) nextBtn.disabled = !(isDone(step) && quizAnswered(step));
   }
 
   /* ---------- Status ---------- */
@@ -728,12 +794,14 @@
     var firstBtn = modalEl.querySelector(".pw-ob-modal-btn");
     if (firstBtn) setTimeout(function () { firstBtn.focus(); }, 50);
     document.addEventListener("keydown", onModalKeydown);
+    setupFinishModal();
   }
   function closeModal() {
     if (!modalEl) return;
     modalEl.hidden = true;
     document.body.style.overflow = "";
     document.removeEventListener("keydown", onModalKeydown);
+    stopConfetti();
     if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
   }
   function onModalKeydown(e) { if (e.key === "Escape") closeModal(); }
@@ -742,6 +810,157 @@
       var t = e.target;
       if (t && t.getAttribute && t.getAttribute("data-close") === "true") closeModal();
     });
+  }
+
+  /* ---------- Finish modal logica ---------- */
+  function setupFinishModal() {
+    var block1 = document.getElementById("pw-ob-finish-block1");
+    var block2 = document.getElementById("pw-ob-finish-block2");
+    var block3 = document.getElementById("pw-ob-finish-block3");
+    var check1 = document.getElementById("pw-ob-finish-check1");
+    var form = document.getElementById("pw-ob-contactform");
+
+    if (block1) block1.classList.remove("pw-ob-finish-block--hidden");
+    if (block2) block2.classList.add("pw-ob-finish-block--hidden");
+    if (block3) block3.classList.add("pw-ob-finish-block--hidden");
+    if (check1) check1.checked = false;
+
+    if (check1 && block2 && !check1.dataset.bound) {
+      check1.dataset.bound = "1";
+      check1.addEventListener("change", function () {
+        if (check1.checked) block2.classList.remove("pw-ob-finish-block--hidden");
+        else block2.classList.add("pw-ob-finish-block--hidden");
+      });
+    }
+
+    if (form && block3 && !form.dataset.bound) {
+      form.dataset.bound = "1";
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        block1.classList.add("pw-ob-finish-block--hidden");
+        block2.classList.add("pw-ob-finish-block--hidden");
+        block3.classList.remove("pw-ob-finish-block--hidden");
+        startConfetti(6000);
+      });
+    }
+  }
+
+  /* ---------- Confetti ---------- */
+  var confettiRAF = null;
+  var confettiStopTimer = null;
+
+  function stopConfetti() {
+    if (confettiRAF) { cancelAnimationFrame(confettiRAF); confettiRAF = null; }
+    if (confettiStopTimer) { clearTimeout(confettiStopTimer); confettiStopTimer = null; }
+    var c = document.getElementById("pw-ob-confetti");
+    if (c) {
+      var ctx = c.getContext("2d");
+      if (ctx) ctx.clearRect(0, 0, c.width, c.height);
+    }
+  }
+
+  function startConfetti(duration) {
+    var canvas = document.getElementById("pw-ob-confetti");
+    if (!canvas) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    stopConfetti();
+
+    var ctx = canvas.getContext("2d");
+    var box = canvas.parentElement;
+    function size() {
+      var rect = box.getBoundingClientRect();
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+      canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+      canvas.style.width = rect.width + "px";
+      canvas.style.height = rect.height + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    size();
+
+    var W = function () { return canvas.width / (window.devicePixelRatio || 1); };
+    var H = function () { return canvas.height / (window.devicePixelRatio || 1); };
+
+    var colors = ["#120a5c", "#008241", "#0055ff", "#4d88ff", "#F2C230", "#ffffff"];
+    var pieces = [];
+    var spawnEnd = Math.min(duration - 1500, 4000);
+    var start = performance.now();
+
+    function spawn() {
+      var w = W();
+      pieces.push({
+        x: Math.random() * w,
+        y: -10 - Math.random() * 40,
+        vx: (Math.random() - 0.5) * 60,
+        vy: 60 + Math.random() * 120,
+        size: 5 + Math.random() * 6,
+        rot: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 10,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        sway: Math.random() * Math.PI * 2,
+        swaySpeed: 1 + Math.random() * 2,
+        shape: Math.random() < 0.5 ? "rect" : "strip"
+      });
+    }
+
+    var last = start;
+    function frame(now) {
+      var elapsed = now - start;
+      var dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+
+      if (elapsed < spawnEnd) {
+        var toSpawn = 3;
+        for (var i = 0; i < toSpawn; i++) spawn();
+      }
+
+      var w = W();
+      var h = H();
+      ctx.clearRect(0, 0, w, h);
+
+      for (var p = pieces.length - 1; p >= 0; p--) {
+        var it = pieces[p];
+        it.sway += it.swaySpeed * dt;
+        it.vx += Math.sin(it.sway) * 20 * dt;
+        it.vy += 90 * dt;
+        it.x += it.vx * dt;
+        it.y += it.vy * dt;
+        it.rot += it.vr * dt;
+
+        if (it.y > h + 20) { pieces.splice(p, 1); continue; }
+
+        ctx.save();
+        ctx.translate(it.x, it.y);
+        ctx.rotate(it.rot);
+        ctx.fillStyle = it.color;
+        if (it.shape === "rect") {
+          ctx.fillRect(-it.size / 2, -it.size / 2, it.size, it.size * 0.6);
+        } else {
+          ctx.fillRect(-it.size / 2, -it.size / 4, it.size, it.size * 0.35);
+        }
+        ctx.restore();
+      }
+
+      if (elapsed < duration || pieces.length > 0) {
+        confettiRAF = requestAnimationFrame(frame);
+      } else {
+        ctx.clearRect(0, 0, w, h);
+        confettiRAF = null;
+      }
+    }
+
+    confettiRAF = requestAnimationFrame(frame);
+    confettiStopTimer = setTimeout(function () {
+      /* harde stop na duration, ook als er nog deeltjes zijn */
+      if (confettiRAF) { cancelAnimationFrame(confettiRAF); confettiRAF = null; }
+      var c = document.getElementById("pw-ob-confetti");
+      if (c) {
+        var cx = c.getContext("2d");
+        if (cx) cx.clearRect(0, 0, c.width, c.height);
+      }
+    }, duration + 100);
   }
 
   /* ---------- Reset ---------- */
