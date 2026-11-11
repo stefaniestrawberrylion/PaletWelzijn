@@ -355,6 +355,7 @@
     var isRoute = view === "route";
     viewRouteEl.classList.toggle("is-active", isRoute);
     viewPraatplaatEl.classList.toggle("is-active", !isRoute);
+  document.dispatchEvent(new CustomEvent("pw:viewchange", { detail: { view: view } }));
 
     viewBtns.forEach(function (b) {
       var active = b.dataset.view === view;
@@ -425,6 +426,7 @@
 
   function openModal() {
     if (!modalEl) return;
+    document.dispatchEvent(new CustomEvent("pw:modalopen"));
     lastFocused = document.activeElement;
     resetModalState();
     modalEl.hidden = false;

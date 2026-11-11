@@ -892,3 +892,101 @@ html, body { overflow-x: hidden; }
     }
     .pw-ob-confetti { display: none !important; }
 }
+
+/* =========================================================
+   Praatplaat hotspots
+   ========================================================= */
+.pw-ob-praatplaat-stage {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    line-height: 0;
+}
+.pw-ob-praatplaat-stage img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.pw-ob-hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: clamp(36px, 5vw, 52px);
+    height: clamp(36px, 5vw, 52px);
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    background: var(--hs-color, #120a5c);
+    color: #fff;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(14px, 1.6vw, 18px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    z-index: 2;
+    padding: 0;
+}
+.pw-ob-hotspot:hover {
+    transform: translate(-50%, -50%) scale(1.12);
+    box-shadow: 0 6px 20px rgba(0,0,0,.35);
+}
+.pw-ob-hotspot:focus-visible {
+    outline: 3px solid #4d88ff;
+    outline-offset: 3px;
+}
+.pw-ob-hotspot.is-playing {
+    background: #008241;
+    animation: pwHotspotPulse 1.4s ease-in-out infinite;
+}
+@keyframes pwHotspotPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,130,65,.5); }
+    50%      { box-shadow: 0 0 0 12px rgba(0,130,65,0); }
+}
+
+.pw-ob-hotspot-tip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #120a5c;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    z-index: 3;
+}
+.pw-ob-hotspot-tip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #120a5c;
+}
+.pw-ob-hotspot:hover .pw-ob-hotspot-tip,
+.pw-ob-hotspot:focus-visible .pw-ob-hotspot-tip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-2px);
+}
+
+@media (max-width: 480px) {
+    .pw-ob-hotspot { border-width: 2px; }
+    .pw-ob-hotspot-tip { font-size: 11px; padding: 4px 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .pw-ob-hotspot.is-playing { animation: none; }
+}

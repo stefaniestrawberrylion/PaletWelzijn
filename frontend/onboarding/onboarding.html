@@ -81,18 +81,22 @@
                     </div>
                 </div>
 
-                <div class="pw-ob-view pw-ob-view--praatplaat" id="pw-ob-view-praatplaat">
-                    <figure class="pw-ob-praatplaat">
-                        <img src="../../assets/praatplaat.png" alt="Visuele praatplaat van de onboarding route van Palet Welzijn" loading="lazy">
-                        <figcaption>Bekijk de route als plaat. Sleep of scroll om alles te zien.</figcaption>
-                    </figure>
-                    <div class="pw-ob-praatplaat-cta" id="pw-ob-praatplaat-cta-wrap" style="display: none;">
-                        <button type="button" class="pw-ob-btn pw-ob-btn--cta" id="pw-ob-praatplaat-cta">
-                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                            Ga direct naar overeenkomst &amp; contactformulier
-                        </button>
-                    </div>
-                </div>
+               <div id="pw-ob-view-praatplaat" class="pw-ob-view pw-ob-view--praatplaat">
+  <figure class="pw-ob-praatplaat">
+    <!-- De wrapper is nodig voor absolute positionering van hotspots -->
+    <div class="pw-ob-praatplaat-stage" id="pw-ob-praatplaat-stage">
+      <img src="../../assets/praatplaat.png" alt="Praatplaat: wat bieden wij jou?">
+      <!-- Hotspots worden hier door praatplaat.js ingevoegd -->
+    </div>
+    <figcaption>Klik op een nummer of icoon om te horen wat wij jou bieden.</figcaption>
+  </figure>
+
+  <div class="pw-ob-praatplaat-cta" id="pw-ob-praatplaat-cta-wrap" style="display:none;">
+    <button type="button" class="pw-ob-btn pw-ob-btn--cta" id="pw-ob-praatplaat-cta">
+      Afronden en aanmelden
+    </button>
+  </div>
+</div>
 
             </div>
 
@@ -265,5 +269,6 @@
     </div>
 
     <script src="./onboarding.js"></script>
+    <script src="./praatplaat.js"></script>
 </body>
 </html>
