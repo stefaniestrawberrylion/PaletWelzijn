@@ -11,17 +11,38 @@
   if (!stage) return;
 
   /* ---------------------------------------------------------
-     1. HOTSPOTS  ← pas hier de x/y aan op jouw praatplaat
+     1. HOTSPOTS
      ---------------------------------------------------------
      x = % vanaf links  (0 = links, 100 = rechts)
      y = % vanaf boven  (0 = boven, 100 = onder)
+
+     1 t/m 10   = de genummerde stappen
+     11 t/m 18  = "wat brengt het jou" (8 items, linksonder)
+
+     ⚠ audio staat nu op test.mp3 (placeholder)
      --------------------------------------------------------- */
   var HOTSPOTS = [
-    { id: "welkom",     x: 18, y: 22, label: "Welkom bij Palet Welzijn",           audio: "../../assets/audio/test.mp3",     color: "#120a5c" },
-    { id: "voor-jou",   x: 50, y: 15, label: "Wat brengt vrijwilligerswerk jou?",  audio: "../../assets/audio/test.mp3",   color: "#C2410C" },
-    { id: "afspraken",  x: 82, y: 22, label: "Wat verwachten wij van jou?",        audio: "../../assets/audio/test.mp3",  color: "#008241" },
-    { id: "veiligheid", x: 30, y: 65, label: "Veiligheid",                          audio: "../../assets/audio/test.mp3", color: "#92278F" },
-    { id: "aanmelding", x: 70, y: 65, label: "Aanmelding & tot slot",              audio: "../../assets/audio/test.mp3", color: "#0F766E" }
+    /* ===== Nummers 1 t/m 10 ===== */
+    { id: "stap-01",  x: 4.4,  y: 32.1, label: "Stap 1",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
+    { id: "stap-02",  x: 12.8, y: 50.9, label: "Stap 2",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
+    { id: "stap-03",  x: 12.4, y: 61.5, label: "Stap 3",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
+    { id: "stap-04",  x: 75.5, y: 13.8, label: "Stap 4",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
+    { id: "stap-05",  x: 75.7, y: 21.7, label: "Stap 5",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
+    { id: "stap-06",  x: 75.7, y: 29.9, label: "Stap 6",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
+    { id: "stap-07",  x: 75.7, y: 43.0, label: "Stap 7",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
+    { id: "stap-08",  x: 76.4, y: 53.1, label: "Stap 8",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
+    { id: "stap-09",  x: 76.6, y: 68.9, label: "Stap 9",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
+    { id: "stap-10",  x: 76.7, y: 80.0, label: "Stap 10",                    audio: "../../assets/audio/test.mp3", color: "#120a5c" },
+
+    /* ===== Wat brengt het jou (8 items) ===== */
+    { id: "brengt-01", x: 6.7,  y: 82.3, label: "Wat brengt het jou – 1",    audio: "../../assets/audio/test.mp3", color: "#C2410C" },
+    { id: "brengt-02", x: 14.2, y: 81.8, label: "Wat brengt het jou – 2",    audio: "../../assets/audio/test.mp3", color: "#C2410C" },
+    { id: "brengt-03", x: 20.8, y: 80.5, label: "Wat brengt het jou – 3",    audio: "../../assets/audio/test.mp3", color: "#C2410C" },
+    { id: "brengt-04", x: 26.8, y: 81.3, label: "Wat brengt het jou – 4",    audio: "../../assets/audio/test.mp3", color: "#C2410C" },
+    { id: "brengt-05", x: 6.3,  y: 91.1, label: "Wat brengt het jou – 5",    audio: "../../assets/audio/test.mp3", color: "#C2410C" },
+    { id: "brengt-06", x: 14.3, y: 91.9, label: "Wat brengt het jou – 6",    audio: "../../assets/audio/test.mp3", color: "#C2410C" },
+    { id: "brengt-07", x: 21.7, y: 89.7, label: "Wat brengt het jou – 7",    audio: "../../assets/audio/test.mp3", color: "#C2410C" },
+    { id: "brengt-08", x: 27.6, y: 89.9, label: "Wat brengt het jou – 8",    audio: "../../assets/audio/test.mp3", color: "#C2410C" }
   ];
 
   /* ---------------------------------------------------------
@@ -157,7 +178,7 @@
   // Als de pagina al op praatplaat begint
   if (isVisible()) buildHotspots();
 
-  // Handig voor debuggen in de console: pwPraatplaat.play("welkom")
+  // Handig voor debuggen: pwPraatplaat.play("stap-01")
   window.pwPraatplaat = {
     play: function (id) { toggleHotspot(id); },
     stop: stopAll,
