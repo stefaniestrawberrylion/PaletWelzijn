@@ -69,11 +69,7 @@
       btn.setAttribute("aria-pressed", "false");
       btn.dataset.hotspotId = data.id;
 
-      // nummer in de knop
-      var num = document.createElement("span");
-      num.className = "pw-ob-hotspot-num";
-      num.textContent = String(i + 1);
-      btn.appendChild(num);
+      
 
       // tooltip
       var tip = document.createElement("span");

@@ -894,7 +894,7 @@ html, body { overflow-x: hidden; }
 }
 
 /* =========================================================
-   Praatplaat hotspots
+   Praatplaat hotspots (onzichtbaar, maar klikbaar)
    ========================================================= */
 .pw-ob-praatplaat-stage {
     position: relative;
@@ -906,7 +906,7 @@ html, body { overflow-x: hidden; }
     display: block;
     width: 100%;
     height: auto;
-    max-height: 70vh;
+    max-height: 75vh;
     object-fit: contain;
     border-radius: 8px;
     background: #fff;
@@ -916,41 +916,40 @@ html, body { overflow-x: hidden; }
 .pw-ob-hotspot {
     position: absolute;
     transform: translate(-50%, -50%);
-    width: clamp(36px, 5vw, 52px);
-    height: clamp(36px, 5vw, 52px);
+    /* Maak de hotspot precies zo groot als het getekende nummer */
+    width: clamp(40px, 6vw, 64px);
+    height: clamp(40px, 6vw, 64px);
     border-radius: 50%;
-    border: 3px solid #ffffff;
-    background: var(--hs-color, #120a5c);
-    color: #fff;
-    font-family: "Montserrat", Arial, sans-serif;
-    font-weight: 800;
-    font-size: clamp(14px, 1.6vw, 18px);
+    border: none;
+    background: transparent; /* ONZICHTBAAR */
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,.25);
-    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     z-index: 2;
     padding: 0;
-}
-.pw-ob-hotspot:hover {
-    transform: translate(-50%, -50%) scale(1.12);
-    box-shadow: 0 6px 20px rgba(0,0,0,.35);
-}
-.pw-ob-hotspot:focus-visible {
-    outline: 3px solid #4d88ff;
-    outline-offset: 3px;
-}
-.pw-ob-hotspot.is-playing {
-    background: #008241;
-    animation: pwHotspotPulse 1.4s ease-in-out infinite;
-}
-@keyframes pwHotspotPulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(0,130,65,.5); }
-    50%      { box-shadow: 0 0 0 12px rgba(0,130,65,0); }
+    /* Een subtiele gloed bij hover */
+    transition: box-shadow .2s ease, background .2s ease;
 }
 
+/* Hover: laat een lichte gloed zien dat er iets klikbaar is */
+.pw-ob-hotspot:hover,
+.pw-ob-hotspot:focus-visible {
+    background: rgba(255, 255, 255, 0.25); /* Lichte witte gloed */
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.6);
+    outline: none;
+}
+
+/* Actief (tijdens afspelen): laat een pulserende groene ring zien */
+.pw-ob-hotspot.is-playing {
+    background: rgba(0, 130, 65, 0.2);
+    box-shadow: 0 0 0 0 rgba(0, 130, 65, 0.7);
+    animation: pwHotspotPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pwHotspotPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 130, 65, 0.7); }
+    50%      { box-shadow: 0 0 0 15px rgba(0, 130, 65, 0); }
+}
+
+/* De tooltip die verschijnt bij hover */
 .pw-ob-hotspot-tip {
     position: absolute;
     bottom: calc(100% + 10px);
@@ -960,13 +959,14 @@ html, body { overflow-x: hidden; }
     color: #fff;
     padding: 6px 10px;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
     transition: opacity .2s ease, transform .2s ease;
     z-index: 3;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 .pw-ob-hotspot-tip::after {
     content: "";
@@ -983,10 +983,6 @@ html, body { overflow-x: hidden; }
     transform: translateX(-50%) translateY(-2px);
 }
 
-@media (max-width: 480px) {
-    .pw-ob-hotspot { border-width: 2px; }
-    .pw-ob-hotspot-tip { font-size: 11px; padding: 4px 8px; }
-}
 @media (prefers-reduced-motion: reduce) {
     .pw-ob-hotspot.is-playing { animation: none; }
 }
