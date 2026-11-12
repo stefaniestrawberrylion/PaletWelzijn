@@ -331,8 +331,8 @@
       ],
 
       tasks: [
-        "Ik heb de checklist doorlopen (kennismaking, VOG, overeenkomst, afspraken)",
-        "Ik heb mijn vrijwilligersovereenkomst ingevuld en ondertekend",
+        "Ik heb de checklist doorgenomen",
+        "Ik weet dat ik een vrijwilligers overeenkomst moet ondertekenen",
         "Ik weet dat ik altijd in gesprek kan over wat bij mij past",
         "Ik weet hoe ik Palet Welzijn kan bereiken voor vragen of aanmeldingen"
       ],
