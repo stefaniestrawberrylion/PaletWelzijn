@@ -23,7 +23,7 @@
      --------------------------------------------------------- */
   var HOTSPOTS = [
     /* ===== Nummers 1 t/m 10 ===== */
-    { id: "stap-01",  x: 4.4,  y: 32.1, label: "Stap 1",                     audio: "../../assets/audio/punt1.mp1", color: "#120a5c" },
+    { id: "stap-01",  x: 4.4,  y: 32.1, label: "Stap 1",                     audio: "../../assets/audio/punt1.mp3", color: "#120a5c" },
     { id: "stap-02",  x: 12.8, y: 50.9, label: "Stap 2",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
     { id: "stap-03",  x: 12.4, y: 61.5, label: "Stap 3",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
     { id: "stap-04",  x: 75.5, y: 13.8, label: "Stap 4",                     audio: "../../assets/audio/test.mp3", color: "#120a5c" },
